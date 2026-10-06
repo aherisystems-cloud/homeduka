@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { 
   MapPin, Phone, MessageSquare, Star, ShieldCheck, CheckCircle2, 
-  CreditCard, Clock, Award, Check, ChevronLeft, ArrowRight 
+  CreditCard, Clock, Award, Check, ChevronLeft, ArrowRight, Store 
 } from 'lucide-react';
 import { SAMPLE_KENYAN_HOME_LISTINGS } from '../../../data/mock_listings';
 import TrustBadges from '../../../components/TrustBadges';
@@ -77,9 +77,9 @@ export default async function BusinessDetailPage({
 
             <div className="absolute bottom-6 left-6 right-6 text-white">
               <div className="flex flex-wrap items-center gap-2 mb-2">
-                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500 text-white">
-                  <ShieldCheck className="w-3.5 h-3.5" />
-                  <span>Verified Workshop</span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500 text-white shadow-sm">
+                  <Store className="w-3.5 h-3.5" />
+                  <span>Verified Shop</span>
                 </span>
                 <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur text-white">
                   <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
@@ -131,7 +131,7 @@ export default async function BusinessDetailPage({
           <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="md:col-span-2 space-y-6">
               <div>
-                <h2 className="text-base font-bold text-slate-900 mb-2">About the Workshop</h2>
+                <h2 className="text-base font-bold text-slate-900 mb-2">About the Shop & Workshop</h2>
                 <p className="text-xs text-slate-600 leading-relaxed">
                   {business.description}
                 </p>
@@ -204,7 +204,7 @@ export default async function BusinessDetailPage({
 
         {/* Featured Products Showcase */}
         <section className="my-10">
-          <h2 className="text-xl font-bold text-slate-900 mb-1">Available Products & Work Portfolio</h2>
+          <h2 className="text-xl font-bold text-slate-900 mb-1">Products from this Shop</h2>
           <p className="text-xs text-slate-500 mb-6">Select an item to view details or inquire directly with workshop pricing</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">

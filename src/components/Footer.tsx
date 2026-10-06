@@ -15,18 +15,17 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-2 text-xs text-emerald-400">
               <ShieldCheck className="w-4 h-4" />
-              <span>Anti-Scam Architecture & Landmark Verified Showrooms</span>
+              <span>Anti-Scam Architecture & Landmark Verified Shops</span>
             </div>
           </div>
 
           <div>
-            <h4 className="text-white text-xs font-semibold uppercase tracking-wider mb-3">Key Locations</h4>
+            <h4 className="text-white text-xs font-semibold uppercase tracking-wider mb-3">Guides & Roundups</h4>
             <ul className="space-y-2 text-xs">
-              <li><Link href="/?q=Ruiru" className="hover:text-white transition">Ruiru & Kamakis Bypass</Link></li>
-              <li><Link href="/?q=Kilimani" className="hover:text-white transition">Kilimani & Kileleshwa</Link></li>
-              <li><Link href="/?q=Westlands" className="hover:text-white transition">Westlands & Parklands</Link></li>
-              <li><Link href="/?q=Syokimau" className="hover:text-white transition">Syokimau & Mombasa Road</Link></li>
-              <li><Link href="/?q=Karen" className="hover:text-white transition">Karen & Ngong Road</Link></li>
+              <li><Link href="/blog/best-sofa-makers-ruiru-kamakis" className="hover:text-white transition">Top Sofa Makers in Kamakis</Link></li>
+              <li><Link href="/blog/emergency-plumbers-kilimani-kileleshwa" className="hover:text-white transition">Emergency Plumbers in Kilimani</Link></li>
+              <li><Link href="/blog/cost-of-moving-house-nairobi-best-movers" className="hover:text-white transition">House Moving Rates in Nairobi</Link></li>
+              <li><Link href="/blog" className="hover:text-white text-emerald-400 font-semibold transition">Browse All Buyer Guides →</Link></li>
             </ul>
           </div>
 

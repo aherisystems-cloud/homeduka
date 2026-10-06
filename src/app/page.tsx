@@ -88,11 +88,11 @@ export default function HomePage() {
       {/* Drop of the Day (Scarcity Monetization Showcase) */}
       <DropOfTheDay />
 
-      {/* Featured Verified Showrooms */}
+      {/* Featured Verified Shops */}
       <section className="my-12">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h2 className="text-xl font-bold text-slate-900">Verified Showrooms & Workshops</h2>
+            <h2 className="text-xl font-bold text-slate-900">Verified Shops & Workshops</h2>
             <p className="text-xs text-slate-500">Physical workshops inspected with valid M-Pesa Tills and real customer reviews</p>
           </div>
           <Link href="/c/furniture" className="text-xs font-bold text-brand-600 hover:text-brand-700 flex items-center gap-1">
@@ -105,6 +105,88 @@ export default function HomePage() {
           {SAMPLE_KENYAN_HOME_LISTINGS.map((biz) => (
             <BusinessCard key={biz.id} business={biz} />
           ))}
+        </div>
+      </section>
+
+      {/* Vetted Buyer Guides & Roundup Articles */}
+      <section className="my-12">
+        <div className="flex items-center justify-between mb-6">
+          <div>
+            <span className="text-[11px] font-bold uppercase tracking-wider text-brand-600 bg-brand-50 px-2 py-0.5 rounded border border-brand-200">
+              Editorial Guides
+            </span>
+            <h2 className="text-xl font-bold text-slate-900 mt-1">Buyer Guides & Price Roundups</h2>
+            <p className="text-xs text-slate-500">In-depth market investigations comparing workshop rates, materials, and verified fundis</p>
+          </div>
+          <Link href="/blog" className="text-xs font-bold text-brand-600 hover:text-brand-700 flex items-center gap-1">
+            <span>All Guides</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <Link
+            href="/blog/best-sofa-makers-ruiru-kamakis"
+            className="bg-white rounded-2xl border border-slate-200 p-4 hover:shadow-md hover:border-brand-500 transition flex flex-col justify-between group"
+          >
+            <div>
+              <span className="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">
+                Furniture Roundup
+              </span>
+              <h4 className="font-bold text-sm text-slate-900 group-hover:text-brand-600 transition mt-2 mb-1 leading-snug">
+                Top 7 Best Sofa Makers in Ruiru & Kamakis (2026 Prices)
+              </h4>
+              <p className="text-xs text-slate-500 line-clamp-2">
+                Physical frame inspections along Eastern Bypass: solid mahogany vs blue gum, foam grades, and M-Pesa Tills.
+              </p>
+            </div>
+            <span className="text-xs font-bold text-brand-600 flex items-center gap-1 mt-4">
+              <span>Read Guide</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </span>
+          </Link>
+
+          <Link
+            href="/blog/emergency-plumbers-kilimani-kileleshwa"
+            className="bg-white rounded-2xl border border-slate-200 p-4 hover:shadow-md hover:border-brand-500 transition flex flex-col justify-between group"
+          >
+            <div>
+              <span className="text-[10px] font-bold text-blue-800 bg-blue-100 px-2 py-0.5 rounded">
+                24/7 Fundis
+              </span>
+              <h4 className="font-bold text-sm text-slate-900 group-hover:text-brand-600 transition mt-2 mb-1 leading-snug">
+                Emergency Plumbers in Kilimani & Kileleshwa: 24/7 Contacts
+              </h4>
+              <p className="text-xs text-slate-500 line-clamp-2">
+                Licensed fundis with under-20-minute response times for burst pipes, water pumps, and solar sensors.
+              </p>
+            </div>
+            <span className="text-xs font-bold text-brand-600 flex items-center gap-1 mt-4">
+              <span>Read Guide</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </span>
+          </Link>
+
+          <Link
+            href="/blog/cost-of-moving-house-nairobi-best-movers"
+            className="bg-white rounded-2xl border border-slate-200 p-4 hover:shadow-md hover:border-brand-500 transition flex flex-col justify-between group"
+          >
+            <div>
+              <span className="text-[10px] font-bold text-purple-800 bg-purple-100 px-2 py-0.5 rounded">
+                Moving Rates
+              </span>
+              <h4 className="font-bold text-sm text-slate-900 group-hover:text-brand-600 transition mt-2 mb-1 leading-snug">
+                Cost of Moving House in Nairobi: Top 5 Movers Compared
+              </h4>
+              <p className="text-xs text-slate-500 line-clamp-2">
+                Realistic 2026 moving rates for 1, 2, and 3-bedroom houses with TV unmounting and clean truck fleets.
+              </p>
+            </div>
+            <span className="text-xs font-bold text-brand-600 flex items-center gap-1 mt-4">
+              <span>Read Guide</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </span>
+          </Link>
         </div>
       </section>
 

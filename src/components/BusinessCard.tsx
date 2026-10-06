@@ -40,7 +40,7 @@ export default function BusinessCard({ business }: { business: BusinessProfile }
         {/* Content */}
         <div className="p-5">
           <div className="flex items-start justify-between gap-2 mb-1">
-            <Link href={`/biz/${business.slug}`} className="hover:text-brand-600 transition">
+            <Link href={`/shop/${business.slug}`} className="hover:text-brand-600 transition">
               <h3 className="font-bold text-base text-slate-900 leading-tight">
                 {business.business_name}
               </h3>
@@ -69,10 +69,10 @@ export default function BusinessCard({ business }: { business: BusinessProfile }
       {/* Action Footer */}
       <div className="px-5 pb-5 pt-2 flex items-center gap-2 border-t border-slate-100 mt-2">
         <Link
-          href={`/biz/${business.slug}`}
+          href={`/shop/${business.slug}`}
           className="flex-1 text-center py-2.5 px-3 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 text-xs font-semibold transition"
         >
-          View Showroom
+          View Shop
         </Link>
 
         <a

@@ -22,12 +22,19 @@ export default function Header() {
 
         <nav className="flex items-center gap-3">
           <Link
+            href="/blog"
+            className="text-xs font-semibold text-slate-600 hover:text-brand-600 px-2 py-1 transition"
+          >
+            Buyer Guides
+          </Link>
+
+          <Link
             href="https://whatsapp.com/channel/example-channel"
             target="_blank"
             className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-2 rounded-lg bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 transition"
           >
             <MessageSquare className="w-4 h-4 text-emerald-600" />
-            <span>Join Home Deals WhatsApp</span>
+            <span>Join WhatsApp Deals</span>
           </Link>
 
           <Link
