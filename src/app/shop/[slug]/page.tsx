@@ -3,11 +3,16 @@ import { notFound } from 'next/navigation';
 import { 
   MapPin, Phone, MessageSquare, Star, ShieldCheck, CheckCircle2, 
   CreditCard, Clock, Award, Check, ChevronLeft, ArrowRight, Store,
-  Camera, Ruler, Wrench 
+  Camera, Ruler, Wrench, Sparkles 
 } from 'lucide-react';
-import { SAMPLE_KENYAN_HOME_LISTINGS, SAMPLE_KENYAN_HOME_SERVICES } from '../../../data/mock_listings';
+import { 
+  SAMPLE_KENYAN_HOME_LISTINGS, 
+  SAMPLE_KENYAN_HOME_SERVICES, 
+  SAMPLE_KENYAN_HOME_PRODUCTS 
+} from '../../../data/mock_listings';
 import TrustBadges from '../../../components/TrustBadges';
 import ServiceCard from '../../../components/ServiceCard';
+import ProductCard from '../../../components/ProductCard';
 import RightSidebar from '../../../components/RightSidebar';
 import { generateWhatsAppLeadLink } from '../../../utils/whatsapp_link';
 import { generateLocalBusinessJsonLd } from '../../../utils/seo_generator';
@@ -27,30 +32,7 @@ export default async function ShopDetailPage({
   const whatsappUrl = generateWhatsAppLeadLink(business);
   const jsonLd = generateLocalBusinessJsonLd(business);
   const servicesForBusiness = SAMPLE_KENYAN_HOME_SERVICES.filter((s) => s.business_id === business.id);
-
-  const sampleProducts = [
-    {
-      title: "Chesterfield 7-Seater Modern Sofa Set",
-      price: "KSh 55,000",
-      material: "Kiln-dried Mahogany & Velvet Fabric",
-      image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80",
-      inStock: true
-    },
-    {
-      title: "6x6 Bespoke Storage Bed with Drawers",
-      price: "KSh 38,000",
-      material: "Solid Mvule Hardwood & Tufted Headboard",
-      image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=600&q=80",
-      inStock: true
-    },
-    {
-      title: "6-Seater Solid Hardwood Dining Table",
-      price: "KSh 45,000",
-      material: "Mahogany Top with 6 Padded Chairs",
-      image: "https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=600&q=80",
-      inStock: false
-    }
-  ];
+  const productsForBusiness = SAMPLE_KENYAN_HOME_PRODUCTS.filter((p) => p.business_id === business.id);
 
   return (
     <>
@@ -59,11 +41,11 @@ export default async function ShopDetailPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 pb-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-24">
         {/* Back Link */}
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-800 mb-4 transition"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-stone-500 hover:text-stone-900 mb-4 transition"
         >
           <ChevronLeft className="w-4 h-4" />
           <span>Back to All Kenya Home Directory</span>
@@ -74,20 +56,20 @@ export default async function ShopDetailPage({
           {/* Main Shop Details */}
           <div className="flex-1 min-w-0 w-full">
             {/* Hero Card */}
-            <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-2xs mb-8">
-              <div className="relative h-64 sm:h-80 w-full bg-slate-900">
+            <div className="bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-2xs mb-8">
+              <div className="relative h-64 sm:h-80 w-full bg-stone-900">
                 <img
                   src={business.media.cover_image_url}
                   alt={business.business_name}
                   className="w-full h-full object-cover opacity-90"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-950/40 to-transparent" />
 
                 <div className="absolute bottom-6 left-6 right-6 text-white">
                   <div className="flex flex-wrap items-center gap-2 mb-2">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500 text-white shadow-sm">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-600 text-white shadow-sm">
                       <Store className="w-3.5 h-3.5" />
-                      <span>Verified Shop</span>
+                      <span>{business.verification.is_claimed ? 'Verified Workshop' : 'Pre-Listed Workshop'}</span>
                     </span>
                     <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur text-white">
                       <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
@@ -95,7 +77,7 @@ export default async function ShopDetailPage({
                     </span>
                     {business.verification.guarantee_or_warranty_offered && (
                       <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur text-white">
-                        <Award className="w-3.5 h-3.5 text-emerald-300" />
+                        <Award className="w-3.5 h-3.5 text-amber-300" />
                         <span>Warranty Provided</span>
                       </span>
                     )}
@@ -105,21 +87,40 @@ export default async function ShopDetailPage({
                     {business.business_name}
                   </h1>
                   {business.tagline && (
-                    <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
+                    <p className="text-xs sm:text-sm text-stone-300 max-w-xl">
                       {business.tagline}
                     </p>
                   )}
                 </div>
               </div>
 
+              {/* Unclaimed Claim Banner */}
+              {!business.verification.is_claimed && (
+                <div className="p-4 bg-amber-50 border-b border-amber-200 flex flex-wrap items-center justify-between gap-3 text-xs">
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-amber-700 shrink-0" />
+                    <div>
+                      <strong className="text-amber-950 block">Is this your workshop?</strong>
+                      <span className="text-amber-800 text-[11px]">This profile was pre-listed based on customer recommendations. Claim it free to manage your products.</span>
+                    </div>
+                  </div>
+                  <Link
+                    href="/portal/demo-token"
+                    className="px-3.5 py-1.5 rounded-xl bg-amber-700 hover:bg-amber-800 text-white font-bold text-xs shadow-xs transition"
+                  >
+                    Claim This Business
+                  </Link>
+                </div>
+              )}
+
               {/* Trust Bar below Hero */}
-              <div className="p-6 bg-slate-50 border-b border-slate-200 flex flex-wrap items-center justify-between gap-4">
+              <div className="p-6 bg-[#FAF8F5] border-b border-stone-200 flex flex-wrap items-center justify-between gap-4">
                 <div className="space-y-1">
-                  <div className="flex items-center gap-2 text-xs font-medium text-slate-700">
-                    <MapPin className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <div className="flex items-center gap-2 text-xs font-medium text-stone-700">
+                    <MapPin className="w-4 h-4 text-brand-700 shrink-0" />
                     <span><strong>Landmark:</strong> {business.location.landmark}</span>
                   </div>
-                  <p className="text-[11px] text-slate-500 pl-6">
+                  <p className="text-[11px] text-stone-500 pl-6">
                     {business.location.neighborhood}, {business.location.sub_county} ({business.location.county} County)
                   </p>
                 </div>
@@ -129,9 +130,9 @@ export default async function ShopDetailPage({
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full md:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md transition active:scale-95"
+                    className="w-full md:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-stone-900 hover:bg-stone-800 text-white font-bold text-sm shadow-md transition active:scale-95"
                   >
-                    <MessageSquare className="w-4 h-4" />
+                    <MessageSquare className="w-4 h-4 text-amber-300" />
                     <span>Chat on WhatsApp</span>
                   </a>
                 </div>
@@ -141,25 +142,25 @@ export default async function ShopDetailPage({
               <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="md:col-span-2 space-y-6">
                   <div>
-                    <h2 className="text-base font-bold text-slate-900 mb-2">About the Shop & Workshop</h2>
-                    <p className="text-xs text-slate-600 leading-relaxed">
+                    <h2 className="text-base font-bold text-stone-900 mb-2">About the Workshop</h2>
+                    <p className="text-xs text-stone-600 leading-relaxed">
                       {business.description}
                     </p>
                   </div>
 
-                  {/* Provider Affirmed Commitments (Kenya-Specific Guarantees) */}
-                  <div className="bg-emerald-50/60 rounded-2xl p-4 border border-emerald-200">
-                    <h3 className="text-xs font-black uppercase tracking-wider text-emerald-900 mb-2.5 flex items-center gap-1.5">
-                      <ShieldCheck className="w-4 h-4 text-emerald-700" />
-                      <span>Provider-Affirmed Guarantees</span>
+                  {/* Provider Affirmed Commitments */}
+                  <div className="bg-amber-50/60 rounded-2xl p-4 border border-amber-200">
+                    <h3 className="text-xs font-black uppercase tracking-wider text-amber-950 mb-2.5 flex items-center gap-1.5">
+                      <ShieldCheck className="w-4 h-4 text-amber-800" />
+                      <span>Provider-Affirmed Customer Guarantees</span>
                     </h3>
-                    <div className="space-y-2 text-xs text-emerald-950">
+                    <div className="space-y-2 text-xs text-amber-950">
                       <div className="flex items-center gap-2">
-                        <Camera className="w-4 h-4 text-emerald-700 shrink-0" />
+                        <Camera className="w-4 h-4 text-amber-800 shrink-0" />
                         <span className="font-semibold">Affirmed: Free WhatsApp Photo/Video Assessment</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Ruler className="w-4 h-4 text-emerald-700 shrink-0" />
+                        <Ruler className="w-4 h-4 text-amber-800 shrink-0" />
                         <span className="font-semibold">Affirmed: Free Site Measurement in {business.location.neighborhood}</span>
                       </div>
                     </div>
@@ -167,38 +168,38 @@ export default async function ShopDetailPage({
 
                   {/* Attributes Checklist */}
                   <div>
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
-                      Verified Capabilities & Standards
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-stone-400 mb-3">
+                      Verified Workshop Capabilities
                     </h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-stone-700">
                       {business.attributes.uses_solid_hardwood && (
                         <div className="flex items-center gap-2">
-                          <Check className="w-4 h-4 text-emerald-600" />
-                          <span>Solid Hardwood (Mahogany, Mvule, Teak)</span>
+                          <Check className="w-4 h-4 text-amber-700" />
+                          <span>Kiln-Dried Solid Hardwood (Mahogany, Mvule)</span>
                         </div>
                       )}
                       {business.attributes.delivery_available && (
                         <div className="flex items-center gap-2">
-                          <Check className="w-4 h-4 text-emerald-600" />
+                          <Check className="w-4 h-4 text-amber-700" />
                           <span>Delivery Available Across Kenya</span>
                         </div>
                       )}
                       {business.attributes.custom_orders_accepted && (
                         <div className="flex items-center gap-2">
-                          <Check className="w-4 h-4 text-emerald-600" />
+                          <Check className="w-4 h-4 text-amber-700" />
                           <span>Bespoke & Custom Dimensions</span>
                         </div>
                       )}
                       {business.attributes.written_warranty_provided && (
                         <div className="flex items-center gap-2">
-                          <Check className="w-4 h-4 text-emerald-600" />
-                          <span>Written Frame Warranty Included</span>
+                          <Check className="w-4 h-4 text-amber-700" />
+                          <span>Written Workmanship Warranty Included</span>
                         </div>
                       )}
                       {business.attributes.has_customer_parking && (
                         <div className="flex items-center gap-2">
-                          <Check className="w-4 h-4 text-emerald-600" />
-                          <span>Free Customer Parking Available</span>
+                          <Check className="w-4 h-4 text-amber-700" />
+                          <span>Free Customer Parking & Workshop Viewing</span>
                         </div>
                       )}
                     </div>
@@ -206,40 +207,63 @@ export default async function ShopDetailPage({
                 </div>
 
                 {/* Sidebar Details */}
-                <div className="bg-slate-50 rounded-2xl p-5 border border-slate-200 text-xs space-y-4">
+                <div className="bg-[#FAF8F5] rounded-2xl p-5 border border-stone-200 text-xs space-y-4">
                   <div>
-                    <span className="font-semibold text-slate-400 block mb-1">Operating Hours</span>
-                    <p className="font-medium text-slate-700">Mon - Fri: {business.operating_hours.monday_friday}</p>
-                    <p className="font-medium text-slate-700">Saturday: {business.operating_hours.saturday}</p>
-                    <p className="font-medium text-slate-700">Sunday: {business.operating_hours.sunday}</p>
+                    <span className="font-semibold text-stone-400 block mb-1">Operating Hours</span>
+                    <p className="font-medium text-stone-700">Mon - Fri: {business.operating_hours.monday_friday}</p>
+                    <p className="font-medium text-stone-700">Saturday: {business.operating_hours.saturday}</p>
+                    <p className="font-medium text-stone-700">Sunday: {business.operating_hours.sunday}</p>
                   </div>
 
                   <div>
-                    <span className="font-semibold text-slate-400 block mb-1">Payment Options</span>
-                    <p className="font-medium text-emerald-800">
-                      Lipa na M-Pesa Buy Goods Till: <strong>{business.commercial.mpesa_till_number}</strong>
+                    <span className="font-semibold text-stone-400 block mb-1">Payment Verification</span>
+                    <p className="font-medium text-emerald-900">
+                      Lipa na M-Pesa Buy Goods: <strong>{business.commercial.mpesa_till_number}</strong>
                     </p>
-                    <p className="text-slate-600 mt-0.5">Cash / M-Pesa on Delivery Accepted</p>
+                    <p className="text-stone-500 mt-0.5">Pay on Delivery / Collection Accepted</p>
                   </div>
 
                   <div>
-                    <span className="font-semibold text-slate-400 block mb-1">Response Time</span>
-                    <p className="text-emerald-700 font-medium">⚡ Replies in ~{business.reputation.response_time_minutes} minutes on WhatsApp</p>
+                    <span className="font-semibold text-stone-400 block mb-1">Response Time</span>
+                    <p className="text-amber-900 font-medium">⚡ Replies in ~{business.reputation.response_time_minutes} minutes on WhatsApp</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Services from this Shop (if any) */}
+            {/* Products from this Shop (Tangible pieces) */}
+            {productsForBusiness.length > 0 && (
+              <section className="my-8">
+                <div className="flex items-center justify-between mb-4">
+                  <div>
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-amber-900 bg-amber-50 px-2.5 py-0.5 rounded-md border border-amber-200">
+                      Showroom Catalog
+                    </span>
+                    <h2 className="text-xl font-bold text-stone-900 mt-1">Products from this Workshop</h2>
+                    <p className="text-xs text-stone-500">
+                      Handcrafted pieces ready for delivery or custom made to order
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                  {productsForBusiness.map((product) => (
+                    <ProductCard key={product.id} product={product} business={business} />
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Services from this Shop (Labor / Installations) */}
             {servicesForBusiness.length > 0 && (
               <section className="my-8">
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-md border border-blue-200">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-blue-900 bg-blue-50 px-2.5 py-0.5 rounded-md border border-blue-200">
                       Services & Labor Rates
                     </span>
-                    <h2 className="text-xl font-bold text-slate-900 mt-1">Available Services & Workmanship</h2>
-                    <p className="text-xs text-slate-500">
+                    <h2 className="text-xl font-bold text-stone-900 mt-1">Available Services & Workmanship</h2>
+                    <p className="text-xs text-stone-500">
                       Book certified technicians, custom fitting, and repair work directly from this shop
                     </p>
                   </div>
@@ -252,49 +276,6 @@ export default async function ShopDetailPage({
                 </div>
               </section>
             )}
-
-            {/* Featured Products Showcase */}
-            <section className="my-8">
-              <h2 className="text-xl font-bold text-slate-900 mb-1">Products from this Shop</h2>
-              <p className="text-xs text-slate-500 mb-6">Select an item to view details or inquire directly with workshop pricing</p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-                {sampleProducts.map((p, idx) => {
-                  const itemWhatsApp = generateWhatsAppLeadLink(business, { itemOrServiceName: p.title });
-                  return (
-                    <div key={idx} className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-2xs flex flex-col justify-between">
-                      <div>
-                        <div className="relative h-44 w-full bg-slate-100">
-                          <img src={p.image} alt={p.title} className="w-full h-full object-cover" />
-                          <span className={`absolute top-2 left-2 text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                            p.inStock ? 'bg-emerald-100 text-emerald-800' : 'bg-red-100 text-red-800'
-                          }`}>
-                            {p.inStock ? 'In Stock' : 'Out of Stock'}
-                          </span>
-                        </div>
-                        <div className="p-4">
-                          <h4 className="font-bold text-sm text-slate-900 mb-1 leading-snug">{p.title}</h4>
-                          <p className="text-xs text-slate-500 mb-2">{p.material}</p>
-                          <p className="text-base font-black text-emerald-700">{p.price}</p>
-                        </div>
-                      </div>
-
-                      <div className="p-4 pt-0">
-                        <a
-                          href={itemWhatsApp}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition shadow-xs"
-                        >
-                          <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
-                          <span>Order on WhatsApp</span>
-                        </a>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </section>
           </div>
 
           {/* Right Sidebar */}
@@ -303,20 +284,20 @@ export default async function ShopDetailPage({
       </div>
 
       {/* Sticky Mobile Floating WhatsApp Bar */}
-      <div className="fixed bottom-0 left-0 right-0 p-3 bg-white/95 backdrop-blur border-t border-slate-200 z-50 sm:hidden flex items-center justify-between gap-3">
+      <div className="fixed bottom-0 left-0 right-0 p-3 bg-white/95 backdrop-blur border-t border-stone-200 z-50 sm:hidden flex items-center justify-between gap-3 shadow-lg">
         <div>
-          <span className="text-xs font-bold text-slate-900 block truncate max-w-[180px]">
+          <span className="text-xs font-bold text-stone-900 block truncate max-w-[180px]">
             {business.business_name}
           </span>
-          <span className="text-[11px] text-emerald-600 font-semibold">Replies in ~8m</span>
+          <span className="text-[11px] text-amber-800 font-semibold">Replies in ~8m</span>
         </div>
         <a
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 px-5 py-3 rounded-xl bg-emerald-600 text-white font-bold text-xs shadow-md"
+          className="inline-flex items-center gap-1.5 px-5 py-3 rounded-xl bg-stone-900 text-white font-bold text-xs shadow-md"
         >
-          <MessageSquare className="w-4 h-4" />
+          <MessageSquare className="w-4 h-4 text-amber-300" />
           <span>Chat WhatsApp</span>
         </a>
       </div>

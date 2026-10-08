@@ -9,19 +9,27 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Warm Cedar / Earthy Amber Home Palette (Premium, inviting, architectural)
         brand: {
-          50: '#f0fdf4',
-          100: '#dcfce7',
-          500: '#22c55e',
-          600: '#16a34a',
-          700: '#15803d',
-          800: '#166534',
-          900: '#14532d',
+          50: '#FDF8F6',
+          100: '#F2E8E5',
+          200: '#EADDD7',
+          300: '#D5C3BC',
+          400: '#BA9C91',
+          500: '#A47764',
+          600: '#925C47', // Warm Cedar / Terracotta Wood
+          700: '#7A4B38',
+          800: '#5F3A2B',
+          900: '#43281E',
         },
-        kenya: {
-          green: '#008542',
-          red: '#c00000',
-          black: '#000000',
+        // Deep warm slate neutrals for grounded elegance
+        home: {
+          slate: '#1E293B',
+          sand: '#F8F6F0',
+          cream: '#FFFDF9',
+          wood: '#854D0E',
+          clay: '#C2410C',
+          forest: '#1E3A2F',
         }
       },
     },

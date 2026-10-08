@@ -192,6 +192,15 @@ export interface BusinessAttributes {
   deposit_percentage_required?: number; // e.g., 30 for custom furniture
 }
 
+export type HomeRoom = 
+  | 'living_room'
+  | 'bedroom'
+  | 'kitchen_dining'
+  | 'bathroom'
+  | 'outdoor_compound'
+  | 'home_office'
+  | 'whole_house';
+
 // ==========================================
 // 4. PRODUCT SCHEMA (Furniture, Decor, Appliances)
 // ==========================================
@@ -202,6 +211,7 @@ export interface HomeProduct {
   slug: string;
   category: string;
   subcategory: string;
+  room?: HomeRoom;             // e.g. "living_room" or "bedroom"
   description: string;
 
   pricing: {
@@ -241,6 +251,8 @@ export interface HomeService {
   title: string;               // e.g. "Gypsum Ceiling Design, Installation & Lighting"
   slug: string;
   service_category: string;
+  room?: HomeRoom;
+  is_recurring?: boolean;      // e.g. Monthly tank cleaning or pest control
   description: string;
 
   pricing: {

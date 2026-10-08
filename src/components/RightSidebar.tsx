@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { 
-  Flame, Clock, Star, ShieldCheck, ArrowRight, 
-  MessageSquare, Sparkles, TrendingUp, Award, ExternalLink 
+  Sparkles, Clock, Star, ShieldCheck, ArrowRight, 
+  MessageSquare, TrendingUp, Award, CheckCircle2 
 } from 'lucide-react';
 import { SAMPLE_KENYAN_HOME_LISTINGS } from '../data/mock_listings';
 import { SAMPLE_ROUNDUP_ARTICLES } from '../data/blog_articles';
@@ -11,68 +11,76 @@ export default function RightSidebar() {
   const trendingArticles = SAMPLE_ROUNDUP_ARTICLES.slice(0, 3);
 
   return (
-    <aside className="w-full lg:w-80 space-y-6 flex-shrink-0">
-      {/* 1. SCARCITY FLASH DEAL / DROP OF THE DAY */}
-      <div className="bg-gradient-to-br from-red-600 via-orange-600 to-amber-600 rounded-3xl p-0.5 shadow-md text-white">
-        <div className="bg-slate-900 rounded-[22px] p-5">
-          <div className="flex items-center justify-between mb-3">
-            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-black bg-red-500/20 text-red-400 border border-red-500/30">
-              <Flame className="w-3.5 h-3.5 text-red-400 animate-pulse" />
-              DROP SLOT 1 OF 2
-            </span>
-            <span className="text-[11px] text-slate-400 flex items-center gap-1">
-              <Clock className="w-3 h-3" /> Ends in 7h
-            </span>
-          </div>
-
-          <h4 className="font-bold text-sm text-white leading-snug mb-1">
-            7-Seater Chesterfield (Velvet)
-          </h4>
-          <p className="text-[11px] text-slate-400 mb-3">
-            Classic Hardwood • Kamakis Bypass
-          </p>
-
-          <div className="flex items-baseline gap-2 mb-4">
-            <span className="text-xl font-black text-emerald-400">KSh 44,500</span>
-            <span className="text-xs text-slate-500 line-through">KSh 55,000</span>
-            <span className="text-[10px] font-bold text-amber-300 bg-amber-400/10 px-1.5 py-0.5 rounded">
-              -19% OFF
-            </span>
-          </div>
-
-          <Link
-            href="/shop/classic-hardwood-furniture-kamakis"
-            className="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-sm transition"
-          >
-            <MessageSquare className="w-3.5 h-3.5" />
-            <span>Claim Drop on WhatsApp</span>
-          </Link>
-          <p className="text-[10px] text-center text-slate-500 mt-2">
-            Only 2 sets available at this promotional rate
-          </p>
+    <aside className="w-full lg:w-80 space-y-6 shrink-0">
+      {/* 1. CURATED PIECE OF THE DAY (High Trust, Elegant) */}
+      <div className="bg-white rounded-3xl p-5 border border-stone-200/90 shadow-2xs">
+        <div className="flex items-center justify-between mb-3">
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-black bg-amber-50 text-amber-900 border border-amber-200">
+            <Sparkles className="w-3 h-3 text-amber-700" />
+            CURATED FEATURE OF THE DAY
+          </span>
+          <span className="text-[11px] text-stone-400 flex items-center gap-1">
+            <Clock className="w-3 h-3" /> Today Only
+          </span>
         </div>
+
+        <div className="rounded-2xl overflow-hidden h-36 bg-stone-100 mb-3 relative">
+          <img
+            src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80"
+            alt="Chesterfield Sofa"
+            className="w-full h-full object-cover"
+          />
+          <span className="absolute bottom-2 left-2 px-2 py-0.5 rounded-md text-[10px] font-bold bg-stone-900/80 text-white backdrop-blur">
+            Kiln-Dried Mahogany
+          </span>
+        </div>
+
+        <h4 className="font-bold text-sm text-stone-900 leading-snug mb-0.5">
+          Chesterfield 7-Seater Modern Sofa Set
+        </h4>
+        <p className="text-[11px] text-stone-500 mb-3">
+          WoodCraft Living • Kamakis Eastern Bypass
+        </p>
+
+        <div className="flex items-baseline justify-between mb-4">
+          <div className="flex items-baseline gap-2">
+            <span className="text-lg font-black text-stone-900">KSh 58,000</span>
+            <span className="text-xs text-stone-400 line-through">KSh 68,000</span>
+          </div>
+          <span className="text-[10px] font-bold text-amber-900 bg-amber-100 px-2 py-0.5 rounded-full">
+            Free Nairobi Delivery
+          </span>
+        </div>
+
+        <Link
+          href="/shop/woodcraft-living-kamakis"
+          className="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-bold text-xs shadow-sm transition active:scale-95"
+        >
+          <MessageSquare className="w-3.5 h-3.5 text-amber-300" />
+          <span>Inquire & Reserve on WhatsApp</span>
+        </Link>
       </div>
 
-      {/* 2. TOP VERIFIED SHOPS (BEST SELLERS) */}
-      <div className="bg-white rounded-3xl p-5 border border-slate-200 shadow-2xs">
+      {/* 2. TOP VERIFIED WORKSHOPS */}
+      <div className="bg-white rounded-3xl p-5 border border-stone-200/90 shadow-2xs">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="font-bold text-sm text-slate-900 flex items-center gap-1.5">
-            <Award className="w-4 h-4 text-brand-600" />
-            <span>Top Verified Shops</span>
+          <h3 className="font-bold text-sm text-stone-900 flex items-center gap-1.5">
+            <Award className="w-4 h-4 text-amber-700" />
+            <span>Top Verified Workshops</span>
           </h3>
-          <span className="text-[10px] font-bold uppercase text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">
+          <span className="text-[10px] font-bold uppercase text-stone-600 bg-stone-100 px-2 py-0.5 rounded">
             Vetted
           </span>
         </div>
 
         <div className="space-y-4">
-          {topShops.map((shop, idx) => (
+          {topShops.map((shop) => (
             <Link
               key={shop.id}
               href={`/shop/${shop.slug}`}
-              className="flex items-start gap-3 group pb-3 border-b border-slate-100 last:border-b-0 last:pb-0"
+              className="flex items-start gap-3 group pb-3 border-b border-stone-100 last:border-b-0 last:pb-0"
             >
-              <div className="w-10 h-10 rounded-xl bg-slate-100 overflow-hidden flex-shrink-0 relative">
+              <div className="w-11 h-11 rounded-xl bg-stone-100 overflow-hidden shrink-0 relative">
                 <img
                   src={shop.media.cover_image_url}
                   alt={shop.business_name}
@@ -81,19 +89,19 @@ export default function RightSidebar() {
               </div>
 
               <div className="flex-1 min-w-0">
-                <h4 className="font-bold text-xs text-slate-900 group-hover:text-brand-600 transition truncate">
+                <h4 className="font-bold text-xs text-stone-900 group-hover:text-brand-700 transition truncate">
                   {shop.business_name}
                 </h4>
-                <p className="text-[11px] text-slate-500 truncate">
-                  {shop.location.landmark} ({shop.location.neighborhood})
+                <p className="text-[11px] text-stone-500 truncate">
+                  {shop.location.landmark}
                 </p>
                 <div className="flex items-center gap-2 mt-1">
-                  <div className="flex items-center gap-0.5 text-[10px] font-bold text-amber-700 bg-amber-50 px-1.5 py-0.2 rounded">
+                  <div className="flex items-center gap-0.5 text-[10px] font-bold text-amber-800 bg-amber-50 px-1.5 py-0.5 rounded">
                     <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
                     <span>{shop.reputation.rating}</span>
                   </div>
                   {shop.commercial.mpesa_till_number && (
-                    <span className="text-[10px] font-semibold text-emerald-700">
+                    <span className="text-[10px] font-semibold text-emerald-800">
                       Till: {shop.commercial.mpesa_till_number}
                     </span>
                   )}
@@ -104,14 +112,14 @@ export default function RightSidebar() {
         </div>
       </div>
 
-      {/* 3. TRENDING BUYER GUIDES & ROUNDUPS (TOP X POSTS) */}
-      <div className="bg-white rounded-3xl p-5 border border-slate-200 shadow-2xs">
+      {/* 3. TRENDING BUYER INVESTIGATIONS */}
+      <div className="bg-white rounded-3xl p-5 border border-stone-200/90 shadow-2xs">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="font-bold text-sm text-slate-900 flex items-center gap-1.5">
-            <TrendingUp className="w-4 h-4 text-emerald-600" />
-            <span>Trending Buyer Guides</span>
+          <h3 className="font-bold text-sm text-stone-900 flex items-center gap-1.5">
+            <TrendingUp className="w-4 h-4 text-brand-700" />
+            <span>Buyer Guides & Comparisons</span>
           </h3>
-          <Link href="/blog" className="text-[11px] font-bold text-brand-600 hover:underline">
+          <Link href="/blog" className="text-[11px] font-bold text-brand-700 hover:underline">
             All Guides
           </Link>
         </div>
@@ -123,14 +131,14 @@ export default function RightSidebar() {
               href={`/blog/${article.slug}`}
               className="flex items-start gap-2.5 group"
             >
-              <span className="w-5 h-5 rounded-md bg-slate-100 group-hover:bg-brand-600 group-hover:text-white text-slate-600 text-[11px] font-black flex items-center justify-center flex-shrink-0 transition mt-0.5">
+              <span className="w-5 h-5 rounded-md bg-stone-100 group-hover:bg-brand-700 group-hover:text-white text-stone-600 text-[11px] font-black flex items-center justify-center shrink-0 transition mt-0.5">
                 {idx + 1}
               </span>
               <div>
-                <h4 className="font-bold text-xs text-slate-800 group-hover:text-brand-600 transition leading-snug line-clamp-2">
+                <h4 className="font-bold text-xs text-stone-800 group-hover:text-brand-700 transition leading-snug line-clamp-2">
                   {article.title}
                 </h4>
-                <span className="text-[10px] text-slate-400 mt-0.5 block">
+                <span className="text-[10px] text-stone-400 mt-0.5 block">
                   {article.category} • {article.readTimeMinutes} min read
                 </span>
               </div>
@@ -139,50 +147,30 @@ export default function RightSidebar() {
         </div>
       </div>
 
-      {/* 4. WHATSAPP VIP COMMUNITY WIDGET */}
-      <div className="bg-emerald-900 text-white rounded-3xl p-5 shadow-sm">
+      {/* 4. WHATSAPP HOME DEALS COMMUNITY */}
+      <div className="bg-stone-900 text-white rounded-3xl p-5 shadow-2xs border border-stone-800">
         <div className="flex items-center gap-2 mb-2">
-          <span className="p-2 rounded-xl bg-emerald-800 text-emerald-300">
+          <span className="p-2 rounded-xl bg-amber-500/20 text-amber-300">
             <MessageSquare className="w-4 h-4" />
           </span>
           <div>
             <h4 className="font-bold text-xs text-white">Home Deals Channel</h4>
-            <span className="text-[10px] text-emerald-300">5,400+ Kenyan Members</span>
+            <span className="text-[10px] text-amber-200">5,400+ Kenyan Homeowners</span>
           </div>
         </div>
 
-        <p className="text-[11px] text-emerald-100 leading-relaxed mb-3">
-          Get 1 curated furniture flash drop and emergency fundi rates straight to your WhatsApp every morning.
+        <p className="text-[11px] text-stone-300 leading-relaxed mb-3">
+          Get 1 vetted workshop drop and emergency fundi tips straight to your WhatsApp every morning. Zero spam.
         </p>
 
         <a
           href="https://whatsapp.com/channel/example"
           target="_blank"
           rel="noopener noreferrer"
-          className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-white text-emerald-950 font-bold text-xs hover:bg-emerald-50 transition shadow-xs"
+          className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-white text-stone-950 font-bold text-xs hover:bg-stone-100 transition shadow-xs"
         >
-          <span>Join Free on WhatsApp</span>
+          <span>Join Free WhatsApp Channel</span>
         </a>
-      </div>
-
-      {/* 5. SPONSORED LOCAL BRAND BANNER (Ad Slot) */}
-      <div className="bg-slate-100 rounded-2xl p-4 border border-slate-200 text-center text-slate-500">
-        <span className="text-[9px] uppercase font-bold tracking-widest text-slate-400 block mb-1">
-          Sponsored Partner
-        </span>
-        <h5 className="font-bold text-xs text-slate-800 mb-0.5">
-          Crown Paints & Duracoat Specialists
-        </h5>
-        <p className="text-[10px] text-slate-500 mb-2">
-          Find certified painters in your estate with genuine paint warranty.
-        </p>
-        <Link
-          href="/c/painting"
-          className="inline-flex items-center gap-1 text-[11px] font-bold text-brand-600 hover:underline"
-        >
-          <span>Find Certified Painters</span>
-          <ArrowRight className="w-3 h-3" />
-        </Link>
       </div>
     </aside>
   );
