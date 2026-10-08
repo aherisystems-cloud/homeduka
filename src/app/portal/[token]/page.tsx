@@ -171,7 +171,7 @@ export default function VendorPortalPage() {
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-5 h-5 text-emerald-700" />
-            <h3 className="font-bold text-sm text-emerald-950">Your Affirmed Customer Guarantees</h3>
+            <h3 className="font-bold text-sm text-emerald-950">Your Customer Guarantees</h3>
           </div>
           <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-200 text-emerald-900">
             Verified Badges Active
@@ -188,17 +188,17 @@ export default function VendorPortalPage() {
               checked={affirmedWhatsApp} 
               onChange={(e) => { 
                 setAffirmedWhatsApp(e.target.checked); 
-                showNotice(e.target.checked ? '✓ WhatsApp assessment guarantee affirmed!' : 'Guarantee removed'); 
+                showNotice(e.target.checked ? '✓ WhatsApp photo check promise enabled!' : 'Guarantee removed'); 
               }} 
               className="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500 mt-0.5" 
             />
             <div>
               <span className="font-bold text-slate-900 block flex items-center gap-1.5">
                 <Camera className="w-3.5 h-3.5 text-emerald-600" />
-                Affirm: Free WhatsApp Photo/Video Assessment
+                I Promise: Free WhatsApp Photo Check
               </span>
               <span className="text-[11px] text-slate-500">
-                You agree to review photos or 10-second videos sent by clients on WhatsApp for free estimates before making a site visit.
+                You agree to review photos or short videos sent by customers on WhatsApp for free estimates before making a site visit.
               </span>
             </div>
           </label>
@@ -209,14 +209,14 @@ export default function VendorPortalPage() {
               checked={affirmedLocalMeasurement} 
               onChange={(e) => { 
                 setAffirmedLocalMeasurement(e.target.checked); 
-                showNotice(e.target.checked ? '✓ Free local measurement affirmed!' : 'Guarantee removed'); 
+                showNotice(e.target.checked ? '✓ Free local measurement promise enabled!' : 'Guarantee removed'); 
               }} 
               className="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500 mt-0.5" 
             />
             <div>
               <span className="font-bold text-slate-900 block flex items-center gap-1.5">
                 <Ruler className="w-3.5 h-3.5 text-blue-600" />
-                Affirm: Free Site Measurements in Your Local Area / Estate
+                I Promise: Free Site Visit & Measurement in My Estate
               </span>
               <span className="text-[11px] text-slate-500">
                 You agree to provide free site visits and measurements for nearby homeowners in your neighborhood (e.g. Kamakis, Kilimani, Nyali).

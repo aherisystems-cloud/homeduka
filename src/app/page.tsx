@@ -99,7 +99,7 @@ export default function HomePage() {
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-900 border border-amber-200/70 text-xs font-bold mb-4">
             <ShieldCheck className="w-4 h-4 text-amber-700" />
-            <span>Curated Kenyan Home Authority • Real Workshops • Verified Tills</span>
+            <span>Kenya's Trusted Home Marketplace • Real Workshops • Verified Lipa na M-Pesa Tills</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight leading-[1.15] mb-3">
@@ -107,7 +107,7 @@ export default function HomePage() {
           </h1>
 
           <p className="text-xs sm:text-base text-stone-600 leading-relaxed mb-6">
-            From bespoke living room sofas and fitted kitchens to routine water tank cleaning and licensed emergency fundis — find verified products and trusted artisans across Kenya.
+            From living room sofas and fitted kitchens to water tank cleaning and trusted fundis — find verified products and artisans across Kenya.
           </p>
 
           {/* Search Bar */}
@@ -168,7 +168,7 @@ export default function HomePage() {
             }`}
           >
             <Layers className="w-3.5 h-3.5" />
-            <span>All Solutions ({filteredProducts.length + filteredServices.length})</span>
+            <span>Everything ({filteredProducts.length + filteredServices.length})</span>
           </button>
 
           <button
@@ -180,7 +180,7 @@ export default function HomePage() {
             }`}
           >
             <ShoppingBag className="w-3.5 h-3.5 text-amber-500" />
-            <span>Furniture & Products ({filteredProducts.length})</span>
+            <span>Home Products ({filteredProducts.length})</span>
           </button>
 
           <button
@@ -192,7 +192,7 @@ export default function HomePage() {
             }`}
           >
             <Wrench className="w-3.5 h-3.5 text-blue-500" />
-            <span>Repairs & Fundis ({filteredServices.length})</span>
+            <span>Fundis & Repairs ({filteredServices.length})</span>
           </button>
 
           <button
@@ -204,7 +204,7 @@ export default function HomePage() {
             }`}
           >
             <RefreshCw className="w-3.5 h-3.5 text-emerald-500" />
-            <span>Monthly Recurring Care</span>
+            <span>Monthly Home Care</span>
           </button>
         </div>
 
@@ -237,17 +237,17 @@ export default function HomePage() {
 
           {/* A. FEATURED HOME PRODUCTS (Furniture, Appliances, Fittings) */}
           {(viewType === 'all' || viewType === 'products') && (
-            <section className="space-y-4">
+            <section id="products" className="space-y-4">
               <div className="flex items-center justify-between">
                 <div>
                   <span className="text-[10px] font-black uppercase tracking-wider text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
-                    Tangible Pieces
+                    Furniture & Items
                   </span>
                   <h2 className="text-xl sm:text-2xl font-black text-stone-900 mt-1">
                     Featured Home Products & Furniture ({filteredProducts.length})
                   </h2>
                   <p className="text-xs text-stone-500">
-                    Heirloom hardwood pieces, modular kitchens, and solar systems directly from workshops
+                    Solid hardwood furniture, fitted kitchens, and solar systems direct from workshops
                   </p>
                 </div>
               </div>
@@ -272,13 +272,13 @@ export default function HomePage() {
               <div className="flex items-center justify-between">
                 <div>
                   <span className="text-[10px] font-black uppercase tracking-wider text-blue-800 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
-                    Skilled Labor & Trades
+                    Fundis & Repairs
                   </span>
                   <h2 className="text-xl sm:text-2xl font-black text-stone-900 mt-1">
-                    Vetted Fundis & Installation Services ({filteredServices.length})
+                    Fundis & Home Services ({filteredServices.length})
                   </h2>
                   <p className="text-xs text-stone-500">
-                    Verified artisans with affirmed WhatsApp photo assessment & local estate measurements
+                    Verified fundis who give free price checks on WhatsApp and local estate visits
                   </p>
                 </div>
 
@@ -312,13 +312,13 @@ export default function HomePage() {
             <div className="flex items-center justify-between">
               <div>
                 <span className="text-[10px] font-black uppercase tracking-wider text-stone-800 bg-stone-100 px-2 py-0.5 rounded border border-stone-200">
-                  Verified Physical Locations
+                  Workshops You Can Visit
                 </span>
                 <h2 className="text-xl sm:text-2xl font-black text-stone-900 mt-1">
-                  The 5 Premier Trusted Workshops ({filteredBusinesses.length})
+                  5 Trusted Kenyan Workshops You Can Visit ({filteredBusinesses.length})
                 </h2>
                 <p className="text-xs text-stone-500">
-                  Inspected workshops with verified landmarks, customer parking & M-Pesa Buy Goods Tills
+                  Verified workshops with clear landmarks, customer parking, and safe Lipa na M-Pesa Tills
                 </p>
               </div>
             </div>

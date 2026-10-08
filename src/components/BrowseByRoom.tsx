@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { HomeRoom } from '../types/schema';
-import { HOME_ROOMS, RoomCategoryDef } from '../data/mock_listings';
-import { ArrowRight } from 'lucide-react';
+import { HOME_ROOMS } from '../data/mock_listings';
+import { ArrowRight, Layers } from 'lucide-react';
 
 interface BrowseByRoomProps {
   selectedRoom: HomeRoom | 'all';
@@ -16,20 +16,20 @@ export default function BrowseByRoom({ selectedRoom, onSelectRoom }: BrowseByRoo
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
         <div>
           <span className="text-[11px] font-black uppercase tracking-wider text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-md border border-amber-200">
-            Home Organization
+            Shop by Room
           </span>
           <h2 className="text-xl sm:text-2xl font-black text-stone-900 mt-1">
-            Browse by Room & Space
+            Shop by Room & Space
           </h2>
           <p className="text-xs text-stone-500">
-            Explore curated furniture, fittings, appliances, and specialized artisans for each part of your home
+            Find furniture, fittings, and fundis for every room in your home
           </p>
         </div>
 
         {selectedRoom !== 'all' && (
           <button
             onClick={() => onSelectRoom('all')}
-            className="text-xs font-bold text-brand-700 hover:underline text-left sm:text-right"
+            className="text-xs font-bold text-brand-700 hover:underline text-left sm:text-right cursor-pointer"
           >
             Show All Rooms →
           </button>
@@ -44,7 +44,7 @@ export default function BrowseByRoom({ selectedRoom, onSelectRoom }: BrowseByRoo
             <button
               key={room.id}
               onClick={() => onSelectRoom(isSelected ? 'all' : room.id)}
-              className={`rounded-2xl border p-3 text-left transition-all duration-200 flex flex-col justify-between group overflow-hidden ${
+              className={`rounded-2xl border p-3 text-left transition-all duration-200 flex flex-col justify-between group overflow-hidden cursor-pointer ${
                 isSelected
                   ? 'bg-amber-900 text-white border-amber-900 shadow-sm ring-2 ring-amber-700'
                   : 'bg-white hover:bg-amber-50/40 border-stone-200 hover:border-amber-300 text-stone-800 shadow-2xs'
@@ -56,7 +56,7 @@ export default function BrowseByRoom({ selectedRoom, onSelectRoom }: BrowseByRoo
                   <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
                     isSelected ? 'bg-amber-800 text-amber-200' : 'bg-stone-100 text-stone-600'
                   }`}>
-                    Explore
+                    View
                   </span>
                 </div>
                 <h3 className={`font-bold text-xs sm:text-sm leading-tight ${

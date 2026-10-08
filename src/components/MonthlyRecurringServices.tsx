@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { MONTHLY_RECURRING_HOME_SERVICES, SAMPLE_KENYAN_HOME_LISTINGS } from '../data/mock_listings';
-import { RefreshCw, MessageSquare, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { RefreshCw, MessageSquare, ShieldCheck } from 'lucide-react';
 import { generateWhatsAppLeadLink } from '../utils/whatsapp_link';
 
 export default function MonthlyRecurringServices() {
@@ -11,13 +11,13 @@ export default function MonthlyRecurringServices() {
       <div className="max-w-2xl mb-6">
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold mb-2">
           <RefreshCw className="w-3.5 h-3.5 text-amber-700 animate-spin-slow" />
-          <span>Routine Home Upkeep & Health</span>
+          <span>Regular Home Care</span>
         </div>
         <h2 className="text-xl sm:text-2xl font-black text-stone-900 tracking-tight leading-tight">
-          Monthly & Recurring Home Essentials
+          Monthly Home Care & Cleaning
         </h2>
         <p className="text-xs sm:text-sm text-stone-600 mt-1 leading-relaxed">
-          The essential maintenance every Kenyan home needs on a predictable schedule — before minor negligence turns into expensive emergency replacements.
+          Regular cleaning and servicing to keep your home fresh, clean, and working smoothly — before small problems turn into big repair bills.
         </p>
       </div>
 

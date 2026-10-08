@@ -81,15 +81,15 @@ function ServicesContent() {
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-900 border border-amber-200/70 text-xs font-bold mb-3">
             <ShieldCheck className="w-4 h-4 text-amber-700" />
-            <span>Kenya-Wide Fundi Standards • Real Landmarks • Verified Buy Goods Tills</span>
+            <span>Kenya Fundi Directory • Real Locations • Verified M-Pesa Tills</span>
           </div>
 
           <h1 className="text-2xl sm:text-4xl font-black text-stone-900 tracking-tight leading-tight mb-3">
-            Verified Home Services & Vetted <span className="text-brand-700">Artisans Across Kenya</span>
+            Trusted Fundis & Home Services <span className="text-brand-700">Across Kenya</span>
           </h1>
 
           <p className="text-xs sm:text-sm text-stone-600 leading-relaxed mb-6">
-            Hire licensed plumbers, EPRA solar technicians, gypsum ceiling designers, and residential cleaners across Nairobi, Mombasa, and Nakuru. Every listing includes verified landmarks and provider-affirmed commitments.
+            Find honest plumbers, electricians, gypsum fundis, and house cleaners across Nairobi, Mombasa, Nakuru, and all 47 counties. Every fundi has a real location and verified phone number.
           </p>
 
           {/* Explicit Guarantees Box */}
@@ -99,8 +99,8 @@ function ServicesContent() {
                 <Camera className="w-3.5 h-3.5" />
               </div>
               <div>
-                <strong className="text-stone-900 block">Affirmed WhatsApp Photo Assessment</strong>
-                <span className="text-stone-500 text-[11px]">Send a 10s video or photo on WhatsApp for instant pricing before tools move.</span>
+                <strong className="text-stone-900 block">Free WhatsApp Photo Check</strong>
+                <span className="text-stone-500 text-[11px]">Send a quick photo or video on WhatsApp to get the price before the fundi travels.</span>
               </div>
             </div>
 
@@ -109,8 +109,8 @@ function ServicesContent() {
                 <Ruler className="w-3.5 h-3.5" />
               </div>
               <div>
-                <strong className="text-stone-900 block">Affirmed Free Local Measurement</strong>
-                <span className="text-stone-500 text-[11px]">Free site measurements for custom gypsum, kitchens, and wardrobes in the provider's neighborhood.</span>
+                <strong className="text-stone-900 block">Free Site Visit & Measurement</strong>
+                <span className="text-stone-500 text-[11px]">Free site visit and measurements for kitchens, wardrobes, and gypsum in their local area.</span>
               </div>
             </div>
           </div>

@@ -27,10 +27,10 @@ export default function ServiceCard({ service, business }: ServiceCardProps) {
 
   const formattedPrice = service.pricing.starting_price_kes 
     ? `KSh ${service.pricing.starting_price_kes.toLocaleString()}` 
-    : 'Inquire on WhatsApp';
+    : 'Ask on WhatsApp';
 
   const priceUnitText = 
-    service.pricing.unit === 'per_sqm' ? '/ sqm (Materials + Labor)' :
+    service.pricing.unit === 'per_sqm' ? '/ sqm (materials + labor)' :
     service.pricing.unit === 'per_point' ? '/ electrical point' :
     service.pricing.unit === 'per_room' ? '/ room' :
     service.pricing.unit === 'fixed_job' ? 'starting labor rate' : '';
@@ -88,10 +88,10 @@ export default function ServiceCard({ service, business }: ServiceCardProps) {
             </p>
           </div>
 
-          {/* Explicit Vendor Affirmations */}
+          {/* Explicit Fundi Guarantees */}
           <div className="space-y-1.5 bg-[#FAF8F5] rounded-2xl p-3 border border-stone-200/80 text-xs">
             <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block mb-1">
-              Affirmed Vendor Guarantees
+              What this fundi guarantees:
             </span>
 
             {service.affirmed_commitments.free_whatsapp_assessment && (
@@ -100,7 +100,7 @@ export default function ServiceCard({ service, business }: ServiceCardProps) {
                   <Camera className="w-2.5 h-2.5 text-amber-800" />
                 </div>
                 <span className="text-[11px] font-semibold text-stone-800">
-                  Affirmed: Free WhatsApp Photo/Video Assessment
+                  Free WhatsApp Photo Check (Send photo, get price)
                 </span>
               </div>
             )}
@@ -111,7 +111,7 @@ export default function ServiceCard({ service, business }: ServiceCardProps) {
                   <Ruler className="w-2.5 h-2.5 text-stone-800" />
                 </div>
                 <span className="text-[11px] font-semibold text-stone-800 truncate">
-                  Affirmed: Free Site Measurement in {biz.location.neighborhood}
+                  Free Site Visit & Measurement in {biz.location.neighborhood}
                 </span>
               </div>
             )}
@@ -122,7 +122,7 @@ export default function ServiceCard({ service, business }: ServiceCardProps) {
                   <Check className="w-2.5 h-2.5 text-amber-800" />
                 </div>
                 <span className="text-[11px] text-stone-600">
-                  {service.service_terms.warranty_guarantee_days} Days Workmanship Warranty
+                  {service.service_terms.warranty_guarantee_days} Days Workmanship Guarantee
                 </span>
               </div>
             )}
@@ -135,7 +135,7 @@ export default function ServiceCard({ service, business }: ServiceCardProps) {
         <div className="flex items-baseline justify-between mb-3 pt-3">
           <div>
             <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block">
-              Labor & Materials Pricing
+              Price (Labor & Materials)
             </span>
             <div className="flex items-baseline gap-1">
               <span className="text-base font-black text-stone-900">{formattedPrice}</span>
@@ -155,7 +155,7 @@ export default function ServiceCard({ service, business }: ServiceCardProps) {
           className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-bold text-xs shadow-sm transition active:scale-95"
         >
           <MessageSquare className="w-4 h-4 text-amber-300" />
-          <span>Inquire & Send Photo on WhatsApp</span>
+          <span>Chat & Send Photo on WhatsApp</span>
         </a>
       </div>
     </div>

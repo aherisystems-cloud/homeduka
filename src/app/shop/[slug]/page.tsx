@@ -148,20 +148,20 @@ export default async function ShopDetailPage({
                     </p>
                   </div>
 
-                  {/* Provider Affirmed Commitments */}
+                  {/* Workshop Customer Guarantees */}
                   <div className="bg-amber-50/60 rounded-2xl p-4 border border-amber-200">
                     <h3 className="text-xs font-black uppercase tracking-wider text-amber-950 mb-2.5 flex items-center gap-1.5">
                       <ShieldCheck className="w-4 h-4 text-amber-800" />
-                      <span>Provider-Affirmed Customer Guarantees</span>
+                      <span>What This Workshop Guarantees</span>
                     </h3>
                     <div className="space-y-2 text-xs text-amber-950">
                       <div className="flex items-center gap-2">
                         <Camera className="w-4 h-4 text-amber-800 shrink-0" />
-                        <span className="font-semibold">Affirmed: Free WhatsApp Photo/Video Assessment</span>
+                        <span className="font-semibold">Free WhatsApp Photo Check: Send a photo or video to get a fast price</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Ruler className="w-4 h-4 text-amber-800 shrink-0" />
-                        <span className="font-semibold">Affirmed: Free Site Measurement in {business.location.neighborhood}</span>
+                        <span className="font-semibold">Free Site Visit & Measurement in {business.location.neighborhood}</span>
                       </div>
                     </div>
                   </div>

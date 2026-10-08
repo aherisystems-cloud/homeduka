@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Store, ShieldCheck, ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Store, ShieldCheck, ArrowRight, MessageSquare } from 'lucide-react';
 
 export default function ClaimProfileBanner() {
   return (
@@ -10,15 +10,15 @@ export default function ClaimProfileBanner() {
       <div className="max-w-2xl relative z-10">
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold mb-3 border border-amber-500/30">
           <Store className="w-3.5 h-3.5" />
-          <span>For Kenyan Workshop Owners & Artisans</span>
+          <span>For Kenyan Workshop Owners & Fundis</span>
         </div>
 
         <h2 className="text-xl sm:text-3xl font-black tracking-tight leading-tight mb-2">
-          Do you run a trusted home workshop or service in Kenya?
+          Do you make furniture or offer home services in Kenya?
         </h2>
 
         <p className="text-xs sm:text-sm text-stone-300 leading-relaxed mb-6">
-          We identify and pre-list the best 5% of verified workshops across Nairobi, Mombasa, and Nakuru. If your business is listed, claim your official profile to edit products, update pricing, and get automated promotion on our WhatsApp & social channels.
+          We feature trusted workshops and skilled fundis across Nairobi, Mombasa, Nakuru, and all 47 counties. If your shop is listed here, claim your free shop page today to add photos, update prices, and get customers from WhatsApp and social media.
         </p>
 
         <div className="flex flex-wrap items-center gap-3">
@@ -26,7 +26,7 @@ export default function ClaimProfileBanner() {
             href="/portal/demo-token"
             className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs transition active:scale-95 shadow-md"
           >
-            <span>Claim Your Free Profile Now</span>
+            <span>Claim Your Free Shop Page</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
 
@@ -35,7 +35,8 @@ export default function ClaimProfileBanner() {
             target="_blank"
             className="inline-flex items-center gap-2 px-4 py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs transition"
           >
-            <span>Confirm via WhatsApp Concierge</span>
+            <MessageSquare className="w-4 h-4 text-emerald-400" />
+            <span>Chat with Us on WhatsApp</span>
           </Link>
         </div>
       </div>

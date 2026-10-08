@@ -819,12 +819,12 @@ export const SAMPLE_KENYAN_HOME_SERVICES: HomeService[] = [
   {
     id: "srv-sofa-shampoo-005",
     business_id: "biz-cleannest-pro-005",
-    title: "7-Seater Sofa & Mattress Deep Fabric Steam Shampooing & Stain Removal",
+    title: "7-Seater Sofa & Mattress Deep Machine Shampoo Wash",
     slug: "7-seater-sofa-mattress-steam-shampoo",
     service_category: "cleaning_fumigation",
     room: "living_room",
     is_recurring: true,
-    description: "Industrial injection-extraction machine shampooing for fabric and velvet sofas. Removes tea/coffee stains, dust mites, and odors. Dry and ready to use in 3 hours.",
+    description: "Deep shampoo machine wash for fabric and velvet sofas. Cleans tough stains, dust mites, and odors. Dry and ready to use in 3 hours.",
     pricing: {
       price_type: "fixed",
       starting_price_kes: 3800,
@@ -853,12 +853,12 @@ export const SAMPLE_KENYAN_HOME_SERVICES: HomeService[] = [
   {
     id: "srv-tank-clean-006",
     business_id: "biz-cleannest-pro-005",
-    title: "Overhead & Underground Water Tank Scrubbing, Sludge Sucking & Chlorination",
+    title: "Water Tank Deep Cleaning, Mud Removal & Safe Chlorination",
     slug: "water-tank-scrubbing-chlorination-nairobi",
     service_category: "cleaning_fumigation",
     room: "outdoor_compound",
     is_recurring: true,
-    description: "Complete draining, high-pressure scrubbing, silt extraction, and food-grade chlorine disinfection for 1,000L to 10,000L domestic water tanks across Nairobi.",
+    description: "Complete draining, high-pressure washing, mud removal, and safe chlorine disinfection for 1,000L to 10,000L domestic water tanks across Nairobi.",
     pricing: {
       price_type: "starting_from",
       starting_price_kes: 3500,
@@ -900,47 +900,47 @@ export interface RecurringHomeServiceCard {
 export const MONTHLY_RECURRING_HOME_SERVICES: RecurringHomeServiceCard[] = [
   {
     id: "rec-tank-01",
-    title: "Water Tank Scrubbing & Disinfection",
+    title: "Water Tank Deep Cleaning & Chlorination",
     frequency: "Every 3 Months",
     priceEstimate: "From KSh 3,500",
     icon: "💧",
-    description: "Draining silt, pressure cleaning, and safe chlorine sanitation for overhead plastic or underground concrete tanks.",
+    description: "Drain water, remove mud and silt, pressure wash walls, and disinfect with safe chlorine.",
     providerId: "biz-cleannest-pro-005"
   },
   {
     id: "rec-fumig-02",
-    title: "Eco-Friendly Fumigation & Pest Shield",
+    title: "Pest Control & Bedbug Spray",
     frequency: "Every 2–4 Months",
     priceEstimate: "From KSh 4,500",
     icon: "🐜",
-    description: "Non-toxic gel baits and organic sprays for cockroaches, bedbugs, and ants safe for babies and pets.",
+    description: "Safe spray and gel for bedbugs, cockroaches, and ants. Child and pet friendly.",
     providerId: "biz-cleannest-pro-005"
   },
   {
     id: "rec-sofa-03",
-    title: "Sofa & Carpet Fabric Steam Extraction",
-    frequency: "Monthly / Bi-Monthly",
+    title: "Deep Sofa & Carpet Machine Wash",
+    frequency: "Every 1–2 Months",
     priceEstimate: "From KSh 3,800",
     icon: "🧽",
-    description: "Professional deep foam extraction for living room sofas, dining chairs, and master bedroom mattresses.",
+    description: "Deep shampoo machine wash for sitting room sofas, dining chairs, and mattresses to remove stains and dust.",
     providerId: "biz-cleannest-pro-005"
   },
   {
     id: "rec-solar-04",
-    title: "Solar Water Heater Anode & Element Check",
+    title: "Solar Water Heater Service & Check",
     frequency: "Every 6 Months",
     priceEstimate: "From KSh 3,500",
     icon: "☀️",
-    description: "Descaling heating elements, cleaning glass tubes, and replacing magnesium anodes to prevent cold showers.",
+    description: "Clean solar tubes, remove scale, and check heating elements so you always have hot water.",
     providerId: "biz-solaria-water-003"
   },
   {
     id: "rec-garden-05",
-    title: "Compound Hedge Trimming & Garden Care",
-    frequency: "Monthly Schedule",
+    title: "Compound & Garden Care",
+    frequency: "Monthly",
     priceEstimate: "From KSh 2,500",
     icon: "🌿",
-    description: "Lawn mowing, bougainvillea trimming, flowerbed weeding, and perimeter driveway sweeping.",
+    description: "Mow the lawn, trim hedges, weed flowers, and sweep the compound.",
     providerId: "biz-apex-gypsum-004"
   }
 ];

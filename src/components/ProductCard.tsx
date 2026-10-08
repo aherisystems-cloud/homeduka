@@ -113,7 +113,7 @@ export default function ProductCard({ product, business }: ProductCardProps) {
           className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-bold text-xs transition active:scale-95 shadow-sm"
         >
           <MessageSquare className="w-3.5 h-3.5 text-amber-300" />
-          <span>Inquire & Order on WhatsApp</span>
+          <span>Order on WhatsApp</span>
         </a>
       </div>
     </div>
