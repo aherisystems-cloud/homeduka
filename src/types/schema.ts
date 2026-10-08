@@ -169,7 +169,7 @@ export interface BusinessAttributes {
   wheelchair_accessible?: boolean;
   samples_showroom_available?: boolean;
   
-  // Fundi / Service attributes
+  // Fundi / Service attributes & Explicit Commitments
   brings_own_tools?: boolean;
   provides_materials?: boolean;
   labor_only_option?: boolean;
@@ -178,6 +178,9 @@ export interface BusinessAttributes {
   ncaw_certified_plumber?: boolean;
   written_warranty_provided?: boolean;
   warranty_duration_months?: number;
+  affirmed_free_whatsapp_assessment?: boolean; // Vendor explicitly affirmed free photo/video review
+  affirmed_free_local_measurement?: boolean;  // Vendor explicitly affirmed free site visit in their estate
+  free_measurement_coverage_neighborhoods?: string[];
 
   // Furniture / Product capabilities
   uses_solid_hardwood?: boolean;      // Mahogany, Mvule, Teak, Bluegum
@@ -254,6 +257,12 @@ export interface HomeService {
     materials_included: boolean;
     warranty_guarantee_days?: number;
     service_radius_km?: number;
+  };
+
+  affirmed_commitments: {
+    free_whatsapp_assessment: boolean;  // Vendor affirmed: "Send photo/video on WhatsApp for free quote"
+    free_local_measurement: boolean;   // Vendor affirmed: "Free physical measurement in my neighborhood"
+    coverage_note?: string;            // e.g. "Free measurement in Kilimani, Kileleshwa & Lavington"
   };
 
   portfolio_photos: string[];

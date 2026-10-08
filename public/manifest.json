@@ -1,0 +1,33 @@
+{
+  "name": "Home Kenya | Verified Home Products & Fundis",
+  "short_name": "Home Kenya",
+  "description": "Find verified furniture makers, solid hardwood workshops, emergency plumbers, and movers across Kenya with real landmarks and M-Pesa Tills.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#059669",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["shopping", "lifestyle", "business"],
+  "shortcuts": [
+    {
+      "name": "Emergency Fundi",
+      "short_name": "Emergency",
+      "description": "Fast dispatch plumbers and electricians",
+      "url": "/services?filter=emergency"
+    },
+    {
+      "name": "Browse Shops",
+      "short_name": "Shops",
+      "description": "Explore verified workshops and shops",
+      "url": "/"
+    }
+  ]
+}

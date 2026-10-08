@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useParams } from 'next/navigation';
 import { 
   PlusCircle, Camera, Check, Trash2, ArrowLeft, 
-  ExternalLink, Sparkles, AlertCircle, Eye, ShieldCheck 
+  ExternalLink, Sparkles, AlertCircle, Eye, ShieldCheck, Ruler 
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -54,6 +54,8 @@ export default function VendorPortalPage() {
   const [newNote, setNewNote] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [notification, setNotification] = useState<string | null>(null);
+  const [affirmedWhatsApp, setAffirmedWhatsApp] = useState(true);
+  const [affirmedLocalMeasurement, setAffirmedLocalMeasurement] = useState(true);
 
   const toggleStock = (id: string) => {
     setProducts((prev) =>
@@ -134,6 +136,66 @@ export default function VendorPortalPage() {
           <span>{notification}</span>
         </div>
       )}
+
+      {/* Provider-Affirmed Customer Guarantees */}
+      <div className="bg-emerald-50 rounded-2xl p-5 border border-emerald-200 mb-6 shadow-2xs">
+        <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center gap-2">
+            <ShieldCheck className="w-5 h-5 text-emerald-700" />
+            <h3 className="font-bold text-sm text-emerald-950">Your Affirmed Customer Guarantees</h3>
+          </div>
+          <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-200 text-emerald-900">
+            Verified Badges Active
+          </span>
+        </div>
+        <p className="text-xs text-emerald-800 mb-4">
+          These verified badges appear on your public shop page and search cards, giving Kenyan customers confidence to chat with you directly on WhatsApp.
+        </p>
+
+        <div className="space-y-3 text-xs bg-white p-3.5 rounded-xl border border-emerald-100">
+          <label className="flex items-start gap-3 text-slate-800 cursor-pointer">
+            <input 
+              type="checkbox" 
+              checked={affirmedWhatsApp} 
+              onChange={(e) => { 
+                setAffirmedWhatsApp(e.target.checked); 
+                showNotice(e.target.checked ? '✓ WhatsApp assessment guarantee affirmed!' : 'Guarantee removed'); 
+              }} 
+              className="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500 mt-0.5" 
+            />
+            <div>
+              <span className="font-bold text-slate-900 block flex items-center gap-1.5">
+                <Camera className="w-3.5 h-3.5 text-emerald-600" />
+                Affirm: Free WhatsApp Photo/Video Assessment
+              </span>
+              <span className="text-[11px] text-slate-500">
+                You agree to review photos or 10-second videos sent by clients on WhatsApp for free estimates before making a site visit.
+              </span>
+            </div>
+          </label>
+
+          <label className="flex items-start gap-3 text-slate-800 cursor-pointer pt-2 border-t border-slate-100">
+            <input 
+              type="checkbox" 
+              checked={affirmedLocalMeasurement} 
+              onChange={(e) => { 
+                setAffirmedLocalMeasurement(e.target.checked); 
+                showNotice(e.target.checked ? '✓ Free local measurement affirmed!' : 'Guarantee removed'); 
+              }} 
+              className="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500 mt-0.5" 
+            />
+            <div>
+              <span className="font-bold text-slate-900 block flex items-center gap-1.5">
+                <Ruler className="w-3.5 h-3.5 text-blue-600" />
+                Affirm: Free Site Measurements in Your Local Area / Estate
+              </span>
+              <span className="text-[11px] text-slate-500">
+                You agree to provide free site visits and measurements for nearby homeowners in your neighborhood (e.g. Kamakis, Kilimani, Nyali).
+              </span>
+            </div>
+          </label>
+        </div>
+      </div>
 
       {/* Add Product Button */}
       {!isAdding && (

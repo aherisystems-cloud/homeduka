@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" rx="112" fill="#059669"/>
+  <!-- Stylized African / Kenyan Roof and Door Motif with Trust Shield -->
+  <path d="M256 96 L96 230 L144 230 L144 416 L224 416 L224 304 L288 304 L288 416 L368 416 L368 230 L416 230 Z" fill="#ffffff"/>
+  <!-- Gold Shield Badge in Center -->
+  <circle cx="256" cy="230" r="38" fill="#F59E0B"/>
+  <path d="M246 230 L253 237 L268 222" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

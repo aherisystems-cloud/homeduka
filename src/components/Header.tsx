@@ -1,29 +1,43 @@
 import Link from 'next/link';
-import { Home, MessageSquare, ShieldCheck, PlusCircle } from 'lucide-react';
+import { Home, MessageSquare, ShieldCheck, PlusCircle, MapPin } from 'lucide-react';
 
 export default function Header() {
   return (
     <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur border-b border-slate-200">
-      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-xl bg-brand-600 flex items-center justify-center text-white font-bold text-xl shadow-sm">
-            <Home className="w-6 h-6" />
-          </div>
-          <div>
-            <span className="font-bold text-lg text-slate-900 tracking-tight flex items-center gap-1.5">
-              Home <span className="text-brand-600">Kenya</span>
-              <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800">
-                Verified
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+        <div className="flex items-center gap-4">
+          <Link href="/" className="flex items-center gap-2">
+            <div className="w-10 h-10 rounded-xl bg-brand-600 flex items-center justify-center text-white font-bold text-xl shadow-sm">
+              <Home className="w-6 h-6" />
+            </div>
+            <div>
+              <span className="font-bold text-lg text-slate-900 tracking-tight flex items-center gap-1.5">
+                Home <span className="text-brand-600">Kenya</span>
+                <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800">
+                  Verified
+                </span>
               </span>
-            </span>
-            <p className="text-[11px] text-slate-500 hidden sm:block">Living, Furnishing & Fundis</p>
-          </div>
-        </Link>
+              <p className="text-[11px] text-slate-500 hidden sm:block">Living, Furnishing & Fundis</p>
+            </div>
+          </Link>
 
-        <nav className="flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 border border-slate-200">
+            <MapPin className="w-3.5 h-3.5 text-brand-600" />
+            <span>Serving All 47 Counties & Metro Estates</span>
+          </div>
+        </div>
+
+        <nav className="flex items-center gap-2 sm:gap-3">
+          <Link
+            href="/services"
+            className="text-xs font-semibold text-slate-700 hover:text-emerald-700 px-2 py-1 transition flex items-center gap-1"
+          >
+            <span>Services & Fundis</span>
+          </Link>
+
           <Link
             href="/blog"
-            className="text-xs font-semibold text-slate-600 hover:text-brand-600 px-2 py-1 transition"
+            className="text-xs font-semibold text-slate-600 hover:text-emerald-600 px-2 py-1 transition hidden sm:inline-block"
           >
             Buyer Guides
           </Link>
