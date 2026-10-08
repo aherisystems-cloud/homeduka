@@ -41,9 +41,9 @@ export interface BlogArticle {
 export const SAMPLE_ROUNDUP_ARTICLES: BlogArticle[] = [
   {
     slug: 'best-sofa-makers-ruiru-kamakis',
-    title: 'Top 7 Best Sofa Makers in Ruiru & Kamakis (2026 Prices, Hardwood & Delivery)',
-    metaTitle: '7 Best Sofa Makers in Ruiru & Kamakis (2026 Prices & Reviews) | Home Kenya',
-    metaDescription: 'Looking for a custom sofa in Ruiru Kamakis? Here is our vetted list of the top 7 hardwood sofa workshops along Eastern Bypass with verified prices and M-Pesa Tills.',
+    title: 'Top 7 Best Sofa Shops & Carpenters in Ruiru & Kamakis (2026 Prices, Hardwood & Delivery)',
+    metaTitle: '7 Best Sofa Shops in Ruiru & Kamakis (2026 Prices & Reviews) | HomeDuka Kenya',
+    metaDescription: 'Looking for a custom sofa in Ruiru Kamakis? Here is our vetted list of the top 7 hardwood furniture shops along Eastern Bypass with verified prices and M-Pesa Tills.',
     category: 'Furniture',
     readTimeMinutes: 6,
     publishDate: '2026-10-01',
@@ -52,8 +52,8 @@ export const SAMPLE_ROUNDUP_ARTICLES: BlogArticle[] = [
       role: 'Home Improvement & Carpentry Editor'
     },
     heroImage: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80',
-    excerpt: 'Ruiru and the Kamakis Eastern Bypass corridor have become Nairobi’s capital for bespoke furniture. We physically vetted the top workshops for solid hardwood, fabric quality, and on-time delivery.',
-    introduction: 'If you’ve driven along the Eastern Bypass near Kamakis recently, you know the area is booming with bespoke furniture makers. But with over 50 workshops displaying sofas along the roadside, how do you distinguish master craftsmen using kiln-dried mahogany from fundis using unseasoned blue gum that warps within six months? We inspected the workshops, checked frame joints, verified M-Pesa Tills, and compiled the definitive guide.',
+    excerpt: 'Ruiru and the Kamakis Eastern Bypass corridor have become Nairobi’s capital for bespoke furniture. We physically vetted the top local shops for solid hardwood, fabric quality, and on-time delivery.',
+    introduction: 'If you’ve driven along the Eastern Bypass near Kamakis recently, you know the area is booming with bespoke furniture shops and carpenters. But with over 50 shops displaying sofas along the roadside, how do you distinguish master craftsmen using kiln-dried mahogany from fundis using unseasoned blue gum that warps within six months? We inspected the shops, checked frame joints, verified M-Pesa Tills, and compiled the definitive guide.',
     comparisonSummary: {
       category: '7-Seater Chesterfield / L-Shape',
       averagePriceRange: 'KSh 38,000 – KSh 65,000',
@@ -101,7 +101,7 @@ export const SAMPLE_ROUNDUP_ARTICLES: BlogArticle[] = [
     buyingTips: [
       'Always knock and lift the sofa: A solid mahogany frame will be heavy and sturdy. If you can lift one corner effortlessly with one hand, it’s low-grade softwood or chipboard.',
       'Ask about the foam density: Insist on Grade 32 or 36 high-density foam. Low-density foam flattens after just 3 months.',
-      'Check the webbing and spring base: Quality workshops use steel zig-zag springs under the foam rather than cheap rubber tire inner tubes.'
+      'Check the webbing and spring base: Quality furniture shops use steel zig-zag springs under the foam rather than cheap rubber tire inner tubes.'
     ],
     faq: [
       {
@@ -109,8 +109,8 @@ export const SAMPLE_ROUNDUP_ARTICLES: BlogArticle[] = [
         answer: 'Expect to pay between KSh 40,000 to KSh 60,000 for a quality 7-seater made from seasoned mahogany. Anything below KSh 30,000 often cuts corners on timber moisture or foam density.'
       },
       {
-        question: 'Do Kamakis sofa makers deliver upcountry?',
-        answer: 'Yes! Most verified workshops arrange parcel logistics via Matatu SACCOs (e.g., 2NK, 4NTE, Dreamline) or dedicated pickup hire to Nakuru, Eldoret, Kisumu, and Mombasa.'
+        question: 'Do Kamakis sofa shops deliver upcountry?',
+        answer: 'Yes! Most verified shops arrange parcel logistics via Matatu SACCOs (e.g., 2NK, 4NTE, Dreamline) or dedicated pickup hire to Nakuru, Eldoret, Kisumu, and Mombasa.'
       }
     ]
   },

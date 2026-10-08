@@ -126,7 +126,7 @@ export default function DealsPage() {
           {filteredDeals.map((deal) => {
             const seller = SAMPLE_KENYAN_HOME_LISTINGS.find((b) => b.id === deal.business_id);
             const waText = encodeURIComponent(
-              `Habari ${seller?.business_name || 'Home Kenya'}, nimeona deal ya "${deal.title}" ya KSh ${deal.deal_price_kes.toLocaleString()} (discount kutoka KSh ${deal.original_price_kes.toLocaleString()}) kwenye Home Kenya Deals. Bado iko available?`
+              `Habari ${seller?.business_name || 'HomeDuka'}, nimeona deal ya "${deal.title}" ya KSh ${deal.deal_price_kes.toLocaleString()} (discount kutoka KSh ${deal.original_price_kes.toLocaleString()}) kwenye HomeDuka Deals. Bado iko available?`
             );
             const waUrl = seller 
               ? `https://wa.me/${seller.contact.whatsapp_number}?text=${waText}`
@@ -135,7 +135,10 @@ export default function DealsPage() {
             return (
               <div
                 key={deal.id}
-                className="bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-2xs hover:shadow-md transition flex flex-col justify-between group"
+                id={deal.slug}
+                className={`bg-white rounded-3xl border overflow-hidden shadow-2xs hover:shadow-md transition flex flex-col justify-between group scroll-mt-24 ${
+                  deal.is_sponsored ? 'border-amber-400 ring-2 ring-amber-400/20' : 'border-stone-200'
+                }`}
               >
                 <div>
                   {/* Deal Image + Badge Overlay */}
@@ -149,10 +152,18 @@ export default function DealsPage() {
 
                     {/* Top Deal Badges */}
                     <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
-                      <span className="px-2.5 py-1 rounded-full text-[11px] font-black bg-rose-600 text-white shadow-xs flex items-center gap-1">
-                        <Flame className="w-3 h-3 text-amber-300" />
-                        <span>-{deal.discount_percentage}% OFF</span>
-                      </span>
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        <span className="px-2.5 py-1 rounded-full text-[11px] font-black bg-rose-600 text-white shadow-xs flex items-center gap-1">
+                          <Flame className="w-3 h-3 text-amber-300" />
+                          <span>-{deal.discount_percentage}% OFF</span>
+                        </span>
+                        {deal.is_sponsored && (
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-amber-500 text-stone-950 shadow-xs flex items-center gap-1">
+                            <Sparkles className="w-2.5 h-2.5 text-stone-950" />
+                            <span>SPONSORED</span>
+                          </span>
+                        )}
+                      </div>
 
                       <span className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-white/95 backdrop-blur text-stone-900 shadow-xs">
                         {deal.duration_type === 'today' ? '⏱️ Today Only' : '📅 Month Deal'}

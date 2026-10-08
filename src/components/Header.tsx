@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { 
   Home, MessageSquare, ShieldCheck, PlusCircle, MapPin, 
@@ -16,8 +16,25 @@ export default function Header() {
   const [showDealsModal, setShowDealsModal] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileCategoryOpen, setMobileCategoryOpen] = useState<'products' | 'services' | null>(null);
+  const [headerLocation, setHeaderLocation] = useState<string>('Nairobi');
 
   const menuTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('homeduka_location_label');
+    if (saved) {
+      setHeaderLocation(saved);
+    }
+
+    const handleLocationChange = (e: any) => {
+      if (e.detail?.locationLabel) {
+        setHeaderLocation(e.detail.locationLabel);
+      }
+    };
+
+    window.addEventListener('homeduka-location-changed', handleLocationChange);
+    return () => window.removeEventListener('homeduka-location-changed', handleLocationChange);
+  }, []);
 
   const handleMouseEnter = (menu: 'products' | 'services') => {
     if (menuTimeoutRef.current) clearTimeout(menuTimeoutRef.current);
@@ -48,7 +65,7 @@ export default function Header() {
               title="Click to set your county or estate"
             >
               <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-              <span>Deliver to: Nairobi ▾</span>
+              <span>Shopping from: {headerLocation} ▾</span>
               <span className="text-[10px] text-amber-200/80 font-normal underline decoration-dotted ml-1">Change Area</span>
             </button>
             <span className="hidden md:inline text-stone-400 text-[11px]">

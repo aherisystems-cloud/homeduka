@@ -4,8 +4,8 @@ import { SAMPLE_ROUNDUP_ARTICLES } from '../../data/blog_articles';
 import RightSidebar from '../../components/RightSidebar';
 
 export const metadata = {
-  title: 'Home Guides & Roundup Reviews | Home Kenya',
-  description: 'In-depth, physically vetted buyer guides and roundup articles comparing furniture workshops, emergency fundis, and house movers in Nairobi, Coast, Rift Valley, and across Kenya.',
+  title: 'Home Guides & Roundup Reviews | HomeDuka Kenya',
+  description: 'In-depth, physically vetted buyer guides and roundup articles comparing furniture shops, emergency fundis, and house movers in Nairobi, Coast, Rift Valley, and across Kenya.',
 };
 
 export default function BlogIndexPage() {

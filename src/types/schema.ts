@@ -317,6 +317,8 @@ export interface HomeDeal {
   discount_percentage: number;
   duration_type: DealDuration; // 'today' (24h flash) | 'month' (monthly special)
   badge_text: string;          // e.g. "Save KSh 13,000" or "Flash Deal"
+  is_sponsored?: boolean;      // Promoted / sponsored deal by HomeDuka
+  sponsor_label?: string;      // e.g. "HomeDuka Sponsored" | "Featured Partner"
   image: string;
   in_stock: boolean;
   slots_left?: number;

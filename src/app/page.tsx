@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { 
   Search, MapPin, Sparkles, ShieldCheck, CheckCircle2, 
@@ -30,6 +30,23 @@ export default function HomePage() {
   const [selectedRegionId, setSelectedRegionId] = useState<string>('all');
   const [currentLocationName, setCurrentLocationName] = useState<string>('Nairobi (All Estates)');
   const [searchQuery, setSearchQuery] = useState<string>('');
+
+  // Sync location from localStorage and custom event
+  useEffect(() => {
+    const saved = localStorage.getItem('homeduka_location_label');
+    if (saved) {
+      setCurrentLocationName(saved);
+    }
+
+    const handleLocationChange = (e: any) => {
+      if (e.detail?.locationLabel) {
+        setCurrentLocationName(e.detail.locationLabel);
+      }
+    };
+
+    window.addEventListener('homeduka-location-changed', handleLocationChange);
+    return () => window.removeEventListener('homeduka-location-changed', handleLocationChange);
+  }, []);
 
   // Slider refs for horizontal scrolling
   const productsSliderRef = useRef<HTMLDivElement>(null);
@@ -124,35 +141,27 @@ export default function HomePage() {
   });
 
   const handlePreferencesSelected = (prefs: UserPreferences) => {
-    if (prefs.locationId) {
-      const regionMap: Record<string, string> = {
-        nairobi: 'nairobi-region',
-        kiambu: 'central',
-        mombasa: 'coast',
-        rift_valley: 'rift-valley',
-        western: 'western-nyanza',
-        other: 'all'
-      };
-      setSelectedRegionId(regionMap[prefs.locationId] || 'all');
+    if (prefs.locationName) {
       setCurrentLocationName(prefs.locationName);
     }
-    if (prefs.intent && prefs.intent !== 'all') {
-      if (prefs.intent === 'services') {
-        setViewType('services');
-        const el = document.getElementById('services');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      } else if (prefs.intent === 'recurring') {
-        setViewType('recurring');
-        const el = document.getElementById('recurring');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      } else if (prefs.intent === 'deals') {
-        const el = document.getElementById('products');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      } else {
-        setViewType(prefs.intent as any);
-        const el = document.getElementById('products');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }
+    const locId = prefs.countyId || prefs.locationId;
+    if (locId) {
+      const regionMap: Record<string, string> = {
+        nairobi: 'nairobi_metro',
+        kiambu: 'nairobi_metro',
+        machakos: 'nairobi_metro',
+        kajiado: 'nairobi_metro',
+        mombasa: 'coast_region',
+        kilifi: 'coast_region',
+        kwale: 'coast_region',
+        nakuru: 'rift_valley',
+        uasin_gishu: 'rift_valley',
+        kisumu: 'western_nyanza',
+        kakamega: 'western_nyanza',
+        nyeri: 'central_mt_kenya',
+        meru: 'central_mt_kenya'
+      };
+      setSelectedRegionId(regionMap[locId] || 'all');
     }
   };
 
@@ -194,7 +203,7 @@ export default function HomePage() {
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-stone-100 hover:bg-amber-50 text-stone-700 hover:text-[#B45309] border border-stone-200/90 transition text-xs font-semibold cursor-pointer shadow-2xs hover:border-amber-300 group"
             >
               <MapPin className="w-3.5 h-3.5 text-[#B45309]" />
-              <span>Browsing shops & fundis near: <strong className="text-stone-900 group-hover:text-[#B45309]">{currentLocationName}</strong></span>
+              <span>Shopping from: <strong className="text-stone-900 group-hover:text-[#B45309]">{currentLocationName}</strong></span>
               <span className="text-[#B45309] font-bold text-[11px] underline decoration-dotted ml-1">Change Area</span>
             </button>
           </div>

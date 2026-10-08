@@ -1283,7 +1283,7 @@ export const MONTHLY_RECURRING_HOME_SERVICES: RecurringHomeServiceCard[] = [
 // SELLER DEALS (Today's Deals vs Deals of the Month)
 // ==========================================
 export const SAMPLE_KENYAN_DEALS: HomeDeal[] = [
-  // TODAY'S DEALS (Flash 24-Hour Price Cuts)
+  // TODAY'S DEALS (Flash 24-Hour Price Cuts - HomeDuka Sponsored)
   {
     id: "deal-today-01",
     business_id: "biz-woodcraft-kamakis-001",
@@ -1295,6 +1295,8 @@ export const SAMPLE_KENYAN_DEALS: HomeDeal[] = [
     deal_price_kes: 55000,
     discount_percentage: 19,
     duration_type: "today",
+    is_sponsored: true,
+    sponsor_label: "HomeDuka Sponsored",
     badge_text: "Today Only • Save KSh 13,000",
     image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80",
     in_stock: true,
@@ -1313,6 +1315,8 @@ export const SAMPLE_KENYAN_DEALS: HomeDeal[] = [
     deal_price_kes: 41500,
     discount_percentage: 14,
     duration_type: "today",
+    is_sponsored: true,
+    sponsor_label: "HomeDuka Sponsored",
     badge_text: "Flash 24H • Save KSh 6,500",
     image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=800&q=80",
     in_stock: true,
@@ -1331,6 +1335,8 @@ export const SAMPLE_KENYAN_DEALS: HomeDeal[] = [
     deal_price_kes: 2800,
     discount_percentage: 26,
     duration_type: "today",
+    is_sponsored: true,
+    sponsor_label: "HomeDuka Sponsored",
     badge_text: "Today Only • Save KSh 1,000",
     image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80",
     in_stock: true,
@@ -1349,6 +1355,8 @@ export const SAMPLE_KENYAN_DEALS: HomeDeal[] = [
     deal_price_kes: 7500,
     discount_percentage: 23,
     duration_type: "today",
+    is_sponsored: true,
+    sponsor_label: "HomeDuka Sponsored",
     badge_text: "Flash Deal • Save KSh 2,300",
     image: "https://images.unsplash.com/photo-1584990347449-a65c275990ec?auto=format&fit=crop&w=800&q=80",
     in_stock: true,
