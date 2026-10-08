@@ -44,7 +44,7 @@ export default async function BlogDetailPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-8 pb-24">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-8 pb-24 min-h-[85vh]">
         {/* Breadcrumb / Back Link */}
         <Link
           href="/blog"
@@ -126,7 +126,7 @@ export default async function BlogDetailPage({
             {/* Featured Shops Roundup Section */}
             <section className="space-y-6 my-10">
               <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-                The Top Ranked Shops & Workshops
+                The Top Ranked Local Shops & Businesses
               </h2>
 
               {article.featuredShops.map((shop) => {

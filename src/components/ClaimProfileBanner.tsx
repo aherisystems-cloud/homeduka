@@ -10,11 +10,11 @@ export default function ClaimProfileBanner() {
       <div className="max-w-2xl relative z-10">
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold mb-3 border border-amber-500/30">
           <Store className="w-3.5 h-3.5" />
-          <span>For Kenyan Makers, Shop Owners & Fundis</span>
+          <span>For Shop Owners, Service Providers & Fundis</span>
         </div>
 
         <h2 className="text-xl sm:text-3xl font-black tracking-tight leading-tight mb-2">
-          Do you sell home products or offer fundi services in Kenya?
+          Do you sell home products or offer home services in Kenya?
         </h2>
 
         <p className="text-xs sm:text-sm text-stone-300 leading-relaxed mb-6">

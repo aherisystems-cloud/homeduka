@@ -94,7 +94,7 @@ export default function ProductCard({ product, business }: ProductCardProps) {
         <div className="flex items-baseline justify-between mb-3 pt-3">
           <div>
             <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block">
-              Direct Workshop Price
+              Direct Shop Price
             </span>
             <span className="text-base sm:text-lg font-black text-stone-900">
               KSh {product.pricing.regular_price_kes.toLocaleString()}

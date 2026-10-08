@@ -41,7 +41,7 @@ export default async function ShopDetailPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-24 min-h-[85vh]">
         {/* Back Link */}
         <Link
           href="/"
@@ -69,7 +69,7 @@ export default async function ShopDetailPage({
                   <div className="flex flex-wrap items-center gap-2 mb-2">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-600 text-white shadow-sm">
                       <Store className="w-3.5 h-3.5" />
-                      <span>{business.verification.is_claimed ? 'Verified Workshop' : 'Pre-Listed Workshop'}</span>
+                      <span>{business.verification.is_claimed ? 'Verified Local Shop' : 'Pre-Listed Shop'}</span>
                     </span>
                     <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur text-white">
                       <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
@@ -142,17 +142,17 @@ export default async function ShopDetailPage({
               <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="md:col-span-2 space-y-6">
                   <div>
-                    <h2 className="text-base font-bold text-stone-900 mb-2">About the Workshop</h2>
+                    <h2 className="text-base font-bold text-stone-900 mb-2">About this Business</h2>
                     <p className="text-xs text-stone-600 leading-relaxed">
                       {business.description}
                     </p>
                   </div>
 
-                  {/* Workshop Customer Guarantees */}
+                  {/* Shop Customer Guarantees */}
                   <div className="bg-amber-50/60 rounded-2xl p-4 border border-amber-200">
                     <h3 className="text-xs font-black uppercase tracking-wider text-amber-950 mb-2.5 flex items-center gap-1.5">
                       <ShieldCheck className="w-4 h-4 text-amber-800" />
-                      <span>What This Workshop Guarantees</span>
+                      <span>What This Shop Guarantees</span>
                     </h3>
                     <div className="space-y-2 text-xs text-amber-950">
                       <div className="flex items-center gap-2">
@@ -169,7 +169,7 @@ export default async function ShopDetailPage({
                   {/* Attributes Checklist */}
                   <div>
                     <h3 className="text-xs font-bold uppercase tracking-wider text-stone-400 mb-3">
-                      Verified Workshop Capabilities
+                      Verified Shop Capabilities
                     </h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-stone-700">
                       {business.attributes.uses_solid_hardwood && (
@@ -199,7 +199,7 @@ export default async function ShopDetailPage({
                       {business.attributes.has_customer_parking && (
                         <div className="flex items-center gap-2">
                           <Check className="w-4 h-4 text-amber-700" />
-                          <span>Free Customer Parking & Workshop Viewing</span>
+                          <span>Free Customer Parking & Showroom Viewing</span>
                         </div>
                       )}
                     </div>
@@ -239,7 +239,7 @@ export default async function ShopDetailPage({
                     <span className="text-[11px] font-bold uppercase tracking-wider text-amber-900 bg-amber-50 px-2.5 py-0.5 rounded-md border border-amber-200">
                       Showroom Catalog
                     </span>
-                    <h2 className="text-xl font-bold text-stone-900 mt-1">Products from this Workshop</h2>
+                    <h2 className="text-xl font-bold text-stone-900 mt-1">Products from this Shop</h2>
                     <p className="text-xs text-stone-500">
                       Handcrafted pieces ready for delivery or custom made to order
                     </p>

@@ -39,7 +39,7 @@ export default function HeroVisualShowcase() {
       whatsappUrl: 'https://wa.me/254712345678?text=Habari%20Francis,%20nimeona%20Chesterfield%207-Seater%20sofa%20ya%20KSh%2055,000%20kwenye%20Home%20Kenya.',
       linkUrl: '/shop/woodcraft-living-kamakis',
       personName: 'Francis Kamau',
-      personRole: 'Master Furniture Maker • Kamakis Workshop',
+      personRole: 'Custom Furniture Specialist • Kamakis',
       personAvatar: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=400&q=80'
     },
     {

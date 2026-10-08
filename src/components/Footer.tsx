@@ -11,11 +11,11 @@ export default function Footer() {
               Home <span className="text-amber-500">Kenya</span>
             </span>
             <p className="text-stone-400 text-xs leading-relaxed mb-4">
-              Everything for your home in Kenya. Discover verified furniture makers, modular kitchens, solar water systems, routine monthly maintenance, and skilled fundis.
+              Everything for your home in Kenya. Discover verified furniture shops, modular kitchens, solar water systems, routine monthly maintenance, and skilled service providers & fundis.
             </p>
             <div className="flex items-center gap-2 text-xs text-amber-400">
               <ShieldCheck className="w-4 h-4" />
-              <span>Physical Workshops • Real Landmarks • Verified Tills</span>
+              <span>Physical Shops • Real Landmarks • Verified Tills</span>
             </div>
           </div>
 
@@ -33,6 +33,7 @@ export default function Footer() {
           <div>
             <h4 className="text-white text-xs font-semibold uppercase tracking-wider mb-3">Routine Home Upkeep</h4>
             <ul className="space-y-1.5 text-xs">
+              <li><Link href="/#recurring" className="hover:text-amber-300 transition">Drinking Water & Cooking Gas Refills</Link></li>
               <li><Link href="/#recurring" className="hover:text-amber-300 transition">Water Tank Cleaning & Scrubbing</Link></li>
               <li><Link href="/#recurring" className="hover:text-amber-300 transition">Sofa & Carpet Fabric Steam Extraction</Link></li>
               <li><Link href="/#recurring" className="hover:text-amber-300 transition">Eco-Friendly Fumigation & Pest Shield</Link></li>
@@ -42,10 +43,10 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white text-xs font-semibold uppercase tracking-wider mb-3">For Workshops & Fundis</h4>
+            <h4 className="text-white text-xs font-semibold uppercase tracking-wider mb-3">For Shops & Fundis</h4>
             <ul className="space-y-1.5 text-xs">
-              <li><Link href="/portal/demo-token" className="hover:text-amber-300 font-medium transition">Claim Pre-Listed Workshop</Link></li>
-              <li><Link href="/portal/demo-token" className="hover:text-amber-300 transition">Vendor Magic Portal (No Passwords)</Link></li>
+              <li><Link href="/portal/demo-token" className="hover:text-amber-300 font-medium transition">Sell / Add Product or Service</Link></li>
+              <li><Link href="/portal/demo-token" className="hover:text-amber-300 transition">Seller Magic Portal (No Passwords)</Link></li>
               <li><Link href="https://whatsapp.com/channel/biashara-sample" className="hover:text-amber-300 transition">Biashara Professionals WhatsApp</Link></li>
               <li><span className="text-stone-500">Automated Social Drops via Zoho</span></li>
             </ul>

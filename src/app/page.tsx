@@ -1,20 +1,19 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import { 
   Search, MapPin, Sparkles, ShieldCheck, CheckCircle2, 
   MessageSquare, ArrowRight, Layers, ShoppingBag, Wrench, RefreshCw,
-  Flame, Tv, Bed, Sofa, Utensils, Shield
+  Flame, Tv, Bed, Sofa, Utensils, Shield, ChevronLeft, ChevronRight,
+  Store, Award, PhoneCall
 } from 'lucide-react';
 import BrowseByRoom from '../components/BrowseByRoom';
 import MonthlyRecurringServices from '../components/MonthlyRecurringServices';
 import ProductCard from '../components/ProductCard';
 import ServiceCard from '../components/ServiceCard';
 import BusinessCard from '../components/BusinessCard';
-import RightSidebar from '../components/RightSidebar';
 import ClaimProfileBanner from '../components/ClaimProfileBanner';
-import HeroVisualShowcase from '../components/HeroVisualShowcase';
 import { 
   SAMPLE_KENYAN_HOME_LISTINGS, 
   SAMPLE_KENYAN_HOME_PRODUCTS, 
@@ -30,6 +29,18 @@ export default function HomePage() {
   const [selectedRegionId, setSelectedRegionId] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
+  // Slider refs for horizontal scrolling
+  const productsSliderRef = useRef<HTMLDivElement>(null);
+  const servicesSliderRef = useRef<HTMLDivElement>(null);
+  const shopsSliderRef = useRef<HTMLDivElement>(null);
+
+  const scrollSlider = (ref: React.RefObject<HTMLDivElement | null>, direction: 'left' | 'right', step = 340) => {
+    if (ref.current) {
+      const offset = direction === 'left' ? -step : step;
+      ref.current.scrollBy({ left: offset, behavior: 'smooth' });
+    }
+  };
+
   // Authentic Kenyan home search keywords
   const popularKeywords = [
     { label: "Chesterfield Sofa", query: "sofa" },
@@ -38,8 +49,8 @@ export default function HomePage() {
     { label: "55 Inch Smart TV", query: "tv" },
     { label: "Non-Stick Sufurias", query: "sufuria" },
     { label: "Blackout Curtains", query: "curtains" },
-    { label: "Sofa Steam Wash", query: "shampoo" },
-    { label: "Water Tank Cleaning", query: "tank" },
+    { label: "Drinking Water 20L", query: "water" },
+    { label: "Gas Refill", query: "gas" },
     { label: "Emergency Plumber", query: "plumber" }
   ];
 
@@ -112,8 +123,8 @@ export default function HomePage() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 space-y-20 md:space-y-28">
-      {/* 1. HERO SECTION: WORLD-CLASS, SPACIOUS, EDITORIAL AIRINESS */}
-      <section className="relative pt-6 pb-4 sm:pt-14 sm:pb-8 text-center max-w-5xl mx-auto space-y-8">
+      {/* 1. HERO SECTION: WORLD-CLASS, SPACIOUS, EDITORIAL AIRINESS (NO DISTRACTIONS, NO SIDEBAR) */}
+      <section className="relative pt-6 pb-4 sm:pt-12 sm:pb-8 text-center max-w-5xl mx-auto space-y-8">
         
         {/* Top Minimalist Tag */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 text-amber-900 border border-amber-500/20 text-xs font-semibold tracking-wide">
@@ -121,15 +132,15 @@ export default function HomePage() {
           <span>KENYA&apos;S DIRECT HOME MARKETPLACE</span>
         </div>
 
-        {/* Master Headline - Clean, Expansive, True Geometric Authority */}
+        {/* Master Headline - Geometric Authority, Everyday Relatable Language */}
         <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-stone-900 tracking-tight leading-[1.08] max-w-4xl mx-auto">
           Everything for your home. <br />
-          <span className="text-amber-700">From trusted local makers.</span>
+          <span className="text-amber-700">From trusted local shops & fundis.</span>
         </h1>
 
-        {/* Subtitle - Pure English, Authoritative, Zero Clutter */}
+        {/* Subtitle - Crisp English, Authentic, Zero Clutter */}
         <p className="text-base sm:text-xl text-stone-600 max-w-2xl mx-auto font-normal leading-relaxed">
-          Discover bespoke furniture, kitchenware, decor, and smart electronics — or hire certified neighborhood fundis, plumbers, and home cleaners across Kenya.
+          Discover furniture, kitchenware, decor, and electronics from trusted local shops — or connect with verified service providers and fundis across Kenya.
         </p>
 
         {/* Floating Search Hub */}
@@ -140,7 +151,7 @@ export default function HomePage() {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search items, fundis, or estates (e.g. Ruiru, Chesterfield, Cooker)..."
+              placeholder="Search items, fundis, or estates (e.g. Ruiru, Chesterfield, Gas Cooker, Plumber)..."
               className="w-full py-3 bg-transparent text-sm sm:text-base text-stone-900 placeholder:text-stone-400 focus:outline-hidden"
             />
             {searchQuery && (
@@ -174,19 +185,19 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Key Marketplace Guarantees: Airy 4-Pillar Bar */}
+        {/* 4-Pillar Trust Bar */}
         <div className="pt-10 border-t border-stone-200/70 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-4xl mx-auto text-center">
           <div className="space-y-1">
             <span className="text-xl sm:text-2xl font-extrabold text-stone-900 block tracking-tight">4,800+</span>
-            <span className="text-xs text-stone-500 font-medium block">Vetted Makers & Fundis</span>
+            <span className="text-xs text-stone-500 font-medium block">Verified Shops & Fundis</span>
           </div>
           <div className="space-y-1">
-            <span className="text-xl sm:text-2xl font-extrabold text-stone-900 block tracking-tight">Direct Chat</span>
-            <span className="text-xs text-stone-500 font-medium block">Talk on WhatsApp • No Brokers</span>
+            <span className="text-xl sm:text-2xl font-extrabold text-stone-900 block tracking-tight">Direct WhatsApp</span>
+            <span className="text-xs text-stone-500 font-medium block">Talk Direct • No Brokers</span>
           </div>
           <div className="space-y-1">
             <span className="text-xl sm:text-2xl font-extrabold text-stone-900 block tracking-tight">0% Fee</span>
-            <span className="text-xs text-stone-500 font-medium block">Direct Workshop Prices</span>
+            <span className="text-xs text-stone-500 font-medium block">Direct Shop Prices</span>
           </div>
           <div className="space-y-1">
             <span className="text-xl sm:text-2xl font-extrabold text-stone-900 block tracking-tight">Verified Till</span>
@@ -195,35 +206,193 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. REAL PRODUCTS & FUNDIS SHOWCASE (Spacious Standalone Section) */}
-      <section className="space-y-8">
+      {/* 2. SHOP BY ROOM SLIDER (STARTS BEFORE SERVICE PROVIDERS / FUNDIS) */}
+      <BrowseByRoom
+        selectedRoom={selectedRoom}
+        onSelectRoom={(r) => setSelectedRoom(r)}
+      />
+
+      {/* 3. FEATURED HOME PRODUCTS & DEALS SLIDER (WITH VIEW ALL OPTION) */}
+      <section id="products" className="space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-800 text-xs font-bold mb-2 border border-amber-200">
-              <Sparkles className="w-3.5 h-3.5 text-amber-600" />
-              <span>Real Workshops & Skilled People</span>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-900 border border-amber-200/80 text-xs font-bold mb-2">
+              <Sparkles className="w-3.5 h-3.5 text-amber-700" />
+              <span>Direct From Local Shops</span>
             </div>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-stone-900 tracking-tight">
-              Featured Work & Local Fundis
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight">
+              Featured Home Products
             </h2>
-            <p className="text-xs sm:text-sm text-stone-500 mt-1">
-              Handcrafted furniture, certified technicians, and genuine home products ready in your neighborhood
+            <p className="text-xs sm:text-sm text-stone-500 mt-1 max-w-2xl">
+              Solid hardwood furniture, gas cookers, kitchenware, smart TVs, blackout curtains, and carpets direct from verified local shops
             </p>
           </div>
 
-          <Link
-            href="/deals"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-rose-50 hover:bg-rose-100 text-rose-800 border border-rose-200 text-xs font-bold transition self-start sm:self-auto shrink-0 shadow-2xs group"
-          >
-            <Flame className="w-4 h-4 text-rose-600 animate-pulse" />
-            <span>Today&apos;s Slashed Deals →</span>
-          </Link>
+          <div className="flex items-center gap-3 self-start sm:self-auto">
+            <Link
+              href="/deals"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-rose-50 hover:bg-rose-100 text-rose-800 border border-rose-200 text-xs font-bold transition shadow-2xs"
+            >
+              <Flame className="w-3.5 h-3.5 text-rose-600 animate-pulse" />
+              <span>View All Deals & Products ({filteredProducts.length}) →</span>
+            </Link>
+
+            <div className="flex items-center gap-1.5">
+              <button
+                onClick={() => scrollSlider(productsSliderRef, 'left')}
+                className="w-9 h-9 rounded-full bg-white border border-stone-200 hover:bg-stone-50 text-stone-700 flex items-center justify-center transition shadow-2xs hover:shadow-xs active:scale-95 cursor-pointer"
+                aria-label="Previous Products"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => scrollSlider(productsSliderRef, 'right')}
+                className="w-9 h-9 rounded-full bg-white border border-stone-200 hover:bg-stone-50 text-stone-700 flex items-center justify-center transition shadow-2xs hover:shadow-xs active:scale-95 cursor-pointer"
+                aria-label="Next Products"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
         </div>
 
-        <HeroVisualShowcase />
+        {/* Horizontal Slider Cards Container */}
+        {filteredProducts.length > 0 ? (
+          <div 
+            ref={productsSliderRef}
+            className="flex gap-5 overflow-x-auto pb-4 pt-1 scroll-smooth snap-x scrollbar-thin scrollbar-thumb-stone-200"
+          >
+            {filteredProducts.map((product) => (
+              <div key={product.id} className="w-72 sm:w-80 shrink-0 snap-start">
+                <ProductCard product={product} />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="bg-white rounded-3xl p-12 text-center border border-stone-200 text-sm text-stone-500">
+            No products found for this filter. Try selecting another category or clearing your search.
+          </div>
+        )}
       </section>
 
-      {/* 3. BUYER SAFETY & PAYMENT SECURITY GUIDE (Airy & Reassuring) */}
+      {/* 4. FEATURED HOME SERVICE PROVIDERS / FUNDIS SLIDER (WITH VIEW ALL OPTION) */}
+      <section id="services" className="space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-900 border border-blue-200/80 text-xs font-bold mb-2">
+              <Wrench className="w-3.5 h-3.5 text-blue-700" />
+              <span>Service Providers / Fundis</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight">
+              Featured Home Services & Fundis
+            </h2>
+            <p className="text-xs sm:text-sm text-stone-500 mt-1 max-w-2xl">
+              Licensed plumbers, electricians, appliance repairers, gypsum ceiling fundis, and house cleaners who offer WhatsApp price checks and site visits
+            </p>
+          </div>
+
+          <div className="flex items-center gap-3 self-start sm:self-auto">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-blue-50 hover:bg-blue-100 text-blue-900 border border-blue-200 text-xs font-bold transition shadow-2xs"
+            >
+              <span>View All Home Services ({filteredServices.length}) →</span>
+            </Link>
+
+            <div className="flex items-center gap-1.5">
+              <button
+                onClick={() => scrollSlider(servicesSliderRef, 'left')}
+                className="w-9 h-9 rounded-full bg-white border border-stone-200 hover:bg-stone-50 text-stone-700 flex items-center justify-center transition shadow-2xs hover:shadow-xs active:scale-95 cursor-pointer"
+                aria-label="Previous Services"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => scrollSlider(servicesSliderRef, 'right')}
+                className="w-9 h-9 rounded-full bg-white border border-stone-200 hover:bg-stone-50 text-stone-700 flex items-center justify-center transition shadow-2xs hover:shadow-xs active:scale-95 cursor-pointer"
+                aria-label="Next Services"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Horizontal Slider Cards Container for Services */}
+        {filteredServices.length > 0 ? (
+          <div 
+            ref={servicesSliderRef}
+            className="flex gap-5 overflow-x-auto pb-4 pt-1 scroll-smooth snap-x scrollbar-thin scrollbar-thumb-stone-200"
+          >
+            {filteredServices.map((service) => (
+              <div key={service.id} className="w-80 sm:w-96 shrink-0 snap-start">
+                <ServiceCard service={service} />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="bg-white rounded-3xl p-12 text-center border border-stone-200 text-sm text-stone-500">
+            No home services found for this filter.
+          </div>
+        )}
+      </section>
+
+      {/* 5. MONTHLY HOME CARE & MONTHLY REFILLS SLIDER (STRATEGICALLY FEATURED) */}
+      <MonthlyRecurringServices />
+
+      {/* 6. TOP TRUSTED LOCAL SHOPS YOU CAN VISIT SLIDER */}
+      <section className="space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-100 text-stone-800 border border-stone-200 text-xs font-bold mb-2">
+              <Store className="w-3.5 h-3.5 text-stone-700" />
+              <span>Physical Shops With Real Locations</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight">
+              Top Trusted Local Shops You Can Visit
+            </h2>
+            <p className="text-xs sm:text-sm text-stone-500 mt-1 max-w-2xl">
+              Verified physical shops with clear landmarks, customer parking, showrooms, and safe Lipa na M-Pesa Tills
+            </p>
+          </div>
+
+          <div className="flex items-center gap-3 self-start sm:self-auto">
+            <span className="text-xs font-bold text-stone-700 bg-stone-100 px-3.5 py-1.5 rounded-full">
+              {filteredBusinesses.length} Verified Shops
+            </span>
+
+            <div className="flex items-center gap-1.5">
+              <button
+                onClick={() => scrollSlider(shopsSliderRef, 'left')}
+                className="w-9 h-9 rounded-full bg-white border border-stone-200 hover:bg-stone-50 text-stone-700 flex items-center justify-center transition shadow-2xs hover:shadow-xs active:scale-95 cursor-pointer"
+                aria-label="Previous Shops"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => scrollSlider(shopsSliderRef, 'right')}
+                className="w-9 h-9 rounded-full bg-white border border-stone-200 hover:bg-stone-50 text-stone-700 flex items-center justify-center transition shadow-2xs hover:shadow-xs active:scale-95 cursor-pointer"
+                aria-label="Next Shops"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div 
+          ref={shopsSliderRef}
+          className="flex gap-5 overflow-x-auto pb-4 pt-1 scroll-smooth snap-x scrollbar-thin scrollbar-thumb-stone-200"
+        >
+          {filteredBusinesses.map((biz) => (
+            <div key={biz.id} className="w-80 sm:w-96 shrink-0 snap-start">
+              <BusinessCard business={biz} />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 7. BUYER SAFETY & PAYMENT SECURITY GUIDE (Airy & Reassuring) */}
       <div className="bg-white rounded-3xl p-6 sm:p-8 border border-stone-200/90 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-sm">
         <div className="flex items-start gap-4">
           <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0">
@@ -248,225 +417,8 @@ export default function HomePage() {
         </Link>
       </div>
 
-      {/* 4. DISCOVERY MODES SWITCHER */}
-      <div className="space-y-6">
-        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-stone-200 pb-5">
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-            <button
-              onClick={() => { setViewType('all'); setSelectedRoom('all'); }}
-              className={`px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold transition flex items-center gap-2 cursor-pointer ${
-                viewType === 'all'
-                  ? 'bg-stone-900 text-white shadow-xs'
-                  : 'bg-white text-stone-700 hover:bg-stone-100 border border-stone-200'
-              }`}
-            >
-              <Layers className="w-4 h-4" />
-              <span>Everything ({filteredProducts.length + filteredServices.length})</span>
-            </button>
-
-            <button
-              onClick={() => setViewType('furniture')}
-              className={`px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold transition flex items-center gap-2 cursor-pointer ${
-                viewType === 'furniture'
-                  ? 'bg-stone-900 text-white shadow-xs'
-                  : 'bg-white text-stone-700 hover:bg-stone-100 border border-stone-200'
-              }`}
-            >
-              <Sofa className="w-4 h-4 text-amber-500" />
-              <span>🛋️ Furniture</span>
-            </button>
-
-            <button
-              onClick={() => setViewType('kitchen')}
-              className={`px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold transition flex items-center gap-2 cursor-pointer ${
-                viewType === 'kitchen'
-                  ? 'bg-stone-900 text-white shadow-xs'
-                  : 'bg-white text-stone-700 hover:bg-stone-100 border border-stone-200'
-              }`}
-            >
-              <Utensils className="w-4 h-4 text-amber-600" />
-              <span>🍳 Kitchen & Cookware</span>
-            </button>
-
-            <button
-              onClick={() => setViewType('electronics')}
-              className={`px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold transition flex items-center gap-2 cursor-pointer ${
-                viewType === 'electronics'
-                  ? 'bg-stone-900 text-white shadow-xs'
-                  : 'bg-white text-stone-700 hover:bg-stone-100 border border-stone-200'
-              }`}
-            >
-              <Tv className="w-4 h-4 text-blue-500" />
-              <span>📱 TVs & Electronics</span>
-            </button>
-
-            <button
-              onClick={() => setViewType('decor')}
-              className={`px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold transition flex items-center gap-2 cursor-pointer ${
-                viewType === 'decor'
-                  ? 'bg-stone-900 text-white shadow-xs'
-                  : 'bg-white text-stone-700 hover:bg-stone-100 border border-stone-200'
-              }`}
-            >
-              <Sparkles className="w-4 h-4 text-purple-500" />
-              <span>🪟 Curtains & Decor</span>
-            </button>
-
-            <button
-              onClick={() => setViewType('services')}
-              className={`px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold transition flex items-center gap-2 cursor-pointer ${
-                viewType === 'services'
-                  ? 'bg-stone-900 text-white shadow-xs'
-                  : 'bg-white text-stone-700 hover:bg-stone-100 border border-stone-200'
-              }`}
-            >
-              <Wrench className="w-4 h-4 text-blue-600" />
-              <span>🔧 Fundis & Repairs ({filteredServices.length})</span>
-            </button>
-
-            <button
-              onClick={() => setViewType('recurring')}
-              className={`px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold transition flex items-center gap-2 cursor-pointer ${
-                viewType === 'recurring'
-                  ? 'bg-stone-900 text-white shadow-xs'
-                  : 'bg-white text-stone-700 hover:bg-stone-100 border border-stone-200'
-              }`}
-            >
-              <RefreshCw className="w-4 h-4 text-emerald-500" />
-              <span>💧 Monthly Care</span>
-            </button>
-          </div>
-
-          {/* Region Filter */}
-          <div className="flex items-center gap-2">
-            <MapPin className="w-4 h-4 text-stone-400" />
-            <select
-              value={selectedRegionId}
-              onChange={(e) => setSelectedRegionId(e.target.value)}
-              className="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white border border-stone-200 text-stone-700 focus:ring-2 focus:ring-brand-700 shadow-2xs"
-            >
-              <option value="all">Kenya-Wide (All Counties)</option>
-              {KENYAN_REGIONS.map((r) => (
-                <option key={r.id} value={r.id}>{r.name}</option>
-              ))}
-            </select>
-          </div>
-        </div>
-
-        {/* 5. SHOP BY ROOM COMPONENT */}
-        <BrowseByRoom
-          selectedRoom={selectedRoom}
-          onSelectRoom={(r) => setSelectedRoom(r)}
-        />
-      </div>
-
-      {/* 6. MAIN CONTENT & SIDEBAR SPLIT */}
-      <div className="flex flex-col lg:flex-row gap-10 lg:gap-12 items-start">
-        {/* LEFT COLUMN: LISTINGS & SECTIONS */}
-        <div className="flex-1 min-w-0 w-full space-y-16 sm:space-y-20">
-
-          {/* A. FEATURED HOME PRODUCTS (Furniture, Kitchen, Electronics, Decor) */}
-          {(viewType === 'all' || viewType === 'furniture' || viewType === 'kitchen' || viewType === 'electronics' || viewType === 'decor') && (
-            <section id="products" className="space-y-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
-                    Products & Items
-                  </span>
-                  <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 mt-2 tracking-tight">
-                    Featured Home Products ({filteredProducts.length})
-                  </h2>
-                  <p className="text-xs sm:text-sm text-stone-500 mt-1">
-                    Solid hardwood furniture, gas cookers, kitchenware, smart TVs, blackout curtains, and carpets direct from verified sellers
-                  </p>
-                </div>
-              </div>
-
-              {filteredProducts.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
-                  {filteredProducts.map((product) => (
-                    <ProductCard key={product.id} product={product} />
-                  ))}
-                </div>
-              ) : (
-                <div className="bg-white rounded-3xl p-12 text-center border border-stone-200 text-sm text-stone-500">
-                  No products found for this filter. Try selecting another category or clear your search.
-                </div>
-              )}
-            </section>
-          )}
-
-          {/* B. REPAIRS & FUNDIS SECTION */}
-          {(viewType === 'all' || viewType === 'services') && (
-            <section className="space-y-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-blue-800 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">
-                    Fundis & Repairs
-                  </span>
-                  <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 mt-2 tracking-tight">
-                    Fundis & Home Services ({filteredServices.length})
-                  </h2>
-                  <p className="text-xs sm:text-sm text-stone-500 mt-1">
-                    Verified fundis who give free price checks on WhatsApp and local estate visits
-                  </p>
-                </div>
-
-                <Link href="/services" className="text-xs sm:text-sm font-bold text-stone-800 hover:text-brand-700 flex items-center gap-1">
-                  <span>View All Services</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-
-              {filteredServices.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-7">
-                  {filteredServices.map((service) => (
-                    <ServiceCard key={service.id} service={service} />
-                  ))}
-                </div>
-              ) : (
-                <div className="bg-white rounded-3xl p-12 text-center border border-stone-200 text-sm text-stone-500">
-                  No services found for this filter.
-                </div>
-              )}
-            </section>
-          )}
-
-          {/* C. MONTHLY RECURRING HOME ESSENTIALS */}
-          {(viewType === 'all' || viewType === 'recurring') && (
-            <MonthlyRecurringServices />
-          )}
-
-          {/* D. TOP 5 PREMIER TRUSTED SHOPS & WORKSHOPS */}
-          <section className="space-y-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-stone-800 bg-stone-100 px-3 py-1 rounded-full border border-stone-200">
-                  Workshops You Can Visit
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 mt-2 tracking-tight">
-                  5 Trusted Kenyan Workshops You Can Visit ({filteredBusinesses.length})
-                </h2>
-                <p className="text-xs sm:text-sm text-stone-500 mt-1">
-                  Verified workshops with clear landmarks, customer parking, and safe Lipa na M-Pesa Tills
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-7">
-              {filteredBusinesses.map((biz) => (
-                <BusinessCard key={biz.id} business={biz} />
-              ))}
-            </div>
-          </section>
-
-          {/* E. SELLER & FUNDI PORTAL BANNER */}
-          <ClaimProfileBanner />
-        </div>
-
-        {/* RIGHT COLUMN: HIGH-YIELD SIDEBAR */}
-        <RightSidebar />
-      </div>
+      {/* 8. SELLER & SERVICE PROVIDER / FUNDI PORTAL BANNER */}
+      <ClaimProfileBanner />
     </div>
   );
 }

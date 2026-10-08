@@ -1206,6 +1206,24 @@ export interface RecurringHomeServiceCard {
 
 export const MONTHLY_RECURRING_HOME_SERVICES: RecurringHomeServiceCard[] = [
   {
+    id: "rec-water-00",
+    title: "Pure Drinking Water 20L Bottle Refill",
+    frequency: "Weekly / Monthly Refill",
+    priceEstimate: "From KSh 250 / 20L refill",
+    icon: "🚰",
+    description: "Doorstep delivery of sanitized 20-litre drinking water bottles. Fast exchange with dispenser pump check.",
+    providerId: "biz-solaria-water-003"
+  },
+  {
+    id: "rec-gas-00",
+    title: "Cooking Gas (LPG) Cylinder Refill (6kg & 13kg)",
+    frequency: "Monthly Refill",
+    priceEstimate: "From KSh 1,250 (6kg) • KSh 2,800 (13kg)",
+    icon: "🔥",
+    description: "Prompt 30-minute doorstep gas exchange. Genuine safety seal, weight scale verification, and free regulator leak check.",
+    providerId: "biz-solaria-water-003"
+  },
+  {
     id: "rec-tank-01",
     title: "Water Tank Deep Cleaning & Chlorination",
     frequency: "Every 3 Months",
@@ -1242,7 +1260,16 @@ export const MONTHLY_RECURRING_HOME_SERVICES: RecurringHomeServiceCard[] = [
     providerId: "biz-solaria-water-003"
   },
   {
-    id: "rec-garden-05",
+    id: "rec-septic-05",
+    title: "Septic Tank Vacuum Exhaustion & Bowser Emptying",
+    frequency: "Every 6–12 Months",
+    priceEstimate: "From KSh 8,500 / trip",
+    icon: "🚛",
+    description: "Clean bowser vacuum exhaustion for residential compounds and apartments. Prompt NEMA-licensed disposal.",
+    providerId: "biz-cleannest-pro-005"
+  },
+  {
+    id: "rec-garden-06",
     title: "Compound & Garden Care",
     frequency: "Monthly",
     priceEstimate: "From KSh 2,500",

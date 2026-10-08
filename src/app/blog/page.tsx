@@ -13,7 +13,7 @@ export default function BlogIndexPage() {
   const otherArticles = SAMPLE_ROUNDUP_ARTICLES.slice(1);
 
   return (
-    <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-8">
+    <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-8 min-h-[85vh]">
       {/* Blog Hero */}
       <section className="text-center py-6 sm:py-10 max-w-3xl mx-auto">
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold mb-3">
@@ -24,7 +24,7 @@ export default function BlogIndexPage() {
           Home Improvement, Furniture & Fundi <span className="text-brand-600">Guides</span>
         </h1>
         <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-          Honest price investigations, physical workshop inspections, and verified fundi recommendations to protect homeowners across Kenya.
+          Honest price investigations, physical shop inspections, and verified fundi recommendations to protect homeowners across Kenya.
         </p>
       </section>
 

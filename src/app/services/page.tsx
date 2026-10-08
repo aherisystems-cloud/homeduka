@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { 
   Wrench, ShieldCheck, MapPin, Search, Filter, Camera, 
-  Ruler, CheckCircle2, ChevronRight, Store, AlertTriangle 
+  Ruler, CheckCircle2, ChevronRight, Store, AlertTriangle, MessageSquare 
 } from 'lucide-react';
 import ServiceCard from '../../components/ServiceCard';
 import RightSidebar from '../../components/RightSidebar';
@@ -68,7 +68,7 @@ function ServicesContent() {
   });
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 min-h-[85vh]">
       {/* Breadcrumb Navigation */}
       <div className="flex items-center gap-1.5 text-xs text-stone-500">
         <Link href="/" className="hover:text-stone-900 transition">Home</Link>
@@ -85,7 +85,7 @@ function ServicesContent() {
           </div>
 
           <h1 className="text-2xl sm:text-4xl font-black text-stone-900 tracking-tight leading-tight mb-3">
-            Trusted Fundis & Home Services <span className="text-brand-700">Across Kenya</span>
+            Trusted Home Services & Fundis <span className="text-brand-700">Across Kenya</span>
           </h1>
 
           <p className="text-xs sm:text-sm text-stone-600 leading-relaxed mb-6">
@@ -200,12 +200,32 @@ function ServicesContent() {
               <p className="text-stone-600 font-medium text-sm">No services matched your filter.</p>
               <button
                 onClick={() => { setSelectedCategory('all'); setEmergencyOnly(false); setSelectedRegionId('all'); setSearchQuery(''); }}
-                className="mt-3 px-4 py-2 bg-stone-900 text-white text-xs font-bold rounded-xl"
+                className="mt-3 px-4 py-2 bg-stone-900 text-white text-xs font-bold rounded-xl cursor-pointer"
               >
                 Reset All Filters
               </button>
             </div>
           )}
+
+          {/* Safety & Matchmaking Card to Balance Vertical Height with Sidebar */}
+          <div className="bg-[#FAF8F5] rounded-3xl p-6 border border-stone-200/90 text-xs space-y-3">
+            <div className="flex items-center gap-2 text-stone-900 font-bold text-sm">
+              <ShieldCheck className="w-4 h-4 text-emerald-700" />
+              <span>Looking for a specialized home service or contractor in your county?</span>
+            </div>
+            <p className="text-stone-600 leading-relaxed">
+              If your required job isn&apos;t listed above (e.g. CCTV installation, borehole pump servicing, solar battery inverters, roofing repair, pest fumigation), message our verified directory desk on WhatsApp for free matchmaking with certified contractors in your estate.
+            </p>
+            <a
+              href="https://wa.me/254712345678?text=Habari%20Home%20Kenya,%20natafuta%20fundi%20wa%20specialized%20project."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-900 bg-amber-100 hover:bg-amber-200 px-3.5 py-1.5 rounded-xl transition"
+            >
+              <MessageSquare className="w-3.5 h-3.5 text-amber-800" />
+              <span>Ask for a Certified Contractor on WhatsApp</span>
+            </a>
+          </div>
         </div>
 
         {/* RIGHT COLUMN: HIGH-YIELD SIDEBAR */}

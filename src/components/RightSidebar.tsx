@@ -11,7 +11,7 @@ export default function RightSidebar() {
   const trendingArticles = SAMPLE_ROUNDUP_ARTICLES.slice(0, 3);
 
   return (
-    <aside className="w-full lg:w-80 space-y-6 shrink-0">
+    <aside className="w-full lg:w-80 space-y-6 shrink-0 lg:sticky lg:top-24 self-start">
       {/* 1. CURATED PIECE OF THE DAY (High Trust, Elegant) */}
       <div className="bg-white rounded-3xl p-5 border border-stone-200/90 shadow-2xs">
         <div className="flex items-center justify-between mb-3">
@@ -61,12 +61,12 @@ export default function RightSidebar() {
         </Link>
       </div>
 
-      {/* 2. TOP VERIFIED WORKSHOPS */}
+      {/* 2. TOP VERIFIED LOCAL SHOPS */}
       <div className="bg-white rounded-3xl p-5 border border-stone-200/90 shadow-2xs">
         <div className="flex items-center justify-between mb-4">
           <h3 className="font-bold text-sm text-stone-900 flex items-center gap-1.5">
             <Award className="w-4 h-4 text-amber-700" />
-            <span>Top Verified Workshops</span>
+            <span>Top Verified Local Shops</span>
           </h3>
           <span className="text-[10px] font-bold uppercase text-stone-600 bg-stone-100 px-2 py-0.5 rounded">
             Vetted
@@ -160,7 +160,7 @@ export default function RightSidebar() {
         </div>
 
         <p className="text-[11px] text-stone-300 leading-relaxed mb-3">
-          Get 1 vetted workshop drop and emergency fundi tips straight to your WhatsApp every morning. Zero spam.
+          Get vetted local shop deals and emergency fundi contacts straight to your WhatsApp every morning. Zero spam.
         </p>
 
         <a

@@ -37,7 +37,7 @@ export function generateSocialPostCopy(
   const caption = `✨ ${product.title.toUpperCase()} ✨
 
 🛋️ Price: ${priceKes}
-📍 Workshop Landmark: ${business.location.landmark} (${business.location.neighborhood}, ${business.location.county})
+📍 Shop Landmark: ${business.location.landmark} (${business.location.neighborhood}, ${business.location.county})
 🛠️ Material: ${product.specifications.material || 'Solid Hardwood & Premium Finish'}
 ${product.specifications.dimensions ? `📐 Dimensions: ${product.specifications.dimensions}\n` : ''}
 ${product.delivery.nairobi_delivery_fee_kes === 0 ? '🚚 FREE Nairobi Delivery Included\n' : '🚚 Countrywide Delivery Available\n'}
@@ -67,7 +67,7 @@ https://homekenya.co.ke/shop/${business.slug}
     hashtags,
     imageUrl: product.images[0] || business.media.cover_image_url,
     whatsappDeepLink: waLink,
-    callToAction: 'Order directly on WhatsApp or visit workshop!'
+    callToAction: 'Order directly on WhatsApp or visit shop!'
   };
 }
 

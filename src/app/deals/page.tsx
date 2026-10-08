@@ -33,7 +33,7 @@ export default function DealsPage() {
   const monthCount = SAMPLE_KENYAN_DEALS.filter((d) => d.duration_type === 'month').length;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 min-h-[85vh]">
       {/* 1. HERO HEADER */}
       <div className="bg-gradient-to-r from-stone-900 via-amber-950 to-stone-900 rounded-3xl p-6 sm:p-10 text-white border border-amber-900/40 shadow-sm relative overflow-hidden">
         <div className="max-w-3xl relative z-10">
@@ -47,7 +47,7 @@ export default function DealsPage() {
           </h1>
 
           <p className="text-xs sm:text-sm text-stone-300 leading-relaxed mb-6">
-            Verified furniture workshops, kitchenware shops, electronics dealers, and fundis slash their own prices for 24 hours or the whole month. Chat directly on WhatsApp to claim your discount before it expires.
+            Verified furniture shops, kitchenware stores, electronics dealers, and fundis slash their own prices for 24 hours or the whole month. Chat directly on WhatsApp to claim your discount before it expires.
           </p>
 
           {/* Tab Switcher: Today's Deals vs Deals of the Month */}

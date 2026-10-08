@@ -126,7 +126,7 @@ export default function VendorPortalPage() {
         body: JSON.stringify({
           post: {
             platform: 'instagram',
-            caption: `✨ ${item.title} ✨\n\n💰 Price: ${item.price}\n📍 Verified Workshop along Eastern Bypass Kamakis\n\n💬 Order on WhatsApp: https://homekenya.co.ke`,
+            caption: `✨ ${item.title} ✨\n\n💰 Price: ${item.price}\n📍 Verified Local Shop along Eastern Bypass Kamakis\n\n💬 Order on WhatsApp: https://homekenya.co.ke`,
             hashtags: ['#HomeKenya', '#NairobiHomes', '#KenyanFurniture'],
             imageUrl: item.image,
             whatsappDeepLink: 'https://homekenya.co.ke',
