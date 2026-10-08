@@ -215,15 +215,15 @@ export default function HeroVisualShowcase() {
       </div>
 
       {/* Horizontal Visual Cards Slider with Real Kenyan Faces */}
-      <div className="flex gap-4 overflow-x-auto pb-3 pt-1 scrollbar-thin scrollbar-thumb-stone-300 snap-x">
+      <div className="flex gap-6 overflow-x-auto pb-5 pt-2 scrollbar-thin scrollbar-thumb-stone-300 snap-x">
         {filteredItems.map((item) => (
           <div
             key={item.id}
-            className="w-72 sm:w-80 shrink-0 bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-2xs hover:shadow-md transition flex flex-col justify-between group snap-start"
+            className="w-80 sm:w-96 shrink-0 bg-white rounded-3xl border border-stone-200/80 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group snap-start"
           >
             <div>
               {/* Product/Service Work Photo */}
-              <div className="relative h-44 w-full bg-stone-900 overflow-hidden">
+              <div className="relative h-52 w-full bg-stone-900 overflow-hidden">
                 <img
                   src={item.image}
                   alt={item.title}
@@ -232,22 +232,22 @@ export default function HeroVisualShowcase() {
                 <div className="absolute inset-0 bg-gradient-to-t from-stone-950/70 via-transparent to-transparent" />
 
                 {/* Top Badge */}
-                <div className="absolute top-2.5 left-2.5">
-                  <span className="px-2.5 py-1 rounded-full text-[10px] font-black bg-stone-900/90 text-white backdrop-blur shadow-xs border border-white/20">
+                <div className="absolute top-3 left-3">
+                  <span className="px-3 py-1 rounded-full text-[11px] font-black bg-stone-900/90 text-white backdrop-blur shadow-xs border border-white/20">
                     {item.badge}
                   </span>
                 </div>
 
                 {/* Location Overlay */}
-                <div className="absolute bottom-2.5 left-2.5 right-2.5 text-white flex items-center gap-1 text-[11px] font-medium">
-                  <MapPin className="w-3 h-3 text-amber-400 shrink-0" />
+                <div className="absolute bottom-3 left-3 right-3 text-white flex items-center gap-1.5 text-xs font-medium">
+                  <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0" />
                   <span className="truncate">{item.location}</span>
                 </div>
               </div>
 
               {/* Title, Price & Real Person Profile */}
-              <div className="p-4 space-y-3">
-                <h4 className="font-bold text-xs sm:text-sm text-stone-900 leading-snug line-clamp-2">
+              <div className="p-5 space-y-3.5">
+                <h4 className="font-bold text-sm sm:text-base text-stone-900 leading-snug line-clamp-2">
                   {item.title}
                 </h4>
 
