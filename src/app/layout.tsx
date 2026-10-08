@@ -12,20 +12,20 @@ const outfit = Outfit({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#925C47",
+  themeColor: "#B45309",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
 };
 
 export const metadata: Metadata = {
-  title: "Home Kenya | Everything Your Home Needs",
-  description: "From custom living room furniture to monthly water tank cleaning and skilled fundis — discover verified home products and services across Kenya.",
+  title: "HomeDuka Kenya | Everything For Your Home",
+  description: "From custom furniture and electronics to monthly water refills and skilled fundis — discover verified home products and services across Kenya.",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Home Kenya",
+    title: "HomeDuka",
   },
   icons: {
     icon: "/icons/icon.svg",

@@ -9,6 +9,7 @@ import {
   Tv, Bed, Sofa, Utensils, Bath, Trees, Paintbrush, Hammer,
   Flame, Shirt, Box, Truck, Shield
 } from 'lucide-react';
+import Logo from './Logo';
 
 export default function Header() {
   const [activeMegaMenu, setActiveMegaMenu] = useState<'products' | 'services' | null>(null);
@@ -35,15 +36,23 @@ export default function Header() {
       <div className="w-full bg-stone-900 text-stone-200 text-[11px] sm:text-xs py-2 px-4 border-b border-stone-800 z-50 relative">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 sm:gap-4">
           
-          {/* Left: Kenya Location & City Context */}
-          <div className="flex items-center gap-1.5 text-stone-300">
-            <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-            <span className="font-semibold text-white">Find Sellers & Fundis Near You:</span>
-            <span className="hidden md:inline text-stone-300">
-              Nairobi • Kiambu • Mombasa • Nakuru • Kisumu • Eldoret & More
-            </span>
-            <span className="inline md:hidden text-stone-300">
-              Nairobi, Mombasa, Nakuru & More
+          {/* Left: Kenya Location & City Context with Quick Modal Trigger */}
+          <div className="flex items-center gap-2 text-stone-300">
+            <button
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  window.dispatchEvent(new CustomEvent('open-location-modal'));
+                }
+              }}
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-800 hover:bg-stone-700 text-amber-300 border border-stone-700/80 transition cursor-pointer text-[11px] sm:text-xs font-bold shadow-2xs"
+              title="Click to set your county or estate"
+            >
+              <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+              <span>Deliver to: Nairobi ▾</span>
+              <span className="text-[10px] text-amber-200/80 font-normal underline decoration-dotted ml-1">Change Area</span>
+            </button>
+            <span className="hidden md:inline text-stone-400 text-[11px]">
+              • Verified local shops & fundis across Kenya
             </span>
           </div>
 
@@ -78,21 +87,9 @@ export default function Header() {
       <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur border-b border-stone-200/80 shadow-2xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
           
-          {/* Logo & Simple Tagline */}
+          {/* Logo with New Geometric Mark & Brand Hue */}
           <div className="flex items-center gap-3">
-            <Link href="/" className="flex items-center gap-2.5 group">
-              <div className="w-10 h-10 rounded-xl bg-brand-700 group-hover:bg-brand-800 flex items-center justify-center text-white font-bold shadow-sm transition">
-                <Home className="w-5 h-5 text-amber-100" />
-              </div>
-              <div>
-                <span className="font-black text-lg sm:text-xl text-stone-900 tracking-tight flex items-center gap-1">
-                  Home <span className="text-brand-700">Kenya</span>
-                </span>
-                <p className="text-[11px] text-stone-500 font-medium">
-                  Everything for your home
-                </p>
-              </div>
-            </Link>
+            <Logo variant="header" />
           </div>
 
           {/* Desktop Navigation Links */}

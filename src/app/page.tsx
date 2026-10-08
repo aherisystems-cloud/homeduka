@@ -14,6 +14,7 @@ import ProductCard from '../components/ProductCard';
 import ServiceCard from '../components/ServiceCard';
 import BusinessCard from '../components/BusinessCard';
 import ClaimProfileBanner from '../components/ClaimProfileBanner';
+import WelcomeLocationModal, { UserPreferences } from '../components/WelcomeLocationModal';
 import { 
   SAMPLE_KENYAN_HOME_LISTINGS, 
   SAMPLE_KENYAN_HOME_PRODUCTS, 
@@ -27,6 +28,7 @@ export default function HomePage() {
   const [selectedRoom, setSelectedRoom] = useState<HomeRoom | 'all'>('all');
   const [viewType, setViewType] = useState<'all' | 'furniture' | 'kitchen' | 'electronics' | 'decor' | 'services' | 'recurring'>('all');
   const [selectedRegionId, setSelectedRegionId] = useState<string>('all');
+  const [currentLocationName, setCurrentLocationName] = useState<string>('Nairobi (All Estates)');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   // Slider refs for horizontal scrolling
@@ -121,32 +123,86 @@ export default function HomePage() {
     return true;
   });
 
+  const handlePreferencesSelected = (prefs: UserPreferences) => {
+    if (prefs.locationId) {
+      const regionMap: Record<string, string> = {
+        nairobi: 'nairobi-region',
+        kiambu: 'central',
+        mombasa: 'coast',
+        rift_valley: 'rift-valley',
+        western: 'western-nyanza',
+        other: 'all'
+      };
+      setSelectedRegionId(regionMap[prefs.locationId] || 'all');
+      setCurrentLocationName(prefs.locationName);
+    }
+    if (prefs.intent && prefs.intent !== 'all') {
+      if (prefs.intent === 'services') {
+        setViewType('services');
+        const el = document.getElementById('services');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      } else if (prefs.intent === 'recurring') {
+        setViewType('recurring');
+        const el = document.getElementById('recurring');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      } else if (prefs.intent === 'deals') {
+        const el = document.getElementById('products');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        setViewType(prefs.intent as any);
+        const el = document.getElementById('products');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 space-y-20 md:space-y-28">
-      {/* 1. HERO SECTION: WORLD-CLASS, SPACIOUS, EDITORIAL AIRINESS (NO DISTRACTIONS, NO SIDEBAR) */}
-      <section className="relative pt-6 pb-4 sm:pt-12 sm:pb-8 text-center max-w-5xl mx-auto space-y-8">
-        
-        {/* Top Minimalist Tag */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 text-amber-900 border border-amber-500/20 text-xs font-semibold tracking-wide">
-          <ShieldCheck className="w-4 h-4 text-amber-700" />
-          <span>KENYA&apos;S DIRECT HOME MARKETPLACE</span>
-        </div>
+    <>
+      {/* 0. WELCOME LOCATION & INTENT SCREEN-FILL MODAL */}
+      <WelcomeLocationModal onComplete={handlePreferencesSelected} />
 
-        {/* Master Headline - Geometric Authority, Everyday Relatable Language */}
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-stone-900 tracking-tight leading-[1.08] max-w-4xl mx-auto">
-          Everything for your home. <br />
-          <span className="text-amber-700">From trusted local shops & fundis.</span>
-        </h1>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 space-y-20 md:space-y-28">
+        {/* 1. HERO SECTION: WORLD-CLASS, SPACIOUS, EDITORIAL AIRINESS (NO DISTRACTIONS, NO SIDEBAR) */}
+        <section className="relative pt-6 pb-4 sm:pt-12 sm:pb-8 text-center max-w-5xl mx-auto space-y-8">
+          
+          {/* Top Minimalist Tag with HomeDuka Brand */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 text-amber-900 border border-amber-500/20 text-xs font-semibold tracking-wide">
+            <ShieldCheck className="w-4 h-4 text-[#B45309]" />
+            <span>HOMEDUKA • KENYA&apos;S DIRECT HOME MARKETPLACE</span>
+          </div>
 
-        {/* Subtitle - Crisp English, Authentic, Zero Clutter */}
-        <p className="text-base sm:text-xl text-stone-600 max-w-2xl mx-auto font-normal leading-relaxed">
-          Discover furniture, kitchenware, decor, and electronics from trusted local shops — or connect with verified service providers and fundis across Kenya.
-        </p>
+          {/* Master Headline - Geometric Authority, Everyday Relatable Language */}
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-stone-900 tracking-tight leading-[1.08] max-w-4xl mx-auto">
+            Everything for your home. <br />
+            <span className="text-[#B45309]">From trusted local shops & fundis.</span>
+          </h1>
 
-        {/* Floating Search Hub */}
-        <div className="max-w-3xl mx-auto pt-2">
-          <div className="relative flex items-center bg-white rounded-full border border-stone-200/90 shadow-md hover:shadow-lg transition-all p-2 pl-6">
-            <Search className="w-5 h-5 text-stone-400 shrink-0 mr-3" />
+          {/* Subtitle - Crisp English, Authentic, Zero Clutter */}
+          <p className="text-base sm:text-xl text-stone-600 max-w-2xl mx-auto font-normal leading-relaxed">
+            Discover furniture, kitchenware, decor, and electronics from trusted local shops — or connect with verified service providers and fundis across Kenya.
+          </p>
+
+          {/* Location Context Banner Pill (Triggers Fullscreen Modal) */}
+          <div className="flex justify-center pt-1">
+            <button
+              type="button"
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  window.dispatchEvent(new CustomEvent('open-location-modal'));
+                }
+              }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-stone-100 hover:bg-amber-50 text-stone-700 hover:text-[#B45309] border border-stone-200/90 transition text-xs font-semibold cursor-pointer shadow-2xs hover:border-amber-300 group"
+            >
+              <MapPin className="w-3.5 h-3.5 text-[#B45309]" />
+              <span>Browsing shops & fundis near: <strong className="text-stone-900 group-hover:text-[#B45309]">{currentLocationName}</strong></span>
+              <span className="text-[#B45309] font-bold text-[11px] underline decoration-dotted ml-1">Change Area</span>
+            </button>
+          </div>
+
+          {/* Floating Search Hub */}
+          <div className="max-w-3xl mx-auto pt-2">
+            <div className="relative flex items-center bg-white rounded-full border border-stone-200/90 shadow-md hover:shadow-lg transition-all p-2 pl-6">
+              <Search className="w-5 h-5 text-stone-400 shrink-0 mr-3" />
             <input
               type="text"
               value={searchQuery}
@@ -400,7 +456,7 @@ export default function HomePage() {
           </div>
           <div className="space-y-1">
             <h3 className="text-base sm:text-lg font-bold text-stone-900">
-              How Payments & Pickups Work Safely on Home Kenya
+              How Payments & Pickups Work Safely on HomeDuka
             </h3>
             <p className="text-stone-600 text-xs sm:text-sm leading-relaxed max-w-3xl">
               Sellers and fundis are registered Kenyan businesses. Always chat on WhatsApp first to confirm specifications and arrange pickup or delivery. When paying via Lipa na M-Pesa, confirm the registered business name matches on your phone screen before entering your PIN. Only pay upon delivery or when terms are agreed.
@@ -420,5 +476,6 @@ export default function HomePage() {
       {/* 8. SELLER & SERVICE PROVIDER / FUNDI PORTAL BANNER */}
       <ClaimProfileBanner />
     </div>
+  </>
   );
 }

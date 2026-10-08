@@ -80,8 +80,8 @@ function ServicesContent() {
       <div className="bg-white rounded-3xl p-6 sm:p-10 border border-stone-200/90 shadow-2xs">
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-900 border border-amber-200/70 text-xs font-bold mb-3">
-            <ShieldCheck className="w-4 h-4 text-amber-700" />
-            <span>Kenya Fundi Directory • Real Locations • Verified M-Pesa Tills</span>
+            <ShieldCheck className="w-4 h-4 text-[#B45309]" />
+            <span>HomeDuka Fundi Directory • Real Locations • Verified M-Pesa Tills</span>
           </div>
 
           <h1 className="text-2xl sm:text-4xl font-black text-stone-900 tracking-tight leading-tight mb-3">

@@ -1,20 +1,19 @@
 import Link from 'next/link';
 import { ShieldCheck, MapPin, Sparkles } from 'lucide-react';
+import Logo from './Logo';
 
 export default function Footer() {
   return (
     <footer className="bg-stone-950 text-stone-400 text-sm mt-20 border-t border-stone-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-          <div className="md:col-span-1">
-            <span className="font-bold text-xl text-white tracking-tight flex items-center gap-2 mb-3">
-              Home <span className="text-amber-500">Kenya</span>
-            </span>
-            <p className="text-stone-400 text-xs leading-relaxed mb-4">
+          <div className="md:col-span-1 space-y-3">
+            <Logo variant="footer" showTagline={false} />
+            <p className="text-stone-400 text-xs leading-relaxed">
               Everything for your home in Kenya. Discover verified furniture shops, modular kitchens, solar water systems, routine monthly maintenance, and skilled service providers & fundis.
             </p>
-            <div className="flex items-center gap-2 text-xs text-amber-400">
-              <ShieldCheck className="w-4 h-4" />
+            <div className="flex items-center gap-2 text-xs text-amber-400 pt-1">
+              <ShieldCheck className="w-4 h-4 text-[#B45309]" />
               <span>Physical Shops • Real Landmarks • Verified Tills</span>
             </div>
           </div>

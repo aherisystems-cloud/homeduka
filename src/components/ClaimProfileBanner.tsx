@@ -31,7 +31,7 @@ export default function ClaimProfileBanner() {
           </Link>
 
           <Link
-            href="https://wa.me/254712345678?text=Habari%20Home%20Kenya,%20ninataka%20ku-list%20bidhaa%20au%20services%20zangu."
+            href="https://wa.me/254712345678?text=Habari%20HomeDuka,%20ninataka%20ku-list%20bidhaa%20au%20services%20zangu."
             target="_blank"
             className="inline-flex items-center gap-2 px-4 py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs transition"
           >

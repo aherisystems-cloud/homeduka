@@ -43,7 +43,7 @@ export default function DealsPage() {
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-black tracking-tight leading-tight mb-2">
-            Home Kenya <span className="text-amber-400">Deals</span>
+            HomeDuka <span className="text-amber-400">Deals</span>
           </h1>
 
           <p className="text-xs sm:text-sm text-stone-300 leading-relaxed mb-6">
