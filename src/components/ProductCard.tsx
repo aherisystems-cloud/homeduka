@@ -101,8 +101,8 @@ export default function ProductCard({ product, business }: ProductCardProps) {
             </span>
           </div>
 
-          <span className="text-[10px] font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-            Till: {biz.commercial.mpesa_till_number}
+          <span className="text-[10px] font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 flex items-center gap-1">
+            <span>✓ Lipa na M-Pesa Verified</span>
           </span>
         </div>
 

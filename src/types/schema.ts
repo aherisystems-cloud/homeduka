@@ -298,3 +298,29 @@ export interface ProgrammaticCollectionPage {
   breadcrumbs: Array<{ label: string; url: string }>;
   faq_schema: Array<{ question: string; answer: string }>;
 }
+
+// ==========================================
+// 7. SELLER DEALS & PRICE SLICES (Today vs Month)
+// ==========================================
+export type DealDuration = 'today' | 'month';
+
+export interface HomeDeal {
+  id: string;
+  business_id: string;
+  product_id?: string;
+  service_id?: string;
+  title: string;
+  slug: string;
+  category: string; // furniture, appliances, decor, kitchen, hardware, services
+  original_price_kes: number;
+  deal_price_kes: number;
+  discount_percentage: number;
+  duration_type: DealDuration; // 'today' (24h flash) | 'month' (monthly special)
+  badge_text: string;          // e.g. "Save KSh 13,000" or "Flash Deal"
+  image: string;
+  in_stock: boolean;
+  slots_left?: number;
+  created_at: string;
+  expires_at: string;
+}
+

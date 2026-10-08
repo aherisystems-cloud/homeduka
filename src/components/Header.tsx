@@ -1,12 +1,13 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import { 
   Home, MessageSquare, ShieldCheck, PlusCircle, MapPin, 
   Sparkles, ChevronDown, Wrench, ShoppingBag, RefreshCw, 
   Menu, X, CheckCircle2, HelpCircle, Layers, ArrowRight,
-  Droplets, Zap, Bed, Sofa, Utensils, Bath, Trees, Briefcase
+  Tv, Bed, Sofa, Utensils, Bath, Trees, Paintbrush, Hammer,
+  Flame, Shirt, Box, Truck, Shield
 } from 'lucide-react';
 
 export default function Header() {
@@ -34,15 +35,15 @@ export default function Header() {
       <div className="w-full bg-stone-900 text-stone-200 text-[11px] sm:text-xs py-2 px-4 border-b border-stone-800 z-50 relative">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 sm:gap-4">
           
-          {/* Left: Kenya Nationwide Coverage & Map Indicator */}
+          {/* Left: Kenya Location & City Context */}
           <div className="flex items-center gap-1.5 text-stone-300">
             <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-            <span className="font-semibold text-white">Serving All 47 Counties in Kenya:</span>
+            <span className="font-semibold text-white">Find Sellers & Fundis Near You:</span>
             <span className="hidden md:inline text-stone-300">
-              Nairobi • Kiambu • Mombasa • Nakuru • Kisumu • Eldoret & Countrywide Delivery
+              Nairobi • Kiambu • Mombasa • Nakuru • Kisumu • Eldoret & More
             </span>
             <span className="inline md:hidden text-stone-300">
-              Nairobi & Countrywide Delivery
+              Nairobi, Mombasa, Nakuru & More
             </span>
           </div>
 
@@ -97,7 +98,7 @@ export default function Header() {
           {/* Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center gap-1 sm:gap-2">
             
-            {/* Nav Pillar 1: HOME PRODUCTS (With Mega Menu) */}
+            {/* Nav Pillar 1: HOME PRODUCTS (Comprehensive Layman Mega Menu) */}
             <div 
               className="relative"
               onMouseEnter={() => handleMouseEnter('products')}
@@ -118,129 +119,213 @@ export default function Header() {
                 }`} />
               </button>
 
-              {/* Mega Menu Dropdown: Home Products */}
+              {/* Mega Menu Dropdown: Comprehensive Home Products */}
               {activeMegaMenu === 'products' && (
                 <div 
-                  className="absolute left-0 top-full mt-1 w-[680px] bg-white rounded-3xl p-6 border border-stone-200 shadow-xl z-50 animate-fade-in"
+                  className="absolute left-[-40px] top-full mt-1 w-[820px] bg-white rounded-3xl p-6 border border-stone-200 shadow-xl z-50 animate-fade-in"
                   onMouseEnter={() => handleMouseEnter('products')}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <div className="grid grid-cols-3 gap-6">
-                    {/* Column 1: Rooms & Spaces */}
+                  <div className="grid grid-cols-4 gap-5">
+                    {/* Column 1: Furniture */}
                     <div className="space-y-3">
                       <div className="flex items-center gap-1.5 text-stone-900 font-black text-xs uppercase tracking-wider pb-1 border-b border-stone-100">
-                        <Home className="w-3.5 h-3.5 text-amber-700" />
-                        <span>Furniture by Room</span>
+                        <Sofa className="w-3.5 h-3.5 text-amber-700" />
+                        <span>Furniture</span>
                       </div>
-                      <div className="space-y-1">
+                      <div className="space-y-1.5 text-xs">
                         <Link 
-                          href="/#rooms" 
+                          href="/#products" 
                           onClick={() => setActiveMegaMenu(null)}
-                          className="flex items-center gap-2 p-2 rounded-xl hover:bg-amber-50/70 text-xs text-stone-700 hover:text-brand-800 transition"
+                          className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
                         >
-                          <span className="text-base">🛋️</span>
-                          <div>
-                            <span className="font-bold block">Living Room</span>
-                            <span className="text-[10px] text-stone-400">Sofas, coffee tables, TV units</span>
-                          </div>
+                          🛋️ Sofas & Living Room Sets
+                          <span className="block text-[10px] text-stone-400 font-normal">7-seaters, L-shapes, recliners</span>
                         </Link>
                         <Link 
-                          href="/#rooms" 
+                          href="/#products" 
                           onClick={() => setActiveMegaMenu(null)}
-                          className="flex items-center gap-2 p-2 rounded-xl hover:bg-amber-50/70 text-xs text-stone-700 hover:text-brand-800 transition"
+                          className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
                         >
-                          <span className="text-base">🛏️</span>
-                          <div>
-                            <span className="font-bold block">Bedroom</span>
-                            <span className="text-[10px] text-stone-400">Storage beds, wardrobes, dressers</span>
-                          </div>
+                          🛏️ Beds & Mattresses
+                          <span className="block text-[10px] text-stone-400 font-normal">Storage beds, 6x6, high density</span>
                         </Link>
                         <Link 
-                          href="/#rooms" 
+                          href="/#products" 
                           onClick={() => setActiveMegaMenu(null)}
-                          className="flex items-center gap-2 p-2 rounded-xl hover:bg-amber-50/70 text-xs text-stone-700 hover:text-brand-800 transition"
+                          className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
                         >
-                          <span className="text-base">🍳</span>
-                          <div>
-                            <span className="font-bold block">Kitchen & Dining</span>
-                            <span className="text-[10px] text-stone-400">Dining tables, fitted cabinets</span>
-                          </div>
+                          🚪 Wardrobes & Closets
+                          <span className="block text-[10px] text-stone-400 font-normal">Sliding doors, fitted, dressers</span>
+                        </Link>
+                        <Link 
+                          href="/#products" 
+                          onClick={() => setActiveMegaMenu(null)}
+                          className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
+                        >
+                          🍽️ Dining Tables & Chairs
+                          <span className="block text-[10px] text-stone-400 font-normal">4, 6, 8-seater sets</span>
+                        </Link>
+                        <Link 
+                          href="/#products" 
+                          onClick={() => setActiveMegaMenu(null)}
+                          className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
+                        >
+                          📺 TV Stands & Wall Units
+                          <span className="block text-[10px] text-stone-400 font-normal">Floating stands, wooden consoles</span>
                         </Link>
                       </div>
                     </div>
 
-                    {/* Column 2: Water, Solar & Outdoor */}
+                    {/* Column 2: Appliances & Electronics */}
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-1.5 text-stone-900 font-black text-xs uppercase tracking-wider pb-1 border-b border-stone-100">
+                        <Tv className="w-3.5 h-3.5 text-blue-700" />
+                        <span>Appliances & TV</span>
+                      </div>
+                      <div className="space-y-1.5 text-xs">
+                        <Link 
+                          href="/#products" 
+                          onClick={() => setActiveMegaMenu(null)}
+                          className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
+                        >
+                          🍳 Cookers & Ovens
+                          <span className="block text-[10px] text-stone-400 font-normal">Gas cookers, electric ovens</span>
+                        </Link>
+                        <Link 
+                          href="/#products" 
+                          onClick={() => setActiveMegaMenu(null)}
+                          className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
+                        >
+                          ❄️ Fridges & Freezers
+                          <span className="block text-[10px] text-stone-400 font-normal">Single & double-door refrigerators</span>
+                        </Link>
+                        <Link 
+                          href="/#products" 
+                          onClick={() => setActiveMegaMenu(null)}
+                          className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
+                        >
+                          📺 Smart TVs & Audio
+                          <span className="block text-[10px] text-stone-400 font-normal">4K UHD TVs, soundbars</span>
+                        </Link>
+                        <Link 
+                          href="/#products" 
+                          onClick={() => setActiveMegaMenu(null)}
+                          className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
+                        >
+                          🧺 Washing Machines
+                          <span className="block text-[10px] text-stone-400 font-normal">Automatic front & top loaders</span>
+                        </Link>
+                        <Link 
+                          href="/#products" 
+                          onClick={() => setActiveMegaMenu(null)}
+                          className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
+                        >
+                          🥤 Blenders & Microwaves
+                          <span className="block text-[10px] text-stone-400 font-normal">Kettles, air fryers, dispensers</span>
+                        </Link>
+                      </div>
+                    </div>
+
+                    {/* Column 3: Decor, Curtains & Kitchenware */}
                     <div className="space-y-3">
                       <div className="flex items-center gap-1.5 text-stone-900 font-black text-xs uppercase tracking-wider pb-1 border-b border-stone-100">
                         <Sparkles className="w-3.5 h-3.5 text-amber-700" />
-                        <span>Home Systems & Outdoors</span>
+                        <span>Decor & Kitchen</span>
                       </div>
-                      <div className="space-y-1">
+                      <div className="space-y-1.5 text-xs">
                         <Link 
-                          href="/#rooms" 
+                          href="/#products" 
                           onClick={() => setActiveMegaMenu(null)}
-                          className="flex items-center gap-2 p-2 rounded-xl hover:bg-amber-50/70 text-xs text-stone-700 hover:text-brand-800 transition"
+                          className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
                         >
-                          <span className="text-base">🚿</span>
-                          <div>
-                            <span className="font-bold block">Bathroom & Water</span>
-                            <span className="text-[10px] text-stone-400">Mixer taps, vanity sinks, heaters</span>
-                          </div>
+                          🪟 Curtains & Sheers
+                          <span className="block text-[10px] text-stone-400 font-normal">Blackout curtains, eyelets, rods</span>
                         </Link>
                         <Link 
-                          href="/#rooms" 
+                          href="/#products" 
                           onClick={() => setActiveMegaMenu(null)}
-                          className="flex items-center gap-2 p-2 rounded-xl hover:bg-amber-50/70 text-xs text-stone-700 hover:text-brand-800 transition"
+                          className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
                         >
-                          <span className="text-base">☀️</span>
-                          <div>
-                            <span className="font-bold block">Solar & Water Heating</span>
-                            <span className="text-[10px] text-stone-400">Solar tanks, backup power</span>
-                          </div>
+                          🧶 Carpets & Rugs
+                          <span className="block text-[10px] text-stone-400 font-normal">Fluffy shaggy carpets, Turkish rugs</span>
                         </Link>
                         <Link 
-                          href="/#rooms" 
+                          href="/#products" 
                           onClick={() => setActiveMegaMenu(null)}
-                          className="flex items-center gap-2 p-2 rounded-xl hover:bg-amber-50/70 text-xs text-stone-700 hover:text-brand-800 transition"
+                          className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
                         >
-                          <span className="text-base">🌿</span>
-                          <div>
-                            <span className="font-bold block">Outdoor & Compound</span>
-                            <span className="text-[10px] text-stone-400">Patio sets, flower planters</span>
-                          </div>
+                          🛌 Duvets & Bedding
+                          <span className="block text-[10px] text-stone-400 font-normal">Bedsheets, pillows, duvets</span>
+                        </Link>
+                        <Link 
+                          href="/#products" 
+                          onClick={() => setActiveMegaMenu(null)}
+                          className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
+                        >
+                          🥘 Sufurias & Cookware
+                          <span className="block text-[10px] text-stone-400 font-normal">Non-stick granite sets, pots</span>
+                        </Link>
+                        <Link 
+                          href="/#products" 
+                          onClick={() => setActiveMegaMenu(null)}
+                          className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
+                        >
+                          💡 Lighting & Chandeliers
+                          <span className="block text-[10px] text-stone-400 font-normal">Pendants, LED ceiling lights</span>
                         </Link>
                       </div>
                     </div>
 
-                    {/* Column 3: Featured Workshop Spotlight */}
-                    <div className="bg-[#FAF8F5] rounded-2xl p-4 border border-stone-200/80 flex flex-col justify-between">
-                      <div>
-                        <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 inline-block mb-2">
-                          Verified Workshop
-                        </span>
-                        <h4 className="font-black text-xs text-stone-900 leading-snug">
-                          WoodCraft Living Kenya
-                        </h4>
-                        <p className="text-[11px] text-stone-500 mt-1 leading-relaxed">
-                          Handcrafted solid mahogany, mvule & oak living room furniture along Kamakis Eastern Bypass.
-                        </p>
+                    {/* Column 4: Water, Hardware & Building */}
+                    <div className="space-y-3 bg-[#FAF8F5] p-3.5 rounded-2xl border border-stone-200/80">
+                      <div className="flex items-center gap-1.5 text-stone-900 font-black text-xs uppercase tracking-wider pb-1 border-b border-stone-200">
+                        <Paintbrush className="w-3.5 h-3.5 text-stone-700" />
+                        <span>Plumbing & Building</span>
+                      </div>
+                      <div className="space-y-1.5 text-xs">
+                        <Link 
+                          href="/#products" 
+                          onClick={() => setActiveMegaMenu(null)}
+                          className="block p-1.5 rounded-lg hover:bg-white text-stone-800 font-semibold"
+                        >
+                          🚿 Instant Showers & Heaters
+                          <span className="block text-[10px] text-stone-400 font-normal">Lorenzetti, Enerbras, taps</span>
+                        </Link>
+                        <Link 
+                          href="/#products" 
+                          onClick={() => setActiveMegaMenu(null)}
+                          className="block p-1.5 rounded-lg hover:bg-white text-stone-800 font-semibold"
+                        >
+                          ☀️ Solar Water Heaters
+                          <span className="block text-[10px] text-stone-400 font-normal">Solar heating, pressure pumps</span>
+                        </Link>
+                        <Link 
+                          href="/#products" 
+                          onClick={() => setActiveMegaMenu(null)}
+                          className="block p-1.5 rounded-lg hover:bg-white text-stone-800 font-semibold"
+                        >
+                          🎨 House Paints & Waterproof
+                          <span className="block text-[10px] text-stone-400 font-normal">Crown, Duracoat, exterior</span>
+                        </Link>
+                        <Link 
+                          href="/#products" 
+                          onClick={() => setActiveMegaMenu(null)}
+                          className="block p-1.5 rounded-lg hover:bg-white text-stone-800 font-semibold"
+                        >
+                          🧱 Floor Tiles & Gypsum
+                          <span className="block text-[10px] text-stone-400 font-normal">Porcelain tiles, gypsum boards</span>
+                        </Link>
                       </div>
 
-                      <div className="mt-4 pt-3 border-t border-stone-200 space-y-2">
-                        <Link
-                          href="/shop/woodcraft-living-kamakis"
-                          onClick={() => setActiveMegaMenu(null)}
-                          className="text-xs font-bold text-brand-700 hover:underline flex items-center gap-1"
-                        >
-                          <span>View Workshop Products</span>
-                          <ArrowRight className="w-3.5 h-3.5" />
-                        </Link>
+                      <div className="pt-2 border-t border-stone-200">
                         <Link
                           href="/#rooms"
                           onClick={() => setActiveMegaMenu(null)}
-                          className="block text-[11px] font-semibold text-stone-600 hover:text-stone-900"
+                          className="text-[11px] font-bold text-brand-700 hover:underline flex items-center gap-1"
                         >
-                          Browse All Products by Room →
+                          <span>Shop by Room (All Items)</span>
+                          <ArrowRight className="w-3 h-3" />
                         </Link>
                       </div>
                     </div>
@@ -249,7 +334,7 @@ export default function Header() {
               )}
             </div>
 
-            {/* Nav Pillar 2: HOME SERVICES (With Mega Menu, including Monthly Home Care) */}
+            {/* Nav Pillar 2: HOME SERVICES (Fundis + Home Care) */}
             <div 
               className="relative"
               onMouseEnter={() => handleMouseEnter('services')}
@@ -273,63 +358,147 @@ export default function Header() {
               {/* Mega Menu Dropdown: Home Services */}
               {activeMegaMenu === 'services' && (
                 <div 
-                  className="absolute left-[-100px] top-full mt-1 w-[720px] bg-white rounded-3xl p-6 border border-stone-200 shadow-xl z-50 animate-fade-in"
+                  className="absolute left-[-150px] top-full mt-1 w-[780px] bg-white rounded-3xl p-6 border border-stone-200 shadow-xl z-50 animate-fade-in"
                   onMouseEnter={() => handleMouseEnter('services')}
                   onMouseLeave={handleMouseLeave}
                 >
                   <div className="grid grid-cols-3 gap-6">
-                    {/* Column 1: Monthly Home Care (Recurring Maintenance) */}
+                    {/* Column 1: Fundis & Skilled Trades */}
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-1.5 text-stone-900 font-black text-xs uppercase tracking-wider pb-1 border-b border-stone-100">
+                        <Wrench className="w-3.5 h-3.5 text-blue-700" />
+                        <span>Fundis & Repairs</span>
+                      </div>
+                      <div className="space-y-1 text-xs">
+                        <Link 
+                          href="/services?category=plumbing" 
+                          onClick={() => setActiveMegaMenu(null)}
+                          className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-blue-50/60 text-stone-800 transition"
+                        >
+                          <span className="text-sm">🔧</span>
+                          <div>
+                            <span className="font-bold block">Plumbers</span>
+                            <span className="text-[10px] text-stone-400">Pipes, leaks, taps, pumps & toilets</span>
+                          </div>
+                        </Link>
+                        <Link 
+                          href="/services?category=electrical_solar" 
+                          onClick={() => setActiveMegaMenu(null)}
+                          className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-blue-50/60 text-stone-800 transition"
+                        >
+                          <span className="text-sm">⚡</span>
+                          <div>
+                            <span className="font-bold block">Electricians</span>
+                            <span className="text-[10px] text-stone-400">House wiring, token boxes, sockets</span>
+                          </div>
+                        </Link>
+                        <Link 
+                          href="/services?category=carpentry_cabinetry" 
+                          onClick={() => setActiveMegaMenu(null)}
+                          className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-blue-50/60 text-stone-800 transition"
+                        >
+                          <span className="text-sm">🪚</span>
+                          <div>
+                            <span className="font-bold block">Carpenters</span>
+                            <span className="text-[10px] text-stone-400">Beds, door locks, wardrobes, repairs</span>
+                          </div>
+                        </Link>
+                        <Link 
+                          href="/services?category=painting_gypsum" 
+                          onClick={() => setActiveMegaMenu(null)}
+                          className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-blue-50/60 text-stone-800 transition"
+                        >
+                          <span className="text-sm">🎨</span>
+                          <div>
+                            <span className="font-bold block">Gypsum & Painters</span>
+                            <span className="text-[10px] text-stone-400">Modern ceilings, wall paint, waterproofing</span>
+                          </div>
+                        </Link>
+                        <Link 
+                          href="/services?category=plumbing" 
+                          onClick={() => setActiveMegaMenu(null)}
+                          className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-blue-50/60 text-stone-800 transition"
+                        >
+                          <span className="text-sm">🧱</span>
+                          <div>
+                            <span className="font-bold block">Tile & Masonry Fundis</span>
+                            <span className="text-[10px] text-stone-400">Floor tiles, kitchen backsplashes, cabro</span>
+                          </div>
+                        </Link>
+                        <Link 
+                          href="/services?category=electrical_solar" 
+                          onClick={() => setActiveMegaMenu(null)}
+                          className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-blue-50/60 text-stone-800 transition"
+                        >
+                          <span className="text-sm">📺</span>
+                          <div>
+                            <span className="font-bold block">Appliance Repair</span>
+                            <span className="text-[10px] text-stone-400">Fridges, washing machines, microwaves</span>
+                          </div>
+                        </Link>
+                      </div>
+                    </div>
+
+                    {/* Column 2: Home Care & Cleaning */}
                     <div className="space-y-3 bg-amber-50/50 p-3.5 rounded-2xl border border-amber-200/60">
                       <div className="flex items-center gap-1.5 text-amber-950 font-black text-xs uppercase tracking-wider pb-1 border-b border-amber-200">
                         <RefreshCw className="w-3.5 h-3.5 text-amber-700" />
-                        <span>Monthly Home Care</span>
+                        <span>Home Care & Cleaning</span>
                       </div>
-                      <p className="text-[11px] text-amber-900/80 leading-snug">
-                        Regular maintenance to keep your home clean and working smoothly:
-                      </p>
-                      <div className="space-y-1.5">
+                      <div className="space-y-1.5 text-xs">
                         <Link 
                           href="/#recurring" 
                           onClick={() => setActiveMegaMenu(null)}
-                          className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-white text-xs text-stone-800 transition"
+                          className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-white text-stone-800 transition"
                         >
                           <span className="text-sm">💧</span>
                           <div>
                             <span className="font-bold block text-[11px]">Clean Water Tanks</span>
-                            <span className="text-[10px] text-stone-500">Remove mud & disinfect</span>
+                            <span className="text-[10px] text-stone-500">Remove mud, wash & disinfect</span>
                           </div>
                         </Link>
                         <Link 
                           href="/#recurring" 
                           onClick={() => setActiveMegaMenu(null)}
-                          className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-white text-xs text-stone-800 transition"
+                          className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-white text-stone-800 transition"
                         >
                           <span className="text-sm">🐜</span>
                           <div>
-                            <span className="font-bold block text-[11px]">Pest Control & Spray</span>
-                            <span className="text-[10px] text-stone-500">Bedbugs, roaches (child safe)</span>
+                            <span className="font-bold block text-[11px]">Pest Control & Bedbugs</span>
+                            <span className="text-[10px] text-stone-500">Safe spray for bedbugs & roaches</span>
                           </div>
                         </Link>
                         <Link 
                           href="/#recurring" 
                           onClick={() => setActiveMegaMenu(null)}
-                          className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-white text-xs text-stone-800 transition"
+                          className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-white text-stone-800 transition"
                         >
                           <span className="text-sm">🧽</span>
                           <div>
                             <span className="font-bold block text-[11px]">Sofa & Carpet Wash</span>
-                            <span className="text-[10px] text-stone-500">Deep shampoo machine wash</span>
+                            <span className="text-[10px] text-stone-500">Deep machine wash at your home</span>
                           </div>
                         </Link>
                         <Link 
                           href="/#recurring" 
                           onClick={() => setActiveMegaMenu(null)}
-                          className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-white text-xs text-stone-800 transition"
+                          className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-white text-stone-800 transition"
                         >
-                          <span className="text-sm">☀️</span>
+                          <span className="text-sm">🧹</span>
                           <div>
-                            <span className="font-bold block text-[11px]">Solar Heater Service</span>
-                            <span className="text-[10px] text-stone-500">Clean tubes & elements</span>
+                            <span className="font-bold block text-[11px]">Full House Deep Clean</span>
+                            <span className="text-[10px] text-stone-500">Move-in / move-out thorough clean</span>
+                          </div>
+                        </Link>
+                        <Link 
+                          href="/#recurring" 
+                          onClick={() => setActiveMegaMenu(null)}
+                          className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-white text-stone-800 transition"
+                        >
+                          <span className="text-sm">📦</span>
+                          <div>
+                            <span className="font-bold block text-[11px]">House Movers & Transport</span>
+                            <span className="text-[10px] text-stone-500">Packing boxes, enclosed trucks</span>
                           </div>
                         </Link>
                       </div>
@@ -340,87 +509,33 @@ export default function Header() {
                           onClick={() => setActiveMegaMenu(null)}
                           className="text-[11px] font-bold text-amber-900 hover:underline flex items-center gap-1"
                         >
-                          <span>View All Monthly Plans</span>
+                          <span>View All Home Care Plans</span>
                           <ArrowRight className="w-3 h-3" />
                         </Link>
                       </div>
                     </div>
 
-                    {/* Column 2: Vetted Fundis & Repairs */}
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-1.5 text-stone-900 font-black text-xs uppercase tracking-wider pb-1 border-b border-stone-100">
-                        <Wrench className="w-3.5 h-3.5 text-blue-700" />
-                        <span>Fundis & Repairs</span>
-                      </div>
-                      <div className="space-y-1">
-                        <Link 
-                          href="/services?category=plumbing" 
-                          onClick={() => setActiveMegaMenu(null)}
-                          className="flex items-center gap-2 p-2 rounded-xl hover:bg-blue-50/60 text-xs text-stone-700 hover:text-blue-900 transition"
-                        >
-                          <span className="text-base">🔧</span>
-                          <div>
-                            <span className="font-bold block">Plumbers & Pipe Repair</span>
-                            <span className="text-[10px] text-stone-400">Leaks, taps, pumps & drainage</span>
-                          </div>
-                        </Link>
-                        <Link 
-                          href="/services?category=electrical_solar" 
-                          onClick={() => setActiveMegaMenu(null)}
-                          className="flex items-center gap-2 p-2 rounded-xl hover:bg-blue-50/60 text-xs text-stone-700 hover:text-blue-900 transition"
-                        >
-                          <span className="text-base">⚡</span>
-                          <div>
-                            <span className="font-bold block">Electricians & Solar</span>
-                            <span className="text-[10px] text-stone-400">Lighting, wiring & token boxes</span>
-                          </div>
-                        </Link>
-                        <Link 
-                          href="/services?category=painting_gypsum" 
-                          onClick={() => setActiveMegaMenu(null)}
-                          className="flex items-center gap-2 p-2 rounded-xl hover:bg-blue-50/60 text-xs text-stone-700 hover:text-blue-900 transition"
-                        >
-                          <span className="text-base">🎨</span>
-                          <div>
-                            <span className="font-bold block">Gypsum Ceilings & Paint</span>
-                            <span className="text-[10px] text-stone-400">Modern ceilings, interior paint</span>
-                          </div>
-                        </Link>
-                        <Link 
-                          href="/services?category=carpentry_cabinetry" 
-                          onClick={() => setActiveMegaMenu(null)}
-                          className="flex items-center gap-2 p-2 rounded-xl hover:bg-blue-50/60 text-xs text-stone-700 hover:text-blue-900 transition"
-                        >
-                          <span className="text-base">🪚</span>
-                          <div>
-                            <span className="font-bold block">Fitted Kitchens & Wardrobes</span>
-                            <span className="text-[10px] text-stone-400">Custom cabinets, doors & locks</span>
-                          </div>
-                        </Link>
-                      </div>
-                    </div>
-
-                    {/* Column 3: The Fundi Promise */}
+                    {/* Column 3: The Fundi Safety Promise */}
                     <div className="bg-[#FAF8F5] rounded-2xl p-4 border border-stone-200/80 flex flex-col justify-between">
                       <div>
                         <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-900 inline-block mb-2">
-                          Our Fundi Promise
+                          Safety & Peace of Mind
                         </span>
                         <h4 className="font-black text-xs text-stone-900 leading-snug">
-                          How We Keep You Safe:
+                          How to Hire Safely:
                         </h4>
-                        <div className="space-y-2 mt-2 text-[11px] text-stone-600">
+                        <div className="space-y-2.5 mt-2.5 text-[11px] text-stone-600">
                           <div className="flex items-start gap-1.5">
                             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                            <span><strong>Free WhatsApp Photo Check:</strong> Send photos to get prices before they travel</span>
+                            <span><strong>Free WhatsApp Photo Check:</strong> Send photos to get price estimates before they visit</span>
                           </div>
                           <div className="flex items-start gap-1.5">
                             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                            <span><strong>Free Local Measurements:</strong> For kitchens & gypsum in your estate</span>
+                            <span><strong>Agree Price Upfront:</strong> Know the labor & materials cost before work starts</span>
                           </div>
                           <div className="flex items-start gap-1.5">
                             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                            <span><strong>Verified Tills:</strong> Pay safely using Lipa na M-Pesa Buy Goods</span>
+                            <span><strong>Pay After Inspection:</strong> Only pay when the job is done or items are received</span>
                           </div>
                         </div>
                       </div>
@@ -440,6 +555,18 @@ export default function Header() {
                 </div>
               )}
             </div>
+
+            {/* Nav Link: DEALS */}
+            <Link
+              href="/deals"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-amber-50 text-amber-950 hover:bg-amber-100 border border-amber-300 transition shadow-2xs"
+            >
+              <Flame className="w-3.5 h-3.5 text-rose-600" />
+              <span>Deals</span>
+              <span className="text-[10px] bg-rose-600 text-white px-1.5 py-0.2 rounded-full font-black">
+                Hot
+              </span>
+            </Link>
 
             {/* Nav Link 3: SHOP BY ROOM */}
             <Link
@@ -487,14 +614,14 @@ export default function Header() {
             <div className="p-3 bg-stone-100 rounded-2xl space-y-2 text-xs">
               <div className="flex items-center gap-1.5 text-stone-700">
                 <MapPin className="w-3.5 h-3.5 text-amber-700" />
-                <span className="font-bold">Serving All 47 Counties in Kenya</span>
+                <span className="font-bold">Find Sellers & Fundis in Your County</span>
               </div>
               <button
                 onClick={() => {
                   setShowDealsModal(true);
                   setMobileMenuOpen(false);
                 }}
-                className="text-brand-700 font-bold underline block"
+                className="text-brand-700 font-bold underline block text-left"
               >
                 What are WhatsApp Deals?
               </button>
@@ -523,39 +650,46 @@ export default function Header() {
               {mobileCategoryOpen === 'products' && (
                 <div className="p-3 bg-white space-y-2 text-xs border-t border-stone-100">
                   <Link 
-                    href="/#rooms" 
+                    href="/#products" 
                     onClick={() => setMobileMenuOpen(false)}
                     className="block p-2 rounded-lg hover:bg-stone-50 font-semibold text-stone-800"
                   >
-                    🛋️ Living Room (Sofas, TV Units)
+                    🛋️ Furniture (Sofas, Beds, Dining, Wardrobes)
                   </Link>
                   <Link 
-                    href="/#rooms" 
+                    href="/#products" 
                     onClick={() => setMobileMenuOpen(false)}
                     className="block p-2 rounded-lg hover:bg-stone-50 font-semibold text-stone-800"
                   >
-                    🛏️ Bedroom (Storage Beds, Wardrobes)
+                    📺 Appliances & Electronics (Cookers, Fridges, TVs)
                   </Link>
                   <Link 
-                    href="/#rooms" 
+                    href="/#products" 
                     onClick={() => setMobileMenuOpen(false)}
                     className="block p-2 rounded-lg hover:bg-stone-50 font-semibold text-stone-800"
                   >
-                    🍳 Kitchen & Dining (Fitted Cabinets, Tables)
+                    🪟 Curtains, Bedding & Carpets
                   </Link>
                   <Link 
-                    href="/#rooms" 
+                    href="/#products" 
                     onClick={() => setMobileMenuOpen(false)}
                     className="block p-2 rounded-lg hover:bg-stone-50 font-semibold text-stone-800"
                   >
-                    🚿 Bathroom & Water Heaters
+                    🥘 Kitchenware & Sufurias
                   </Link>
                   <Link 
-                    href="/#rooms" 
+                    href="/#products" 
                     onClick={() => setMobileMenuOpen(false)}
                     className="block p-2 rounded-lg hover:bg-stone-50 font-semibold text-stone-800"
                   >
-                    🌿 Outdoor & Compound
+                    🚿 Bathroom, Water Tanks & Showers
+                  </Link>
+                  <Link 
+                    href="/#products" 
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block p-2 rounded-lg hover:bg-stone-50 font-semibold text-stone-800"
+                  >
+                    🎨 Paints, Tiles & Gypsum Boards
                   </Link>
                 </div>
               )}
@@ -569,45 +703,12 @@ export default function Header() {
               >
                 <div className="flex items-center gap-2">
                   <Wrench className="w-4 h-4 text-blue-600" />
-                  <span>Home Services & Monthly Care</span>
+                  <span>Home Services & Fundis</span>
                 </div>
                 <ChevronDown className={`w-4 h-4 transition-transform ${mobileCategoryOpen === 'services' ? 'rotate-180' : ''}`} />
               </button>
               {mobileCategoryOpen === 'services' && (
                 <div className="p-3 bg-white space-y-2 text-xs border-t border-stone-100">
-                  <div className="p-2 bg-amber-50 rounded-xl mb-2">
-                    <span className="font-bold text-amber-900 block text-[11px] mb-1">
-                      💧 Monthly Home Care:
-                    </span>
-                    <Link 
-                      href="/#recurring" 
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block py-1 text-amber-950 font-medium"
-                    >
-                      • Clean Water Tanks (Remove mud & bacteria)
-                    </Link>
-                    <Link 
-                      href="/#recurring" 
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block py-1 text-amber-950 font-medium"
-                    >
-                      • Pest Control & Fumigation (Bedbugs, roaches)
-                    </Link>
-                    <Link 
-                      href="/#recurring" 
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block py-1 text-amber-950 font-medium"
-                    >
-                      • Deep Sofa & Carpet Machine Wash
-                    </Link>
-                    <Link 
-                      href="/#recurring" 
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block py-1 text-amber-950 font-medium"
-                    >
-                      • Solar Water Heater Service
-                    </Link>
-                  </div>
                   <Link 
                     href="/services?category=plumbing" 
                     onClick={() => setMobileMenuOpen(false)}
@@ -620,7 +721,14 @@ export default function Header() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="block p-2 rounded-lg hover:bg-stone-50 font-semibold text-stone-800"
                   >
-                    ⚡ Electricians & Solar Fitters
+                    ⚡ Electricians & Sockets
+                  </Link>
+                  <Link 
+                    href="/services?category=carpentry_cabinetry" 
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block p-2 rounded-lg hover:bg-stone-50 font-semibold text-stone-800"
+                  >
+                    🪚 Carpenters & Door Locks
                   </Link>
                   <Link 
                     href="/services?category=painting_gypsum" 
@@ -630,11 +738,25 @@ export default function Header() {
                     🎨 Gypsum Ceilings & House Painters
                   </Link>
                   <Link 
-                    href="/services?category=carpentry_cabinetry" 
+                    href="/#recurring" 
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block p-2 rounded-lg hover:bg-stone-50 font-semibold text-stone-800"
+                    className="block p-2 rounded-lg hover:bg-amber-50 font-semibold text-amber-950"
                   >
-                    🪚 Fitted Kitchens & Wardrobes
+                    💧 Water Tank Cleaning & Washing
+                  </Link>
+                  <Link 
+                    href="/#recurring" 
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block p-2 rounded-lg hover:bg-amber-50 font-semibold text-amber-950"
+                  >
+                    🐜 Pest Control & Bedbug Spray
+                  </Link>
+                  <Link 
+                    href="/#recurring" 
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block p-2 rounded-lg hover:bg-amber-50 font-semibold text-amber-950"
+                  >
+                    🧽 Sofa & Carpet Machine Wash
                   </Link>
                 </div>
               )}
@@ -642,6 +764,17 @@ export default function Header() {
 
             {/* Other Mobile Links */}
             <div className="space-y-1">
+              <Link
+                href="/deals"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-2 p-3 rounded-xl font-bold text-sm bg-amber-50 text-amber-950 border border-amber-200"
+              >
+                <Flame className="w-4 h-4 text-rose-600" />
+                <span>Today&apos;s Slashed Deals</span>
+                <span className="text-[10px] bg-rose-600 text-white px-1.5 py-0.2 rounded-full font-black ml-auto">
+                  Hot
+                </span>
+              </Link>
               <Link
                 href="/#rooms"
                 onClick={() => setMobileMenuOpen(false)}
@@ -689,7 +822,7 @@ export default function Header() {
                   What are WhatsApp Deals?
                 </h3>
                 <p className="text-xs sm:text-sm text-stone-600 mt-1 leading-relaxed">
-                  Every week, verified furniture workshops and service fundis share special discounts with our WhatsApp community.
+                  Every week, verified Kenyan sellers and service fundis share special discounts directly with our WhatsApp community.
                 </p>
               </div>
 
@@ -700,9 +833,9 @@ export default function Header() {
                     1
                   </div>
                   <div>
-                    <h5 className="font-bold text-xs text-stone-900">Direct Workshop Prices</h5>
+                    <h5 className="font-bold text-xs text-stone-900">Direct From the Seller</h5>
                     <p className="text-[11px] text-stone-600 leading-snug">
-                      You buy directly from the workshop that makes the item. No brokers, no middlemen markups.
+                      You talk directly with the shop owner or fundi on WhatsApp. No brokers, no extra agent commissions.
                     </p>
                   </div>
                 </div>
@@ -712,9 +845,9 @@ export default function Header() {
                     2
                   </div>
                   <div>
-                    <h5 className="font-bold text-xs text-stone-900">Real Workshops You Can Visit</h5>
+                    <h5 className="font-bold text-xs text-stone-900">Pickup or Delivery Arranged Directly</h5>
                     <p className="text-[11px] text-stone-600 leading-snug">
-                      Every seller has a real physical shop with landmark directions, customer reviews, and a safe Lipa na M-Pesa Till.
+                      You can visit their physical shop to inspect the item, or agree on parcel / rider delivery to your house.
                     </p>
                   </div>
                 </div>
@@ -724,9 +857,9 @@ export default function Header() {
                     3
                   </div>
                   <div>
-                    <h5 className="font-bold text-xs text-stone-900">Delivered Right to Your Door</h5>
+                    <h5 className="font-bold text-xs text-stone-900">Safe Lipa na M-Pesa Payments</h5>
                     <p className="text-[11px] text-stone-600 leading-snug">
-                      Order safely on WhatsApp, confirm delivery to your home in Nairobi or any of the 47 counties in Kenya.
+                      Always confirm the item first. When paying, confirm the registered business name matches before entering your PIN.
                     </p>
                   </div>
                 </div>

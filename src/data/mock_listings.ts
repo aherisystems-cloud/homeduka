@@ -1,4 +1,4 @@
-import { BusinessProfile, HomeService, HomeProduct, HomeRoom } from '../types/schema';
+import { BusinessProfile, HomeService, HomeProduct, HomeRoom, HomeDeal } from '../types/schema';
 
 // ==========================================
 // MASTER ROOM TAXONOMY FOR HOME KENYA
@@ -672,6 +672,211 @@ export const SAMPLE_KENYAN_HOME_PRODUCTS: HomeProduct[] = [
     ],
     is_featured: true,
     created_at: "2026-09-05T08:00:00Z"
+  },
+
+  // 7. Appliances & Electronics - Ramtons Gas Cooker & Oven
+  {
+    id: "prod-cooker-007",
+    business_id: "biz-fineline-kitchens-002",
+    title: "Ramtons 4-Burner Gas Cooker with Electric Oven & Grill (50x50cm)",
+    slug: "ramtons-4-burner-gas-cooker-oven",
+    category: "appliances_electronics",
+    subcategory: "cookers_ovens",
+    room: "kitchen_dining",
+    description: "Stainless steel 4-gas burner standing cooker with push-button auto ignition, spacious electric oven, internal light, and rotisserie grill. 1-year official warranty.",
+    pricing: {
+      price_type: "fixed",
+      regular_price_kes: 34500,
+      negotiable: false
+    },
+    specifications: {
+      material: "Stainless Steel Body & Cast Iron Trivets",
+      dimensions: "50cm x 50cm x 85cm",
+      in_stock: true,
+      is_made_to_order: false,
+      warranty_months: 12
+    },
+    delivery: {
+      nairobi_delivery_fee_kes: 500,
+      delivers_countrywide: false,
+      pickup_available: true
+    },
+    images: [
+      "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80"
+    ],
+    is_featured: true,
+    created_at: "2026-09-10T08:00:00Z"
+  },
+
+  // 8. Appliances & Electronics - Smart TV
+  {
+    id: "prod-tv-008",
+    business_id: "biz-apex-gypsum-004",
+    title: "Hisense 55-Inch 4K UHD Smart Frameless Android TV (Bluetooth, YouTube & Netflix)",
+    slug: "hisense-55-inch-4k-smart-tv",
+    category: "appliances_electronics",
+    subcategory: "tvs_audio",
+    room: "living_room",
+    description: "Crystal clear 4K Ultra HD smart television with bezel-less frame, built-in Google Assistant, Dolby Audio, dual HDMI 2.1 ports, and digital DVB-T2 tuner for free Kenyan local channels.",
+    pricing: {
+      price_type: "fixed",
+      regular_price_kes: 48000,
+      negotiable: true
+    },
+    specifications: {
+      material: "Frameless LED Panel",
+      dimensions: "55 Inch Diagonal Screen",
+      in_stock: true,
+      is_made_to_order: false,
+      warranty_months: 24
+    },
+    delivery: {
+      nairobi_delivery_fee_kes: 500,
+      delivers_countrywide: false,
+      pickup_available: true
+    },
+    images: [
+      "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=800&q=80"
+    ],
+    is_featured: true,
+    created_at: "2026-09-12T08:00:00Z"
+  },
+
+  // 9. Bedding & Decor - Curtains & Sheers
+  {
+    id: "prod-curtains-009",
+    business_id: "biz-woodcraft-kamakis-001",
+    title: "Heavy Thermal Blackout Living Room Curtains with Matching White Sheers",
+    slug: "heavy-thermal-blackout-curtains-sheers",
+    category: "bedding_decor",
+    subcategory: "curtains_sheers",
+    room: "living_room",
+    description: "Custom tailored 3-meter drop blackout velvet curtains with anti-rust metal eyelet rings and high-density soft sheer drapes. Keeps room cool and blocks 95% of sunlight.",
+    pricing: {
+      price_type: "fixed",
+      regular_price_kes: 12500,
+      negotiable: true
+    },
+    specifications: {
+      material: "Heavy Jacquard Velvet & Chiffon Sheers",
+      dimensions: "Set of 2 Panels (3m x 2.8m each)",
+      in_stock: true,
+      is_made_to_order: true,
+      lead_time_days: 2,
+      warranty_months: 12
+    },
+    delivery: {
+      nairobi_delivery_fee_kes: 300,
+      delivers_countrywide: false,
+      pickup_available: true
+    },
+    images: [
+      "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"
+    ],
+    is_featured: true,
+    created_at: "2026-09-15T08:00:00Z"
+  },
+
+  // 10. Bedding & Decor - Living Room Shaggy Carpet
+  {
+    id: "prod-carpet-010",
+    business_id: "biz-cleannest-pro-005",
+    title: "Turkish 7x10 Feet Fluffy High-Pile Shaggy Living Room Carpet",
+    slug: "turkish-fluffy-shaggy-living-room-carpet-7x10",
+    category: "bedding_decor",
+    subcategory: "carpets_rugs",
+    room: "living_room",
+    description: "Super soft non-shedding Turkish shaggy area rug with anti-slip rubber backing. Stain resistant and easy to vacuum clean. Perfect for 7-seater sitting room arrangements.",
+    pricing: {
+      price_type: "fixed",
+      regular_price_kes: 16500,
+      negotiable: false
+    },
+    specifications: {
+      material: "100% Polypropylene Yarn & Anti-Slip Base",
+      dimensions: "7ft x 10ft (Large Living Room Size)",
+      in_stock: true,
+      is_made_to_order: false,
+      warranty_months: 12
+    },
+    delivery: {
+      nairobi_delivery_fee_kes: 500,
+      delivers_countrywide: false,
+      pickup_available: true
+    },
+    images: [
+      "https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=800&q=80"
+    ],
+    is_featured: false,
+    created_at: "2026-09-18T08:00:00Z"
+  },
+
+  // 11. Kitchenware & Utensils - Granitestone Sufuria Cookware Set
+  {
+    id: "prod-sufuria-011",
+    business_id: "biz-fineline-kitchens-002",
+    title: "12-Piece Non-Stick Granite Cookware Set (Sufurias, Frying Pan & Glass Lids)",
+    slug: "12-piece-non-stick-granite-sufuria-set",
+    category: "kitchenware_utensils",
+    subcategory: "cookware_pots",
+    room: "kitchen_dining",
+    description: "Heavy-duty die-cast aluminum pots with stone marble coating. Induction and gas compatible. Scratch resistant, uses zero cooking oil, and features heat-insulated wooden soft-touch handles.",
+    pricing: {
+      price_type: "fixed",
+      regular_price_kes: 9800,
+      negotiable: false
+    },
+    specifications: {
+      material: "Die-Cast Aluminum with Granite Non-Stick Coating",
+      dimensions: "Sizes: 20cm, 24cm, 28cm, 32cm pots + 28cm deep pan",
+      in_stock: true,
+      is_made_to_order: false,
+      warranty_months: 6
+    },
+    delivery: {
+      nairobi_delivery_fee_kes: 300,
+      delivers_countrywide: false,
+      pickup_available: true
+    },
+    images: [
+      "https://images.unsplash.com/photo-1584990347449-a65c275990ec?auto=format&fit=crop&w=800&q=80"
+    ],
+    is_featured: false,
+    created_at: "2026-09-20T08:00:00Z"
+  },
+
+  // 12. Hardware & Paint - Crown Paints Exterior Weatherguard
+  {
+    id: "prod-paint-012",
+    business_id: "biz-apex-gypsum-004",
+    title: "Crown Paints Permacote Ultraguard with Silicone Exterior Paint (20L Bucket)",
+    slug: "crown-paints-permacote-exterior-paint-20l",
+    category: "hardware_building",
+    subcategory: "paints_waterproofing",
+    room: "whole_house",
+    description: "Premium anti-fungal silicone exterior wall finish. 100% waterproof, prevents wall dampness and peeling during rainy seasons. Covers up to 140 sqm per 20L bucket.",
+    pricing: {
+      price_type: "fixed",
+      regular_price_kes: 14800,
+      negotiable: false
+    },
+    specifications: {
+      material: "Silicone Acrylic Emulsion Paint",
+      dimensions: "20 Litre Drum",
+      in_stock: true,
+      is_made_to_order: false,
+      warranty_months: 60
+    },
+    delivery: {
+      nairobi_delivery_fee_kes: 500,
+      delivers_countrywide: false,
+      pickup_available: true
+    },
+    images: [
+      "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80"
+    ],
+    is_featured: false,
+    created_at: "2026-09-22T08:00:00Z"
   }
 ];
 
@@ -881,6 +1086,108 @@ export const SAMPLE_KENYAN_HOME_SERVICES: HomeService[] = [
       "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80"
     ],
     created_at: "2026-09-15T08:00:00Z"
+  },
+
+  // 7. Appliance Repair Fundi (Fridge, Washing Machine, Microwave)
+  {
+    id: "srv-appliance-007",
+    business_id: "biz-solaria-water-003",
+    title: "Refrigerator Gas Refill, Washing Machine & Cooker Repair Fundi",
+    slug: "refrigerator-washing-machine-cooker-repair-nairobi",
+    service_category: "electrical_solar",
+    room: "kitchen_dining",
+    is_recurring: false,
+    description: "Same-day doorstep diagnostic and repair for domestic fridges (gas leaks, thermostat, compressor failure), automatic washing machines, and microwave ovens. Genuine spare parts with 90-day warranty.",
+    pricing: {
+      price_type: "starting_from",
+      starting_price_kes: 1500,
+      unit: "fixed_job",
+      waives_inspection_fee_if_hired: true
+    },
+    service_terms: {
+      emergency_available: true,
+      estimated_duration_hours: 2,
+      materials_included: false,
+      warranty_guarantee_days: 90,
+      service_radius_km: 25
+    },
+    affirmed_commitments: {
+      free_whatsapp_assessment: true,
+      free_local_measurement: true,
+      coverage_note: "Send photo or video of appliance issue on WhatsApp for free fast estimate"
+    },
+    portfolio_photos: [
+      "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80"
+    ],
+    created_at: "2026-09-20T08:00:00Z"
+  },
+
+  // 8. Welder & Metal Fabricator (Window Grills & Gates)
+  {
+    id: "srv-welder-008",
+    business_id: "biz-apex-gypsum-004",
+    title: "Heavy-Duty Window Security Grills, Steel Gates & Balcony Railings",
+    slug: "window-security-grills-steel-gates-welder",
+    service_category: "carpentry_cabinetry",
+    room: "whole_house",
+    is_recurring: false,
+    description: "Custom decorative and burglar-proof window grills, heavy compound security gates, sliding gate rails, and modern balcony railings. Primed with anti-rust red oxide and high-gloss enamel.",
+    pricing: {
+      price_type: "starting_from",
+      starting_price_kes: 4500,
+      unit: "fixed_job",
+      waives_inspection_fee_if_hired: true
+    },
+    service_terms: {
+      emergency_available: false,
+      estimated_duration_hours: 24,
+      materials_included: true,
+      warranty_guarantee_days: 365,
+      service_radius_km: 30
+    },
+    affirmed_commitments: {
+      free_whatsapp_assessment: true,
+      free_local_measurement: true,
+      coverage_note: "Free site measurements for gates & window grills across Nairobi and Kiambu"
+    },
+    portfolio_photos: [
+      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80"
+    ],
+    created_at: "2026-09-22T08:00:00Z"
+  },
+
+  // 9. House Moving & Transport
+  {
+    id: "srv-movers-009",
+    business_id: "biz-cleannest-pro-005",
+    title: "House Moving, Packing Boxes & Enclosed Truck Transport",
+    slug: "house-moving-packing-truck-transport-nairobi",
+    service_category: "moving_relocation",
+    room: "whole_house",
+    is_recurring: false,
+    description: "Stress-free residential moving with enclosed weather-proof trucks, bubble wrap for delicate electronics/TVs, wardrobe boxes, mattress covers, and expert furniture dismantling & reassembly.",
+    pricing: {
+      price_type: "starting_from",
+      starting_price_kes: 8500,
+      unit: "fixed_job",
+      waives_inspection_fee_if_hired: true
+    },
+    service_terms: {
+      emergency_available: true,
+      estimated_duration_hours: 5,
+      materials_included: true,
+      warranty_guarantee_days: 14,
+      service_radius_km: 50
+    },
+    affirmed_commitments: {
+      free_whatsapp_assessment: true,
+      free_local_measurement: true,
+      coverage_note: "Send room photos or inventory list on WhatsApp for instant flat-rate quote"
+    },
+    portfolio_photos: [
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+    ],
+    created_at: "2026-09-25T08:00:00Z"
   }
 ];
 
@@ -942,5 +1249,188 @@ export const MONTHLY_RECURRING_HOME_SERVICES: RecurringHomeServiceCard[] = [
     icon: "🌿",
     description: "Mow the lawn, trim hedges, weed flowers, and sweep the compound.",
     providerId: "biz-apex-gypsum-004"
+  }
+];
+
+// ==========================================
+// SELLER DEALS (Today's Deals vs Deals of the Month)
+// ==========================================
+export const SAMPLE_KENYAN_DEALS: HomeDeal[] = [
+  // TODAY'S DEALS (Flash 24-Hour Price Cuts)
+  {
+    id: "deal-today-01",
+    business_id: "biz-woodcraft-kamakis-001",
+    product_id: "prod-sofa-001",
+    title: "Chesterfield 7-Seater Modern Sofa Set (Kiln-Dried Mahogany)",
+    slug: "chesterfield-7-seater-kamakis-deal",
+    category: "furniture",
+    original_price_kes: 68000,
+    deal_price_kes: 55000,
+    discount_percentage: 19,
+    duration_type: "today",
+    badge_text: "Today Only • Save KSh 13,000",
+    image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80",
+    in_stock: true,
+    slots_left: 2,
+    created_at: "2026-10-08T06:00:00Z",
+    expires_at: "2026-10-08T23:59:59Z"
+  },
+  {
+    id: "deal-today-02",
+    business_id: "biz-apex-gypsum-004",
+    product_id: "prod-tv-008",
+    title: "Hisense 55-Inch 4K UHD Smart Frameless Android TV",
+    slug: "hisense-55-inch-smart-tv-deal",
+    category: "appliances",
+    original_price_kes: 48000,
+    deal_price_kes: 41500,
+    discount_percentage: 14,
+    duration_type: "today",
+    badge_text: "Flash 24H • Save KSh 6,500",
+    image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=800&q=80",
+    in_stock: true,
+    slots_left: 3,
+    created_at: "2026-10-08T06:00:00Z",
+    expires_at: "2026-10-08T23:59:59Z"
+  },
+  {
+    id: "deal-today-03",
+    business_id: "biz-cleannest-pro-005",
+    service_id: "srv-sofa-shampoo-005",
+    title: "7-Seater Sofa & Mattress Deep Machine Foam Wash & Stain Removal",
+    slug: "sofa-deep-machine-wash-today-deal",
+    category: "services",
+    original_price_kes: 3800,
+    deal_price_kes: 2800,
+    discount_percentage: 26,
+    duration_type: "today",
+    badge_text: "Today Only • Save KSh 1,000",
+    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80",
+    in_stock: true,
+    slots_left: 5,
+    created_at: "2026-10-08T06:00:00Z",
+    expires_at: "2026-10-08T23:59:59Z"
+  },
+  {
+    id: "deal-today-04",
+    business_id: "biz-fineline-kitchens-002",
+    product_id: "prod-sufuria-011",
+    title: "12-Piece Non-Stick Granite Sufuria Cookware Set with Glass Lids",
+    slug: "12-piece-non-stick-granite-sufuria-deal",
+    category: "kitchen",
+    original_price_kes: 9800,
+    deal_price_kes: 7500,
+    discount_percentage: 23,
+    duration_type: "today",
+    badge_text: "Flash Deal • Save KSh 2,300",
+    image: "https://images.unsplash.com/photo-1584990347449-a65c275990ec?auto=format&fit=crop&w=800&q=80",
+    in_stock: true,
+    slots_left: 4,
+    created_at: "2026-10-08T06:00:00Z",
+    expires_at: "2026-10-08T23:59:59Z"
+  },
+
+  // DEALS OF THE MONTH (Curated Monthly Price Drops)
+  {
+    id: "deal-month-05",
+    business_id: "biz-woodcraft-kamakis-001",
+    product_id: "prod-bed-002",
+    title: "6x6 Bespoke Storage Bed with 4 Underbed Drawers (Solid Mvule)",
+    slug: "6x6-bespoke-storage-bed-monthly-deal",
+    category: "furniture",
+    original_price_kes: 45000,
+    deal_price_kes: 38000,
+    discount_percentage: 16,
+    duration_type: "month",
+    badge_text: "Deal of the Month • Save KSh 7,000",
+    image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80",
+    in_stock: true,
+    created_at: "2026-10-01T00:00:00Z",
+    expires_at: "2026-10-31T23:59:59Z"
+  },
+  {
+    id: "deal-month-06",
+    business_id: "biz-solaria-water-003",
+    product_id: "prod-solar-water-005",
+    title: "200L High-Pressure Pressurized Solar Water Heater System (EPRA)",
+    slug: "200l-solar-water-heater-monthly-deal",
+    category: "appliances",
+    original_price_kes: 78000,
+    deal_price_kes: 68000,
+    discount_percentage: 13,
+    duration_type: "month",
+    badge_text: "Deal of the Month • Save KSh 10,000",
+    image: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=800&q=80",
+    in_stock: true,
+    created_at: "2026-10-01T00:00:00Z",
+    expires_at: "2026-10-31T23:59:59Z"
+  },
+  {
+    id: "deal-month-07",
+    business_id: "biz-fineline-kitchens-002",
+    product_id: "prod-cooker-007",
+    title: "Ramtons 4-Burner Standing Gas Cooker with Electric Oven & Grill",
+    slug: "ramtons-gas-cooker-monthly-deal",
+    category: "appliances",
+    original_price_kes: 34500,
+    deal_price_kes: 29900,
+    discount_percentage: 13,
+    duration_type: "month",
+    badge_text: "Deal of the Month • Save KSh 4,600",
+    image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80",
+    in_stock: true,
+    created_at: "2026-10-01T00:00:00Z",
+    expires_at: "2026-10-31T23:59:59Z"
+  },
+  {
+    id: "deal-month-08",
+    business_id: "biz-cleannest-pro-005",
+    service_id: "srv-tank-clean-006",
+    title: "Water Tank Deep Cleaning, Mud Extraction & Chlorine Disinfection",
+    slug: "water-tank-cleaning-monthly-deal",
+    category: "services",
+    original_price_kes: 3500,
+    deal_price_kes: 2800,
+    discount_percentage: 20,
+    duration_type: "month",
+    badge_text: "Monthly Upkeep Deal • Save KSh 700",
+    image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
+    in_stock: true,
+    created_at: "2026-10-01T00:00:00Z",
+    expires_at: "2026-10-31T23:59:59Z"
+  },
+  {
+    id: "deal-month-09",
+    business_id: "biz-cleannest-pro-005",
+    product_id: "prod-carpet-010",
+    title: "Turkish 7x10 Feet Fluffy High-Pile Shaggy Living Room Carpet",
+    slug: "turkish-shaggy-carpet-monthly-deal",
+    category: "decor",
+    original_price_kes: 16500,
+    deal_price_kes: 13500,
+    discount_percentage: 18,
+    duration_type: "month",
+    badge_text: "Monthly Decor Deal • Save KSh 3,000",
+    image: "https://images.unsplash.com/photo-1600121848594-d8644e57abab?auto=format&fit=crop&w=800&q=80",
+    in_stock: true,
+    created_at: "2026-10-01T00:00:00Z",
+    expires_at: "2026-10-31T23:59:59Z"
+  },
+  {
+    id: "deal-month-10",
+    business_id: "biz-woodcraft-kamakis-001",
+    product_id: "prod-curtains-009",
+    title: "Heavy Thermal Blackout Living Room Curtains with Matching Sheers",
+    slug: "heavy-blackout-curtains-monthly-deal",
+    category: "decor",
+    original_price_kes: 12500,
+    deal_price_kes: 9800,
+    discount_percentage: 22,
+    duration_type: "month",
+    badge_text: "Monthly Special • Save KSh 2,700",
+    image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
+    in_stock: true,
+    created_at: "2026-10-01T00:00:00Z",
+    expires_at: "2026-10-31T23:59:59Z"
   }
 ];
