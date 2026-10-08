@@ -1,7 +1,15 @@
 import type { Metadata, Viewport } from "next";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-jakarta",
+  display: "swap",
+});
 
 export const viewport: Viewport = {
   themeColor: "#925C47",
@@ -37,7 +45,7 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-title" content="Home Kenya" />
       </head>
-      <body className="min-h-screen flex flex-col bg-[#FDFBF7] text-slate-900 antialiased selection:bg-amber-100 selection:text-amber-900">
+      <body className={`${jakarta.className} ${jakarta.variable} min-h-screen flex flex-col bg-[#FDFBF7] text-slate-900 antialiased selection:bg-amber-100 selection:text-amber-900`}>
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

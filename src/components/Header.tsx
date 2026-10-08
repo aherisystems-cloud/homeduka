@@ -177,11 +177,11 @@ export default function Header() {
                       </div>
                     </div>
 
-                    {/* Column 2: Appliances & Electronics */}
+                    {/* Column 2: Kitchen & Cookware */}
                     <div className="space-y-3">
                       <div className="flex items-center gap-1.5 text-stone-900 font-black text-xs uppercase tracking-wider pb-1 border-b border-stone-100">
-                        <Tv className="w-3.5 h-3.5 text-blue-700" />
-                        <span>Appliances & TV</span>
+                        <Utensils className="w-3.5 h-3.5 text-amber-700" />
+                        <span>Kitchen & Cookware</span>
                       </div>
                       <div className="space-y-1.5 text-xs">
                         <Link 
@@ -190,7 +190,7 @@ export default function Header() {
                           className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
                         >
                           🍳 Cookers & Ovens
-                          <span className="block text-[10px] text-stone-400 font-normal">Gas cookers, electric ovens</span>
+                          <span className="block text-[10px] text-stone-400 font-normal">Standing gas cookers, electric ovens</span>
                         </Link>
                         <Link 
                           href="/#products" 
@@ -205,39 +205,89 @@ export default function Header() {
                           onClick={() => setActiveMegaMenu(null)}
                           className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
                         >
-                          📺 Smart TVs & Audio
-                          <span className="block text-[10px] text-stone-400 font-normal">4K UHD TVs, soundbars</span>
+                          🥘 Sufurias & Cookware Sets
+                          <span className="block text-[10px] text-stone-400 font-normal">Non-stick granite pots, frying pans</span>
                         </Link>
                         <Link 
                           href="/#products" 
                           onClick={() => setActiveMegaMenu(null)}
                           className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
                         >
-                          🧺 Washing Machines
-                          <span className="block text-[10px] text-stone-400 font-normal">Automatic front & top loaders</span>
+                          🥤 Microwaves & Blenders
+                          <span className="block text-[10px] text-stone-400 font-normal">Air fryers, kettles, water dispensers</span>
                         </Link>
                         <Link 
                           href="/#products" 
                           onClick={() => setActiveMegaMenu(null)}
                           className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
                         >
-                          🥤 Blenders & Microwaves
-                          <span className="block text-[10px] text-stone-400 font-normal">Kettles, air fryers, dispensers</span>
+                          🗄️ Kitchen Fitters & Cabinets
+                          <span className="block text-[10px] text-stone-400 font-normal">Granite countertops, pantry units</span>
                         </Link>
                       </div>
                     </div>
 
-                    {/* Column 3: Decor, Curtains & Kitchenware */}
+                    {/* Column 3: TVs & Electronics */}
                     <div className="space-y-3">
                       <div className="flex items-center gap-1.5 text-stone-900 font-black text-xs uppercase tracking-wider pb-1 border-b border-stone-100">
-                        <Sparkles className="w-3.5 h-3.5 text-amber-700" />
-                        <span>Decor & Kitchen</span>
+                        <Tv className="w-3.5 h-3.5 text-blue-700" />
+                        <span>TVs & Electronics</span>
                       </div>
                       <div className="space-y-1.5 text-xs">
                         <Link 
                           href="/#products" 
                           onClick={() => setActiveMegaMenu(null)}
                           className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
+                        >
+                          📺 Smart Android TVs
+                          <span className="block text-[10px] text-stone-400 font-normal">43", 55", 65" 4K UHD smart screens</span>
+                        </Link>
+                        <Link 
+                          href="/#products" 
+                          onClick={() => setActiveMegaMenu(null)}
+                          className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
+                        >
+                          🔊 Soundbars & Woofers
+                          <span className="block text-[10px] text-stone-400 font-normal">Home theatre systems, subwoofers</span>
+                        </Link>
+                        <Link 
+                          href="/#products" 
+                          onClick={() => setActiveMegaMenu(null)}
+                          className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
+                        >
+                          ☀️ Solar & Power Inverters
+                          <span className="block text-[10px] text-stone-400 font-normal">Backup power batteries for blackouts</span>
+                        </Link>
+                        <Link 
+                          href="/#products" 
+                          onClick={() => setActiveMegaMenu(null)}
+                          className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
+                        >
+                          📹 Security CCTV & Cameras
+                          <span className="block text-[10px] text-stone-400 font-normal">Wi-Fi smart cameras, doorbell monitors</span>
+                        </Link>
+                        <Link 
+                          href="/#products" 
+                          onClick={() => setActiveMegaMenu(null)}
+                          className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
+                        >
+                          🔌 Voltage Surge Guards
+                          <span className="block text-[10px] text-stone-400 font-normal">Fridge & TV protectors, extensions</span>
+                        </Link>
+                      </div>
+                    </div>
+
+                    {/* Column 4: Curtains, Bedding & Decor */}
+                    <div className="space-y-3 bg-[#FAF8F5] p-3.5 rounded-2xl border border-stone-200/80">
+                      <div className="flex items-center gap-1.5 text-stone-900 font-black text-xs uppercase tracking-wider pb-1 border-b border-stone-200">
+                        <Sparkles className="w-3.5 h-3.5 text-amber-700" />
+                        <span>Curtains & Decor</span>
+                      </div>
+                      <div className="space-y-1.5 text-xs">
+                        <Link 
+                          href="/#products" 
+                          onClick={() => setActiveMegaMenu(null)}
+                          className="block p-1.5 rounded-lg hover:bg-white text-stone-800 font-semibold"
                         >
                           🪟 Curtains & Sheers
                           <span className="block text-[10px] text-stone-400 font-normal">Blackout curtains, eyelets, rods</span>
@@ -245,76 +295,26 @@ export default function Header() {
                         <Link 
                           href="/#products" 
                           onClick={() => setActiveMegaMenu(null)}
-                          className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
-                        >
-                          🧶 Carpets & Rugs
-                          <span className="block text-[10px] text-stone-400 font-normal">Fluffy shaggy carpets, Turkish rugs</span>
-                        </Link>
-                        <Link 
-                          href="/#products" 
-                          onClick={() => setActiveMegaMenu(null)}
-                          className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
-                        >
-                          🛌 Duvets & Bedding
-                          <span className="block text-[10px] text-stone-400 font-normal">Bedsheets, pillows, duvets</span>
-                        </Link>
-                        <Link 
-                          href="/#products" 
-                          onClick={() => setActiveMegaMenu(null)}
-                          className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
-                        >
-                          🥘 Sufurias & Cookware
-                          <span className="block text-[10px] text-stone-400 font-normal">Non-stick granite sets, pots</span>
-                        </Link>
-                        <Link 
-                          href="/#products" 
-                          onClick={() => setActiveMegaMenu(null)}
-                          className="block p-1.5 rounded-lg hover:bg-stone-50 text-stone-800 font-semibold"
-                        >
-                          💡 Lighting & Chandeliers
-                          <span className="block text-[10px] text-stone-400 font-normal">Pendants, LED ceiling lights</span>
-                        </Link>
-                      </div>
-                    </div>
-
-                    {/* Column 4: Water, Hardware & Building */}
-                    <div className="space-y-3 bg-[#FAF8F5] p-3.5 rounded-2xl border border-stone-200/80">
-                      <div className="flex items-center gap-1.5 text-stone-900 font-black text-xs uppercase tracking-wider pb-1 border-b border-stone-200">
-                        <Paintbrush className="w-3.5 h-3.5 text-stone-700" />
-                        <span>Plumbing & Building</span>
-                      </div>
-                      <div className="space-y-1.5 text-xs">
-                        <Link 
-                          href="/#products" 
-                          onClick={() => setActiveMegaMenu(null)}
                           className="block p-1.5 rounded-lg hover:bg-white text-stone-800 font-semibold"
                         >
-                          🚿 Instant Showers & Heaters
-                          <span className="block text-[10px] text-stone-400 font-normal">Lorenzetti, Enerbras, taps</span>
+                          🧶 Shaggy Carpets & Rugs
+                          <span className="block text-[10px] text-stone-400 font-normal">Turkish rugs, fluffy floor mats</span>
                         </Link>
                         <Link 
                           href="/#products" 
                           onClick={() => setActiveMegaMenu(null)}
                           className="block p-1.5 rounded-lg hover:bg-white text-stone-800 font-semibold"
                         >
-                          ☀️ Solar Water Heaters
-                          <span className="block text-[10px] text-stone-400 font-normal">Solar heating, pressure pumps</span>
+                          🛌 Duvets & Bed Sheets
+                          <span className="block text-[10px] text-stone-400 font-normal">Cotton bedding, comforter sets</span>
                         </Link>
                         <Link 
                           href="/#products" 
                           onClick={() => setActiveMegaMenu(null)}
                           className="block p-1.5 rounded-lg hover:bg-white text-stone-800 font-semibold"
                         >
-                          🎨 House Paints & Waterproof
-                          <span className="block text-[10px] text-stone-400 font-normal">Crown, Duracoat, exterior</span>
-                        </Link>
-                        <Link 
-                          href="/#products" 
-                          onClick={() => setActiveMegaMenu(null)}
-                          className="block p-1.5 rounded-lg hover:bg-white text-stone-800 font-semibold"
-                        >
-                          🧱 Floor Tiles & Gypsum
-                          <span className="block text-[10px] text-stone-400 font-normal">Porcelain tiles, gypsum boards</span>
+                          🖼️ Wall Art & Full Mirrors
+                          <span className="block text-[10px] text-stone-400 font-normal">Framed canvases, LED mirrors</span>
                         </Link>
                       </div>
 
@@ -586,14 +586,14 @@ export default function Header() {
             </Link>
           </nav>
 
-          {/* Right Actions: List Shop CTA + Mobile Hamburger */}
+          {/* Right Actions: Sell / Add Product CTA + Mobile Hamburger */}
           <div className="flex items-center gap-2">
             <Link
               href="/portal/demo-token"
               className="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-2 rounded-xl bg-stone-900 text-white hover:bg-stone-800 shadow-sm transition active:scale-95"
             >
               <PlusCircle className="w-3.5 h-3.5 text-amber-300" />
-              <span>List / Claim Shop</span>
+              <span>Sell / Add Product or Service</span>
             </Link>
 
             {/* Mobile Hamburger Button */}
@@ -661,21 +661,21 @@ export default function Header() {
                     onClick={() => setMobileMenuOpen(false)}
                     className="block p-2 rounded-lg hover:bg-stone-50 font-semibold text-stone-800"
                   >
-                    📺 Appliances & Electronics (Cookers, Fridges, TVs)
+                    🍳 Kitchen & Cookware (Cookers, Fridges, Sufurias)
                   </Link>
                   <Link 
                     href="/#products" 
                     onClick={() => setMobileMenuOpen(false)}
                     className="block p-2 rounded-lg hover:bg-stone-50 font-semibold text-stone-800"
                   >
-                    🪟 Curtains, Bedding & Carpets
+                    📱 TVs & Electronics (Smart TVs, Soundbars, Solar)
                   </Link>
                   <Link 
                     href="/#products" 
                     onClick={() => setMobileMenuOpen(false)}
                     className="block p-2 rounded-lg hover:bg-stone-50 font-semibold text-stone-800"
                   >
-                    🥘 Kitchenware & Sufurias
+                    🪟 Curtains, Bedding & Decor (Blackout Curtains, Carpets)
                   </Link>
                   <Link 
                     href="/#products" 
@@ -790,6 +790,18 @@ export default function Header() {
               >
                 <span>Buyer Guides</span>
               </Link>
+
+              {/* Seller / Fundi Access */}
+              <div className="pt-2 border-t border-stone-200">
+                <Link
+                  href="/portal/demo-token"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="w-full flex items-center justify-center gap-2 p-3 rounded-2xl bg-stone-900 text-white font-bold text-sm shadow-sm active:scale-98 transition"
+                >
+                  <PlusCircle className="w-4 h-4 text-amber-300" />
+                  <span>Sell / Add Product or Service</span>
+                </Link>
+              </div>
             </div>
           </div>
         )}

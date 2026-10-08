@@ -94,21 +94,21 @@ export default async function ShopDetailPage({
                 </div>
               </div>
 
-              {/* Unclaimed Claim Banner */}
+              {/* Owner Portal Access */}
               {!business.verification.is_claimed && (
                 <div className="p-4 bg-amber-50 border-b border-amber-200 flex flex-wrap items-center justify-between gap-3 text-xs">
                   <div className="flex items-center gap-2">
                     <Sparkles className="w-4 h-4 text-amber-700 shrink-0" />
                     <div>
-                      <strong className="text-amber-950 block">Is this your workshop?</strong>
-                      <span className="text-amber-800 text-[11px]">This profile was pre-listed based on customer recommendations. Claim it free to manage your products.</span>
+                      <strong className="text-amber-950 block">Are you the owner of this business?</strong>
+                      <span className="text-amber-800 text-[11px]">Add your products, update prices, and create flash deals directly from your seller portal.</span>
                     </div>
                   </div>
                   <Link
                     href="/portal/demo-token"
                     className="px-3.5 py-1.5 rounded-xl bg-amber-700 hover:bg-amber-800 text-white font-bold text-xs shadow-xs transition"
                   >
-                    Claim This Business
+                    Manage Products & Services
                   </Link>
                 </div>
               )}

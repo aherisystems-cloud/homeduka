@@ -26,7 +26,7 @@ import { HomeRoom } from '../types/schema';
 
 export default function HomePage() {
   const [selectedRoom, setSelectedRoom] = useState<HomeRoom | 'all'>('all');
-  const [viewType, setViewType] = useState<'all' | 'furniture' | 'appliances' | 'decor' | 'services' | 'recurring'>('all');
+  const [viewType, setViewType] = useState<'all' | 'furniture' | 'kitchen' | 'electronics' | 'decor' | 'services' | 'recurring'>('all');
   const [selectedRegionId, setSelectedRegionId] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
@@ -36,6 +36,7 @@ export default function HomePage() {
     { label: "6x6 Storage Bed", query: "bed" },
     { label: "Gas Cooker & Oven", query: "cooker" },
     { label: "55 Inch Smart TV", query: "tv" },
+    { label: "Non-Stick Sufurias", query: "sufuria" },
     { label: "Blackout Curtains", query: "curtains" },
     { label: "Sofa Steam Wash", query: "shampoo" },
     { label: "Water Tank Cleaning", query: "tank" },
@@ -53,10 +54,13 @@ export default function HomePage() {
     if (viewType === 'furniture' && prod.category !== 'furniture' && prod.category !== 'carpentry_cabinetry') {
       return false;
     }
-    if (viewType === 'appliances' && prod.category !== 'appliances_electronics' && prod.category !== 'electrical_solar') {
+    if (viewType === 'kitchen' && prod.category !== 'kitchenware_utensils' && prod.subcategory !== 'cookers_ovens' && prod.room !== 'kitchen_dining') {
       return false;
     }
-    if (viewType === 'decor' && prod.category !== 'bedding_decor') {
+    if (viewType === 'electronics' && prod.category !== 'appliances_electronics' && prod.category !== 'electrical_solar' && prod.subcategory !== 'tvs_audio') {
+      return false;
+    }
+    if (viewType === 'decor' && prod.category !== 'bedding_decor' && prod.subcategory !== 'curtains_sheers' && prod.subcategory !== 'carpets_rugs') {
       return false;
     }
 
@@ -111,18 +115,18 @@ export default function HomePage() {
       {/* 1. HERO SECTION: VISUAL, ACTION-ORIENTED, IMMEDIATE SHOPPING MODE */}
       <section className="bg-white rounded-3xl p-5 sm:p-8 border border-stone-200/90 shadow-2xs space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div className="max-w-2xl">
+          <div className="max-w-3xl">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-900 border border-amber-200/70 text-xs font-bold mb-2.5">
               <ShieldCheck className="w-4 h-4 text-amber-700" />
-              <span>Kenya&apos;s Home Marketplace • Verified Sellers & Fundis</span>
+              <span>Kenya&apos;s Complete Home Marketplace • Direct Verified Contacts</span>
             </div>
 
-            <h1 className="text-2xl sm:text-4xl font-black text-stone-900 tracking-tight leading-tight">
-              Find Furniture, Appliances & <span className="text-brand-700">Fundis Near You</span>
+            <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-stone-900 tracking-tight leading-tight">
+              Everything For Your Home — <span className="text-brand-700">All In One Place</span>
             </h1>
 
-            <p className="text-xs sm:text-sm text-stone-600 mt-1">
-              Search real products and vetted fundis across Nairobi, Kiambu, Mombasa, Nakuru, and all counties.
+            <p className="text-xs sm:text-sm md:text-base text-stone-600 mt-2 leading-relaxed">
+              Kila kitu cha nyumba yako: Buy living room furniture, beds, kitchen cookers, decor, and electronics — or hire vetted local fundis, plumbers, electricians, and monthly home care in your neighborhood.
             </p>
           </div>
 
@@ -139,10 +143,47 @@ export default function HomePage() {
                 Today&apos;s Slashed Deals
               </span>
               <span className="text-[11px] text-amber-800">
-                Up to 26% OFF Sofas, TVs & Services →
+                Up to 26% OFF Sofas, TVs, Kitchen & Fundis →
               </span>
             </div>
           </Link>
+        </div>
+
+        {/* Real Kenyan People Trust Strip */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-3.5 bg-amber-50/60 rounded-2xl border border-amber-200/70">
+          <div className="flex items-center gap-3">
+            <img 
+              src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=120&q=80" 
+              alt="Francis Kamau - WoodCraft Kamakis" 
+              className="w-10 h-10 rounded-full object-cover ring-2 ring-amber-500/40 shrink-0" 
+            />
+            <div>
+              <span className="text-xs font-bold text-stone-900 block leading-tight">Local Workshop Makers</span>
+              <span className="text-[11px] text-amber-900">Francis Kamau • Kamakis Furniture</span>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <img 
+              src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=120&q=80" 
+              alt="John Mwangi - Kilimani Plumber" 
+              className="w-10 h-10 rounded-full object-cover ring-2 ring-blue-500/40 shrink-0" 
+            />
+            <div>
+              <span className="text-xs font-bold text-stone-900 block leading-tight">Vetted Local Fundis</span>
+              <span className="text-[11px] text-blue-900">John Mwangi • EPRA Plumber, Kilimani</span>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <img 
+              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&q=80" 
+              alt="Wanjiru - Happy Homeowner" 
+              className="w-10 h-10 rounded-full object-cover ring-2 ring-emerald-500/40 shrink-0" 
+            />
+            <div>
+              <span className="text-xs font-bold text-stone-900 block leading-tight">Made for Kenyan Homes</span>
+              <span className="text-[11px] text-emerald-900">Direct WhatsApp • Zero Broker Fees</span>
+            </div>
+          </div>
         </div>
 
         {/* Search Bar */}
@@ -248,15 +289,27 @@ export default function HomePage() {
           </button>
 
           <button
-            onClick={() => setViewType('appliances')}
+            onClick={() => setViewType('kitchen')}
             className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer ${
-              viewType === 'appliances'
+              viewType === 'kitchen'
+                ? 'bg-stone-900 text-white shadow-xs'
+                : 'bg-white text-stone-700 hover:bg-stone-100 border border-stone-200'
+            }`}
+          >
+            <Utensils className="w-3.5 h-3.5 text-amber-600" />
+            <span>🍳 Kitchen & Cookware</span>
+          </button>
+
+          <button
+            onClick={() => setViewType('electronics')}
+            className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer ${
+              viewType === 'electronics'
                 ? 'bg-stone-900 text-white shadow-xs'
                 : 'bg-white text-stone-700 hover:bg-stone-100 border border-stone-200'
             }`}
           >
             <Tv className="w-3.5 h-3.5 text-blue-500" />
-            <span>📺 Appliances & TV</span>
+            <span>📱 TVs & Electronics</span>
           </button>
 
           <button
@@ -323,8 +376,8 @@ export default function HomePage() {
         {/* LEFT COLUMN: LISTINGS & SECTIONS */}
         <div className="flex-1 min-w-0 w-full space-y-10">
 
-          {/* A. FEATURED HOME PRODUCTS (Furniture, Appliances, Bedding, Kitchen) */}
-          {(viewType === 'all' || viewType === 'furniture' || viewType === 'appliances' || viewType === 'decor') && (
+          {/* A. FEATURED HOME PRODUCTS (Furniture, Kitchen, Electronics, Decor) */}
+          {(viewType === 'all' || viewType === 'furniture' || viewType === 'kitchen' || viewType === 'electronics' || viewType === 'decor') && (
             <section id="products" className="space-y-4">
               <div className="flex items-center justify-between">
                 <div>
@@ -335,7 +388,7 @@ export default function HomePage() {
                     Featured Home Products ({filteredProducts.length})
                   </h2>
                   <p className="text-xs text-stone-500">
-                    Solid hardwood furniture, appliances, curtains, kitchenware, and building supplies direct from local sellers
+                    Solid hardwood furniture, gas cookers, kitchenware, smart TVs, blackout curtains, and carpets direct from verified sellers
                   </p>
                 </div>
               </div>

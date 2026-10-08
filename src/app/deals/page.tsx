@@ -16,9 +16,9 @@ export default function DealsPage() {
   const categories = [
     { id: 'all', label: 'All Deals' },
     { id: 'furniture', label: '🛋️ Furniture' },
-    { id: 'appliances', label: '📺 Appliances & TV' },
+    { id: 'kitchen', label: '🍳 Kitchen & Cookware' },
+    { id: 'electronics', label: '📱 TVs & Electronics' },
     { id: 'decor', label: '🪟 Curtains & Decor' },
-    { id: 'kitchen', label: '🥘 Kitchenware' },
     { id: 'services', label: '🔧 Fundis & Cleaning' }
   ];
 
@@ -47,7 +47,7 @@ export default function DealsPage() {
           </h1>
 
           <p className="text-xs sm:text-sm text-stone-300 leading-relaxed mb-6">
-            Verified furniture workshops, appliance dealers, and fundis slash their own prices for 24 hours or the whole month. Chat directly on WhatsApp to claim your discount before it expires.
+            Verified furniture workshops, kitchenware shops, electronics dealers, and fundis slash their own prices for 24 hours or the whole month. Chat directly on WhatsApp to claim your discount before it expires.
           </p>
 
           {/* Tab Switcher: Today's Deals vs Deals of the Month */}
