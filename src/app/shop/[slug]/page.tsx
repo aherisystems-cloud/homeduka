@@ -67,17 +67,17 @@ export default async function ShopDetailPage({
 
                 <div className="absolute bottom-6 left-6 right-6 text-white">
                   <div className="flex flex-wrap items-center gap-2 mb-2">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-600 text-white shadow-sm">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#B45309] text-white shadow-sm">
                       <Store className="w-3.5 h-3.5" />
                       <span>{business.verification.is_claimed ? 'Verified Local Shop' : 'Pre-Listed Shop'}</span>
                     </span>
                     <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur text-white">
-                      <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                      <Star className="w-3.5 h-3.5 fill-[#B45309] text-[#B45309]" />
                       <span>{business.reputation.rating} ({business.reputation.total_reviews} reviews)</span>
                     </span>
                     {business.verification.guarantee_or_warranty_offered && (
                       <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur text-white">
-                        <Award className="w-3.5 h-3.5 text-amber-300" />
+                        <Award className="w-3.5 h-3.5 text-white" />
                         <span>Warranty Provided</span>
                       </span>
                     )}
@@ -96,17 +96,17 @@ export default async function ShopDetailPage({
 
               {/* Owner Portal Access */}
               {!business.verification.is_claimed && (
-                <div className="p-4 bg-amber-50 border-b border-amber-200 flex flex-wrap items-center justify-between gap-3 text-xs">
+                <div className="p-4 bg-stone-100 border-b border-stone-200 flex flex-wrap items-center justify-between gap-3 text-xs">
                   <div className="flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-amber-700 shrink-0" />
+                    <Sparkles className="w-4 h-4 text-[#B45309] shrink-0" />
                     <div>
-                      <strong className="text-amber-950 block">Are you the owner of this business?</strong>
-                      <span className="text-amber-800 text-[11px]">Add your products, update prices, and create flash deals directly from your seller portal.</span>
+                      <strong className="text-stone-900 block">Are you the owner of this business?</strong>
+                      <span className="text-stone-600 text-[11px]">Add your products, update prices, and create flash deals directly from your seller portal.</span>
                     </div>
                   </div>
                   <Link
                     href="/portal/demo-token"
-                    className="px-3.5 py-1.5 rounded-xl bg-amber-700 hover:bg-amber-800 text-white font-bold text-xs shadow-xs transition"
+                    className="px-3.5 py-1.5 rounded-xl bg-[#B45309] hover:bg-[#92400E] text-white font-bold text-xs shadow-xs transition"
                   >
                     Manage Products & Services
                   </Link>
@@ -117,7 +117,7 @@ export default async function ShopDetailPage({
               <div className="p-6 bg-[#FAF8F5] border-b border-stone-200 flex flex-wrap items-center justify-between gap-4">
                 <div className="space-y-1">
                   <div className="flex items-center gap-2 text-xs font-medium text-stone-700">
-                    <MapPin className="w-4 h-4 text-brand-700 shrink-0" />
+                    <MapPin className="w-4 h-4 text-[#B45309] shrink-0" />
                     <span><strong>Landmark:</strong> {business.location.landmark}</span>
                   </div>
                   <p className="text-[11px] text-stone-500 pl-6">
@@ -132,7 +132,7 @@ export default async function ShopDetailPage({
                     rel="noopener noreferrer"
                     className="w-full md:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-stone-900 hover:bg-stone-800 text-white font-bold text-sm shadow-md transition active:scale-95"
                   >
-                    <MessageSquare className="w-4 h-4 text-amber-300" />
+                    <MessageSquare className="w-4 h-4 text-emerald-400" />
                     <span>Chat on WhatsApp</span>
                   </a>
                 </div>
@@ -149,18 +149,18 @@ export default async function ShopDetailPage({
                   </div>
 
                   {/* Shop Customer Guarantees */}
-                  <div className="bg-amber-50/60 rounded-2xl p-4 border border-amber-200">
-                    <h3 className="text-xs font-black uppercase tracking-wider text-amber-950 mb-2.5 flex items-center gap-1.5">
-                      <ShieldCheck className="w-4 h-4 text-amber-800" />
+                  <div className="bg-stone-100 rounded-2xl p-4 border border-stone-200">
+                    <h3 className="text-xs font-black uppercase tracking-wider text-stone-900 mb-2.5 flex items-center gap-1.5">
+                      <ShieldCheck className="w-4 h-4 text-[#B45309]" />
                       <span>What This Shop Guarantees</span>
                     </h3>
-                    <div className="space-y-2 text-xs text-amber-950">
+                    <div className="space-y-2 text-xs text-stone-700">
                       <div className="flex items-center gap-2">
-                        <Camera className="w-4 h-4 text-amber-800 shrink-0" />
+                        <Camera className="w-4 h-4 text-[#B45309] shrink-0" />
                         <span className="font-semibold">Free WhatsApp Photo Check: Send a photo or video to get a fast price</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Ruler className="w-4 h-4 text-amber-800 shrink-0" />
+                        <Ruler className="w-4 h-4 text-[#B45309] shrink-0" />
                         <span className="font-semibold">Free Site Visit & Measurement in {business.location.neighborhood}</span>
                       </div>
                     </div>
@@ -174,31 +174,31 @@ export default async function ShopDetailPage({
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-stone-700">
                       {business.attributes.uses_solid_hardwood && (
                         <div className="flex items-center gap-2">
-                          <Check className="w-4 h-4 text-amber-700" />
+                          <Check className="w-4 h-4 text-[#B45309]" />
                           <span>Kiln-Dried Solid Hardwood (Mahogany, Mvule)</span>
                         </div>
                       )}
                       {business.attributes.delivery_available && (
                         <div className="flex items-center gap-2">
-                          <Check className="w-4 h-4 text-amber-700" />
+                          <Check className="w-4 h-4 text-[#B45309]" />
                           <span>Delivery Available Across Kenya</span>
                         </div>
                       )}
                       {business.attributes.custom_orders_accepted && (
                         <div className="flex items-center gap-2">
-                          <Check className="w-4 h-4 text-amber-700" />
+                          <Check className="w-4 h-4 text-[#B45309]" />
                           <span>Bespoke & Custom Dimensions</span>
                         </div>
                       )}
                       {business.attributes.written_warranty_provided && (
                         <div className="flex items-center gap-2">
-                          <Check className="w-4 h-4 text-amber-700" />
+                          <Check className="w-4 h-4 text-[#B45309]" />
                           <span>Written Workmanship Warranty Included</span>
                         </div>
                       )}
                       {business.attributes.has_customer_parking && (
                         <div className="flex items-center gap-2">
-                          <Check className="w-4 h-4 text-amber-700" />
+                          <Check className="w-4 h-4 text-[#B45309]" />
                           <span>Free Customer Parking & Showroom Viewing</span>
                         </div>
                       )}
@@ -225,7 +225,7 @@ export default async function ShopDetailPage({
 
                   <div>
                     <span className="font-semibold text-stone-400 block mb-1">Response Time</span>
-                    <p className="text-amber-900 font-medium">⚡ Replies in ~{business.reputation.response_time_minutes} minutes on WhatsApp</p>
+                    <p className="text-emerald-700 font-medium">⚡ Replies in ~{business.reputation.response_time_minutes} minutes on WhatsApp</p>
                   </div>
                 </div>
               </div>
@@ -236,7 +236,7 @@ export default async function ShopDetailPage({
               <section className="my-8">
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-amber-900 bg-amber-50 px-2.5 py-0.5 rounded-md border border-amber-200">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-stone-800 bg-stone-100 px-2.5 py-0.5 rounded-md border border-stone-200">
                       Showroom Catalog
                     </span>
                     <h2 className="text-xl font-bold text-stone-900 mt-1">Products from this Shop</h2>
@@ -289,7 +289,7 @@ export default async function ShopDetailPage({
           <span className="text-xs font-bold text-stone-900 block truncate max-w-[180px]">
             {business.business_name}
           </span>
-          <span className="text-[11px] text-amber-800 font-semibold">Replies in ~8m</span>
+          <span className="text-[11px] text-emerald-700 font-semibold">Replies in ~8m</span>
         </div>
         <a
           href={whatsappUrl}
@@ -297,7 +297,7 @@ export default async function ShopDetailPage({
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 px-5 py-3 rounded-xl bg-stone-900 text-white font-bold text-xs shadow-md"
         >
-          <MessageSquare className="w-4 h-4 text-amber-300" />
+          <MessageSquare className="w-4 h-4 text-emerald-400" />
           <span>Chat WhatsApp</span>
         </a>
       </div>

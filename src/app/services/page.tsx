@@ -79,13 +79,13 @@ function ServicesContent() {
       {/* Hero Header & Verified Affirmations Explainer */}
       <div className="bg-white rounded-3xl p-6 sm:p-10 border border-stone-200/90 shadow-2xs">
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-900 border border-amber-200/70 text-xs font-bold mb-3">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-100 text-stone-800 border border-stone-200 text-xs font-bold mb-3">
             <ShieldCheck className="w-4 h-4 text-[#B45309]" />
             <span>HomeDuka Fundi Directory • Real Locations • Verified M-Pesa Tills</span>
           </div>
 
           <h1 className="text-2xl sm:text-4xl font-black text-stone-900 tracking-tight leading-tight mb-3">
-            Trusted Home Services & Fundis <span className="text-brand-700">Across Kenya</span>
+            Trusted Home Services & Fundis <span className="text-[#B45309]">Across Kenya</span>
           </h1>
 
           <p className="text-xs sm:text-sm text-stone-600 leading-relaxed mb-6">
@@ -95,7 +95,7 @@ function ServicesContent() {
           {/* Explicit Guarantees Box */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-[#FAF8F5] rounded-2xl p-4 border border-stone-200 text-xs">
             <div className="flex items-start gap-2.5">
-              <div className="w-6 h-6 rounded-lg bg-amber-800 text-white flex items-center justify-center shrink-0 mt-0.5">
+              <div className="w-6 h-6 rounded-lg bg-[#B45309] text-white flex items-center justify-center shrink-0 mt-0.5">
                 <Camera className="w-3.5 h-3.5" />
               </div>
               <div>
@@ -220,9 +220,9 @@ function ServicesContent() {
               href="https://wa.me/254712345678?text=Habari%20Home%20Kenya,%20natafuta%20fundi%20wa%20specialized%20project."
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-900 bg-amber-100 hover:bg-amber-200 px-3.5 py-1.5 rounded-xl transition"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-stone-900 hover:bg-stone-800 px-3.5 py-1.5 rounded-xl transition shadow-xs"
             >
-              <MessageSquare className="w-3.5 h-3.5 text-amber-800" />
+              <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
               <span>Ask for a Certified Contractor on WhatsApp</span>
             </a>
           </div>

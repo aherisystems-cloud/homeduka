@@ -35,15 +35,15 @@ export default function DealsPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 min-h-[85vh]">
       {/* 1. HERO HEADER */}
-      <div className="bg-gradient-to-r from-stone-900 via-amber-950 to-stone-900 rounded-3xl p-6 sm:p-10 text-white border border-amber-900/40 shadow-sm relative overflow-hidden">
+      <div className="bg-gradient-to-r from-stone-900 via-stone-800 to-stone-900 rounded-3xl p-6 sm:p-10 text-white border border-stone-800 shadow-sm relative overflow-hidden">
         <div className="max-w-3xl relative z-10">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold mb-3 border border-amber-500/30">
-            <Flame className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-stone-200 text-xs font-bold mb-3 border border-white/10">
+            <Flame className="w-3.5 h-3.5 text-rose-500 animate-pulse" />
             <span>Verified Price Slashes • Direct From Kenyan Sellers</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-black tracking-tight leading-tight mb-2">
-            HomeDuka <span className="text-amber-400">Deals</span>
+            HomeDuka <span className="text-[#B45309]">Deals</span>
           </h1>
 
           <p className="text-xs sm:text-sm text-stone-300 leading-relaxed mb-6">
@@ -56,13 +56,13 @@ export default function DealsPage() {
               onClick={() => setActiveTab('today')}
               className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold transition cursor-pointer ${
                 activeTab === 'today'
-                  ? 'bg-amber-500 text-stone-950 shadow-md'
+                  ? 'bg-[#B45309] text-white shadow-md'
                   : 'text-stone-300 hover:text-white hover:bg-white/5'
               }`}
             >
-              <Flame className="w-4 h-4 text-rose-600" />
+              <Flame className="w-4 h-4 text-rose-300" />
               <span>Today&apos;s Deals ({todayCount})</span>
-              <span className="text-[10px] bg-rose-500/30 text-stone-950 px-1.5 py-0.2 rounded-full font-black">
+              <span className="text-[10px] bg-white/20 text-white px-1.5 py-0.2 rounded-full font-black">
                 24H Flash
               </span>
             </button>
@@ -71,13 +71,13 @@ export default function DealsPage() {
               onClick={() => setActiveTab('month')}
               className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold transition cursor-pointer ${
                 activeTab === 'month'
-                  ? 'bg-amber-500 text-stone-950 shadow-md'
+                  ? 'bg-[#B45309] text-white shadow-md'
                   : 'text-stone-300 hover:text-white hover:bg-white/5'
               }`}
             >
-              <Calendar className="w-4 h-4 text-emerald-800" />
+              <Calendar className="w-4 h-4 text-emerald-300" />
               <span>Deals of the Month ({monthCount})</span>
-              <span className="text-[10px] bg-emerald-500/30 text-stone-950 px-1.5 py-0.2 rounded-full font-black">
+              <span className="text-[10px] bg-white/20 text-white px-1.5 py-0.2 rounded-full font-black">
                 Monthly
               </span>
             </button>
@@ -85,7 +85,7 @@ export default function DealsPage() {
         </div>
 
         {/* Subtle background glow */}
-        <div className="absolute right-0 top-0 bottom-0 w-1/3 opacity-15 bg-radial from-amber-400 to-transparent pointer-events-none hidden md:block" />
+        <div className="absolute right-0 top-0 bottom-0 w-1/3 opacity-15 bg-radial from-[#B45309]/30 to-transparent pointer-events-none hidden md:block" />
       </div>
 
       {/* 2. CATEGORY FILTER TABS */}
@@ -107,14 +107,14 @@ export default function DealsPage() {
 
       {/* 3. TIME REMAINING BANNER FOR TODAY'S DEALS */}
       {activeTab === 'today' && (
-        <div className="p-4 bg-amber-50 rounded-2xl border border-amber-200 flex flex-wrap items-center justify-between gap-3 text-xs">
-          <div className="flex items-center gap-2 text-amber-950">
-            <Clock className="w-4 h-4 text-amber-700 shrink-0" />
+        <div className="p-4 bg-stone-100 rounded-2xl border border-stone-200 flex flex-wrap items-center justify-between gap-3 text-xs">
+          <div className="flex items-center gap-2 text-stone-800">
+            <Clock className="w-4 h-4 text-[#B45309] shrink-0" />
             <span className="font-semibold">
               Today&apos;s flash deals expire tonight at <strong>11:59 PM</strong>. Prices reset back to normal tomorrow.
             </span>
           </div>
-          <span className="text-[11px] font-bold text-amber-900 bg-amber-100 px-2.5 py-1 rounded-full">
+          <span className="text-[11px] font-bold text-[#B45309] bg-stone-200 px-2.5 py-1 rounded-full">
             ⚡ First Come, First Served
           </span>
         </div>
@@ -137,7 +137,7 @@ export default function DealsPage() {
                 key={deal.id}
                 id={deal.slug}
                 className={`bg-white rounded-3xl border overflow-hidden shadow-2xs hover:shadow-md transition flex flex-col justify-between group scroll-mt-24 ${
-                  deal.is_sponsored ? 'border-amber-400 ring-2 ring-amber-400/20' : 'border-stone-200'
+                  deal.is_sponsored ? 'border-[#B45309] ring-2 ring-[#B45309]/20' : 'border-stone-200'
                 }`}
               >
                 <div>
@@ -154,12 +154,12 @@ export default function DealsPage() {
                     <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
                       <div className="flex items-center gap-1.5 flex-wrap">
                         <span className="px-2.5 py-1 rounded-full text-[11px] font-black bg-rose-600 text-white shadow-xs flex items-center gap-1">
-                          <Flame className="w-3 h-3 text-amber-300" />
+                          <Flame className="w-3 h-3 text-white" />
                           <span>-{deal.discount_percentage}% OFF</span>
                         </span>
                         {deal.is_sponsored && (
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-amber-500 text-stone-950 shadow-xs flex items-center gap-1">
-                            <Sparkles className="w-2.5 h-2.5 text-stone-950" />
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-[#B45309] text-white shadow-xs flex items-center gap-1">
+                            <Sparkles className="w-2.5 h-2.5 text-white" />
                             <span>SPONSORED</span>
                           </span>
                         )}
@@ -172,7 +172,7 @@ export default function DealsPage() {
 
                     {/* Bottom Slots Remaining */}
                     {deal.slots_left && (
-                      <div className="absolute bottom-3 left-3 px-2 py-0.5 rounded-md text-[10px] font-bold bg-stone-900/80 text-amber-300 backdrop-blur">
+                      <div className="absolute bottom-3 left-3 px-2 py-0.5 rounded-md text-[10px] font-bold bg-stone-900/80 text-stone-200 backdrop-blur">
                         Only {deal.slots_left} slots left at this price
                       </div>
                     )}
@@ -181,7 +181,7 @@ export default function DealsPage() {
                   {/* Body Content */}
                   <div className="p-5 space-y-3">
                     <div>
-                      <span className="text-[10px] font-black uppercase tracking-wider text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200 inline-block mb-1">
+                      <span className="text-[10px] font-black uppercase tracking-wider text-[#B45309] bg-stone-100 px-2 py-0.5 rounded border border-stone-200 inline-block mb-1">
                         {deal.badge_text}
                       </span>
                       <h3 className="font-bold text-stone-900 text-sm sm:text-base leading-snug line-clamp-2">
@@ -194,10 +194,10 @@ export default function DealsPage() {
                       <div className="bg-[#FAF8F5] rounded-xl p-2.5 border border-stone-200/70 text-xs">
                         <Link 
                           href={`/shop/${seller.slug}`}
-                          className="font-bold text-stone-900 hover:text-brand-700 flex items-center gap-1 truncate"
+                          className="font-bold text-stone-900 hover:text-[#B45309] flex items-center gap-1 truncate"
                         >
                           <span>{seller.business_name}</span>
-                          <ShieldCheck className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+                          <ShieldCheck className="w-3.5 h-3.5 text-[#B45309] shrink-0" />
                         </Link>
                         <div className="flex items-center gap-1 text-[11px] text-stone-500 mt-0.5">
                           <MapPin className="w-3 h-3 text-stone-400 shrink-0" />
@@ -251,9 +251,9 @@ export default function DealsPage() {
       )}
 
       {/* 5. SELLER CTA: SLASH YOUR PRICES HERE */}
-      <div className="bg-amber-50 rounded-3xl p-6 sm:p-8 border border-amber-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="bg-stone-100 rounded-3xl p-6 sm:p-8 border border-stone-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <span className="text-[10px] font-black uppercase tracking-wider text-amber-900 bg-amber-200/60 px-2 py-0.5 rounded">
+          <span className="text-[10px] font-black uppercase tracking-wider text-[#B45309] bg-stone-200 px-2 py-0.5 rounded">
             For Sellers & Fundis
           </span>
           <h3 className="text-lg font-black text-stone-900 mt-1">
@@ -268,7 +268,7 @@ export default function DealsPage() {
           href="/portal/demo-token"
           className="inline-flex items-center justify-center gap-1.5 px-5 py-3 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-bold text-xs transition shrink-0 shadow-sm"
         >
-          <PlusCircle className="w-4 h-4 text-amber-300" />
+          <PlusCircle className="w-4 h-4 text-white" />
           <span>Open Seller Portal</span>
         </Link>
       </div>

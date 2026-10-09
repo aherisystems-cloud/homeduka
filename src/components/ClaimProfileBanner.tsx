@@ -6,9 +6,9 @@ import { Store, ShieldCheck, ArrowRight, MessageSquare } from 'lucide-react';
 
 export default function ClaimProfileBanner() {
   return (
-    <section className="bg-gradient-to-r from-stone-900 via-brand-900 to-stone-950 text-white rounded-3xl p-6 sm:p-8 border border-amber-900/40 shadow-sm relative overflow-hidden">
+    <section className="bg-gradient-to-r from-stone-900 via-stone-850 to-stone-950 text-white rounded-3xl p-6 sm:p-8 border border-stone-800 shadow-sm relative overflow-hidden">
       <div className="max-w-2xl relative z-10">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold mb-3 border border-amber-500/30">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-stone-200 text-xs font-bold mb-3 border border-white/20">
           <Store className="w-3.5 h-3.5" />
           <span>For Shop Owners, Service Providers & Fundis</span>
         </div>
@@ -24,7 +24,7 @@ export default function ClaimProfileBanner() {
         <div className="flex flex-wrap items-center gap-3">
           <Link
             href="/portal/demo-token"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs transition active:scale-95 shadow-md"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-[#B45309] hover:bg-[#92400E] text-white font-bold text-xs transition active:scale-95 shadow-md"
           >
             <span>Sell / Add Product or Service</span>
             <ArrowRight className="w-4 h-4" />
@@ -42,7 +42,7 @@ export default function ClaimProfileBanner() {
       </div>
 
       {/* Subtle background decoration */}
-      <div className="absolute right-0 top-0 bottom-0 w-1/3 opacity-10 bg-radial from-amber-400 to-transparent pointer-events-none hidden md:block" />
+      <div className="absolute right-0 top-0 bottom-0 w-1/3 opacity-10 bg-radial from-[#B45309]/20 to-transparent pointer-events-none hidden md:block" />
     </section>
   );
 }

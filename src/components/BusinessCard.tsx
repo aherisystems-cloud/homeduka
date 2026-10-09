@@ -26,7 +26,7 @@ export default function BusinessCard({ business }: { business: BusinessProfile }
           )}
 
           <div className="absolute top-3 right-3 bg-white/90 backdrop-blur px-2.5 py-1 rounded-full text-xs font-bold text-slate-900 flex items-center gap-1 shadow-sm">
-            <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+            <Star className="w-3.5 h-3.5 fill-[#B45309] text-[#B45309]" />
             <span>{business.reputation.rating}</span>
             <span className="text-slate-400 font-normal">({business.reputation.total_reviews})</span>
           </div>

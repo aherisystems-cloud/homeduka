@@ -176,7 +176,7 @@ export default function HomePage() {
         <section className="relative pt-6 pb-4 sm:pt-12 sm:pb-8 text-center max-w-5xl mx-auto space-y-8">
           
           {/* Top Minimalist Tag with HomeDuka Brand */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 text-amber-900 border border-amber-500/20 text-xs font-semibold tracking-wide">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-stone-100 text-stone-800 border border-stone-200 text-xs font-semibold tracking-wide">
             <ShieldCheck className="w-4 h-4 text-[#B45309]" />
             <span>HOMEDUKA • KENYA&apos;S DIRECT HOME MARKETPLACE</span>
           </div>
@@ -201,7 +201,7 @@ export default function HomePage() {
                   window.dispatchEvent(new CustomEvent('open-location-modal'));
                 }
               }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-stone-100 hover:bg-amber-50 text-stone-700 hover:text-[#B45309] border border-stone-200/90 transition text-xs font-semibold cursor-pointer shadow-2xs hover:border-amber-300 group"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-700 hover:text-[#B45309] border border-stone-200/90 transition text-xs font-semibold cursor-pointer shadow-2xs hover:border-[#B45309] group"
             >
               <MapPin className="w-3.5 h-3.5 text-[#B45309]" />
               <span>Shopping from: <strong className="text-stone-900 group-hover:text-[#B45309]">{currentLocationName}</strong></span>
@@ -243,7 +243,7 @@ export default function HomePage() {
               <button
                 key={idx}
                 onClick={() => setSearchQuery(item.query)}
-                className="px-3.5 py-1.5 rounded-full bg-white hover:bg-amber-50 hover:text-amber-800 border border-stone-200/80 transition text-xs font-medium cursor-pointer shadow-2xs"
+                className="px-3.5 py-1.5 rounded-full bg-white hover:bg-stone-100 hover:text-[#B45309] border border-stone-200/80 transition text-xs font-medium cursor-pointer shadow-2xs"
               >
                 {item.label}
               </button>
@@ -285,8 +285,8 @@ export default function HomePage() {
       <section id="products" className="space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-900 border border-amber-200/80 text-xs font-bold mb-2">
-              <Sparkles className="w-3.5 h-3.5 text-amber-700" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-100 text-stone-800 border border-stone-200 text-xs font-bold mb-2">
+              <Sparkles className="w-3.5 h-3.5 text-[#B45309]" />
               <span>Direct From Local Shops</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight">
@@ -482,7 +482,7 @@ export default function HomePage() {
           className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-stone-900 hover:bg-stone-800 text-white font-bold text-xs transition shrink-0 self-start md:self-auto shadow-sm"
         >
           <span>View Verified Deals</span>
-          <ArrowRight className="w-3.5 h-3.5 text-amber-300" />
+          <ArrowRight className="w-3.5 h-3.5 text-white" />
         </Link>
       </div>
 

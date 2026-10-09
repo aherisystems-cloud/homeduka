@@ -205,8 +205,8 @@ export default function VendorPortalPage() {
 
       {/* Notification Banner */}
       {notification && (
-        <div className="mb-6 p-3.5 rounded-xl bg-stone-900 text-white text-xs font-semibold flex items-center gap-2 shadow-sm animate-fade-in border-l-4 border-amber-400">
-          <Sparkles className="w-4 h-4 text-amber-300 shrink-0" />
+        <div className="mb-6 p-3.5 rounded-xl bg-stone-900 text-white text-xs font-semibold flex items-center gap-2 shadow-sm animate-fade-in border-l-4 border-[#B45309]">
+          <Sparkles className="w-4 h-4 text-[#B45309] shrink-0" />
           <span>{notification}</span>
         </div>
       )}
@@ -232,44 +232,44 @@ export default function VendorPortalPage() {
               type="checkbox" 
               checked={affirmedWhatsApp} 
               onChange={(e) => { 
-                setAffirmedWhatsApp(e.target.checked); 
-                showNotice(e.target.checked ? '✓ WhatsApp photo check promise enabled!' : 'Guarantee removed'); 
-              }} 
-              className="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500 mt-0.5" 
-            />
-            <div>
-              <span className="font-bold text-stone-900 block flex items-center gap-1.5">
-                <Camera className="w-3.5 h-3.5 text-emerald-600" />
-                I Promise: Free WhatsApp Photo Check
-              </span>
-              <span className="text-[11px] text-stone-500">
-                You agree to review photos or short videos sent by customers on WhatsApp for free estimates before making a site visit.
-              </span>
-            </div>
-          </label>
+              setAffirmedWhatsApp(e.target.checked); 
+              showNotice(e.target.checked ? '✓ WhatsApp photo check promise enabled!' : 'Guarantee removed'); 
+            }} 
+            className="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500 mt-0.5" 
+          />
+          <div>
+            <span className="font-bold text-stone-900 block flex items-center gap-1.5">
+              <Camera className="w-3.5 h-3.5 text-emerald-600" />
+              I Promise: Free WhatsApp Photo Check
+            </span>
+            <span className="text-[11px] text-stone-500">
+              You agree to review photos or short videos sent by customers on WhatsApp for free estimates before making a site visit.
+            </span>
+          </div>
+        </label>
 
-          <label className="flex items-start gap-3 text-stone-800 cursor-pointer pt-2 border-t border-stone-100">
-            <input 
-              type="checkbox" 
-              checked={affirmedLocalMeasurement} 
-              onChange={(e) => { 
-                setAffirmedLocalMeasurement(e.target.checked); 
-                showNotice(e.target.checked ? '✓ Free local measurement promise enabled!' : 'Guarantee removed'); 
-              }} 
-              className="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500 mt-0.5" 
-            />
-            <div>
-              <span className="font-bold text-stone-900 block flex items-center gap-1.5">
-                <Ruler className="w-3.5 h-3.5 text-blue-600" />
-                I Promise: Free Site Visit & Measurement in My Estate
-              </span>
-              <span className="text-[11px] text-stone-500">
-                You agree to provide free site visits and measurements for nearby homeowners in your neighborhood (e.g. Kamakis, Kilimani, Nyali).
-              </span>
-            </div>
-          </label>
-        </div>
+        <label className="flex items-start gap-3 text-stone-800 cursor-pointer pt-2 border-t border-stone-100">
+          <input 
+            type="checkbox" 
+            checked={affirmedLocalMeasurement} 
+            onChange={(e) => { 
+              setAffirmedLocalMeasurement(e.target.checked); 
+              showNotice(e.target.checked ? '✓ Free local measurement promise enabled!' : 'Guarantee removed'); 
+            }} 
+            className="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500 mt-0.5" 
+          />
+          <div>
+            <span className="font-bold text-stone-900 block flex items-center gap-1.5">
+              <Ruler className="w-3.5 h-3.5 text-blue-600" />
+              I Promise: Free Site Visit & Measurement in My Estate
+            </span>
+            <span className="text-[11px] text-stone-500">
+              You agree to provide free site visits and measurements for nearby homeowners in your neighborhood (e.g. Kamakis, Kilimani, Nyali).
+            </span>
+          </div>
+        </label>
       </div>
+    </div>
 
       {/* Action Bar: Add Product & Direct Deals Link */}
       <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
@@ -277,14 +277,14 @@ export default function VendorPortalPage() {
           onClick={() => setIsAdding(!isAdding)}
           className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-bold text-xs shadow-sm transition active:scale-95"
         >
-          <PlusCircle className="w-4 h-4 text-amber-300" />
+          <PlusCircle className="w-4 h-4 text-white" />
           <span>Add New Product</span>
         </button>
 
         <Link
           href="/deals"
           target="_blank"
-          className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-950 text-xs font-bold border border-amber-200 transition"
+          className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-900 text-xs font-bold border border-stone-200 transition"
         >
           <Flame className="w-3.5 h-3.5 text-rose-600" />
           <span>View Public Deals Page →</span>
@@ -424,7 +424,7 @@ export default function VendorPortalPage() {
                 ) : (
                   <button
                     onClick={() => openDealModal(item)}
-                    className="px-3 py-1.5 rounded-xl text-xs font-bold bg-amber-50 text-amber-900 border border-amber-300 hover:bg-amber-100 flex items-center gap-1 shadow-2xs"
+                    className="px-3 py-1.5 rounded-xl text-xs font-bold bg-stone-100 text-stone-900 border border-stone-200 hover:bg-stone-200 flex items-center gap-1 shadow-2xs"
                     title="Slash price for today or this month"
                   >
                     <Flame className="w-3.5 h-3.5 text-rose-600" />
@@ -463,7 +463,7 @@ export default function VendorPortalPage() {
 
             {/* Active Deal Status Strip */}
             {item.dealPrice && (
-              <div className="p-2.5 bg-amber-50 rounded-xl border border-amber-200 flex items-center justify-between text-xs text-amber-950">
+              <div className="p-2.5 bg-stone-100 rounded-xl border border-stone-200 flex items-center justify-between text-xs text-stone-900">
                 <div className="flex items-center gap-2">
                   <Flame className="w-4 h-4 text-rose-600 shrink-0" />
                   <span>
@@ -493,7 +493,7 @@ export default function VendorPortalPage() {
             </button>
 
             <div className="flex items-center gap-2 mb-3">
-              <span className="p-2 rounded-xl bg-amber-100 text-amber-900">
+              <span className="p-2 rounded-xl bg-stone-100 text-[#B45309]">
                 <Flame className="w-5 h-5 text-rose-600" />
               </span>
               <div>
@@ -519,7 +519,7 @@ export default function VendorPortalPage() {
                   placeholder="e.g. 48000"
                   value={dealInputPrice}
                   onChange={(e) => setDealInputPrice(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-sm font-bold focus:ring-2 focus:ring-amber-500 focus:outline-hidden"
+                  className="w-full px-4 py-2.5 rounded-xl border border-stone-300 text-sm font-bold focus:ring-2 focus:ring-[#B45309] focus:outline-hidden"
                 />
                 <span className="text-[10px] text-stone-400 block mt-1">
                   Must be lower than your current price of {dealModalProduct.price}
@@ -536,12 +536,12 @@ export default function VendorPortalPage() {
                     onClick={() => setDealInputDuration('today')}
                     className={`p-3 rounded-xl border text-left transition cursor-pointer ${
                       dealInputDuration === 'today'
-                        ? 'border-amber-600 bg-amber-50 text-amber-950 font-bold ring-2 ring-amber-500'
+                        ? 'border-[#B45309] bg-stone-100 text-stone-900 font-bold ring-2 ring-[#B45309]'
                         : 'border-stone-200 hover:bg-stone-50 text-stone-700 text-xs'
                     }`}
                   >
                     <div className="flex items-center gap-1.5 mb-0.5">
-                      <Clock className="w-3.5 h-3.5 text-amber-700" />
+                      <Clock className="w-3.5 h-3.5 text-[#B45309]" />
                       <span className="text-xs font-bold">Today Only</span>
                     </div>
                     <span className="text-[10px] text-stone-500 block leading-tight">
@@ -573,7 +573,7 @@ export default function VendorPortalPage() {
                 type="submit"
                 className="w-full py-3 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-2"
               >
-                <Flame className="w-4 h-4 text-amber-400" />
+                <Flame className="w-4 h-4 text-rose-500" />
                 <span>Publish Deal to Public Deals Page</span>
               </button>
             </form>

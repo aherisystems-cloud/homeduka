@@ -9,15 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Rich Warm Terracotta / Amber Home Palette (exact #B45309 matching user selection)
+        // Rich Warm Terracotta Palette (anchored on #B45309 requested by user, no yellow)
         brand: {
-          50: '#FFFBEB',
-          100: '#FEF3C7',
-          200: '#FDE68A',
-          300: '#FCD34D',
-          400: '#FBBF24',
-          500: '#F59E0B',
-          600: '#D97706',
+          50: '#FAF8F5',
+          100: '#F5EFEB',
+          200: '#E8DCD0',
+          300: '#D5B89E',
+          400: '#C58C5E',
+          500: '#B45309',
+          600: '#A14707',
           700: '#B45309', // Exact color requested by user
           800: '#92400E',
           900: '#78350F',

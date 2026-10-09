@@ -3,7 +3,7 @@ import { Flame, Clock, MessageSquare, ArrowRight } from 'lucide-react';
 
 export default function DropOfTheDay() {
   return (
-    <div className="bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 rounded-2xl p-1 shadow-md my-8 text-white">
+    <div className="bg-gradient-to-r from-[#B45309] to-[#92400E] rounded-2xl p-0.5 shadow-md my-8 text-white">
       <div className="bg-slate-900 rounded-[14px] p-5 sm:p-6 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="space-y-2 max-w-xl">
           <div className="flex items-center gap-2">
@@ -27,7 +27,7 @@ export default function DropOfTheDay() {
           <div className="flex items-baseline gap-3 pt-1">
             <span className="text-2xl font-black text-emerald-400">KSh 44,500</span>
             <span className="text-sm text-slate-500 line-through">KSh 55,000</span>
-            <span className="text-xs font-bold text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded">
+            <span className="text-xs font-bold text-white bg-white/10 px-2 py-0.5 rounded border border-white/10">
               Save KSh 10,500
             </span>
           </div>

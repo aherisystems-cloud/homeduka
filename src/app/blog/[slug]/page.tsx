@@ -166,7 +166,7 @@ export default async function BlogDetailPage({
                     {/* Badges */}
                     <div className="flex flex-wrap items-center gap-2 mb-4 text-xs">
                       <span className="badge-trust badge-landmark">
-                        <MapPin className="w-3.5 h-3.5 text-amber-700" />
+                        <MapPin className="w-3.5 h-3.5 text-[#B45309]" />
                         <span>{shop.landmark} ({shop.neighborhood})</span>
                       </span>
 
@@ -228,15 +228,15 @@ export default async function BlogDetailPage({
             </section>
 
             {/* Buyer Checklist */}
-            <section className="bg-amber-50 rounded-3xl p-6 border border-amber-200 my-10">
-              <h3 className="font-bold text-base text-amber-950 flex items-center gap-2 mb-3">
-                <Lightbulb className="w-5 h-5 text-amber-600" />
+            <section className="bg-stone-100 rounded-3xl p-6 border border-stone-200 my-10">
+              <h3 className="font-bold text-base text-stone-900 flex items-center gap-2 mb-3">
+                <Lightbulb className="w-5 h-5 text-[#B45309]" />
                 <span>Buyer Checklist for Kenyan Homeowners</span>
               </h3>
-              <ul className="space-y-2.5 text-xs sm:text-sm text-amber-900">
+              <ul className="space-y-2.5 text-xs sm:text-sm text-stone-700">
                 {article.buyingTips.map((tip, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <span className="w-5 h-5 rounded-full bg-amber-200 text-amber-900 font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="w-5 h-5 rounded-full bg-[#B45309] text-white font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">
                       {idx + 1}
                     </span>
                     <span>{tip}</span>

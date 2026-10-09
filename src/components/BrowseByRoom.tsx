@@ -25,8 +25,8 @@ export default function BrowseByRoom({ selectedRoom, onSelectRoom }: BrowseByRoo
       {/* Section Header with View All + Slider Controls */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-900 border border-amber-200/80 text-xs font-bold mb-2">
-            <Sparkles className="w-3.5 h-3.5 text-amber-700" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-100 text-stone-800 border border-stone-200 text-xs font-bold mb-2">
+            <Sparkles className="w-3.5 h-3.5 text-[#B45309]" />
             <span>Curated Spaces</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight">
@@ -42,7 +42,7 @@ export default function BrowseByRoom({ selectedRoom, onSelectRoom }: BrowseByRoo
           {selectedRoom !== 'all' ? (
             <button
               onClick={() => onSelectRoom('all')}
-              className="text-xs font-bold text-amber-800 hover:text-amber-900 bg-amber-50 hover:bg-amber-100 px-3 py-1.5 rounded-full border border-amber-200 transition cursor-pointer"
+              className="text-xs font-bold text-[#B45309] hover:text-[#92400E] bg-stone-100 hover:bg-stone-200 px-3 py-1.5 rounded-full border border-stone-300 transition cursor-pointer"
             >
               Show All Rooms ✕
             </button>
@@ -87,7 +87,7 @@ export default function BrowseByRoom({ selectedRoom, onSelectRoom }: BrowseByRoo
               onClick={() => onSelectRoom(isSelected ? 'all' : room.id)}
               className={`w-64 sm:w-72 shrink-0 rounded-3xl border p-4 text-left transition-all duration-300 flex flex-col justify-between group overflow-hidden cursor-pointer snap-start relative ${
                 isSelected
-                  ? 'bg-stone-900 text-white border-stone-900 shadow-md ring-2 ring-amber-600'
+                  ? 'bg-stone-900 text-white border-stone-900 shadow-md ring-2 ring-[#B45309]'
                   : 'bg-white hover:bg-stone-50 border-stone-200/90 text-stone-800 shadow-2xs hover:shadow-md'
               }`}
             >
@@ -104,7 +104,7 @@ export default function BrowseByRoom({ selectedRoom, onSelectRoom }: BrowseByRoo
                 </span>
                 <span className={`absolute top-2 right-2 text-[10px] font-bold px-2 py-0.5 rounded-full backdrop-blur ${
                   isSelected 
-                    ? 'bg-amber-500 text-stone-950 font-black' 
+                    ? 'bg-[#B45309] text-white font-black' 
                     : 'bg-stone-900/80 text-white'
                 }`}>
                   {isSelected ? 'Active' : 'Explore'}
@@ -114,7 +114,7 @@ export default function BrowseByRoom({ selectedRoom, onSelectRoom }: BrowseByRoo
               {/* Room Title & Tagline */}
               <div className="space-y-1">
                 <h3 className={`font-bold text-sm sm:text-base leading-tight ${
-                  isSelected ? 'text-white' : 'text-stone-900 group-hover:text-amber-800'
+                  isSelected ? 'text-white' : 'text-stone-900 group-hover:text-[#B45309]'
                 }`}>
                   {room.title}
                 </h3>
@@ -127,7 +127,7 @@ export default function BrowseByRoom({ selectedRoom, onSelectRoom }: BrowseByRoo
 
               {/* Bottom Popular Searches Chips */}
               <div className="mt-3 pt-2.5 border-t border-stone-100/30 flex items-center justify-between text-xs font-semibold">
-                <span className={isSelected ? 'text-amber-300' : 'text-amber-800'}>
+                <span className={isSelected ? 'text-stone-300' : 'text-[#B45309]'}>
                   {isSelected ? 'Filtering this Room' : 'View Room Items'}
                 </span>
                 <ArrowRight className={`w-3.5 h-3.5 transition-transform ${isSelected ? 'translate-x-1' : 'group-hover:translate-x-1'}`} />

@@ -161,7 +161,7 @@ export default function HeroVisualShowcase() {
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="flex flex-wrap items-center gap-1.5">
           <span className="text-xs font-bold text-stone-500 mr-1 flex items-center gap-1">
-            <Sparkles className="w-3.5 h-3.5 text-amber-600" /> Top Picks:
+            <Sparkles className="w-3.5 h-3.5 text-[#B45309]" /> Top Picks:
           </span>
           <button
             onClick={() => setFilter('all')}
@@ -207,7 +207,7 @@ export default function HeroVisualShowcase() {
 
         <Link
           href="/deals"
-          className="text-xs font-bold text-brand-700 hover:underline flex items-center gap-1"
+          className="text-xs font-bold text-[#B45309] hover:underline flex items-center gap-1"
         >
           <span>View All Today&apos;s Deals</span>
           <ArrowRight className="w-3.5 h-3.5" />
@@ -240,7 +240,7 @@ export default function HeroVisualShowcase() {
 
                 {/* Location Overlay */}
                 <div className="absolute bottom-3 left-3 right-3 text-white flex items-center gap-1.5 text-xs font-medium">
-                  <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                  <MapPin className="w-3.5 h-3.5 text-[#B45309] shrink-0" />
                   <span className="truncate">{item.location}</span>
                 </div>
               </div>
@@ -272,7 +272,7 @@ export default function HeroVisualShowcase() {
                   <img
                     src={item.personAvatar}
                     alt={item.personName}
-                    className="w-9 h-9 rounded-full object-cover ring-2 ring-amber-400/40 shrink-0"
+                    className="w-9 h-9 rounded-full object-cover ring-2 ring-stone-200 shrink-0"
                   />
                   <div className="min-w-0">
                     <span className="text-xs font-bold text-stone-900 block truncate">

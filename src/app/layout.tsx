@@ -45,7 +45,7 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-title" content="Home Kenya" />
       </head>
-      <body className={`${outfit.className} ${outfit.variable} min-h-screen flex flex-col bg-[#FDFBF7] text-slate-900 antialiased selection:bg-amber-100 selection:text-amber-900`}>
+      <body className={`${outfit.className} ${outfit.variable} min-h-screen flex flex-col bg-[#FDFBF7] text-slate-900 antialiased selection:bg-stone-200 selection:text-stone-900`}>
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

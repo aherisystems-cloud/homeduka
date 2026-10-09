@@ -21,7 +21,7 @@ export default function EmergencyDispatchBar({ onSelectEmergencyCategory }: Emer
       id: "electrical_solar",
       label: "Stima Tripping / Short Circuit",
       icon: Zap,
-      color: "bg-amber-500/10 text-amber-400 border-amber-500/30 hover:bg-amber-500/20",
+      color: "bg-white/10 text-stone-200 border-white/20 hover:bg-white/20",
       query: "electrical_solar"
     },
     {

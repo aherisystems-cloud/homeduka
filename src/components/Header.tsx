@@ -86,12 +86,12 @@ export default function Header() {
                   window.dispatchEvent(new CustomEvent('open-location-modal'));
                 }
               }}
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-800 hover:bg-stone-700 text-amber-300 border border-stone-700/80 transition cursor-pointer text-[11px] sm:text-xs font-bold shadow-2xs"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-800 hover:bg-stone-700 text-stone-200 hover:text-white border border-stone-700/80 transition cursor-pointer text-[11px] sm:text-xs font-semibold shadow-2xs"
               title="Click to set your county or estate"
             >
-              <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-              <span>Shopping from: {headerLocation} ▾</span>
-              <span className="text-[10px] text-amber-200/80 font-normal underline decoration-dotted ml-1">Change Area</span>
+              <MapPin className="w-3.5 h-3.5 text-[#B45309] shrink-0" />
+              <span>Shopping from: <strong className="text-white font-bold">{headerLocation}</strong> ▾</span>
+              <span className="text-[10px] text-[#B45309] font-bold underline decoration-dotted ml-1">Change Area</span>
             </button>
             <span className="hidden md:inline text-stone-400 text-[11px]">
               • Verified local shops & fundis across Kenya
@@ -103,12 +103,12 @@ export default function Header() {
             {/* Download Web App trigger button */}
             <button
               onClick={() => setShowDownloadAppModal(true)}
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-800 hover:bg-stone-700 text-amber-300 hover:text-amber-200 transition cursor-pointer text-[11px] sm:text-xs font-bold border border-stone-700/80 shadow-2xs group"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-800 hover:bg-stone-700 text-stone-200 hover:text-white transition cursor-pointer text-[11px] sm:text-xs font-semibold border border-stone-700/80 shadow-2xs group"
               title="Download or install HomeDuka web app on your phone"
             >
-              <Smartphone className="w-3.5 h-3.5 text-amber-400 group-hover:scale-110 transition-transform" />
+              <Smartphone className="w-3.5 h-3.5 text-[#B45309] group-hover:scale-110 transition-transform" />
               <span>Download Web App</span>
-              <span className="hidden sm:inline-block px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 text-[10px] font-black uppercase">
+              <span className="hidden sm:inline-block px-1.5 py-0.2 rounded bg-[#B45309] text-white text-[10px] font-black uppercase">
                 Free
               </span>
             </button>
@@ -151,14 +151,14 @@ export default function Header() {
                 onClick={() => setActiveMegaMenu(activeMegaMenu === 'products' ? null : 'products')}
                 className={`flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-bold transition ${
                   activeMegaMenu === 'products' 
-                    ? 'bg-amber-50 text-brand-700' 
-                    : 'text-stone-800 hover:text-brand-700 hover:bg-stone-50'
+                    ? 'bg-stone-100 text-[#B45309]' 
+                    : 'text-stone-800 hover:text-[#B45309] hover:bg-stone-50'
                 }`}
               >
-                <ShoppingBag className="w-3.5 h-3.5 text-amber-600" />
+                <ShoppingBag className="w-3.5 h-3.5 text-[#B45309]" />
                 <span>Home Products</span>
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                  activeMegaMenu === 'products' ? 'rotate-180 text-brand-700' : 'text-stone-400'
+                  activeMegaMenu === 'products' ? 'rotate-180 text-[#B45309]' : 'text-stone-400'
                 }`} />
               </button>
 
@@ -173,7 +173,7 @@ export default function Header() {
                     {/* Column 1: Furniture */}
                     <div className="space-y-3">
                       <div className="flex items-center gap-1.5 text-stone-900 font-black text-xs uppercase tracking-wider pb-1 border-b border-stone-100">
-                        <Sofa className="w-3.5 h-3.5 text-amber-700" />
+                        <Sofa className="w-3.5 h-3.5 text-[#B45309]" />
                         <span>Furniture</span>
                       </div>
                       <div className="space-y-1.5 text-xs">
@@ -223,7 +223,7 @@ export default function Header() {
                     {/* Column 2: Kitchen & Cookware */}
                     <div className="space-y-3">
                       <div className="flex items-center gap-1.5 text-stone-900 font-black text-xs uppercase tracking-wider pb-1 border-b border-stone-100">
-                        <Utensils className="w-3.5 h-3.5 text-amber-700" />
+                        <Utensils className="w-3.5 h-3.5 text-[#B45309]" />
                         <span>Kitchen & Cookware</span>
                       </div>
                       <div className="space-y-1.5 text-xs">
@@ -323,7 +323,7 @@ export default function Header() {
                     {/* Column 4: Curtains, Bedding & Decor */}
                     <div className="space-y-3 bg-[#FAF8F5] p-3.5 rounded-2xl border border-stone-200/80">
                       <div className="flex items-center gap-1.5 text-stone-900 font-black text-xs uppercase tracking-wider pb-1 border-b border-stone-200">
-                        <Sparkles className="w-3.5 h-3.5 text-amber-700" />
+                        <Sparkles className="w-3.5 h-3.5 text-[#B45309]" />
                         <span>Curtains & Decor</span>
                       </div>
                       <div className="space-y-1.5 text-xs">
@@ -365,7 +365,7 @@ export default function Header() {
                         <Link
                           href="/#rooms"
                           onClick={() => setActiveMegaMenu(null)}
-                          className="text-[11px] font-bold text-brand-700 hover:underline flex items-center gap-1"
+                          className="text-[11px] font-bold text-[#B45309] hover:underline flex items-center gap-1"
                         >
                           <span>Shop by Room (All Items)</span>
                           <ArrowRight className="w-3 h-3" />
@@ -387,14 +387,14 @@ export default function Header() {
                 onClick={() => setActiveMegaMenu(activeMegaMenu === 'services' ? null : 'services')}
                 className={`flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-bold transition ${
                   activeMegaMenu === 'services' 
-                    ? 'bg-amber-50 text-brand-700' 
-                    : 'text-stone-800 hover:text-brand-700 hover:bg-stone-50'
+                    ? 'bg-stone-100 text-[#B45309]' 
+                    : 'text-stone-800 hover:text-[#B45309] hover:bg-stone-50'
                 }`}
               >
-                <Wrench className="w-3.5 h-3.5 text-blue-600" />
+                <Wrench className="w-3.5 h-3.5 text-stone-700" />
                 <span>Home Services</span>
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                  activeMegaMenu === 'services' ? 'rotate-180 text-brand-700' : 'text-stone-400'
+                  activeMegaMenu === 'services' ? 'rotate-180 text-[#B45309]' : 'text-stone-400'
                 }`} />
               </button>
 
@@ -483,9 +483,9 @@ export default function Header() {
                     </div>
 
                     {/* Column 2: Home Care & Cleaning */}
-                    <div className="space-y-3 bg-amber-50/50 p-3.5 rounded-2xl border border-amber-200/60">
-                      <div className="flex items-center gap-1.5 text-amber-950 font-black text-xs uppercase tracking-wider pb-1 border-b border-amber-200">
-                        <RefreshCw className="w-3.5 h-3.5 text-amber-700" />
+                    <div className="space-y-3 bg-[#FAF8F5] p-3.5 rounded-2xl border border-stone-200/80">
+                      <div className="flex items-center gap-1.5 text-stone-900 font-black text-xs uppercase tracking-wider pb-1 border-b border-stone-200">
+                        <RefreshCw className="w-3.5 h-3.5 text-[#B45309]" />
                         <span>Home Care & Cleaning</span>
                       </div>
                       <div className="space-y-1.5 text-xs">
@@ -546,11 +546,11 @@ export default function Header() {
                         </Link>
                       </div>
 
-                      <div className="pt-2 border-t border-amber-200">
+                      <div className="pt-2 border-t border-stone-200">
                         <Link
                           href="/#recurring"
                           onClick={() => setActiveMegaMenu(null)}
-                          className="text-[11px] font-bold text-amber-900 hover:underline flex items-center gap-1"
+                          className="text-[11px] font-bold text-[#B45309] hover:underline flex items-center gap-1"
                         >
                           <span>View All Home Care Plans</span>
                           <ArrowRight className="w-3 h-3" />
@@ -602,7 +602,7 @@ export default function Header() {
             {/* Nav Link: DEALS */}
             <Link
               href="/deals"
-              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-amber-50 text-amber-950 hover:bg-amber-100 border border-amber-300 transition shadow-2xs"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-stone-100 text-stone-900 hover:bg-stone-200 border border-stone-200 transition shadow-2xs"
             >
               <Flame className="w-3.5 h-3.5 text-rose-600" />
               <span>Deals</span>
@@ -614,7 +614,7 @@ export default function Header() {
             {/* Nav Link 3: SHOP BY ROOM */}
             <Link
               href="/#rooms"
-              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-stone-800 hover:text-brand-700 hover:bg-stone-50 transition"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-stone-800 hover:text-[#B45309] hover:bg-stone-50 transition"
             >
               <Layers className="w-3.5 h-3.5 text-stone-500" />
               <span>Shop by Room</span>
@@ -623,7 +623,7 @@ export default function Header() {
             {/* Nav Link 4: BUYER GUIDES */}
             <Link
               href="/blog"
-              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-stone-800 hover:text-brand-700 hover:bg-stone-50 transition"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-stone-800 hover:text-[#B45309] hover:bg-stone-50 transition"
             >
               <span>Buyer Guides</span>
             </Link>
@@ -635,7 +635,7 @@ export default function Header() {
               href="/portal/demo-token"
               className="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-2 rounded-xl bg-stone-900 text-white hover:bg-stone-800 shadow-sm transition active:scale-95"
             >
-              <PlusCircle className="w-3.5 h-3.5 text-amber-300" />
+              <PlusCircle className="w-3.5 h-3.5 text-white" />
               <span>Sell / Add Product or Service</span>
             </Link>
 
@@ -656,7 +656,7 @@ export default function Header() {
             {/* Top Bar on Mobile */}
             <div className="p-3 bg-stone-100 rounded-2xl space-y-2 text-xs">
               <div className="flex items-center gap-1.5 text-stone-700">
-                <MapPin className="w-3.5 h-3.5 text-amber-700" />
+                <MapPin className="w-3.5 h-3.5 text-[#B45309]" />
                 <span className="font-bold">Find Sellers & Fundis in Your County</span>
               </div>
               <button
@@ -686,7 +686,7 @@ export default function Header() {
                 className="w-full p-3.5 text-left font-bold text-sm text-stone-900 flex items-center justify-between bg-stone-50"
               >
                 <div className="flex items-center gap-2">
-                  <ShoppingBag className="w-4 h-4 text-amber-600" />
+                  <ShoppingBag className="w-4 h-4 text-[#B45309]" />
                   <span>Home Products</span>
                 </div>
                 <ChevronDown className={`w-4 h-4 transition-transform ${mobileCategoryOpen === 'products' ? 'rotate-180' : ''}`} />
@@ -784,21 +784,21 @@ export default function Header() {
                   <Link 
                     href="/#recurring" 
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block p-2 rounded-lg hover:bg-amber-50 font-semibold text-amber-950"
+                    className="block p-2 rounded-lg hover:bg-stone-50 font-semibold text-stone-800"
                   >
                     💧 Water Tank Cleaning & Washing
                   </Link>
                   <Link 
                     href="/#recurring" 
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block p-2 rounded-lg hover:bg-amber-50 font-semibold text-amber-950"
+                    className="block p-2 rounded-lg hover:bg-stone-50 font-semibold text-stone-800"
                   >
                     🐜 Pest Control & Bedbug Spray
                   </Link>
                   <Link 
                     href="/#recurring" 
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block p-2 rounded-lg hover:bg-amber-50 font-semibold text-amber-950"
+                    className="block p-2 rounded-lg hover:bg-stone-50 font-semibold text-stone-800"
                   >
                     🧽 Sofa & Carpet Machine Wash
                   </Link>
@@ -811,7 +811,7 @@ export default function Header() {
               <Link
                 href="/deals"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-2 p-3 rounded-xl font-bold text-sm bg-amber-50 text-amber-950 border border-amber-200"
+                className="flex items-center gap-2 p-3 rounded-xl font-bold text-sm bg-stone-100 text-stone-900 border border-stone-200"
               >
                 <Flame className="w-4 h-4 text-rose-600" />
                 <span>Today&apos;s Slashed Deals</span>
@@ -842,7 +842,7 @@ export default function Header() {
                   onClick={() => setMobileMenuOpen(false)}
                   className="w-full flex items-center justify-center gap-2 p-3 rounded-2xl bg-stone-900 text-white font-bold text-sm shadow-sm active:scale-98 transition"
                 >
-                  <PlusCircle className="w-4 h-4 text-amber-300" />
+                  <PlusCircle className="w-4 h-4 text-white" />
                   <span>Sell / Add Product or Service</span>
                 </Link>
               </div>
@@ -867,12 +867,12 @@ export default function Header() {
 
             {/* Modal Content */}
             <div className="space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-amber-100 text-[#B45309] flex items-center justify-center shadow-xs">
+              <div className="w-12 h-12 rounded-2xl bg-stone-100 text-[#B45309] flex items-center justify-center shadow-xs">
                 <Smartphone className="w-6 h-6 text-[#B45309]" />
               </div>
 
               <div>
-                <span className="text-[10px] font-black uppercase tracking-wider text-[#B45309] bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+                <span className="text-[10px] font-black uppercase tracking-wider text-[#B45309] bg-stone-100 px-2 py-0.5 rounded border border-stone-200">
                   Instant Mobile Web App
                 </span>
                 <h3 className="text-xl sm:text-2xl font-black text-stone-900 mt-1">
@@ -885,8 +885,8 @@ export default function Header() {
 
               {/* Native 1-Tap Install Button if Browser supports it */}
               {deferredPrompt && (
-                <div className="p-4 rounded-2xl bg-amber-50 border border-amber-300 text-center space-y-2">
-                  <span className="text-xs font-bold text-amber-900 block">
+                <div className="p-4 rounded-2xl bg-stone-50 border border-stone-200 text-center space-y-2">
+                  <span className="text-xs font-bold text-stone-900 block">
                     ⚡ 1-Tap Fast Install Ready!
                   </span>
                   <button

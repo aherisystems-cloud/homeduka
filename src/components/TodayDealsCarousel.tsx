@@ -65,7 +65,7 @@ export default function TodayDealsCarousel() {
 
           <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight flex items-center gap-2.5">
             <span>Today&apos;s Top Deals</span>
-            <span className="text-xs sm:text-sm font-black text-amber-700 bg-amber-100 px-2.5 py-0.5 rounded-full">
+            <span className="text-xs sm:text-sm font-bold text-[#B45309] bg-stone-100 px-2.5 py-0.5 rounded-full border border-stone-200">
               Verified Slashes
             </span>
           </h2>
@@ -79,7 +79,7 @@ export default function TodayDealsCarousel() {
         <div className="flex items-center gap-3 self-start sm:self-auto">
           <Link
             href="/deals"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-amber-50 hover:bg-amber-100 text-[#B45309] border border-amber-200 text-xs font-bold transition shadow-2xs group"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-stone-100 hover:bg-stone-200 text-[#B45309] border border-stone-200 text-xs font-bold transition shadow-2xs group"
           >
             <span>View All Today&apos;s Deals ({todayDeals.length})</span>
             <ArrowRight className="w-3.5 h-3.5 text-[#B45309] group-hover:translate-x-0.5 transition-transform" />
@@ -123,7 +123,7 @@ export default function TodayDealsCarousel() {
           return (
             <div
               key={deal.id}
-              className="snap-start min-w-[280px] sm:min-w-[320px] max-w-[330px] rounded-3xl bg-white border border-amber-200/90 hover:border-amber-400 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between group overflow-hidden relative"
+              className="snap-start min-w-[280px] sm:min-w-[320px] max-w-[330px] rounded-3xl bg-white border border-stone-200 hover:border-[#B45309] shadow-2xs hover:shadow-md transition-all flex flex-col justify-between group overflow-hidden relative"
             >
               <div>
                 {/* Image & Discount Tags */}
@@ -139,13 +139,13 @@ export default function TodayDealsCarousel() {
                   {/* Top Badges */}
                   <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-1.5 flex-wrap">
                     <span className="px-2.5 py-1 rounded-full text-[11px] font-black bg-rose-600 text-white shadow-xs flex items-center gap-1">
-                      <Flame className="w-3 h-3 text-amber-300" />
+                      <Flame className="w-3 h-3 text-white" />
                       <span>-{deal.discount_percentage}% OFF</span>
                     </span>
 
                     {deal.is_sponsored ? (
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-amber-500 text-stone-950 shadow-xs flex items-center gap-1">
-                        <Sparkles className="w-2.5 h-2.5 text-stone-950" />
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-[#B45309] text-white shadow-xs flex items-center gap-1">
+                        <Sparkles className="w-2.5 h-2.5 text-white" />
                         <span>SPONSORED</span>
                       </span>
                     ) : (
@@ -157,7 +157,7 @@ export default function TodayDealsCarousel() {
 
                   {/* Urgent slots left indicator */}
                   {deal.slots_left && (
-                    <div className="absolute bottom-2.5 left-3 px-2 py-0.5 rounded-md text-[10px] font-bold bg-stone-900/85 text-amber-300 backdrop-blur">
+                    <div className="absolute bottom-2.5 left-3 px-2 py-0.5 rounded-md text-[10px] font-semibold bg-stone-900/85 text-stone-200 backdrop-blur">
                       ⚡ Only {deal.slots_left} slots left
                     </div>
                   )}
@@ -166,7 +166,7 @@ export default function TodayDealsCarousel() {
                 {/* Card Body */}
                 <div className="p-4 sm:p-5 space-y-3">
                   <div>
-                    <span className="text-[10px] font-black uppercase tracking-wider text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200 inline-block mb-1">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-[#B45309] bg-stone-100 px-2 py-0.5 rounded border border-stone-200 inline-block mb-1">
                       {deal.badge_text}
                     </span>
                     <h3 className="font-bold text-stone-900 text-sm sm:text-base leading-snug line-clamp-2 group-hover:text-[#B45309] transition">
@@ -216,7 +216,7 @@ export default function TodayDealsCarousel() {
 
                 <Link
                   href={`/deals#${deal.slug}`}
-                  className="inline-flex items-center justify-center gap-1 px-3 py-2 rounded-xl bg-stone-100 hover:bg-amber-100 text-stone-800 hover:text-[#B45309] text-xs font-bold transition"
+                  className="inline-flex items-center justify-center gap-1 px-3 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 hover:text-[#B45309] text-xs font-bold transition"
                 >
                   <span>View Deal</span>
                   <ArrowRight className="w-3.5 h-3.5" />

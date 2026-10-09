@@ -23,7 +23,7 @@ export default function TrustBadges({
       )}
 
       <span className="badge-trust badge-landmark">
-        <MapPin className="w-3.5 h-3.5 text-amber-700" />
+        <MapPin className="w-3.5 h-3.5 text-[#B45309]" />
         <span className="truncate max-w-[240px]">{landmark}</span>
       </span>
 

@@ -52,8 +52,8 @@ export default function Logo({
           />
         </svg>
 
-        {/* Subtle geometric dot accent */}
-        <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-amber-400 border-2 border-white ring-1 ring-amber-700/20" />
+        {/* Subtle geometric dot accent in brand terracotta #B45309 */}
+        <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-[#92400E] border-2 border-white ring-1 ring-stone-900/10" />
       </div>
 
       {/* Typography Wordmark */}
@@ -72,8 +72,8 @@ export default function Logo({
             </span>
             <span className={`ml-1 text-[10px] font-black uppercase px-1.5 py-0.2 rounded-md ${
               isFooter 
-                ? 'bg-amber-500/20 text-amber-300 border border-amber-400/30' 
-                : 'bg-amber-100/80 text-[#B45309] border border-amber-200'
+                ? 'bg-white/10 text-stone-200 border border-white/20' 
+                : 'bg-stone-100 text-[#B45309] border border-stone-200'
             }`}>
               KE
             </span>

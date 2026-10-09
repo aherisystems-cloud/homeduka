@@ -50,7 +50,7 @@ export default function ServiceCard({ service, business }: ServiceCardProps) {
           {/* Top Indicators */}
           <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
             <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-white/95 backdrop-blur text-stone-800 shadow-xs capitalize">
-              <Wrench className="w-3 h-3 text-amber-700" />
+              <Wrench className="w-3 h-3 text-[#B45309]" />
               <span>{service.service_category.replace('_', ' ')}</span>
             </span>
 
@@ -65,13 +65,13 @@ export default function ServiceCard({ service, business }: ServiceCardProps) {
           <div className="absolute bottom-3 left-3 right-3 text-white">
             <Link 
               href={`/shop/${biz.slug}`} 
-              className="text-xs font-semibold text-amber-200 hover:underline flex items-center gap-1"
+              className="text-xs font-semibold text-white hover:underline flex items-center gap-1"
             >
               <span>{biz.business_name}</span>
-              <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
+              <ShieldCheck className="w-3.5 h-3.5 text-[#B45309]" />
             </Link>
             <div className="flex items-center gap-1 text-[11px] text-stone-200 mt-0.5">
-              <MapPin className="w-3 h-3 text-amber-400" />
+              <MapPin className="w-3 h-3 text-stone-300" />
               <span className="truncate">{biz.location.neighborhood}, {biz.location.sub_county}</span>
             </div>
           </div>
@@ -96,8 +96,8 @@ export default function ServiceCard({ service, business }: ServiceCardProps) {
 
             {service.affirmed_commitments.free_whatsapp_assessment && (
               <div className="flex items-center gap-2 text-stone-700">
-                <div className="w-4 h-4 rounded-full bg-amber-100 flex items-center justify-center shrink-0">
-                  <Camera className="w-2.5 h-2.5 text-amber-800" />
+                <div className="w-4 h-4 rounded-full bg-stone-100 flex items-center justify-center shrink-0">
+                  <Camera className="w-2.5 h-2.5 text-[#B45309]" />
                 </div>
                 <span className="text-[11px] font-semibold text-stone-800">
                   Free WhatsApp Photo Check (Send photo, get price)
@@ -118,8 +118,8 @@ export default function ServiceCard({ service, business }: ServiceCardProps) {
 
             {service.service_terms.warranty_guarantee_days && (
               <div className="flex items-center gap-2 text-stone-700">
-                <div className="w-4 h-4 rounded-full bg-amber-100 flex items-center justify-center shrink-0">
-                  <Check className="w-2.5 h-2.5 text-amber-800" />
+                <div className="w-4 h-4 rounded-full bg-stone-100 flex items-center justify-center shrink-0">
+                  <Check className="w-2.5 h-2.5 text-[#B45309]" />
                 </div>
                 <span className="text-[11px] text-stone-600">
                   {service.service_terms.warranty_guarantee_days} Days Workmanship Guarantee
@@ -154,7 +154,7 @@ export default function ServiceCard({ service, business }: ServiceCardProps) {
           rel="noopener noreferrer"
           className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-bold text-xs shadow-sm transition active:scale-95"
         >
-          <MessageSquare className="w-4 h-4 text-amber-300" />
+          <MessageSquare className="w-4 h-4 text-emerald-400" />
           <span>Chat & Send Photo on WhatsApp</span>
         </a>
       </div>

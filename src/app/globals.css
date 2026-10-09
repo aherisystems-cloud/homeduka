@@ -25,7 +25,7 @@ body {
 }
 
 .badge-landmark {
-  @apply bg-amber-100 text-amber-800 border border-amber-300;
+  @apply bg-stone-100 text-[#B45309] border border-stone-200;
 }
 
 .badge-cod {
