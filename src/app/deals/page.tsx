@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { 
   Flame, Calendar, Sparkles, MessageSquare, ShieldCheck, 
   MapPin, Clock, ArrowRight, Tag, Percent, PlusCircle, CheckCircle2 
@@ -9,8 +10,12 @@ import {
 import { SAMPLE_KENYAN_DEALS, SAMPLE_KENYAN_HOME_LISTINGS } from '../../data/mock_listings';
 import { HomeDeal, DealDuration } from '../../types/schema';
 
-export default function DealsPage() {
-  const [activeTab, setActiveTab] = useState<DealDuration>('today');
+function DealsContent() {
+  const searchParams = useSearchParams();
+  const tabParam = searchParams.get('tab');
+  const initialTab: DealDuration = tabParam === 'month' ? 'month' : 'today';
+
+  const [activeTab, setActiveTab] = useState<DealDuration>(initialTab);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   const categories = [
@@ -273,5 +278,13 @@ export default function DealsPage() {
         </Link>
       </div>
     </div>
+  );
+}
+
+export default function DealsPage() {
+  return (
+    <Suspense fallback={<div className="max-w-7xl mx-auto p-8 text-xs text-stone-500">Loading verified deals...</div>}>
+      <DealsContent />
+    </Suspense>
   );
 }

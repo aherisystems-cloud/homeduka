@@ -117,11 +117,11 @@ export default function Header() {
             <Link
               href="https://whatsapp.com/channel/example-channel"
               target="_blank"
-              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition shadow-xs"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-900 hover:bg-black text-white font-bold border border-stone-700/80 transition shadow-xs active:scale-95"
             >
-              <MessageSquare className="w-3 h-3" />
+              <MessageSquare className="w-3 h-3 text-emerald-400" />
               <span>Join WhatsApp Channel</span>
-              <span className="hidden sm:inline bg-emerald-800/80 px-1.5 py-0.2 rounded-full text-[10px] text-emerald-100 font-semibold">
+              <span className="hidden sm:inline bg-white/20 px-1.5 py-0.2 rounded-full text-[10px] text-stone-200 font-semibold">
                 5.4k
               </span>
             </Link>
@@ -672,9 +672,9 @@ export default function Header() {
               <Link
                 href="https://whatsapp.com/channel/example-channel"
                 target="_blank"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-600 text-white font-bold text-xs"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-stone-900 hover:bg-black text-white font-bold text-xs transition"
               >
-                <MessageSquare className="w-3.5 h-3.5" />
+                <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
                 <span>Join Free WhatsApp Channel (5.4k members)</span>
               </Link>
             </div>

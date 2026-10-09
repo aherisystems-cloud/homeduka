@@ -36,9 +36,9 @@ export default function DropOfTheDay() {
         <div className="flex flex-col sm:flex-row md:flex-col gap-3 w-full md:w-auto">
           <Link
             href="/biz/classic-hardwood-furniture-kamakis"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-md transition"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-black hover:bg-stone-800 text-white font-bold text-sm shadow-md transition border border-stone-700/80 active:scale-95"
           >
-            <MessageSquare className="w-4 h-4" />
+            <MessageSquare className="w-4 h-4 text-emerald-400" />
             <span>Claim Drop on WhatsApp</span>
           </Link>
           <span className="text-[11px] text-center text-slate-400">

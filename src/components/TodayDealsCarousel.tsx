@@ -3,20 +3,23 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { 
-  Flame, Sparkles, ChevronLeft, ChevronRight, MessageSquare, 
-  Clock, ArrowRight, ShieldCheck, Tag 
+  Flame, Calendar, ChevronLeft, ChevronRight, MessageSquare, 
+  Clock, ArrowRight, Sparkles, RefreshCw 
 } from 'lucide-react';
 import { SAMPLE_KENYAN_DEALS, SAMPLE_KENYAN_HOME_LISTINGS } from '../data/mock_listings';
 import { HomeDeal } from '../types/schema';
 
 export default function TodayDealsCarousel() {
   const sliderRef = useRef<HTMLDivElement>(null);
+  const [dealType, setDealType] = useState<'daily' | 'monthly'>('daily');
   const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 0, seconds: 0 });
 
-  // Today's deals only
-  const todayDeals = SAMPLE_KENYAN_DEALS.filter((d) => d.duration_type === 'today');
+  // Filter deals based on reader selection
+  const dailyDeals = SAMPLE_KENYAN_DEALS.filter((d) => d.duration_type === 'today');
+  const monthlyDeals = SAMPLE_KENYAN_DEALS.filter((d) => d.duration_type === 'month');
+  const activeDeals = dealType === 'daily' ? dailyDeals : monthlyDeals;
 
-  // Countdown timer to midnight EAT (Kenya Time)
+  // Countdown timer to midnight EAT (Kenya Time) for daily flash deals
   useEffect(() => {
     const calculateTimeLeft = () => {
       const now = new Date();
@@ -39,6 +42,13 @@ export default function TodayDealsCarousel() {
     return () => clearInterval(interval);
   }, []);
 
+  const handleToggleDealType = (type: 'daily' | 'monthly') => {
+    setDealType(type);
+    if (sliderRef.current) {
+      sliderRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+    }
+  };
+
   const scroll = (direction: 'left' | 'right') => {
     if (sliderRef.current) {
       const offset = direction === 'left' ? -340 : 340;
@@ -46,42 +56,87 @@ export default function TodayDealsCarousel() {
     }
   };
 
-  if (todayDeals.length === 0) return null;
+  if (activeDeals.length === 0) return null;
 
   return (
     <section className="space-y-6 pt-2 pb-6">
-      {/* 1. Header with Title, Timer, View All and Carousel Controls */}
+      {/* 1. Header with Reader Toggle (Daily vs Monthly), Timer, View All and Carousel Controls */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-50 text-rose-800 border border-rose-200 text-xs font-bold mb-2">
-            <Flame className="w-3.5 h-3.5 text-rose-600 animate-pulse" />
-            <span>24H Flash Price Slashes</span>
-            <span className="hidden sm:inline-block text-rose-300">•</span>
-            <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-semibold text-rose-700">
-              <Clock className="w-3 h-3 text-rose-600" />
-              <span>Ends in {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s</span>
-            </span>
+          {/* Reader Choice Switcher (Daily vs Monthly) */}
+          <div className="flex items-center gap-2 mb-3">
+            <button
+              onClick={() => handleToggleDealType('daily')}
+              className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition cursor-pointer ${
+                dealType === 'daily'
+                  ? 'bg-stone-900 text-white shadow-xs'
+                  : 'bg-stone-100 hover:bg-stone-200 text-stone-600'
+              }`}
+            >
+              <Flame className={`w-3.5 h-3.5 ${dealType === 'daily' ? 'text-rose-400' : 'text-stone-500'}`} />
+              <span>Today&apos;s Flash Deals ({dailyDeals.length})</span>
+            </button>
+
+            <button
+              onClick={() => handleToggleDealType('monthly')}
+              className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition cursor-pointer ${
+                dealType === 'monthly'
+                  ? 'bg-stone-900 text-white shadow-xs'
+                  : 'bg-stone-100 hover:bg-stone-200 text-stone-600'
+              }`}
+            >
+              <Calendar className={`w-3.5 h-3.5 ${dealType === 'monthly' ? 'text-[#B45309]' : 'text-stone-500'}`} />
+              <span>Monthly Deals & Refills ({monthlyDeals.length})</span>
+            </button>
           </div>
 
+          {/* Dynamic Context Badge */}
+          {dealType === 'daily' ? (
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-50 text-rose-800 border border-rose-200 text-xs font-bold mb-2">
+              <Flame className="w-3.5 h-3.5 text-rose-600 animate-pulse" />
+              <span>24H Flash Price Slashes</span>
+              <span className="hidden sm:inline-block text-rose-300">•</span>
+              <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-semibold text-rose-700">
+                <Clock className="w-3 h-3 text-rose-600" />
+                <span>Ends in {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s</span>
+              </span>
+            </div>
+          ) : (
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-stone-100 text-stone-800 border border-stone-200 text-xs font-bold mb-2">
+              <Calendar className="w-3.5 h-3.5 text-[#B45309]" />
+              <span>Deals of the Month</span>
+              <span className="hidden sm:inline-block text-stone-300">•</span>
+              <span className="text-[11px] font-semibold text-stone-600">
+                Curated monthly price drops & recurring home essentials
+              </span>
+            </div>
+          )}
+
           <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight flex items-center gap-2.5">
-            <span>Today&apos;s Top Deals</span>
+            <span>{dealType === 'daily' ? "Today's Top Deals" : "Deals of the Month & Refills"}</span>
             <span className="text-xs sm:text-sm font-bold text-[#B45309] bg-stone-100 px-2.5 py-0.5 rounded-full border border-stone-200">
-              Verified Slashes
+              {dealType === 'daily' ? 'Verified 24H Slashes' : 'Monthly Savings'}
             </span>
           </h2>
 
           <p className="text-xs sm:text-sm text-stone-500 mt-1 max-w-2xl">
-            Sellers and fundis slash prices for today only. Direct deals on hardwood sofas, smart TVs, cookware, and cleaning.
+            {dealType === 'daily'
+              ? 'Sellers and fundis slash prices for today only. Direct deals on hardwood sofas, smart TVs, cookware, and emergency repairs.'
+              : 'Extended monthly discounts on solid wood beds, solar water heaters, cookers, and scheduled home upkeep like tank cleaning and curtains.'}
           </p>
         </div>
 
         {/* Right side: View All + Carousel Buttons */}
         <div className="flex items-center gap-3 self-start sm:self-auto">
           <Link
-            href="/deals"
+            href={dealType === 'daily' ? '/deals?tab=today' : '/deals?tab=month'}
             className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-stone-100 hover:bg-stone-200 text-[#B45309] border border-stone-200 text-xs font-bold transition shadow-2xs group"
           >
-            <span>View All Today&apos;s Deals ({todayDeals.length})</span>
+            <span>
+              {dealType === 'daily'
+                ? `View All Today's Deals (${dailyDeals.length})`
+                : `View All Monthly Deals (${monthlyDeals.length})`}
+            </span>
             <ArrowRight className="w-3.5 h-3.5 text-[#B45309] group-hover:translate-x-0.5 transition-transform" />
           </Link>
 
@@ -109,7 +164,7 @@ export default function TodayDealsCarousel() {
         ref={sliderRef}
         className="flex gap-5 overflow-x-auto pb-4 pt-1 scroll-smooth snap-x snap-mandatory scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0"
       >
-        {todayDeals.map((deal) => {
+        {activeDeals.map((deal) => {
           const seller = SAMPLE_KENYAN_HOME_LISTINGS.find((b) => b.id === deal.business_id);
           const savings = deal.original_price_kes - deal.deal_price_kes;
 
@@ -150,7 +205,7 @@ export default function TodayDealsCarousel() {
                       </span>
                     ) : (
                       <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/95 text-stone-800 shadow-xs">
-                        24H Deal
+                        {deal.duration_type === 'today' ? '24H Deal' : 'Monthly Deal'}
                       </span>
                     )}
                   </div>
@@ -203,14 +258,14 @@ export default function TodayDealsCarousel() {
                 </div>
               </div>
 
-              {/* Bottom Actions */}
+              {/* Bottom Actions with Sleek Black WhatsApp Button */}
               <div className="p-4 sm:p-5 pt-0 grid grid-cols-2 gap-2">
                 <Link
                   href={waUrl}
                   target="_blank"
-                  className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition shadow-xs"
+                  className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-stone-900 hover:bg-black text-white text-xs font-bold transition shadow-xs active:scale-95"
                 >
-                  <MessageSquare className="w-3.5 h-3.5" />
+                  <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
                   <span>WhatsApp</span>
                 </Link>
 

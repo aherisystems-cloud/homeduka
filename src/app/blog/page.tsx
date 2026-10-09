@@ -41,7 +41,7 @@ export default function BlogIndexPage() {
                   alt={featured.title}
                   className="w-full h-full object-cover"
                 />
-                <span className="absolute top-4 left-4 bg-emerald-600 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-sm">
+                <span className="absolute top-4 left-4 bg-[#B45309] text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-sm">
                   Featured Investigation
                 </span>
               </div>

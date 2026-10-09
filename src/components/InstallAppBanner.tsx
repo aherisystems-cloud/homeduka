@@ -96,7 +96,7 @@ export default function InstallAppBanner() {
           {!isIos && deferredPrompt && (
             <button
               onClick={handleInstallClick}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs shadow-sm transition active:scale-95"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-stone-900 hover:bg-black text-white font-bold text-xs shadow-sm transition active:scale-95 border border-stone-700/80"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Install App</span>
