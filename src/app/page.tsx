@@ -9,6 +9,7 @@ import {
   Store, Award, PhoneCall
 } from 'lucide-react';
 import BrowseByRoom from '../components/BrowseByRoom';
+import TodayDealsCarousel from '../components/TodayDealsCarousel';
 import MonthlyRecurringServices from '../components/MonthlyRecurringServices';
 import ProductCard from '../components/ProductCard';
 import ServiceCard from '../components/ServiceCard';
@@ -271,7 +272,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. SHOP BY ROOM SLIDER (STARTS BEFORE SERVICE PROVIDERS / FUNDIS) */}
+      {/* 2. TODAY'S TOP DEALS CAROUSEL (BEFORE SHOP BY ROOMS) */}
+      <TodayDealsCarousel />
+
+      {/* 3. SHOP BY ROOM SLIDER (STARTS BEFORE SERVICE PROVIDERS / FUNDIS) */}
       <BrowseByRoom
         selectedRoom={selectedRoom}
         onSelectRoom={(r) => setSelectedRoom(r)}

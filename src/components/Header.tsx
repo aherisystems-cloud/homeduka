@@ -7,20 +7,42 @@ import {
   Sparkles, ChevronDown, Wrench, ShoppingBag, RefreshCw, 
   Menu, X, CheckCircle2, HelpCircle, Layers, ArrowRight,
   Tv, Bed, Sofa, Utensils, Bath, Trees, Paintbrush, Hammer,
-  Flame, Shirt, Box, Truck, Shield
+  Flame, Shirt, Box, Truck, Shield, Smartphone, Download, Share2
 } from 'lucide-react';
 import Logo from './Logo';
 
 export default function Header() {
   const [activeMegaMenu, setActiveMegaMenu] = useState<'products' | 'services' | null>(null);
-  const [showDealsModal, setShowDealsModal] = useState(false);
+  const [showDownloadAppModal, setShowDownloadAppModal] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileCategoryOpen, setMobileCategoryOpen] = useState<'products' | 'services' | null>(null);
   const [headerLocation, setHeaderLocation] = useState<string>('Nairobi');
 
+  // PWA install state
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [isIos, setIsIos] = useState<boolean>(false);
+  const [isStandalone, setIsStandalone] = useState<boolean>(false);
+
   const menuTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
+    // Detect standalone mode
+    const isAppStandalone = 
+      window.matchMedia('(display-mode: standalone)').matches || 
+      (window.navigator as any).standalone === true;
+    setIsStandalone(isAppStandalone);
+
+    // Detect iOS
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    setIsIos(/iphone|ipad|ipod/.test(userAgent));
+
+    // Capture beforeinstallprompt for native 1-tap install
+    const handleBeforeInstallPrompt = (e: Event) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+    };
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
     const saved = localStorage.getItem('homeduka_location_label');
     if (saved) {
       setHeaderLocation(saved);
@@ -33,7 +55,10 @@ export default function Header() {
     };
 
     window.addEventListener('homeduka-location-changed', handleLocationChange);
-    return () => window.removeEventListener('homeduka-location-changed', handleLocationChange);
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener('homeduka-location-changed', handleLocationChange);
+    };
   }, []);
 
   const handleMouseEnter = (menu: 'products' | 'services') => {
@@ -73,15 +98,19 @@ export default function Header() {
             </span>
           </div>
 
-          {/* Right: WhatsApp Deals Explainer + Channel Link */}
+          {/* Right: Download Web App + Channel Link */}
           <div className="flex items-center gap-3 sm:gap-4">
-            {/* What are WhatsApp Deals? trigger button */}
+            {/* Download Web App trigger button */}
             <button
-              onClick={() => setShowDealsModal(true)}
-              className="inline-flex items-center gap-1 text-stone-300 hover:text-amber-300 transition cursor-pointer"
+              onClick={() => setShowDownloadAppModal(true)}
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-800 hover:bg-stone-700 text-amber-300 hover:text-amber-200 transition cursor-pointer text-[11px] sm:text-xs font-bold border border-stone-700/80 shadow-2xs group"
+              title="Download or install HomeDuka web app on your phone"
             >
-              <HelpCircle className="w-3.5 h-3.5 text-amber-400" />
-              <span className="underline decoration-dotted underline-offset-2">What are WhatsApp Deals?</span>
+              <Smartphone className="w-3.5 h-3.5 text-amber-400 group-hover:scale-110 transition-transform" />
+              <span>Download Web App</span>
+              <span className="hidden sm:inline-block px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 text-[10px] font-black uppercase">
+                Free
+              </span>
             </button>
 
             {/* Direct Channel Link */}
@@ -632,12 +661,13 @@ export default function Header() {
               </div>
               <button
                 onClick={() => {
-                  setShowDealsModal(true);
+                  setShowDownloadAppModal(true);
                   setMobileMenuOpen(false);
                 }}
-                className="text-brand-700 font-bold underline block text-left"
+                className="text-[#B45309] font-bold underline flex items-center gap-1.5 text-left py-0.5"
               >
-                What are WhatsApp Deals?
+                <Smartphone className="w-3.5 h-3.5 text-[#B45309]" />
+                <span>Download Web App (Free)</span>
               </button>
               <Link
                 href="https://whatsapp.com/channel/example-channel"
@@ -821,95 +851,114 @@ export default function Header() {
         )}
       </header>
 
-      {/* 4. "WHAT ARE WHATSAPP DEALS?" EXPLAINER MODAL (Simple, Grade 4 Language) */}
-      {showDealsModal && (
-        <div className="fixed inset-0 z-50 bg-stone-950/70 backdrop-blur-xs flex items-center justify-center p-4 animate-fade-in">
-          <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-stone-200 relative">
+      {/* 4. DOWNLOAD / INSTALL HOMEDUKA WEB APP MODAL */}
+      {showDownloadAppModal && (
+        <div className="fixed inset-0 z-50 bg-stone-950/75 backdrop-blur-xs flex items-center justify-center p-4 animate-fade-in">
+          <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-stone-200 relative overflow-hidden">
             
             {/* Close Button */}
             <button
-              onClick={() => setShowDealsModal(false)}
-              className="absolute top-4 right-4 p-2 rounded-full text-stone-400 hover:text-stone-800 hover:bg-stone-100 transition"
+              onClick={() => setShowDownloadAppModal(false)}
+              className="absolute top-4 right-4 p-2 rounded-full text-stone-400 hover:text-stone-800 hover:bg-stone-100 transition cursor-pointer"
+              aria-label="Close dialog"
             >
               <X className="w-5 h-5" />
             </button>
 
             {/* Modal Content */}
             <div className="space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xl">
-                💬
+              <div className="w-12 h-12 rounded-2xl bg-amber-100 text-[#B45309] flex items-center justify-center shadow-xs">
+                <Smartphone className="w-6 h-6 text-[#B45309]" />
               </div>
 
               <div>
-                <span className="text-[10px] font-black uppercase tracking-wider text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                  Simple Guide
+                <span className="text-[10px] font-black uppercase tracking-wider text-[#B45309] bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+                  Instant Mobile Web App
                 </span>
                 <h3 className="text-xl sm:text-2xl font-black text-stone-900 mt-1">
-                  What are WhatsApp Deals?
+                  Download HomeDuka Web App
                 </h3>
                 <p className="text-xs sm:text-sm text-stone-600 mt-1 leading-relaxed">
-                  Every week, verified Kenyan sellers and service fundis share special discounts directly with our WhatsApp community.
+                  Add HomeDuka directly to your phone home screen. Zero App Store downloads, ultra-fast 1-tap access, and real-time flash deal alerts.
                 </p>
               </div>
 
-              {/* 3 Simple Points in Grade 4 English */}
-              <div className="space-y-3 pt-2">
-                <div className="flex items-start gap-3 p-3 rounded-2xl bg-[#FAF8F5] border border-stone-200/80">
-                  <div className="w-6 h-6 rounded-full bg-amber-100 text-amber-800 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
-                    1
-                  </div>
-                  <div>
-                    <h5 className="font-bold text-xs text-stone-900">Direct From the Seller</h5>
-                    <p className="text-[11px] text-stone-600 leading-snug">
-                      You talk directly with the shop owner or fundi on WhatsApp. No brokers, no extra agent commissions.
-                    </p>
-                  </div>
+              {/* Native 1-Tap Install Button if Browser supports it */}
+              {deferredPrompt && (
+                <div className="p-4 rounded-2xl bg-amber-50 border border-amber-300 text-center space-y-2">
+                  <span className="text-xs font-bold text-amber-900 block">
+                    ⚡ 1-Tap Fast Install Ready!
+                  </span>
+                  <button
+                    onClick={async () => {
+                      deferredPrompt.prompt();
+                      const { outcome } = await deferredPrompt.userChoice;
+                      if (outcome === 'accepted') {
+                        setShowDownloadAppModal(false);
+                      }
+                      setDeferredPrompt(null);
+                    }}
+                    className="w-full py-3 px-4 rounded-xl bg-[#B45309] hover:bg-[#92400E] text-white font-bold text-xs sm:text-sm transition shadow-md flex items-center justify-center gap-2 cursor-pointer active:scale-95"
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>Install HomeDuka App Now (Free)</span>
+                  </button>
                 </div>
+              )}
 
-                <div className="flex items-start gap-3 p-3 rounded-2xl bg-[#FAF8F5] border border-stone-200/80">
-                  <div className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
-                    2
+              {/* Step-by-Step Instructions based on OS */}
+              <div className="space-y-2.5 pt-1">
+                {isIos ? (
+                  <div className="p-3.5 rounded-2xl bg-stone-50 border border-stone-200 space-y-2">
+                    <span className="text-xs font-extrabold text-stone-900 flex items-center gap-1.5">
+                      <span>🍎 iPhone & iPad (Safari):</span>
+                    </span>
+                    <ol className="text-xs text-stone-600 space-y-1.5 list-decimal list-inside pl-1">
+                      <li>Tap the <strong>Share button (⎋)</strong> at the bottom of Safari.</li>
+                      <li>Scroll down and tap <strong>&quot;Add to Home Screen&quot; (➕)</strong>.</li>
+                      <li>Tap <strong>&quot;Add&quot;</strong> in the top right corner — Done!</li>
+                    </ol>
                   </div>
-                  <div>
-                    <h5 className="font-bold text-xs text-stone-900">Pickup or Delivery Arranged Directly</h5>
-                    <p className="text-[11px] text-stone-600 leading-snug">
-                      You can visit their physical shop to inspect the item, or agree on parcel / rider delivery to your house.
-                    </p>
+                ) : (
+                  <div className="p-3.5 rounded-2xl bg-stone-50 border border-stone-200 space-y-2">
+                    <span className="text-xs font-extrabold text-stone-900 flex items-center gap-1.5">
+                      <span>🤖 Android (Chrome / Brave / Edge):</span>
+                    </span>
+                    <ol className="text-xs text-stone-600 space-y-1.5 list-decimal list-inside pl-1">
+                      <li>Tap the <strong>Menu icon (⋮)</strong> at the top right of your browser.</li>
+                      <li>Tap <strong>&quot;Install app&quot;</strong> or <strong>&quot;Add to Home screen&quot;</strong>.</li>
+                      <li>Confirm <strong>&quot;Install&quot;</strong> — HomeDuka icon is added to your phone!</li>
+                    </ol>
                   </div>
-                </div>
+                )}
 
-                <div className="flex items-start gap-3 p-3 rounded-2xl bg-[#FAF8F5] border border-stone-200/80">
-                  <div className="w-6 h-6 rounded-full bg-blue-100 text-blue-800 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
-                    3
+                {/* Benefits Pill Grid */}
+                <div className="grid grid-cols-3 gap-2 pt-1 text-center">
+                  <div className="p-2 rounded-xl bg-[#FAF8F5] border border-stone-200/80">
+                    <span className="text-[11px] font-bold text-stone-900 block">⚡ &lt; 2 MB</span>
+                    <span className="text-[10px] text-stone-500 block">Zero Storage Waste</span>
                   </div>
-                  <div>
-                    <h5 className="font-bold text-xs text-stone-900">Safe Lipa na M-Pesa Payments</h5>
-                    <p className="text-[11px] text-stone-600 leading-snug">
-                      Always confirm the item first. When paying, confirm the registered business name matches before entering your PIN.
-                    </p>
+                  <div className="p-2 rounded-xl bg-[#FAF8F5] border border-stone-200/80">
+                    <span className="text-[11px] font-bold text-stone-900 block">🔔 Flash Deals</span>
+                    <span className="text-[10px] text-stone-500 block">Today&apos;s Slashes</span>
+                  </div>
+                  <div className="p-2 rounded-xl bg-[#FAF8F5] border border-stone-200/80">
+                    <span className="text-[11px] font-bold text-stone-900 block">💬 WhatsApp</span>
+                    <span className="text-[10px] text-stone-500 block">Direct to Shops</span>
                   </div>
                 </div>
               </div>
 
-              {/* Call to Action */}
-              <div className="pt-3 flex flex-col sm:flex-row gap-2">
-                <Link
-                  href="https://whatsapp.com/channel/example-channel"
-                  target="_blank"
-                  onClick={() => setShowDealsModal(false)}
-                  className="flex-1 inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition shadow-md active:scale-95"
-                >
-                  <MessageSquare className="w-4 h-4" />
-                  <span>Join Free WhatsApp Channel Now</span>
-                </Link>
-
+              {/* Modal Bottom Actions */}
+              <div className="pt-2 flex items-center justify-between gap-3 border-t border-stone-100">
                 <button
-                  onClick={() => setShowDealsModal(false)}
-                  className="py-3 px-4 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 font-bold text-xs transition"
+                  onClick={() => setShowDownloadAppModal(false)}
+                  className="w-full py-2.5 px-4 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-bold text-xs transition cursor-pointer text-center"
                 >
-                  Got it, close
+                  Got it, Close
                 </button>
               </div>
+
             </div>
           </div>
         </div>
