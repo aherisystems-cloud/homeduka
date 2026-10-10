@@ -22,13 +22,13 @@ export default function MonthlyRecurringServices() {
         <div>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-900 border border-emerald-200/80 text-xs font-bold mb-2">
             <RefreshCw className="w-3.5 h-3.5 text-emerald-700 animate-spin-slow" />
-            <span>Regular Home Care & Doorstep Refills</span>
+            <span>Routine Home Care & Refills</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight">
             Monthly Home Care & Monthly Refills
           </h2>
           <p className="text-xs sm:text-sm text-stone-500 mt-1 max-w-2xl">
-            Clean drinking water, cooking gas refills, fumigation, water tank cleaning, and routine servicing before small issues turn into expensive repairs
+            Scheduled water, cooking gas, and tank care at locked monthly rates.
           </p>
         </div>
 
@@ -115,10 +115,10 @@ export default function MonthlyRecurringServices() {
                   href={waUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-bold text-xs transition active:scale-95 shadow-2xs"
+                  className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-stone-900 hover:bg-black text-white font-bold text-xs transition active:scale-95 shadow-2xs"
                 >
                   <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Order on WhatsApp</span>
+                  <span>Order Refill on WhatsApp</span>
                 </a>
               </div>
             </div>

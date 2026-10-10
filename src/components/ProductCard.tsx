@@ -2,10 +2,11 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { HomeProduct, BusinessProfile } from '../types/schema';
+import { HomeProduct, BusinessProfile, ComparisonItem } from '../types/schema';
 import { SAMPLE_KENYAN_HOME_LISTINGS } from '../data/mock_listings';
 import { generateWhatsAppLeadLink } from '../utils/whatsapp_link';
-import { MessageSquare, ShieldCheck, MapPin, Tag } from 'lucide-react';
+import { MessageSquare, ShieldCheck, MapPin, Tag, Scale, Check } from 'lucide-react';
+import { useComparison } from '../context/ComparisonContext';
 
 interface ProductCardProps {
   product: HomeProduct;
@@ -14,13 +15,41 @@ interface ProductCardProps {
 
 export default function ProductCard({ product, business }: ProductCardProps) {
   const biz = business || SAMPLE_KENYAN_HOME_LISTINGS.find((b) => b.id === product.business_id);
+  const { addToCompare, isInCompare } = useComparison();
 
   if (!biz) return null;
 
+  const inCompare = isInCompare(product.id);
+
   const whatsappUrl = generateWhatsAppLeadLink(biz, {
     itemOrServiceName: product.title,
+    priceKes: product.pricing.discount_price_kes || product.pricing.regular_price_kes,
+    deliveryTerms: product.delivery.nairobi_delivery_fee_kes === 0 ? 'Free Nairobi Delivery' : `KSh ${product.delivery.nairobi_delivery_fee_kes}`,
     intent: 'product_order'
   });
+
+  const comparisonItem: ComparisonItem = {
+    id: product.id,
+    type: 'product',
+    title: product.title,
+    slug: product.slug,
+    business_id: biz.id,
+    business_name: biz.business_name,
+    business_slug: biz.slug,
+    location_label: `${biz.location.neighborhood}, ${biz.location.sub_county}`,
+    price_kes: product.pricing.discount_price_kes || product.pricing.regular_price_kes,
+    formatted_price: `KSh ${(product.pricing.discount_price_kes || product.pricing.regular_price_kes).toLocaleString()}`,
+    image: product.images[0] || biz.media.cover_image_url,
+    category: product.category,
+    specs: {
+      material_or_trade: product.specifications.material,
+      warranty_months: product.specifications.warranty_months,
+      free_nairobi_delivery: product.delivery.nairobi_delivery_fee_kes === 0,
+      mpesa_till_verified: Boolean(biz.commercial?.mpesa_till_number),
+      lead_time_days: product.specifications.lead_time_days
+    },
+    whatsapp_url: whatsappUrl
+  };
 
   const roomDisplay = 
     product.room === 'living_room' ? '🛋️ Living Room' :
@@ -94,7 +123,7 @@ export default function ProductCard({ product, business }: ProductCardProps) {
         <div className="flex items-baseline justify-between mb-3 pt-3">
           <div>
             <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block">
-              Direct Shop Price
+              Direct Price
             </span>
             <span className="text-base sm:text-lg font-black text-stone-900">
               KSh {product.pricing.regular_price_kes.toLocaleString()}
@@ -102,19 +131,34 @@ export default function ProductCard({ product, business }: ProductCardProps) {
           </div>
 
           <span className="text-[10px] font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 flex items-center gap-1">
-            <span>✓ Lipa na M-Pesa Verified</span>
+            <span>✓ Lipa na M-Pesa</span>
           </span>
         </div>
 
-        <a
-          href={whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-bold text-xs transition active:scale-95 shadow-sm"
-        >
-          <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
-          <span>Order on WhatsApp</span>
-        </a>
+        <div className="grid grid-cols-4 gap-2">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="col-span-3 inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-stone-900 hover:bg-black text-white font-bold text-xs transition active:scale-95 shadow-sm"
+          >
+            <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
+            <span>Order on WhatsApp</span>
+          </a>
+
+          <button
+            onClick={() => addToCompare(comparisonItem)}
+            className={`col-span-1 inline-flex items-center justify-center gap-1 rounded-xl border text-xs font-bold transition ${
+              inCompare
+                ? 'bg-stone-900 border-stone-900 text-white'
+                : 'border-stone-200 text-stone-700 hover:bg-stone-100'
+            }`}
+            title={inCompare ? "Remove from compare" : "Compare side-by-side"}
+          >
+            <Scale className="w-3.5 h-3.5" />
+            <span className="sr-only">Compare</span>
+          </button>
+        </div>
       </div>
     </div>
   );

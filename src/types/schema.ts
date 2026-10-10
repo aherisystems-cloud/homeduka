@@ -326,3 +326,67 @@ export interface HomeDeal {
   expires_at: string;
 }
 
+// ==========================================
+// 8. VERIFIED BUYER REVIEW SYSTEM (Anti-Fake)
+// ==========================================
+export type VerificationMethod = 'mpesa_till' | 'site_visit' | 'storefront_invoice';
+
+export interface VerifiedReview {
+  id: string;
+  business_id: string;
+  product_id?: string;
+  service_id?: string;
+  item_purchased_title: string;
+  item_type: 'product' | 'service';
+  rating: number; // 1 - 5
+  review_text: string;
+  buyer_name: string;
+  buyer_neighborhood: string;
+  verified_method: VerificationMethod;
+  mpesa_receipt_snippet?: string; // e.g. "QK8***92 (Lipa na M-Pesa Verified)"
+  buyer_photo_urls?: string[];
+  date: string;
+  helpful_count: number;
+}
+
+// ==========================================
+// 9. PRODUCT & SERVICE COMPARISON ITEM
+// ==========================================
+export interface ComparisonItem {
+  id: string;
+  type: 'product' | 'service';
+  title: string;
+  slug: string;
+  business_id: string;
+  business_name: string;
+  business_slug: string;
+  location_label: string;
+  price_kes: number;
+  formatted_price: string;
+  image: string;
+  category: string;
+  specs: {
+    material_or_trade?: string;
+    warranty_months?: number;
+    free_whatsapp_quote?: boolean;
+    free_site_visit?: boolean;
+    free_nairobi_delivery?: boolean;
+    mpesa_till_verified?: boolean;
+    lead_time_days?: number;
+  };
+  whatsapp_url: string;
+}
+
+// ==========================================
+// 10. WEB APP ALERT & PUSH PREFERENCES
+// ==========================================
+export interface AlertNotificationPreference {
+  flash_deals_enabled: boolean;
+  monthly_refills_enabled: boolean;
+  emergency_alerts_enabled: boolean;
+  price_drop_alerts_enabled: boolean;
+  selected_county_id?: string;
+  preferred_refill_day?: number; // 1-31
+  contact_channel?: 'browser_push' | 'whatsapp_digest';
+}
+

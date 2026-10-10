@@ -4,11 +4,12 @@ import React from 'react';
 import Link from 'next/link';
 import { 
   Wrench, ShieldCheck, Clock, CheckCircle2, MessageSquare, 
-  MapPin, Check, Camera, Ruler, AlertCircle 
+  MapPin, Check, Camera, Ruler, AlertCircle, Scale 
 } from 'lucide-react';
-import { HomeService, BusinessProfile } from '../types/schema';
+import { HomeService, BusinessProfile, ComparisonItem } from '../types/schema';
 import { SAMPLE_KENYAN_HOME_LISTINGS } from '../data/mock_listings';
 import { generateWhatsAppLeadLink } from '../utils/whatsapp_link';
+import { useComparison } from '../context/ComparisonContext';
 
 interface ServiceCardProps {
   service: HomeService;
@@ -17,23 +18,51 @@ interface ServiceCardProps {
 
 export default function ServiceCard({ service, business }: ServiceCardProps) {
   const biz = business || SAMPLE_KENYAN_HOME_LISTINGS.find((b) => b.id === service.business_id);
+  const { addToCompare, isInCompare } = useComparison();
 
   if (!biz) return null;
 
-  const whatsappUrl = generateWhatsAppLeadLink(biz, {
-    itemOrServiceName: service.title,
-    intent: 'service_inquiry'
-  });
+  const inCompare = isInCompare(service.id);
 
   const formattedPrice = service.pricing.starting_price_kes 
     ? `KSh ${service.pricing.starting_price_kes.toLocaleString()}` 
     : 'Ask on WhatsApp';
 
   const priceUnitText = 
-    service.pricing.unit === 'per_sqm' ? '/ sqm (materials + labor)' :
-    service.pricing.unit === 'per_point' ? '/ electrical point' :
+    service.pricing.unit === 'per_sqm' ? '/ sqm' :
+    service.pricing.unit === 'per_point' ? '/ point' :
     service.pricing.unit === 'per_room' ? '/ room' :
-    service.pricing.unit === 'fixed_job' ? 'starting labor rate' : '';
+    service.pricing.unit === 'fixed_job' ? 'labor' : '';
+
+  const whatsappUrl = generateWhatsAppLeadLink(biz, {
+    itemOrServiceName: service.title,
+    formattedPrice: `${formattedPrice} ${priceUnitText}`.trim(),
+    intent: 'service_inquiry'
+  });
+
+  const comparisonItem: ComparisonItem = {
+    id: service.id,
+    type: 'service',
+    title: service.title,
+    slug: service.slug,
+    business_id: biz.id,
+    business_name: biz.business_name,
+    business_slug: biz.slug,
+    location_label: `${biz.location.neighborhood}, ${biz.location.sub_county}`,
+    price_kes: service.pricing.starting_price_kes || 0,
+    formatted_price: `${formattedPrice} ${priceUnitText}`.trim(),
+    image: service.portfolio_photos[0] || biz.media.cover_image_url,
+    category: service.service_category,
+    specs: {
+      material_or_trade: service.service_category.replace(/_/g, ' '),
+      warranty_months: service.service_terms.warranty_guarantee_days ? Math.round(service.service_terms.warranty_guarantee_days / 30) : undefined,
+      free_whatsapp_quote: service.affirmed_commitments.free_whatsapp_assessment,
+      free_site_visit: service.affirmed_commitments.free_local_measurement,
+      free_nairobi_delivery: false,
+      mpesa_till_verified: Boolean(biz.commercial?.mpesa_till_number)
+    },
+    whatsapp_url: whatsappUrl
+  };
 
   return (
     <div className="bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-2xs hover:shadow-md transition flex flex-col justify-between group">
@@ -88,43 +117,27 @@ export default function ServiceCard({ service, business }: ServiceCardProps) {
             </p>
           </div>
 
-          {/* Explicit Fundi Guarantees */}
-          <div className="space-y-1.5 bg-[#FAF8F5] rounded-2xl p-3 border border-stone-200/80 text-xs">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block mb-1">
-              What this fundi guarantees:
-            </span>
-
+          {/* Fundi Guarantees - Punchy Micro-Badges */}
+          <div className="flex flex-wrap gap-1.5 pt-1">
             {service.affirmed_commitments.free_whatsapp_assessment && (
-              <div className="flex items-center gap-2 text-stone-700">
-                <div className="w-4 h-4 rounded-full bg-stone-100 flex items-center justify-center shrink-0">
-                  <Camera className="w-2.5 h-2.5 text-[#B45309]" />
-                </div>
-                <span className="text-[11px] font-semibold text-stone-800">
-                  Free WhatsApp Photo Check (Send photo, get price)
-                </span>
-              </div>
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-stone-100 text-stone-800 text-[11px] font-semibold border border-stone-200/60">
+                <Camera className="w-3 h-3 text-[#B45309]" />
+                <span>Free Photo Check</span>
+              </span>
             )}
 
             {service.affirmed_commitments.free_local_measurement && (
-              <div className="flex items-center gap-2 text-stone-700">
-                <div className="w-4 h-4 rounded-full bg-stone-200 flex items-center justify-center shrink-0">
-                  <Ruler className="w-2.5 h-2.5 text-stone-800" />
-                </div>
-                <span className="text-[11px] font-semibold text-stone-800 truncate">
-                  Free Site Visit & Measurement in {biz.location.neighborhood}
-                </span>
-              </div>
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-stone-100 text-stone-800 text-[11px] font-semibold border border-stone-200/60">
+                <Ruler className="w-3 h-3 text-stone-700" />
+                <span>Free Site Visit</span>
+              </span>
             )}
 
             {service.service_terms.warranty_guarantee_days && (
-              <div className="flex items-center gap-2 text-stone-700">
-                <div className="w-4 h-4 rounded-full bg-stone-100 flex items-center justify-center shrink-0">
-                  <Check className="w-2.5 h-2.5 text-[#B45309]" />
-                </div>
-                <span className="text-[11px] text-stone-600">
-                  {service.service_terms.warranty_guarantee_days} Days Workmanship Guarantee
-                </span>
-              </div>
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-stone-100 text-stone-800 text-[11px] font-semibold border border-stone-200/60">
+                <Check className="w-3 h-3 text-[#B45309]" />
+                <span>{service.service_terms.warranty_guarantee_days}d Warranty</span>
+              </span>
             )}
           </div>
         </div>
@@ -135,7 +148,7 @@ export default function ServiceCard({ service, business }: ServiceCardProps) {
         <div className="flex items-baseline justify-between mb-3 pt-3">
           <div>
             <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block">
-              Price (Labor & Materials)
+              Direct Price
             </span>
             <div className="flex items-baseline gap-1">
               <span className="text-base font-black text-stone-900">{formattedPrice}</span>
@@ -144,19 +157,34 @@ export default function ServiceCard({ service, business }: ServiceCardProps) {
           </div>
 
           <span className="text-[10px] font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-            ✓ Lipa na M-Pesa Verified
+            ✓ Lipa na M-Pesa
           </span>
         </div>
 
-        <a
-          href={whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-bold text-xs shadow-sm transition active:scale-95"
-        >
-          <MessageSquare className="w-4 h-4 text-emerald-400" />
-          <span>Chat & Send Photo on WhatsApp</span>
-        </a>
+        <div className="grid grid-cols-4 gap-2">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="col-span-3 inline-flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-stone-900 hover:bg-black text-white font-bold text-xs shadow-sm transition active:scale-95"
+          >
+            <MessageSquare className="w-4 h-4 text-emerald-400" />
+            <span>Book on WhatsApp</span>
+          </a>
+
+          <button
+            onClick={() => addToCompare(comparisonItem)}
+            className={`col-span-1 inline-flex items-center justify-center gap-1 rounded-xl border text-xs font-bold transition ${
+              inCompare
+                ? 'bg-stone-900 border-stone-900 text-white'
+                : 'border-stone-200 text-stone-700 hover:bg-stone-100'
+            }`}
+            title={inCompare ? "Remove from compare" : "Compare side-by-side"}
+          >
+            <Scale className="w-3.5 h-3.5" />
+            <span className="sr-only">Compare</span>
+          </button>
+        </div>
       </div>
     </div>
   );

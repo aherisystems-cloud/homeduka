@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { SAMPLE_KENYAN_DEALS, SAMPLE_KENYAN_HOME_LISTINGS } from '../data/mock_listings';
 import { HomeDeal } from '../types/schema';
+import { generateWhatsAppLeadLink } from '../utils/whatsapp_link';
 
 export default function TodayDealsCarousel() {
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -121,8 +122,8 @@ export default function TodayDealsCarousel() {
 
           <p className="text-xs sm:text-sm text-stone-500 mt-1 max-w-2xl">
             {dealType === 'daily'
-              ? 'Sellers and fundis slash prices for today only. Direct deals on hardwood sofas, smart TVs, cookware, and emergency repairs.'
-              : 'Extended monthly discounts on solid wood beds, solar water heaters, cookers, and scheduled home upkeep like tank cleaning and curtains.'}
+              ? 'Flash price slashes expiring at midnight. Tap to claim on WhatsApp.'
+              : 'Locked monthly discounts & home refills. Direct from verified shops.'}
           </p>
         </div>
 
@@ -168,11 +169,13 @@ export default function TodayDealsCarousel() {
           const seller = SAMPLE_KENYAN_HOME_LISTINGS.find((b) => b.id === deal.business_id);
           const savings = deal.original_price_kes - deal.deal_price_kes;
 
-          const waText = encodeURIComponent(
-            `Habari ${seller?.business_name || 'HomeDuka'}, nimeona deal ya "${deal.title}" ya KSh ${deal.deal_price_kes.toLocaleString()} (discount kutoka KSh ${deal.original_price_kes.toLocaleString()}) kwenye HomeDuka Deals. Bado iko available?`
-          );
           const waUrl = seller
-            ? `https://wa.me/${seller.contact.whatsapp_number}?text=${waText}`
+            ? generateWhatsAppLeadLink(seller, {
+                itemOrServiceName: deal.title,
+                priceKes: deal.deal_price_kes,
+                dealBadge: `-${deal.discount_percentage}% OFF (${deal.badge_text})`,
+                intent: 'deal_claim'
+              })
             : '#';
 
           return (

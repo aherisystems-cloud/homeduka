@@ -14,11 +14,11 @@ export default function ClaimProfileBanner() {
         </div>
 
         <h2 className="text-xl sm:text-3xl font-black tracking-tight leading-tight mb-2">
-          Do you sell home products or offer home services in Kenya?
+          Sell products or offer fundi services?
         </h2>
 
         <p className="text-xs sm:text-sm text-stone-300 leading-relaxed mb-6">
-          Reach thousands of homeowners across Nairobi, Kiambu, Mombasa, Nakuru, and all counties. Add your products, update prices, slash flash deals for 24 hours, and get direct customer inquiries on WhatsApp without broker cuts.
+          List your workshop or trade free. Get direct WhatsApp client inquiries with zero broker fees.
         </p>
 
         <div className="flex flex-wrap items-center gap-3">
@@ -26,7 +26,7 @@ export default function ClaimProfileBanner() {
             href="/portal/demo-token"
             className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-[#B45309] hover:bg-[#92400E] text-white font-bold text-xs transition active:scale-95 shadow-md"
           >
-            <span>Sell / Add Product or Service</span>
+            <span>List Your Business Free</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
 
@@ -36,7 +36,7 @@ export default function ClaimProfileBanner() {
             className="inline-flex items-center gap-2 px-4 py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs transition"
           >
             <MessageSquare className="w-4 h-4 text-emerald-400" />
-            <span>Chat on WhatsApp (+254 712 345 678)</span>
+            <span>WhatsApp Us to List</span>
           </Link>
         </div>
       </div>

@@ -14,6 +14,8 @@ import MonthlyRecurringServices from '../components/MonthlyRecurringServices';
 import ProductCard from '../components/ProductCard';
 import ServiceCard from '../components/ServiceCard';
 import BusinessCard from '../components/BusinessCard';
+import EmergencyDispatchBar from '../components/EmergencyDispatchBar';
+import VerifiedReviewsSection from '../components/VerifiedReviewsSection';
 import ClaimProfileBanner from '../components/ClaimProfileBanner';
 import WelcomeLocationModal, { UserPreferences } from '../components/WelcomeLocationModal';
 import { 
@@ -187,9 +189,9 @@ export default function HomePage() {
             <span className="text-[#B45309]">From trusted local shops & fundis.</span>
           </h1>
 
-          {/* Subtitle - Crisp English, Authentic, Zero Clutter */}
+          {/* Subtitle - Punchy, Action-Oriented, Zero Fluff */}
           <p className="text-base sm:text-xl text-stone-600 max-w-2xl mx-auto font-normal leading-relaxed">
-            Discover furniture, kitchenware, decor, and electronics from trusted local shops — or connect with verified service providers and fundis across Kenya.
+            Direct workshop prices & verified fundis across Kenya. No brokers. Tap to order or hire.
           </p>
 
           {/* Location Context Banner Pill (Triggers Fullscreen Modal) */}
@@ -217,7 +219,7 @@ export default function HomePage() {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search items, fundis, or estates (e.g. Ruiru, Chesterfield, Gas Cooker, Plumber)..."
+              placeholder="Search furniture, appliances, fundis, or estates..."
               className="w-full py-3 bg-transparent text-sm sm:text-base text-stone-900 placeholder:text-stone-400 focus:outline-hidden"
             />
             {searchQuery && (
@@ -251,7 +253,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* 4-Pillar Trust Bar */}
+        {/* 4-Pillar Trust Bar - Punchy & Direct */}
         <div className="pt-10 border-t border-stone-200/70 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-4xl mx-auto text-center">
           <div className="space-y-1">
             <span className="text-xl sm:text-2xl font-extrabold text-stone-900 block tracking-tight">4,800+</span>
@@ -259,21 +261,23 @@ export default function HomePage() {
           </div>
           <div className="space-y-1">
             <span className="text-xl sm:text-2xl font-extrabold text-stone-900 block tracking-tight">Direct WhatsApp</span>
-            <span className="text-xs text-stone-500 font-medium block">Talk Direct • No Brokers</span>
+            <span className="text-xs text-stone-500 font-medium block">No Middlemen</span>
           </div>
           <div className="space-y-1">
             <span className="text-xl sm:text-2xl font-extrabold text-stone-900 block tracking-tight">0% Fee</span>
-            <span className="text-xs text-stone-500 font-medium block">Direct Shop Prices</span>
+            <span className="text-xs text-stone-500 font-medium block">Workshop Prices</span>
           </div>
           <div className="space-y-1">
             <span className="text-xl sm:text-2xl font-extrabold text-stone-900 block tracking-tight">Verified Till</span>
-            <span className="text-xs text-stone-500 font-medium block">Safe Lipa na M-Pesa</span>
+            <span className="text-xs text-stone-500 font-medium block">Lipa na M-Pesa</span>
           </div>
         </div>
       </section>
 
       {/* 2. TODAY'S TOP DEALS CAROUSEL (BEFORE SHOP BY ROOMS) */}
-      <TodayDealsCarousel />
+      <div id="today-deals">
+        <TodayDealsCarousel />
+      </div>
 
       {/* 3. SHOP BY ROOM SLIDER (STARTS BEFORE SERVICE PROVIDERS / FUNDIS) */}
       <BrowseByRoom
@@ -293,7 +297,7 @@ export default function HomePage() {
               Featured Home Products
             </h2>
             <p className="text-xs sm:text-sm text-stone-500 mt-1 max-w-2xl">
-              Solid hardwood furniture, gas cookers, kitchenware, smart TVs, blackout curtains, and carpets direct from verified local shops
+              Solid hardwoods, appliances & decor at direct shop prices.
             </p>
           </div>
 
@@ -344,6 +348,11 @@ export default function HomePage() {
         )}
       </section>
 
+      {/* EMERGENCY 24/7 DISPATCH BAR */}
+      <div id="emergency-dispatch" className="pt-2">
+        <EmergencyDispatchBar />
+      </div>
+
       {/* 4. FEATURED HOME SERVICE PROVIDERS / FUNDIS SLIDER (WITH VIEW ALL OPTION) */}
       <section id="services" className="space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
@@ -356,7 +365,7 @@ export default function HomePage() {
               Featured Home Services & Fundis
             </h2>
             <p className="text-xs sm:text-sm text-stone-500 mt-1 max-w-2xl">
-              Licensed plumbers, electricians, appliance repairers, gypsum ceiling fundis, and house cleaners who offer WhatsApp price checks and site visits
+              Send a photo on WhatsApp. Get upfront pricing & fast dispatch.
             </p>
           </div>
 
@@ -421,7 +430,7 @@ export default function HomePage() {
               Top Trusted Local Shops You Can Visit
             </h2>
             <p className="text-xs sm:text-sm text-stone-500 mt-1 max-w-2xl">
-              Verified physical shops with clear landmarks, customer parking, showrooms, and safe Lipa na M-Pesa Tills
+              Physical showrooms with clear landmarks, parking, and M-Pesa Tills.
             </p>
           </div>
 
@@ -461,7 +470,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7. BUYER SAFETY & PAYMENT SECURITY GUIDE (Airy & Reassuring) */}
+      {/* 7. VERIFIED BUYER REVIEWS (ANTI-FAKE SAFEGUARD) */}
+      <VerifiedReviewsSection />
+
+      {/* 8. BUYER SAFETY & PAYMENT SECURITY GUIDE (Airy & Reassuring) */}
       <div className="bg-white rounded-3xl p-6 sm:p-8 border border-stone-200/90 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-sm">
         <div className="flex items-start gap-4">
           <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0">

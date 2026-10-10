@@ -44,12 +44,12 @@ export default function EmergencyDispatchBar({ onSelectEmergencyCategory }: Emer
           <div>
             <div className="flex items-center gap-2">
               <span className="text-xs font-black uppercase tracking-wider text-rose-400">
-                24/7 Fast-Dispatch Fundi Network
+                24/7 Fast Dispatch
               </span>
               <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping" />
             </div>
             <h2 className="text-sm sm:text-base font-bold text-white">
-              Have an urgent home emergency right now?
+              Urgent home repair needed?
             </h2>
           </div>
         </div>

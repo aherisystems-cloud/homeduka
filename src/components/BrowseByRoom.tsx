@@ -33,7 +33,7 @@ export default function BrowseByRoom({ selectedRoom, onSelectRoom }: BrowseByRoo
             Shop by Room & Space
           </h2>
           <p className="text-xs sm:text-sm text-stone-500 mt-1">
-            Browse furniture, fittings, and service providers / fundis tailored for each room in your home
+            Filter furniture, fittings, and fundis by space.
           </p>
         </div>
 

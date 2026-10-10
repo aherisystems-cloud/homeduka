@@ -1,63 +1,91 @@
 import { BusinessProfile } from '../types/schema';
 
+export interface WhatsAppLeadOptions {
+  itemOrServiceName?: string;
+  itemRefCode?: string;
+  consumerLocation?: string;
+  priceKes?: number;
+  formattedPrice?: string;
+  dealBadge?: string;
+  deliveryTerms?: string;
+  verifiedTill?: string;
+  intent?: 'product_order' | 'service_inquiry' | 'deal_claim' | 'emergency_dispatch' | 'general';
+}
+
 /**
  * Builds high-converting, localized WhatsApp deep links for Kenyan buyers.
  * 
- * In Kenya, buyers will NOT fill out contact forms or send emails.
- * They tap WhatsApp immediately.
- * 
- * Prefilling the exact context and platform referral:
- * 1. Proves value to the seller ("This lead came from Home Kenya!").
- * 2. Gives the seller the exact item/service the buyer is asking about.
- * 3. Highlights the affirmed guarantees (Free WhatsApp assessment & local measurement).
- * 4. Reduces typing effort for the buyer to 0 taps (just press Send).
+ * Rules:
+ * 1. "Act > Read": Punchy, direct Swahili-English conversational tone.
+ * 2. Injects exact item, direct price, verified till, and buyer estate.
+ * 3. Zero typing needed from buyer: Just tap Send.
  */
 export function generateWhatsAppLeadLink(
   business: BusinessProfile,
-  options?: {
-    itemOrServiceName?: string;
-    itemRefCode?: string;
-    consumerLocation?: string;
-    intent?: 'product_order' | 'service_inquiry' | 'general';
-  }
+  options?: WhatsAppLeadOptions
 ): string {
   const phone = business.contact.whatsapp_number.replace(/\+/g, '').trim();
 
   let message = `Habari ${business.business_name},\n`;
-  message += `Nimeona profile yenu kwenye *Home Kenya*.\n\n`;
+  message += `Nimeona listing yenu kwenye *Home Kenya*.\n\n`;
 
-  if (options?.intent === 'service_inquiry') {
-    if (options?.itemOrServiceName) {
-      message += `Nahitaji fundi / huduma ya: *${options.itemOrServiceName}*.\n`;
-    } else {
-      message += `Nahitaji fundi / huduma kutoka kwenu.\n`;
+  if (options?.intent === 'deal_claim') {
+    message += `🔥 *NINATAKA OFA HII (CLAIM DEAL):*\n`;
+    message += `Bidhaa/Huduma: *${options.itemOrServiceName || 'Special Deal'}*\n`;
+    if (options.formattedPrice || options.priceKes) {
+      message += `Bei ya Ofa: *${options.formattedPrice || `KSh ${options.priceKes?.toLocaleString()}`}*\n`;
     }
-
+    if (options.dealBadge) {
+      message += `Punguzo: *${options.dealBadge}*\n`;
+    }
+    if (options.consumerLocation) {
+      message += `Eneo langu: *${options.consumerLocation}*\n`;
+    }
+    message += `\nNaomba kuthibitisha order na malipo kupitia Lipa na M-Pesa. Asante!`;
+  } else if (options?.intent === 'emergency_dispatch') {
+    message += `🚨 *EMERGENCY FUNDI CALL-OUT (24/7):*\n`;
+    message += `Huduma: *${options.itemOrServiceName || 'Emergency Repairs'}*\n`;
+    if (options.consumerLocation) {
+      message += `Eneo / Estate: *${options.consumerLocation}*\n`;
+    }
+    message += `\nNahitaji fundi haraka iwezekanavyo. Tafadhali thibitisha kama mko karibu. Asante!`;
+  } else if (options?.intent === 'service_inquiry') {
+    message += `🛠️ *HUDUMA YA FUNDI:*\n`;
+    message += `Kazi: *${options.itemOrServiceName || 'Huduma ya Ukarabati'}*\n`;
+    if (options.formattedPrice || options.priceKes) {
+      message += `Makadirio ya Bei: *${options.formattedPrice || `KSh ${options.priceKes?.toLocaleString()}`}*\n`;
+    }
     if (business.attributes?.affirmed_free_whatsapp_assessment) {
-      message += `Nimeona mmethibitisha (affirmed) bure picha/video assessment kwa WhatsApp.\n`;
+      message += `📷 *Nitatuma picha/video ya eneo kwa WhatsApp estimate ya bure.*\n`;
     }
-
-    if (options?.consumerLocation) {
-      message += `Eneo langu ni: *${options.consumerLocation}*.\n`;
+    if (business.attributes?.affirmed_free_local_measurement) {
+      message += `📐 *Nitaomba free site measurement eneo langu.*\n`;
     }
-
-    message += `\nNaomba kujua makadirio ya kazi (labor quote) na lini mnaweza kuangalia.\nAsante!`;
+    if (options.consumerLocation) {
+      message += `Eneo langu: *${options.consumerLocation}*\n`;
+    }
+    message += `\nNaomba kujua lini mnaweza kuangalia na kuanza kazi. Asante!`;
   } else {
-    if (options?.itemOrServiceName) {
-      message += `Napenda kuulizia: *${options.itemOrServiceName}*`;
-      if (options.itemRefCode) {
-        message += ` (Ref: #${options.itemRefCode})`;
-      }
-      message += `.\n`;
-    } else {
-      message += `Napenda kuulizia kuhusu bidhaa zenu.\n`;
+    // Default / product_order
+    message += `🛒 *ORDER YA BIDHAA:*\n`;
+    message += `Bidhaa: *${options?.itemOrServiceName || 'Bidhaa'}*`;
+    if (options?.itemRefCode) {
+      message += ` (Ref: #${options.itemRefCode})`;
     }
-
+    message += `\n`;
+    if (options?.formattedPrice || options?.priceKes) {
+      message += `Bei: *${options.formattedPrice || `KSh ${options.priceKes?.toLocaleString()}`}*\n`;
+    }
+    if (options?.deliveryTerms) {
+      message += `Delivery: *${options.deliveryTerms}*\n`;
+    }
     if (options?.consumerLocation) {
-      message += `Niko pande za: *${options.consumerLocation}*.\n`;
+      message += `Eneo langu: *${options.consumerLocation}*\n`;
     }
-
-    message += `\nJe, hii inapatikana na bei ni ngapi pamoja na delivery?\nAsante!`;
+    if (business.commercial?.mpesa_till_number) {
+      message += `Lipa na M-Pesa Till: *${business.commercial.mpesa_till_number}*\n`;
+    }
+    message += `\nJe, hii iko tayari kuletwa au kuanza kutengenezwa? Asante!`;
   }
 
   const encoded = encodeURIComponent(message);

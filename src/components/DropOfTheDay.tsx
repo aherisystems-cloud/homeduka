@@ -21,7 +21,7 @@ export default function DropOfTheDay() {
           </h3>
 
           <p className="text-xs text-slate-300">
-            By <strong>Classic Hardwood Kamakis</strong>. Kiln-dried mahogany frame with 2-year warranty and free delivery within Nairobi & Kiambu.
+            Kiln-dried mahogany frame with 2-year warranty & free Nairobi delivery.
           </p>
 
           <div className="flex items-baseline gap-3 pt-1">
@@ -39,7 +39,7 @@ export default function DropOfTheDay() {
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-black hover:bg-stone-800 text-white font-bold text-sm shadow-md transition border border-stone-700/80 active:scale-95"
           >
             <MessageSquare className="w-4 h-4 text-emerald-400" />
-            <span>Claim Drop on WhatsApp</span>
+            <span>Claim on WhatsApp</span>
           </Link>
           <span className="text-[11px] text-center text-slate-400">
             Only 2 sets available at this price

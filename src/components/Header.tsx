@@ -7,13 +7,15 @@ import {
   Sparkles, ChevronDown, Wrench, ShoppingBag, RefreshCw, 
   Menu, X, CheckCircle2, HelpCircle, Layers, ArrowRight,
   Tv, Bed, Sofa, Utensils, Bath, Trees, Paintbrush, Hammer,
-  Flame, Shirt, Box, Truck, Shield, Smartphone, Download, Share2
+  Flame, Shirt, Box, Truck, Shield, Smartphone, Download, Share2, Bell
 } from 'lucide-react';
 import Logo from './Logo';
+import AlertPreferencesModal from './AlertPreferencesModal';
 
 export default function Header() {
   const [activeMegaMenu, setActiveMegaMenu] = useState<'products' | 'services' | null>(null);
   const [showDownloadAppModal, setShowDownloadAppModal] = useState(false);
+  const [showAlertsModal, setShowAlertsModal] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileCategoryOpen, setMobileCategoryOpen] = useState<'products' | 'services' | null>(null);
   const [headerLocation, setHeaderLocation] = useState<string>('Nairobi');
@@ -100,6 +102,16 @@ export default function Header() {
 
           {/* Right: Download Web App + Channel Link */}
           <div className="flex items-center gap-3 sm:gap-4">
+            {/* Deal Alerts trigger button */}
+            <button
+              onClick={() => setShowAlertsModal(true)}
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-800 hover:bg-stone-700 text-stone-200 hover:text-white transition cursor-pointer text-[11px] sm:text-xs font-semibold border border-stone-700/80 shadow-2xs group"
+              title="Set custom deal and upkeep notification alerts"
+            >
+              <Bell className="w-3.5 h-3.5 text-[#B45309] group-hover:scale-110 transition-transform" />
+              <span>Deal Alerts</span>
+            </button>
+
             {/* Download Web App trigger button */}
             <button
               onClick={() => setShowDownloadAppModal(true)}
@@ -632,11 +644,11 @@ export default function Header() {
           {/* Right Actions: Sell / Add Product CTA + Mobile Hamburger */}
           <div className="flex items-center gap-2">
             <Link
-              href="/portal/demo-token"
-              className="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-2 rounded-xl bg-stone-900 text-white hover:bg-stone-800 shadow-sm transition active:scale-95"
+              href="/sell"
+              className="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-2 rounded-xl bg-stone-900 text-white hover:bg-black shadow-sm transition active:scale-95"
             >
               <PlusCircle className="w-3.5 h-3.5 text-white" />
-              <span>Sell / Add Product or Service</span>
+              <span>Sell / List Free</span>
             </Link>
 
             {/* Mobile Hamburger Button */}
@@ -838,12 +850,12 @@ export default function Header() {
               {/* Seller / Fundi Access */}
               <div className="pt-2 border-t border-stone-200">
                 <Link
-                  href="/portal/demo-token"
+                  href="/sell"
                   onClick={() => setMobileMenuOpen(false)}
                   className="w-full flex items-center justify-center gap-2 p-3 rounded-2xl bg-stone-900 text-white font-bold text-sm shadow-sm active:scale-98 transition"
                 >
                   <PlusCircle className="w-4 h-4 text-white" />
-                  <span>Sell / Add Product or Service</span>
+                  <span>List Your Business Free (2 Mins)</span>
                 </Link>
               </div>
             </div>
@@ -963,6 +975,12 @@ export default function Header() {
           </div>
         </div>
       )}
+
+      {/* 5. USER DEAL & UPKEEP ALERTS PREFERENCES MODAL */}
+      <AlertPreferencesModal
+        isOpen={showAlertsModal}
+        onClose={() => setShowAlertsModal(false)}
+      />
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { BusinessProfile, HomeService, HomeProduct, HomeRoom, HomeDeal } from '../types/schema';
+import { BusinessProfile, HomeService, HomeProduct, HomeRoom, HomeDeal, VerifiedReview } from '../types/schema';
 
 // ==========================================
 // MASTER ROOM TAXONOMY FOR HOME KENYA
@@ -1469,3 +1469,109 @@ export const SAMPLE_KENYAN_DEALS: HomeDeal[] = [
     expires_at: "2026-10-31T23:59:59Z"
   }
 ];
+
+// ==========================================
+// 8. VERIFIED BUYER REVIEWS (Anti-Fake Safeguard)
+// ==========================================
+export const SAMPLE_VERIFIED_REVIEWS: VerifiedReview[] = [
+  {
+    id: "rev-001",
+    business_id: "biz-woodcraft-kamakis-001",
+    product_id: "prod-sofa-001",
+    item_purchased_title: "7-Seater Modern Chesterfield Sofa Set (Dark Grey Velvet)",
+    item_type: "product",
+    rating: 5,
+    review_text: "Ordered directly via WhatsApp after seeing their Kamakis workshop photos. Paid 30% deposit via Till and balance on delivery. Delivered exactly on day 6 to Kileleshwa. Solid mahogany frame, very heavy, and high-density foam cushions!",
+    buyer_name: "Wanjiru M.",
+    buyer_neighborhood: "Kileleshwa, Nairobi",
+    verified_method: "mpesa_till",
+    mpesa_receipt_snippet: "QK89***712 (Lipa na M-Pesa Till 894211)",
+    buyer_photo_urls: [
+      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80"
+    ],
+    date: "2026-09-28",
+    helpful_count: 24
+  },
+  {
+    id: "rev-002",
+    business_id: "biz-fundi-omondi-002",
+    service_id: "srv-leak-001",
+    item_purchased_title: "Emergency Pipe Burst Repair & Booster Pump Calibration",
+    item_type: "service",
+    rating: 5,
+    review_text: "Omondi arrived within 25 mins on a Saturday evening. Had all copper fittings in his motorbike toolbox. Sorted the burst pipe under our kitchen sink and calibrated our pressure pump. Clear labor quote upfront, zero surprise charges.",
+    buyer_name: "Kevin O.",
+    buyer_neighborhood: "Membley Estate, Ruiru",
+    verified_method: "mpesa_till",
+    mpesa_receipt_snippet: "QL21***804 (Lipa na M-Pesa Verified)",
+    date: "2026-10-02",
+    helpful_count: 19
+  },
+  {
+    id: "rev-003",
+    business_id: "biz-solaria-water-003",
+    product_id: "prod-solar-water-005",
+    item_purchased_title: "200L High-Pressure Pressurized Solar Water Heater System",
+    item_type: "product",
+    rating: 5,
+    review_text: "Free site assessment on WhatsApp was genuine. Team did neat piping to our roof in 1 day. Scalding hot water even on overcast Nairobi mornings. Saved us ~KSh 4,500 monthly on KPLC token bills.",
+    buyer_name: "Dr. Mutua K.",
+    buyer_neighborhood: "Runda / Whispers, Nairobi",
+    verified_method: "storefront_invoice",
+    mpesa_receipt_snippet: "QK54***119 (EPRA Certified Invoice)",
+    buyer_photo_urls: [
+      "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=800&q=80"
+    ],
+    date: "2026-09-14",
+    helpful_count: 31
+  },
+  {
+    id: "rev-004",
+    business_id: "biz-gypsum-kileleshwa-003",
+    service_id: "srv-gypsum-003",
+    item_purchased_title: "Multi-Level Gypsum Ceiling & Warm LED Profile Lighting",
+    item_type: "service",
+    rating: 5,
+    review_text: "Laser level alignment and zero sagging. Finished our 3-bedroom living room within 4 days. Very clean fundis, covered our tiles before plastering and sand-papering. Quality work.",
+    buyer_name: "Amina H.",
+    buyer_neighborhood: "South C, Nairobi",
+    verified_method: "site_visit",
+    mpesa_receipt_snippet: "QK77***330 (Site Inspection Verified)",
+    date: "2026-09-22",
+    helpful_count: 15
+  },
+  {
+    id: "rev-005",
+    business_id: "biz-cleannest-pro-005",
+    service_id: "srv-tank-clean-006",
+    item_purchased_title: "Water Tank Deep Cleaning, Sludge Extraction & Disinfection",
+    item_type: "service",
+    rating: 5,
+    review_text: "Our 5,000L underground tank hadn't been washed in 2 years. They sucked out 3 buckets of silt and disinfected thoroughly with zero chlorine smell in taps. Highly recommended.",
+    buyer_name: "Grace N.",
+    buyer_neighborhood: "Kahawa Sukari, Kiambu",
+    verified_method: "mpesa_till",
+    mpesa_receipt_snippet: "QL02***491 (Lipa na M-Pesa Till 782019)",
+    date: "2026-10-05",
+    helpful_count: 12
+  },
+  {
+    id: "rev-006",
+    business_id: "biz-woodcraft-kamakis-001",
+    product_id: "prod-bed-002",
+    item_purchased_title: "6x6 Hydraulic Storage Bed in Solid Mahogany",
+    item_type: "product",
+    rating: 5,
+    review_text: "The hydraulic lift system is German-grade and lifts smoothly with one hand even with heavy orthopedic mattress on top. Massive storage underneath for duvets and suitcases. Great craftsmanship.",
+    buyer_name: "Dennis M.",
+    buyer_neighborhood: "Westlands, Nairobi",
+    verified_method: "mpesa_till",
+    mpesa_receipt_snippet: "QK41***529 (Lipa na M-Pesa Till 894211)",
+    buyer_photo_urls: [
+      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80"
+    ],
+    date: "2026-09-19",
+    helpful_count: 27
+  }
+];
+
