@@ -36,6 +36,7 @@ export type PriceType =
 
 export type PaymentMethod = 
   | 'lipa_na_mpesa_till'     // Buy Goods Till (High trust in Kenya)
+  | 'mpesa_pochi_la_biashara'// Pochi La Biashara (Registered trader wallet)
   | 'mpesa_paybill'          // Business Paybill
   | 'mpesa_send_money'       // Standard mobile number
   | 'cash_on_delivery'       // Critical trust factor for furniture/decor
@@ -110,6 +111,8 @@ export interface BusinessProfile {
     payment_methods: PaymentMethod[];
     mpesa_till_number?: string;
     mpesa_paybill_number?: string;
+    mpesa_pochi_number?: string;    // e.g. "0712 345 678 (Pochi La Biashara)"
+    seller_terms_badge?: string;    // Plain English: "Pay When Delivered" | "30% Deposit (Made for You)" | "Pay After Job Done" | "Direct Factory Price"
     price_rating: '$' | '$$' | '$$$' | '$$$$'; // Budget, Moderate, Premium, Luxury
   };
 

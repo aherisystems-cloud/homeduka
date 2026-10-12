@@ -102,6 +102,16 @@ export default function Header() {
 
           {/* Right: Download Web App + Channel Link */}
           <div className="flex items-center gap-3 sm:gap-4">
+            {/* Check Till / Pochi Verifier link */}
+            <Link
+              href="/verify-till"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-800 hover:bg-stone-700 text-stone-200 hover:text-white transition cursor-pointer text-[11px] sm:text-xs font-semibold border border-stone-700/80 shadow-2xs group"
+              title="Check if a Till or Pochi is real before sending money"
+            >
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 group-hover:scale-110 transition-transform" />
+              <span>Check Till / Pochi</span>
+            </Link>
+
             {/* Deal Alerts trigger button */}
             <button
               onClick={() => setShowAlertsModal(true)}
@@ -838,6 +848,14 @@ export default function Header() {
               >
                 <Layers className="w-4 h-4 text-stone-500" />
                 <span>Shop by Room</span>
+              </Link>
+              <Link
+                href="/verify-till"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-2 p-3 rounded-xl font-bold text-sm bg-emerald-50 text-emerald-900 border border-emerald-200"
+              >
+                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                <span>Check Till or Pochi (Safe Pay)</span>
               </Link>
               <Link
                 href="/blog"

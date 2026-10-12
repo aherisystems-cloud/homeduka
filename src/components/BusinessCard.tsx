@@ -55,6 +55,7 @@ export default function BusinessCard({ business }: { business: BusinessProfile }
 
           <TrustBadges
             tillNumber={business.commercial.mpesa_till_number}
+            pochiNumber={business.commercial.mpesa_pochi_number}
             landmark={business.location.landmark}
             hasCod={business.commercial.accepts_cash_on_delivery}
             warrantyMonths={business.attributes.warranty_duration_months}

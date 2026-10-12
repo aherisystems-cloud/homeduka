@@ -83,7 +83,7 @@ export default function ProductCard({ product, business }: ProductCardProps) {
                 ? 'bg-emerald-100 text-emerald-800'
                 : 'bg-stone-100 text-stone-800'
             }`}>
-              {product.specifications.in_stock ? 'In Stock' : 'Made to Order'}
+              {product.specifications.in_stock ? 'Ready in Shop' : 'Made for You'}
             </span>
           </div>
         </div>
@@ -95,7 +95,7 @@ export default function ProductCard({ product, business }: ProductCardProps) {
               {product.title}
             </h3>
             {product.specifications.material && (
-              <p className="text-xs text-stone-500 mt-1 line-clamp-1">
+              <p className="text-xs text-stone-600 font-medium mt-1 line-clamp-1">
                 {product.specifications.material}
               </p>
             )}
@@ -123,16 +123,21 @@ export default function ProductCard({ product, business }: ProductCardProps) {
         <div className="flex items-baseline justify-between mb-3 pt-3">
           <div>
             <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block">
-              Direct Price
+              Direct Shop Price
             </span>
             <span className="text-base sm:text-lg font-black text-stone-900">
               KSh {product.pricing.regular_price_kes.toLocaleString()}
             </span>
           </div>
 
-          <span className="text-[10px] font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 flex items-center gap-1">
-            <span>✓ Lipa na M-Pesa</span>
-          </span>
+          <div className="flex flex-col items-end gap-1">
+            <span className="text-[10px] font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 flex items-center gap-1">
+              <span>{biz.commercial.mpesa_till_number ? `✓ Till ${biz.commercial.mpesa_till_number}` : '✓ Pochi Verified'}</span>
+            </span>
+            <span className="text-[10px] font-bold text-stone-700 bg-stone-100 px-2 py-0.5 rounded">
+              {biz.commercial.seller_terms_badge || (product.specifications.in_stock ? "Pay When Delivered" : "Small Deposit First")}
+            </span>
+          </div>
         </div>
 
         <div className="grid grid-cols-4 gap-2">

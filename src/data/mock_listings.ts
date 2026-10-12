@@ -98,6 +98,7 @@ export const SAMPLE_KENYAN_HOME_LISTINGS: BusinessProfile[] = [
       accepts_cash_on_delivery: true,
       payment_methods: ["lipa_na_mpesa_till", "cash_on_delivery", "bank_transfer"],
       mpesa_till_number: "894211",
+      seller_terms_badge: "Pay When Delivered",
       price_rating: "$$"
     },
     verification: {
@@ -185,6 +186,7 @@ export const SAMPLE_KENYAN_HOME_LISTINGS: BusinessProfile[] = [
       accepts_cash_on_delivery: true,
       payment_methods: ["lipa_na_mpesa_till", "bank_transfer"],
       mpesa_till_number: "761902",
+      seller_terms_badge: "30% Deposit (Made for You)",
       price_rating: "$$$"
     },
     verification: {
@@ -262,8 +264,10 @@ export const SAMPLE_KENYAN_HOME_LISTINGS: BusinessProfile[] = [
     commercial: {
       has_physical_shop: true,
       accepts_cash_on_delivery: true,
-      payment_methods: ["lipa_na_mpesa_till", "mpesa_paybill", "cash_on_delivery"],
+      payment_methods: ["lipa_na_mpesa_till", "mpesa_pochi_la_biashara", "cash_on_delivery"],
       mpesa_till_number: "776512",
+      mpesa_pochi_number: "0799 112 233",
+      seller_terms_badge: "Pay After Work is Done",
       price_rating: "$$"
     },
     verification: {

@@ -186,17 +186,17 @@ export default function ComparisonModal() {
                 ))}
               </div>
 
-              {/* Row 6: Written Warranty */}
+              {/* Row 6: Guarantee */}
               <div className="grid grid-cols-5 gap-4 py-4 items-center">
                 <div className="col-span-1 text-xs font-bold text-stone-500 uppercase tracking-wider">
-                  Written Warranty
+                  Guarantee
                 </div>
                 {items.map((item) => (
                   <div key={`warr-${item.id}`} className="col-span-1 text-xs font-semibold text-stone-800">
                     {item.specs.warranty_months ? (
                       <span className="inline-flex items-center gap-1 text-stone-800">
                         <ShieldCheck className="w-3.5 h-3.5 text-[#B45309]" />
-                        <span>{item.specs.warranty_months} Months Guarantee</span>
+                        <span>{item.specs.warranty_months} Months (Free Fix)</span>
                       </span>
                     ) : (
                       <span className="text-stone-400">Standard Service</span>
@@ -208,20 +208,20 @@ export default function ComparisonModal() {
                 ))}
               </div>
 
-              {/* Row 7: Lipa na M-Pesa Till Verification */}
+              {/* Row 7: Till or Pochi Status */}
               <div className="grid grid-cols-5 gap-4 py-4 items-center">
                 <div className="col-span-1 text-xs font-bold text-stone-500 uppercase tracking-wider">
-                  Lipa na M-Pesa Till
+                  Till / Pochi
                 </div>
                 {items.map((item) => (
                   <div key={`till-${item.id}`} className="col-span-1 text-xs">
                     {item.specs.mpesa_till_verified ? (
                       <span className="inline-flex items-center gap-1 text-emerald-800 bg-emerald-50 px-2 py-1 rounded-md font-bold">
                         <Check className="w-3 h-3 text-emerald-600" />
-                        <span>Till Verified</span>
+                        <span>Real Verified Till</span>
                       </span>
                     ) : (
-                      <span className="text-stone-500">Pay on Delivery</span>
+                      <span className="text-stone-500">Pay When Delivered</span>
                     )}
                   </div>
                 ))}
@@ -236,7 +236,7 @@ export default function ComparisonModal() {
         {/* Modal Bottom Footer */}
         <div className="p-4 border-t border-stone-100 bg-stone-50 flex items-center justify-between">
           <p className="text-xs text-stone-500">
-            💡 Compare timbers, guarantees & locations before messaging on WhatsApp.
+            💡 Compare prices, delivery & shop locations before chatting on WhatsApp.
           </p>
           <button
             onClick={closeCompareModal}

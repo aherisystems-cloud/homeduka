@@ -117,12 +117,12 @@ export default function ServiceCard({ service, business }: ServiceCardProps) {
             </p>
           </div>
 
-          {/* Fundi Guarantees - Punchy Micro-Badges */}
+          {/* Fundi Guarantees - Simple Grade 4-6 English */}
           <div className="flex flex-wrap gap-1.5 pt-1">
             {service.affirmed_commitments.free_whatsapp_assessment && (
               <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-stone-100 text-stone-800 text-[11px] font-semibold border border-stone-200/60">
                 <Camera className="w-3 h-3 text-[#B45309]" />
-                <span>Free Photo Check</span>
+                <span>Free Photo Check on WhatsApp</span>
               </span>
             )}
 
@@ -136,7 +136,7 @@ export default function ServiceCard({ service, business }: ServiceCardProps) {
             {service.service_terms.warranty_guarantee_days && (
               <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-stone-100 text-stone-800 text-[11px] font-semibold border border-stone-200/60">
                 <Check className="w-3 h-3 text-[#B45309]" />
-                <span>{service.service_terms.warranty_guarantee_days}d Warranty</span>
+                <span>{service.service_terms.warranty_guarantee_days} Days Guarantee (Free Fix)</span>
               </span>
             )}
           </div>
@@ -148,7 +148,7 @@ export default function ServiceCard({ service, business }: ServiceCardProps) {
         <div className="flex items-baseline justify-between mb-3 pt-3">
           <div>
             <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block">
-              Direct Price
+              Direct Labor Price
             </span>
             <div className="flex items-baseline gap-1">
               <span className="text-base font-black text-stone-900">{formattedPrice}</span>
@@ -156,9 +156,17 @@ export default function ServiceCard({ service, business }: ServiceCardProps) {
             </div>
           </div>
 
-          <span className="text-[10px] font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-            ✓ Lipa na M-Pesa
-          </span>
+          <div className="flex flex-col items-end gap-1">
+            <span className="text-[10px] font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+              {biz.commercial.mpesa_till_number 
+                ? `✓ Till ${biz.commercial.mpesa_till_number}` 
+                : (biz.commercial.mpesa_pochi_number ? `✓ Pochi Verified` : '✓ Lipa na M-Pesa')
+              }
+            </span>
+            <span className="text-[10px] font-bold text-stone-700 bg-stone-100 px-2 py-0.5 rounded">
+              {biz.commercial.seller_terms_badge || "Pay After Work is Done"}
+            </span>
+          </div>
         </div>
 
         <div className="grid grid-cols-4 gap-2">
