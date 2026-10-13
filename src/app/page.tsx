@@ -17,6 +17,7 @@ import BusinessCard from '../components/BusinessCard';
 import EmergencyDispatchBar from '../components/EmergencyDispatchBar';
 import VerifiedReviewsSection from '../components/VerifiedReviewsSection';
 import ClaimProfileBanner from '../components/ClaimProfileBanner';
+import WorkshopClusterExplorer from '../components/WorkshopClusterExplorer';
 import WelcomeLocationModal, { UserPreferences } from '../components/WelcomeLocationModal';
 import { 
   SAMPLE_KENYAN_HOME_LISTINGS, 
@@ -417,6 +418,11 @@ export default function HomePage() {
 
       {/* 5. MONTHLY HOME CARE & MONTHLY REFILLS SLIDER (STRATEGICALLY FEATURED) */}
       <MonthlyRecurringServices />
+
+      {/* 5.5. NAIROBI WORKSHOP CORRIDORS EXPLORER */}
+      <div id="corridors">
+        <WorkshopClusterExplorer />
+      </div>
 
       {/* 6. TOP TRUSTED LOCAL SHOPS YOU CAN VISIT SLIDER */}
       <section className="space-y-6">

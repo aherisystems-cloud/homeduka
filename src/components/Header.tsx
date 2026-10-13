@@ -109,7 +109,27 @@ export default function Header() {
               title="Check if a Till or Pochi is real before sending money"
             >
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 group-hover:scale-110 transition-transform" />
-              <span>Check Till / Pochi</span>
+              <span>Check Till</span>
+            </Link>
+
+            {/* Nairobi Fair Price Index */}
+            <Link
+              href="/fair-prices"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-800 hover:bg-stone-700 text-stone-200 hover:text-white transition cursor-pointer text-[11px] sm:text-xs font-semibold border border-stone-700/80 shadow-2xs group"
+              title="See real Nairobi workshop prices"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-[#B45309] group-hover:scale-110 transition-transform" />
+              <span>Fair Prices</span>
+            </Link>
+
+            {/* Gate Delivery Check */}
+            <Link
+              href="/delivery-check"
+              className="hidden md:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-800 hover:bg-stone-700 text-stone-200 hover:text-white transition cursor-pointer text-[11px] sm:text-xs font-semibold border border-stone-700/80 shadow-2xs group"
+              title="Check item before paying the delivery driver"
+            >
+              <Truck className="w-3.5 h-3.5 text-emerald-400 group-hover:scale-110 transition-transform" />
+              <span>Gate Check</span>
             </Link>
 
             {/* Deal Alerts trigger button */}
@@ -642,6 +662,15 @@ export default function Header() {
               <span>Shop by Room</span>
             </Link>
 
+            {/* Nav Link: FAIR PRICES */}
+            <Link
+              href="/fair-prices"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-stone-800 hover:text-[#B45309] hover:bg-stone-50 transition"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-[#B45309]" />
+              <span>Fair Prices</span>
+            </Link>
+
             {/* Nav Link 4: BUYER GUIDES */}
             <Link
               href="/blog"
@@ -856,6 +885,22 @@ export default function Header() {
               >
                 <ShieldCheck className="w-4 h-4 text-emerald-600" />
                 <span>Check Till or Pochi (Safe Pay)</span>
+              </Link>
+              <Link
+                href="/fair-prices"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-2 p-3 rounded-xl font-bold text-sm bg-stone-50 text-stone-900 border border-stone-200"
+              >
+                <Sparkles className="w-4 h-4 text-[#B45309]" />
+                <span>Fair Price Guide (Nairobi Rates)</span>
+              </Link>
+              <Link
+                href="/delivery-check"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-2 p-3 rounded-xl font-bold text-sm bg-stone-50 text-stone-900 border border-stone-200"
+              >
+                <Truck className="w-4 h-4 text-stone-700" />
+                <span>Gate Delivery Check (Before Paying)</span>
               </Link>
               <Link
                 href="/blog"

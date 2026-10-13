@@ -5,8 +5,9 @@ import Link from 'next/link';
 import { HomeProduct, BusinessProfile, ComparisonItem } from '../types/schema';
 import { SAMPLE_KENYAN_HOME_LISTINGS } from '../data/mock_listings';
 import { generateWhatsAppLeadLink } from '../utils/whatsapp_link';
-import { MessageSquare, ShieldCheck, MapPin, Tag, Scale, Check } from 'lucide-react';
+import { MessageSquare, ShieldCheck, MapPin, Tag, Scale, Check, FileText } from 'lucide-react';
 import { useComparison } from '../context/ComparisonContext';
+import QuotationGeneratorModal from './QuotationGeneratorModal';
 
 interface ProductCardProps {
   product: HomeProduct;
@@ -16,6 +17,7 @@ interface ProductCardProps {
 export default function ProductCard({ product, business }: ProductCardProps) {
   const biz = business || SAMPLE_KENYAN_HOME_LISTINGS.find((b) => b.id === product.business_id);
   const { addToCompare, isInCompare } = useComparison();
+  const [showQuoteModal, setShowQuoteModal] = React.useState(false);
 
   if (!biz) return null;
 
@@ -164,6 +166,23 @@ export default function ProductCard({ product, business }: ProductCardProps) {
             <span className="sr-only">Compare</span>
           </button>
         </div>
+
+        <button
+          onClick={() => setShowQuoteModal(true)}
+          className="w-full text-[11px] font-bold text-stone-600 hover:text-stone-900 flex items-center justify-center gap-1.5 pt-1 transition cursor-pointer"
+        >
+          <FileText className="w-3 h-3 text-[#B45309]" />
+          <span>Get 1-Click Official Quote Sheet</span>
+        </button>
+
+        <QuotationGeneratorModal
+          isOpen={showQuoteModal}
+          onClose={() => setShowQuoteModal(false)}
+          initialItemTitle={product.title}
+          initialPrice={product.pricing.discount_price_kes || product.pricing.regular_price_kes}
+          initialSellerName={biz.business_name}
+          initialTillNumber={biz.commercial.mpesa_till_number ? `Till ${biz.commercial.mpesa_till_number} (${biz.business_name})` : (biz.commercial.mpesa_pochi_number ? `Pochi ${biz.commercial.mpesa_pochi_number} (${biz.business_name})` : undefined)}
+        />
       </div>
     </div>
   );
