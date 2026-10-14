@@ -63,7 +63,7 @@ Please advise immediately before I release payment.`;
               Check Before You Pay the Driver
             </h2>
             <p className="text-xs text-stone-300">
-              Take 2 minutes to check these 4 things while the lorry is at your gate.
+              Check these 4 things before you pay the rider, errands person, or lorry driver.
             </p>
           </div>
           <button

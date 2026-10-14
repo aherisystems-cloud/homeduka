@@ -36,7 +36,7 @@ export default function DeliveryCheckPage() {
             Delivery Checklist Before You Pay
           </h1>
           <p className="text-xs sm:text-sm text-stone-300">
-            The lorry or boda has arrived at your gate? Do not rush to pay. Follow these 4 simple steps to protect your hard-earned money.
+            Delivered by a <strong>boda rider, errands person, Pickup Mtaani agent, matatu driver, or lorry</strong>? Do not rush to pay. Follow these simple steps to protect your money.
           </p>
         </div>
 
@@ -96,6 +96,49 @@ export default function DeliveryCheckPage() {
               </p>
             </div>
 
+          </div>
+
+          {/* Quick Rules by Delivery Means */}
+          <div className="pt-2 space-y-3">
+            <h3 className="text-sm font-extrabold text-stone-900">
+              How to Inspect by Delivery Means:
+            </h3>
+            <div className="grid sm:grid-cols-2 gap-3 text-xs">
+              <div className="p-3 rounded-2xl bg-stone-50 border border-stone-200 space-y-1">
+                <span className="font-bold text-stone-900 block">🛵 Boda Boda Riders:</span>
+                <p className="text-stone-600">
+                  Ask the rider to wait 1 minute. Open the box, check that taps, lights, or tools are complete before sending fare/payment.
+                </p>
+              </div>
+
+              <div className="p-3 rounded-2xl bg-stone-50 border border-stone-200 space-y-1">
+                <span className="font-bold text-stone-900 block">📦 Pickup Mtaani Agents:</span>
+                <p className="text-stone-600">
+                  Open the parcel right inside the agent shop at the counter. Inspect your item before giving your pickup code.
+                </p>
+              </div>
+
+              <div className="p-3 rounded-2xl bg-stone-50 border border-stone-200 space-y-1">
+                <span className="font-bold text-stone-900 block">🏃 Errands People (Hand Delivery):</span>
+                <p className="text-stone-600">
+                  Confirm the runner brought the exact item, color, and shop receipt before paying their runner fee.
+                </p>
+              </div>
+
+              <div className="p-3 rounded-2xl bg-stone-50 border border-stone-200 space-y-1">
+                <span className="font-bold text-stone-900 block">🚐 Matatu Drivers / Conductors (Stage Drop):</span>
+                <p className="text-stone-600">
+                  Meet the matatu at your stage (e.g. Thika Rd, Waiyaki Way, Ngong Rd). Check that the parcel is safe before the matatu leaves.
+                </p>
+              </div>
+
+              <div className="p-3 rounded-2xl bg-stone-50 border border-stone-200 space-y-1 sm:col-span-2">
+                <span className="font-bold text-stone-900 block">🚚 Lorries & Pickup Trucks (Heavy Furniture):</span>
+                <p className="text-stone-600">
+                  Walk all around heavy sofas, beds, or wardrobes while the lorry is at your gate. Check for rope scratches and broken corners.
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* Golden Rules */}

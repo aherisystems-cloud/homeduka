@@ -29,6 +29,7 @@ export default function QuotationGeneratorModal({
   const [price, setPrice] = useState<string>(initialPrice ? String(initialPrice) : '48000');
   const [terms, setTerms] = useState<string>('Pay When Delivered');
   const [tillNumber, setTillNumber] = useState<string>(initialTillNumber || 'Till 894211 (WOODCRAFT LIVING)');
+  const [deliveryMethod, setDeliveryMethod] = useState<string>('🚚 Lorry / Pickup Truck (Doorstep for Beds & Sofas)');
   const [deliveryNote, setDeliveryNote] = useState<string>('Delivered to your gate in Nairobi by pickup truck');
   const [copied, setCopied] = useState<boolean>(false);
 
@@ -48,7 +49,7 @@ export default function QuotationGeneratorModal({
 💰 *Total Price:* Ksh ${formattedPriceKsh}
 🛡️ *Payment Terms:* ${terms}
 💳 *Pay Via:* ${tillNumber}
-🚚 *Delivery:* ${deliveryNote}
+🚚 *Delivery:* ${deliveryMethod} — ${deliveryNote}
 
 _Verified on HomeDuka Kenya. Zero hidden charges._
 Check or verify: https://homeduka.co.ke/verify-till`;
@@ -142,6 +143,22 @@ Check or verify: https://homeduka.co.ke/verify-till`;
                   <option value="Pay After Work is Done">Pay After Work is Done (Fundis)</option>
                 </select>
               </div>
+
+              <div className="sm:col-span-2">
+                <label className="block text-stone-600 font-semibold mb-1">Delivery Means:</label>
+                <select
+                  value={deliveryMethod}
+                  onChange={(e) => setDeliveryMethod(e.target.value)}
+                  className="w-full px-3 py-2 rounded-xl bg-white border border-stone-300 font-medium text-stone-900"
+                >
+                  <option value="🚚 Lorry / Pickup Truck (Doorstep for Beds & Sofas)">🚚 Lorry / Pickup Truck (Doorstep for Beds & Sofas)</option>
+                  <option value="📦 Pickup Mtaani Agent (Pick at an agent in your estate/hood)">📦 Pickup Mtaani Agent (Pick at an agent in your estate/hood)</option>
+                  <option value="🛵 Boda Boda Rider (Direct fast delivery to your door)">🛵 Boda Boda Rider (Direct fast delivery to your door)</option>
+                  <option value="🏃 Errands Person / Runner (Personal hand delivery from the shop)">🏃 Errands Person / Runner (Personal hand delivery from the shop)</option>
+                  <option value="🚐 Matatu Route Drop (Pick at your estate stage - e.g. Thika Rd, Ngong Rd, Waiyaki Way)">🚐 Matatu Route Drop (Pick at your estate stage - e.g. Thika Rd, Ngong Rd, Waiyaki Way)</option>
+                  <option value="🚌 Countrywide Parcel (Fargo Courier, Speedaf, 2NK, North Rift to your town)">🚌 Countrywide Parcel (Fargo Courier, Speedaf, 2NK, North Rift to your town)</option>
+                </select>
+              </div>
             </div>
           </div>
 
@@ -176,8 +193,8 @@ Check or verify: https://homeduka.co.ke/verify-till`;
                 <div className="col-span-8 space-y-1">
                   <strong className="block text-stone-900 text-sm">{itemName}</strong>
                   <p className="text-stone-600">{itemSpecs}</p>
-                  <span className="inline-block px-2 py-0.5 rounded-full bg-stone-100 text-stone-700 font-semibold text-[10px]">
-                    🚚 {deliveryNote}
+                  <span className="inline-block px-2.5 py-1 rounded-full bg-stone-100 text-stone-800 font-semibold text-[10px]">
+                    {deliveryMethod} • {deliveryNote}
                   </span>
                 </div>
                 <div className="col-span-4 text-right">

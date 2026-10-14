@@ -117,7 +117,7 @@ export default function ProductCard({ product, business }: ProductCardProps) {
               <span className="truncate">{biz.location.landmark}</span>
             </div>
             <div className="text-[10px] text-stone-600 font-medium mt-1 pt-1 border-t border-stone-200/50 flex items-center gap-1">
-              <span>🚚 Countrywide Delivery (All 47 Counties)</span>
+              <span>🚚 Delivery: Boda • Pickup Mtaani • Errands • Matatu • Lorry</span>
             </div>
           </div>
         </div>
