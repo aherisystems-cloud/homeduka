@@ -10,7 +10,7 @@ export interface FairPriceItem {
   searchTag: string;
 }
 
-export interface WorkshopCluster {
+export interface ShoppingStreetCluster {
   id: string;
   name: string;
   road: string;
@@ -21,7 +21,11 @@ export interface WorkshopCluster {
   landmark: string;
   topItems: string[];
   shopCount: number;
+  countrywideDeliveryNote: string;
 }
+
+// Backwards-compatible alias
+export type WorkshopCluster = ShoppingStreetCluster;
 
 export const NAIROBI_FAIR_PRICES: FairPriceItem[] = [
   {
@@ -125,18 +129,19 @@ export const NAIROBI_FAIR_PRICES: FairPriceItem[] = [
   }
 ];
 
-export const NAIROBI_WORKSHOP_CLUSTERS: WorkshopCluster[] = [
+export const NAIROBI_SHOPPING_CLUSTERS: ShoppingStreetCluster[] = [
   {
     id: 'ngong-road',
     name: 'Ngong Road & Dagoretti Corner',
     road: 'Ngong Road, Nairobi',
     icon: '🌳',
     specialty: 'Real Hardwood Beds & Outdoor Furniture',
-    whyGoHere: 'The biggest roadside strip of master carpenters. See hundreds of finished beds and tables right along the road.',
+    whyGoHere: 'The biggest roadside strip of master carpenters and furniture shops. See hundreds of finished beds and tables displayed right along the road.',
     typicalSavings: 'Save 25% – 35% compared to big mall furniture stores.',
     landmark: 'Between Adams Arcade and Dagoretti Corner',
     topItems: ['Mahogany Beds', 'Patio Outdoor Sets', 'Coffee Tables', 'Pallet Seats'],
-    shopCount: 142
+    shopCount: 142,
+    countrywideDeliveryNote: 'Daily parcel and lorry delivery to Mombasa, Kisumu, Nakuru, Eldoret & countrywide.'
   },
   {
     id: 'mombasa-road',
@@ -144,11 +149,12 @@ export const NAIROBI_WORKSHOP_CLUSTERS: WorkshopCluster[] = [
     road: 'Mombasa Road & Enterprise Road',
     icon: '🏭',
     specialty: 'Modern Kitchens, Sliding Wardrobes & Tiles',
-    whyGoHere: 'Big workshops with modern cutting machines. Best for fitted kitchens, quartz worktops, and sliding wardrobes.',
+    whyGoHere: 'Large manufacturing yards and showrooms with modern cutting machines. Best for fitted kitchens, quartz worktops, and sliding wardrobes.',
     typicalSavings: 'Direct factory pricing with clean machine-cut edges.',
     landmark: 'Near City Cabanas and Enterprise Road junction',
     topItems: ['Fitted Kitchens', 'Sliding Wardrobes', 'Granite Worktops', 'Wall Tiles'],
-    shopCount: 88
+    shopCount: 88,
+    countrywideDeliveryNote: 'Heavy truck dispatch to all 47 counties in Kenya.'
   },
   {
     id: 'gikomba-kamukunji',
@@ -156,11 +162,12 @@ export const NAIROBI_WORKSHOP_CLUSTERS: WorkshopCluster[] = [
     road: 'Quarry Road & Landhies Road',
     icon: '🪵',
     specialty: 'Raw Hardwood Planks & Strong Steel Gates',
-    whyGoHere: 'Wholesale timber central. Buy raw mahogany, cypress, and camphor planks directly by the foot.',
+    whyGoHere: 'Wholesale timber and metal yard central. Buy raw mahogany, cypress, and camphor planks directly by the foot from the yards.',
     typicalSavings: 'Cheapest wholesale timber prices in East Africa.',
     landmark: 'Near Machakos Country Bus & Quarry Road',
     topItems: ['Roofing Timber', 'Hardwood Planks', 'Steel Compound Gates', 'Metal Doors'],
-    shopCount: 210
+    shopCount: 210,
+    countrywideDeliveryNote: 'Direct timber lorry transport to any site across Kenya.'
   },
   {
     id: 'ruiru-eastern-bypass',
@@ -168,11 +175,12 @@ export const NAIROBI_WORKSHOP_CLUSTERS: WorkshopCluster[] = [
     road: 'Eastern Bypass, Ruiru',
     icon: '🛣️',
     specialty: 'Fast Custom Carpentry & Affordable Sofas',
-    whyGoHere: 'Rapidly growing carpentry hub. Great parking, fast delivery, and very friendly prices for new homeowners.',
+    whyGoHere: 'Rapidly growing furniture and carpentry shops. Great parking, fast delivery, and very friendly prices for new homeowners.',
     typicalSavings: 'Save 30% on sofas and wardrobes with quick 3-day delivery.',
     landmark: 'Along Eastern Bypass near Kamakis & Ruiru toll station',
     topItems: ['L-Shape Sofas', 'TV Wall Units', 'Storage Beds', 'Shoe Racks'],
-    shopCount: 95
+    shopCount: 95,
+    countrywideDeliveryNote: 'Quick dispatch along Thika Road, Kenol, Nyeri, Meru and countrywide.'
   },
   {
     id: 'jogoo-road',
@@ -180,10 +188,14 @@ export const NAIROBI_WORKSHOP_CLUSTERS: WorkshopCluster[] = [
     road: 'Jogoo Road, Eastlands',
     icon: '🛋️',
     specialty: 'Chesterfield Sofas & Dining Chairs',
-    whyGoHere: 'Famous for fabric masters. Choose your exact velvet or leather fabric and watch them cushion your sofa.',
+    whyGoHere: 'Famous for fabric masters and upholstery shops. Choose your exact velvet or leather fabric and watch them cushion your sofa.',
     typicalSavings: 'Save 40% on sofa upholstery and custom cushion refills.',
     landmark: 'Between City Stadium and Makadara',
     topItems: ['Chesterfield Sofas', 'Dining Chair Re-covering', 'Bed Headboards', 'Floor Cushions'],
-    shopCount: 114
+    shopCount: 114,
+    countrywideDeliveryNote: 'Wrapped in waterproof plastic and sent via countrywide parcel matatus & lorries.'
   }
 ];
+
+// Backwards-compatible export
+export const NAIROBI_WORKSHOP_CLUSTERS = NAIROBI_SHOPPING_CLUSTERS;

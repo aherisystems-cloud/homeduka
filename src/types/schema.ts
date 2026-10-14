@@ -23,7 +23,7 @@ export type KenyanCounty =
 export type VerificationTier = 
   | 'unverified'       // Scraped or self-submitted basic profile
   | 'phone_verified'   // OTP or Safaricom phone ownership confirmed
-  | 'location_checked' // Physical workshop/shop GPS & landmark confirmed
+  | 'location_checked' // Physical shop, yard or showroom landmark confirmed on ground
   | 'verified_pro'     // M-Pesa Till verified + past work portfolio checked
   | 'featured_partner';// Sponsored / vetted flagship vendor
 
@@ -136,7 +136,8 @@ export interface BusinessProfile {
   media: {
     logo_url?: string;
     cover_image_url: string;
-    workshop_photos: string[];
+    shop_photos?: string[];
+    workshop_photos?: string[]; // Backwards-compatible
     portfolio_work_photos: string[];
     video_tour_url?: string;
   };

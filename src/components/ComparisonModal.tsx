@@ -122,7 +122,7 @@ export default function ComparisonModal() {
                       {item.formatted_price}
                     </span>
                     <span className="block text-[11px] text-stone-500 font-medium">
-                      Direct from workshop
+                      Direct from shop or yard
                     </span>
                   </div>
                 ))}

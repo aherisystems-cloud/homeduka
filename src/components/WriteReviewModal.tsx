@@ -184,7 +184,7 @@ export default function WriteReviewModal({
                   >
                     <option value="mpesa_till">Lipa na M-Pesa Till</option>
                     <option value="site_visit">Completed Site Job</option>
-                    <option value="storefront_invoice">Workshop Invoice</option>
+                    <option value="storefront_invoice">Shop Receipt / Invoice</option>
                   </select>
                 </div>
                 <div>

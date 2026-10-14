@@ -73,7 +73,7 @@ export const SAMPLE_KENYAN_HOME_LISTINGS: BusinessProfile[] = [
     slug: "woodcraft-living-kamakis",
     business_name: "WoodCraft Living Kenya",
     tagline: "Solid Kiln-Dried Mahogany & Mvule Living, Bedroom & Dining Pieces",
-    description: "Located along Eastern Bypass Kamakis, WoodCraft Living is a trusted artisan workshop specializing in kiln-dried Kenyan hardwoods (Mahogany, Mvule, Bluegum). Known for heirloom 7-seater sofas, hydraulic storage beds, and custom 6-8 seater dining tables. Open workshop with customer parking.",
+    description: "Located along Eastern Bypass Kamakis, WoodCraft Living is a trusted local furniture shop and yard specializing in Kenyan hardwoods (Mahogany, Mvule, Bluegum). Known for 7-seater sofas, hydraulic storage beds, and custom 6-8 seater dining tables. Open showroom and yard with customer parking. Delivers countrywide.",
     primary_vertical: "home",
     categories: ["furniture", "carpentry_cabinetry"],
     location: {
@@ -1485,7 +1485,7 @@ export const SAMPLE_VERIFIED_REVIEWS: VerifiedReview[] = [
     item_purchased_title: "7-Seater Modern Chesterfield Sofa Set (Dark Grey Velvet)",
     item_type: "product",
     rating: 5,
-    review_text: "Ordered directly via WhatsApp after seeing their Kamakis workshop photos. Paid 30% deposit via Till and balance on delivery. Delivered exactly on day 6 to Kileleshwa. Solid mahogany frame, very heavy, and high-density foam cushions!",
+    review_text: "Ordered directly via WhatsApp after seeing their Kamakis shop photos. Paid 30% deposit via Till and balance on delivery. Delivered exactly on day 6 to Kileleshwa. Solid mahogany frame, very heavy, and high-density foam cushions!",
     buyer_name: "Wanjiru M.",
     buyer_neighborhood: "Kileleshwa, Nairobi",
     verified_method: "mpesa_till",

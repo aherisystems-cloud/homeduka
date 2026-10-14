@@ -18,7 +18,7 @@ export default function ClaimProfileBanner() {
         </h2>
 
         <p className="text-xs sm:text-sm text-stone-300 leading-relaxed mb-6">
-          List your workshop or trade free. Get direct WhatsApp client inquiries with zero broker fees.
+          List your shop, yard or trade free. Get direct WhatsApp client inquiries with zero broker fees.
         </p>
 
         <div className="flex flex-wrap items-center gap-3">

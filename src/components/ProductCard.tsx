@@ -116,6 +116,9 @@ export default function ProductCard({ product, business }: ProductCardProps) {
               <MapPin className="w-3 h-3 text-stone-400 shrink-0" />
               <span className="truncate">{biz.location.landmark}</span>
             </div>
+            <div className="text-[10px] text-stone-600 font-medium mt-1 pt-1 border-t border-stone-200/50 flex items-center gap-1">
+              <span>🚚 Countrywide Delivery (All 47 Counties)</span>
+            </div>
           </div>
         </div>
       </div>

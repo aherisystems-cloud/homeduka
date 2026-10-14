@@ -157,7 +157,7 @@ Check or verify: https://homeduka.co.ke/verify-till`;
                   {shopName}
                 </h3>
                 <span className="text-xs text-stone-500 font-medium">
-                  Verified Local Workshop • Nairobi, Kenya
+                  Verified Local Shop • Nairobi & Countrywide Delivery
                 </span>
               </div>
               <div className="text-right text-xs">
@@ -209,7 +209,7 @@ Check or verify: https://homeduka.co.ke/verify-till`;
 
             {/* Note */}
             <div className="text-[11px] text-stone-500 border-t border-stone-100 pt-3 flex items-center justify-between">
-              <span>HomeDuka Kenya — Direct Workshop Prices with 0% Middleman Fees.</span>
+              <span>HomeDuka Kenya — Direct Shop & Yard Prices with 0% Middleman Fees.</span>
               <span className="font-bold text-stone-700">www.homeduka.co.ke</span>
             </div>
           </div>

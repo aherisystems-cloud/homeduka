@@ -54,7 +54,7 @@ export default function FairPriceGuideModal({
               What Should It Really Cost?
             </h2>
             <p className="text-xs text-stone-300">
-              Real workshop prices in Nairobi. Never get cheated by fake low prices.
+              Real shop and yard prices in Kenya. Most shops deliver countrywide to your town.
             </p>
           </div>
           <button
@@ -146,7 +146,7 @@ export default function FairPriceGuideModal({
                 {/* Action button: View Verified Listings */}
                 <div className="pt-2 flex items-center justify-between">
                   <span className="text-[11px] text-stone-500 font-medium">
-                    Verified Kenyan Workshops Only
+                    Verified Kenyan Shops & Yards Only
                   </span>
                   <Link
                     href={`/?q=${item.searchTag}#products`}
@@ -168,7 +168,7 @@ export default function FairPriceGuideModal({
 
         {/* Modal Footer */}
         <div className="p-4 bg-stone-50 border-t border-stone-200 flex items-center justify-between text-xs text-stone-600">
-          <span>Prices verified by Nairobi workshop visits.</span>
+          <span>Prices verified by physical shop visits. Delivers countrywide.</span>
           <button
             onClick={onClose}
             className="px-4 py-2 rounded-xl bg-stone-200 hover:bg-stone-300 text-stone-800 font-bold transition"

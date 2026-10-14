@@ -116,7 +116,7 @@ export default function Header() {
             <Link
               href="/fair-prices"
               className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-800 hover:bg-stone-700 text-stone-200 hover:text-white transition cursor-pointer text-[11px] sm:text-xs font-semibold border border-stone-700/80 shadow-2xs group"
-              title="See real Nairobi workshop prices"
+              title="See real shop and yard prices in Kenya"
             >
               <Sparkles className="w-3.5 h-3.5 text-[#B45309] group-hover:scale-110 transition-transform" />
               <span>Fair Prices</span>

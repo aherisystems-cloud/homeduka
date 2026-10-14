@@ -8,7 +8,7 @@ import { NAIROBI_FAIR_PRICES } from '../../data/nairobi_guides';
 
 export const metadata = {
   title: 'Nairobi Fair Price Guide | HomeDuka',
-  description: 'Real workshop prices for furniture, timber, and fundis in Nairobi. Plain English, zero jargon, zero scams.'
+  description: 'Real shop and yard prices for furniture, timber, and fundis in Kenya. Plain English, countrywide delivery, zero scams.'
 };
 
 export default function FairPricesPage() {
@@ -31,19 +31,19 @@ export default function FairPricesPage() {
         <div className="bg-stone-900 rounded-3xl p-6 sm:p-10 text-white space-y-4 shadow-xl border border-stone-800">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#B45309] text-white text-xs font-bold">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Nairobi Home Price Index</span>
+            <span>Kenya Home Price Index</span>
           </div>
           <h1 className="text-2xl sm:text-4xl font-black tracking-tight text-white">
-            What Should It Really Cost in Nairobi?
+            What Should It Really Cost in Kenya?
           </h1>
           <p className="text-sm sm:text-base text-stone-300 max-w-2xl leading-relaxed">
-            Real prices from genuine workshops along Ngong Road, Gikomba, and Mombasa Road. Use this guide so nobody overcharges you or sells you cheap fake wood.
+            Real prices from genuine local shops and timber yards along Ngong Road, Gikomba, and Mombasa Road. Most established sellers deliver countrywide to Mombasa, Kisumu, Nakuru, Eldoret, Nyeri, and all towns.
           </p>
 
           <div className="pt-2 grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs">
             <div className="p-3 rounded-2xl bg-stone-800/80 border border-stone-700">
               <span className="block font-bold text-white">0% Hidden Fees</span>
-              <span className="text-stone-400">Direct workshop rates</span>
+              <span className="text-stone-400">Direct shop & yard rates</span>
             </div>
             <div className="p-3 rounded-2xl bg-stone-800/80 border border-stone-700">
               <span className="block font-bold text-white">Verified Hardwood</span>
@@ -120,7 +120,7 @@ export default function FairPricesPage() {
                   </div>
 
                   <div className="sm:text-right bg-stone-50 sm:bg-transparent p-3 sm:p-0 rounded-2xl border sm:border-0 border-stone-200">
-                    <span className="text-xs text-stone-500 block font-medium">Fair Workshop Price:</span>
+                    <span className="text-xs text-stone-500 block font-medium">Fair Shop Price:</span>
                     <span className="text-lg sm:text-xl font-black text-stone-900">
                       {item.fairPrice}
                     </span>
@@ -147,7 +147,7 @@ export default function FairPricesPage() {
 
                 <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <span className="text-xs text-stone-500">
-                    Made by verified workshops along Ngong Rd, Mombasa Rd & Gikomba.
+                    Made by verified local shops and yards. Delivers countrywide via parcel or lorry.
                   </span>
                   <Link
                     href={`/?q=${item.searchTag}#products`}

@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { 
   MapPin, Store, Navigation, ArrowRight, Sparkles, 
-  CheckCircle2, Compass, Layers 
+  CheckCircle2, Compass, Layers, Truck, Globe 
 } from 'lucide-react';
-import { NAIROBI_WORKSHOP_CLUSTERS, WorkshopCluster } from '../data/nairobi_guides';
+import { NAIROBI_SHOPPING_CLUSTERS, ShoppingStreetCluster } from '../data/nairobi_guides';
 
 interface WorkshopClusterExplorerProps {
   onSelectCluster?: (clusterName: string) => void;
@@ -15,7 +15,7 @@ interface WorkshopClusterExplorerProps {
 export default function WorkshopClusterExplorer({
   onSelectCluster
 }: WorkshopClusterExplorerProps) {
-  const [selectedCluster, setSelectedCluster] = useState<WorkshopCluster>(NAIROBI_WORKSHOP_CLUSTERS[0]);
+  const [selectedCluster, setSelectedCluster] = useState<ShoppingStreetCluster>(NAIROBI_SHOPPING_CLUSTERS[0]);
 
   return (
     <section className="bg-white rounded-3xl p-6 sm:p-8 border border-stone-200/90 shadow-sm space-y-6">
@@ -25,13 +25,13 @@ export default function WorkshopClusterExplorer({
         <div>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-100 text-stone-800 border border-stone-200 text-xs font-bold mb-2">
             <Compass className="w-3.5 h-3.5 text-[#B45309]" />
-            <span>Nairobi Workshop Corridors</span>
+            <span>Famous Furniture Streets & Corridors</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight">
-            Where to Buy in Nairobi
+            Where to Buy in Kenya
           </h2>
           <p className="text-xs sm:text-sm text-stone-500 mt-1 max-w-2xl">
-            Choose a famous street to see what workshops make best and how much you save.
+            Direct shops, timber yards, and showrooms. Most established sellers deliver countrywide to <strong>Mombasa, Kisumu, Nakuru, Eldoret & all major towns</strong>.
           </p>
         </div>
 
@@ -46,7 +46,7 @@ export default function WorkshopClusterExplorer({
 
       {/* Cluster Navigation Pills */}
       <div className="flex gap-2.5 overflow-x-auto pb-2 scrollbar-thin">
-        {NAIROBI_WORKSHOP_CLUSTERS.map((cluster) => {
+        {NAIROBI_SHOPPING_CLUSTERS.map((cluster) => {
           const isSelected = selectedCluster.id === cluster.id;
           return (
             <button
@@ -80,7 +80,7 @@ export default function WorkshopClusterExplorer({
               <MapPin className="w-3.5 h-3.5 text-[#B45309]" />
               <span>{selectedCluster.road}</span>
               <span>•</span>
-              <span className="text-emerald-700 font-bold">{selectedCluster.shopCount} Verified Workshops</span>
+              <span className="text-emerald-700 font-bold">{selectedCluster.shopCount} Verified Local Shops</span>
             </div>
             <h3 className="text-xl sm:text-2xl font-black text-stone-900">
               {selectedCluster.name}
@@ -100,6 +100,15 @@ export default function WorkshopClusterExplorer({
             <div className="p-3 rounded-2xl bg-emerald-50 border border-emerald-200 space-y-1 text-emerald-950">
               <span className="text-emerald-700 font-medium block">Price Advantage:</span>
               <strong className="font-black block">{selectedCluster.typicalSavings}</strong>
+            </div>
+          </div>
+
+          {/* Countrywide Delivery Callout */}
+          <div className="p-3 rounded-2xl bg-amber-50/80 border border-amber-200/80 text-xs text-amber-950 flex items-center gap-2.5">
+            <Truck className="w-4 h-4 text-amber-700 shrink-0" />
+            <div>
+              <strong className="font-bold">Countrywide Delivery: </strong>
+              <span>{selectedCluster.countrywideDeliveryNote}</span>
             </div>
           </div>
 

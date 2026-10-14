@@ -208,7 +208,7 @@ export default function AlertPreferencesModal({ isOpen, onClose }: AlertPreferen
                 <div>
                   <h4 className="text-xs font-bold text-stone-900">Estate Soko Offers</h4>
                   <p className="text-[11px] text-stone-500">
-                    Alerts when workshops in your sub-county offer free delivery
+                    Alerts when shops in your sub-county offer free delivery
                   </p>
                 </div>
               </div>

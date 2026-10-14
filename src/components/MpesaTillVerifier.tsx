@@ -207,7 +207,7 @@ export default function MpesaTillVerifier({
                   We have not checked this number yet. Here is how to stay safe:
                 </p>
                 <ul className="list-disc list-inside space-y-1 text-stone-600 pl-1 font-medium">
-                  <li>Ask the seller for their exact workshop or shop landmark first.</li>
+                  <li>Ask the seller for their exact shop or yard landmark first.</li>
                   <li>Never send a deposit until you see the business name on your M-Pesa screen.</li>
                   <li>For ready goods, ask to pay when the item arrives at your house.</li>
                 </ul>
@@ -234,7 +234,7 @@ export default function MpesaTillVerifier({
             <div className="p-3 rounded-xl bg-stone-50 border border-stone-200">
               <strong className="block text-stone-900 mb-1">2. Painted on Every Real Shop</strong>
               <p className="text-stone-600 leading-relaxed">
-                Supermarkets, petrol stations, and workshops paint their Tills on walls and signs so buyers can pay easily. It is public by design.
+                Supermarkets, petrol stations, and local shops paint their Tills on walls and signs so buyers can pay easily. It is public by design.
               </p>
             </div>
 

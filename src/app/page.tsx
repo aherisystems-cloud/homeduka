@@ -192,7 +192,7 @@ export default function HomePage() {
 
           {/* Subtitle - Punchy, Action-Oriented, Zero Fluff */}
           <p className="text-base sm:text-xl text-stone-600 max-w-2xl mx-auto font-normal leading-relaxed">
-            Direct workshop prices & verified fundis across Kenya. No brokers. Tap to order or hire.
+            Direct shop prices & verified fundis across Kenya. Delivers countrywide to all major towns. No brokers.
           </p>
 
           {/* Location Context Banner Pill (Triggers Fullscreen Modal) */}
@@ -266,7 +266,7 @@ export default function HomePage() {
           </div>
           <div className="space-y-1">
             <span className="text-xl sm:text-2xl font-extrabold text-stone-900 block tracking-tight">0% Fee</span>
-            <span className="text-xs text-stone-500 font-medium block">Workshop Prices</span>
+            <span className="text-xs text-stone-500 font-medium block">Direct Shop Prices</span>
           </div>
           <div className="space-y-1">
             <span className="text-xl sm:text-2xl font-extrabold text-stone-900 block tracking-tight">Verified Till</span>
@@ -419,7 +419,7 @@ export default function HomePage() {
       {/* 5. MONTHLY HOME CARE & MONTHLY REFILLS SLIDER (STRATEGICALLY FEATURED) */}
       <MonthlyRecurringServices />
 
-      {/* 5.5. NAIROBI WORKSHOP CORRIDORS EXPLORER */}
+      {/* 5.5. FAMOUS SHOPPING CORRIDORS (COUNTRYWIDE DELIVERY) */}
       <div id="corridors">
         <WorkshopClusterExplorer />
       </div>
