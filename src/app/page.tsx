@@ -174,7 +174,7 @@ export default function HomePage() {
       {/* 0. WELCOME LOCATION & INTENT SCREEN-FILL MODAL */}
       <WelcomeLocationModal onComplete={handlePreferencesSelected} />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 space-y-20 md:space-y-28">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 xl:px-16 py-10 md:py-16 space-y-20 md:space-y-28">
         {/* 1. HERO SECTION: WORLD-CLASS, SPACIOUS, EDITORIAL AIRINESS (NO DISTRACTIONS, NO SIDEBAR) */}
         <section className="relative pt-6 pb-4 sm:pt-12 sm:pb-8 text-center max-w-5xl mx-auto space-y-8">
           

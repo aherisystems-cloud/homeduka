@@ -111,6 +111,7 @@ export interface BusinessProfile {
     payment_methods: PaymentMethod[];
     mpesa_till_number?: string;
     mpesa_paybill_number?: string;
+    mpesa_paybill_account?: string;
     mpesa_pochi_number?: string;    // e.g. "0712 345 678 (Pochi La Biashara)"
     seller_terms_badge?: string;    // Plain English: "Pay When Delivered" | "30% Deposit (Made for You)" | "Pay After Job Done" | "Direct Factory Price"
     price_rating: '$' | '$$' | '$$$' | '$$$$'; // Budget, Moderate, Premium, Luxury

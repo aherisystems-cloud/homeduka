@@ -264,8 +264,10 @@ export const SAMPLE_KENYAN_HOME_LISTINGS: BusinessProfile[] = [
     commercial: {
       has_physical_shop: true,
       accepts_cash_on_delivery: true,
-      payment_methods: ["lipa_na_mpesa_till", "mpesa_pochi_la_biashara", "cash_on_delivery"],
+      payment_methods: ["lipa_na_mpesa_till", "mpesa_paybill", "mpesa_pochi_la_biashara", "cash_on_delivery"],
       mpesa_till_number: "776512",
+      mpesa_paybill_number: "400200",
+      mpesa_paybill_account: "SOLARIA",
       mpesa_pochi_number: "0799 112 233",
       seller_terms_badge: "Pay After Work is Done",
       price_rating: "$$"
@@ -346,8 +348,10 @@ export const SAMPLE_KENYAN_HOME_LISTINGS: BusinessProfile[] = [
     commercial: {
       has_physical_shop: true,
       accepts_cash_on_delivery: true,
-      payment_methods: ["lipa_na_mpesa_till", "cash_on_delivery"],
+      payment_methods: ["lipa_na_mpesa_till", "mpesa_paybill", "cash_on_delivery"],
       mpesa_till_number: "482019",
+      mpesa_paybill_number: "247247",
+      mpesa_paybill_account: "APEX482",
       price_rating: "$$"
     },
     verification: {

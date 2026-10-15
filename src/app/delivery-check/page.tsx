@@ -12,8 +12,8 @@ export const metadata = {
 
 export default function DeliveryCheckPage() {
   return (
-    <main className="min-h-screen bg-[#FAF9F6] py-10 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-2xl mx-auto space-y-8">
+    <main className="min-h-screen bg-[#FAF9F6] py-10 sm:py-16 px-6 sm:px-10 lg:px-12 xl:px-16">
+      <div className="max-w-3xl mx-auto space-y-8">
         
         {/* Back Link */}
         <div>

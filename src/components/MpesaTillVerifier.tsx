@@ -21,7 +21,7 @@ export default function MpesaTillVerifier({
   const [query, setQuery] = useState(initialSearch);
   const [hasSearched, setHasSearched] = useState(Boolean(initialSearch));
 
-  // Search logic across till numbers, pochi numbers, and business names
+  // Search logic across till numbers, paybills, pochi numbers, and business names
   const cleanQuery = query.trim().toLowerCase().replace(/\s+/g, '');
   
   const matchedListing = SAMPLE_KENYAN_HOME_LISTINGS.find((b) => {
@@ -29,6 +29,7 @@ export default function MpesaTillVerifier({
     const till = (b.commercial.mpesa_till_number || '').toLowerCase();
     const pochi = (b.commercial.mpesa_pochi_number || '').replace(/\s+/g, '').toLowerCase();
     const paybill = (b.commercial.mpesa_paybill_number || '').toLowerCase();
+    const paybillAcc = (b.commercial.mpesa_paybill_account || '').toLowerCase();
     const name = b.business_name.toLowerCase().replace(/\s+/g, '');
     const phone = b.contact.whatsapp_number.toLowerCase();
 
@@ -36,6 +37,7 @@ export default function MpesaTillVerifier({
       till.includes(cleanQuery) ||
       pochi.includes(cleanQuery) ||
       paybill.includes(cleanQuery) ||
+      paybillAcc.includes(cleanQuery) ||
       name.includes(cleanQuery) ||
       phone.includes(cleanQuery)
     );
@@ -59,10 +61,10 @@ export default function MpesaTillVerifier({
               <span>Safe Pay Check</span>
             </div>
             <h2 className="text-lg sm:text-xl font-black text-stone-900 leading-tight">
-              M-Pesa Till & Pochi Checker
+              M-Pesa Till, Paybill & Pochi Verifier
             </h2>
             <p className="text-xs text-stone-600 mt-0.5">
-              Check if a Till or Pochi is real before sending any money.
+              Check any Till, Paybill, or Pochi before you send money.
             </p>
           </div>
         </div>
@@ -81,12 +83,12 @@ export default function MpesaTillVerifier({
         {/* Search Input */}
         <div>
           <label className="block text-xs font-bold text-stone-800 mb-1.5">
-            Type the Till Number, Pochi Number, or Shop Name:
+            Type the Till Number, Paybill Number, Pochi Number, or Shop Name:
           </label>
           <div className="relative">
             <input
               type="text"
-              placeholder="e.g. 894211 or 0799 112 233 or WoodCraft"
+              placeholder="e.g. Till 894211, Paybill 400200, or Pochi 0799 112 233"
               value={query}
               onChange={(e) => {
                 setQuery(e.target.value);
@@ -99,7 +101,7 @@ export default function MpesaTillVerifier({
 
           {/* Quick Demo Buttons */}
           <div className="flex flex-wrap items-center gap-1.5 mt-2.5 text-xs">
-            <span className="text-[11px] font-bold text-stone-500">Try these real shops:</span>
+            <span className="text-[11px] font-bold text-stone-500">Try these real numbers:</span>
             <button
               onClick={() => handleQuickTest('894211')}
               className="px-2.5 py-1 rounded-lg bg-stone-100 hover:bg-stone-200 text-stone-800 text-[11px] font-bold transition"
@@ -107,16 +109,22 @@ export default function MpesaTillVerifier({
               Till 894211 (Kamakis Furniture)
             </button>
             <button
+              onClick={() => handleQuickTest('400200')}
+              className="px-2.5 py-1 rounded-lg bg-stone-100 hover:bg-stone-200 text-stone-800 text-[11px] font-bold transition"
+            >
+              Paybill 400200 (Solaria Water & Solar)
+            </button>
+            <button
               onClick={() => handleQuickTest('0799 112 233')}
               className="px-2.5 py-1 rounded-lg bg-stone-100 hover:bg-stone-200 text-stone-800 text-[11px] font-bold transition"
             >
-              Pochi 0799 112 233 (Solar & Water)
+              Pochi 0799 112 233 (Fundi Plumbing)
             </button>
             <button
-              onClick={() => handleQuickTest('761902')}
+              onClick={() => handleQuickTest('247247')}
               className="px-2.5 py-1 rounded-lg bg-stone-100 hover:bg-stone-200 text-stone-800 text-[11px] font-bold transition"
             >
-              Till 761902 (Kitchens)
+              Paybill 247247 (Apex Gypsum)
             </button>
           </div>
         </div>
@@ -131,7 +139,7 @@ export default function MpesaTillVerifier({
                     <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
                     <div>
                       <span className="text-[10px] font-black uppercase tracking-wider text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">
-                        ✓ Verified Real Shop
+                        ✓ Verified Real Business
                       </span>
                       <h3 className="text-base font-black text-stone-900 mt-1">
                         {matchedListing.business_name}
@@ -151,15 +159,28 @@ export default function MpesaTillVerifier({
                 {/* Account Details Block */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs bg-white p-3.5 rounded-xl border border-emerald-100">
                   <div>
-                    <span className="text-[11px] text-stone-500 block">Payment Method:</span>
-                    <strong className="text-stone-900 text-sm">
-                      {matchedListing.commercial.mpesa_till_number 
-                        ? `Buy Goods Till: ${matchedListing.commercial.mpesa_till_number}`
-                        : `Pochi La Biashara: ${matchedListing.commercial.mpesa_pochi_number}`
-                      }
+                    <span className="text-[11px] text-stone-500 block">Verified Payment Method:</span>
+                    <strong className="text-stone-900 text-sm block">
+                      {matchedListing.commercial.mpesa_paybill_number ? (
+                        <>
+                          Paybill: {matchedListing.commercial.mpesa_paybill_number}
+                          {matchedListing.commercial.mpesa_paybill_account && (
+                            <span className="text-xs text-stone-600 block">
+                              Account Name: <strong>{matchedListing.commercial.mpesa_paybill_account}</strong>
+                            </span>
+                          )}
+                        </>
+                      ) : matchedListing.commercial.mpesa_till_number ? (
+                        `Buy Goods Till: ${matchedListing.commercial.mpesa_till_number}`
+                      ) : (
+                        `Pochi La Biashara: ${matchedListing.commercial.mpesa_pochi_number}`
+                      )}
                     </strong>
-                    <span className="text-[11px] text-emerald-700 block font-medium">
-                      ✓ Zero extra fee for you when paying Buy Goods
+                    <span className="text-[11px] text-emerald-700 block font-medium mt-0.5">
+                      {matchedListing.commercial.mpesa_paybill_number
+                        ? "✓ Official business account verified with Safaricom"
+                        : "✓ Official merchant wallet verified with Safaricom"
+                      }
                     </span>
                   </div>
 
@@ -169,7 +190,7 @@ export default function MpesaTillVerifier({
                       {matchedListing.commercial.seller_terms_badge || "Pay When Delivered"}
                     </strong>
                     <span className="text-[11px] text-stone-500 block">
-                      Agreed upfront before paying
+                      Inspect goods at gate before paying
                     </span>
                   </div>
                 </div>
@@ -180,19 +201,26 @@ export default function MpesaTillVerifier({
                     <Smartphone className="w-4 h-4 text-emerald-400" />
                     <span className="font-bold text-white">What your phone screen will show:</span>
                   </div>
-                  <div className="bg-stone-950 p-3 rounded-lg border border-stone-800 font-mono text-xs text-emerald-400 space-y-1">
+                  <div className="bg-stone-950 p-3.5 rounded-lg border border-stone-800 font-mono text-xs text-emerald-400 space-y-1">
                     <p className="text-stone-300">Pay to:</p>
                     <p className="text-sm font-bold text-white tracking-wide">
                       {matchedListing.business_name.toUpperCase()}
                     </p>
-                    <p className="text-stone-400 text-[11px]">
-                      {matchedListing.commercial.mpesa_till_number 
-                        ? `Till Number: ${matchedListing.commercial.mpesa_till_number}`
-                        : `Pochi La Biashara: ${matchedListing.commercial.mpesa_pochi_number}`
-                      }
-                    </p>
+                    {matchedListing.commercial.mpesa_paybill_number ? (
+                      <div className="text-stone-400 text-[11px] space-y-0.5 pt-0.5">
+                        <p>Business No: <span className="text-white font-bold">{matchedListing.commercial.mpesa_paybill_number}</span></p>
+                        <p>Account No: <span className="text-white font-bold">{matchedListing.commercial.mpesa_paybill_account || matchedListing.business_name.split(' ')[0].toUpperCase()}</span></p>
+                      </div>
+                    ) : (
+                      <p className="text-stone-400 text-[11px]">
+                        {matchedListing.commercial.mpesa_till_number 
+                          ? `Till Number: ${matchedListing.commercial.mpesa_till_number}`
+                          : `Pochi La Biashara: ${matchedListing.commercial.mpesa_pochi_number}`
+                        }
+                      </p>
+                    )}
                     <p className="text-[11px] text-amber-300 pt-1">
-                      👉 Check that this name matches before you enter your PIN.
+                      👉 Safaricom shows this exact business name. Check that it matches before you enter your secret PIN.
                     </p>
                   </div>
                 </div>
@@ -204,7 +232,7 @@ export default function MpesaTillVerifier({
                   <span>Not Yet in Our Verified Database</span>
                 </div>
                 <p className="text-stone-700 leading-relaxed">
-                  We have not checked this number yet. Here is how to stay safe:
+                  We have not verified this number yet. Here is how to stay safe:
                 </p>
                 <ul className="list-disc list-inside space-y-1 text-stone-600 pl-1 font-medium">
                   <li>Ask the seller for their exact shop or yard landmark first.</li>
@@ -220,28 +248,28 @@ export default function MpesaTillVerifier({
         <div className="pt-4 border-t border-stone-100 space-y-3">
           <div className="flex items-center gap-2 text-stone-900 font-bold text-xs sm:text-sm">
             <Lock className="w-4 h-4 text-[#B45309]" />
-            <span>Is it safe to see Till and Pochi numbers in the open?</span>
+            <span>Is it safe to see Till, Paybill, and Pochi numbers in the open?</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
             <div className="p-3 rounded-xl bg-stone-50 border border-stone-200">
               <strong className="block text-stone-900 mb-1">1. They Only Take Money In</strong>
               <p className="text-stone-600 leading-relaxed">
-                A Till or Pochi number can only receive money. Nobody can ever take money out without the owner&apos;s secret SIM card and secret PIN.
+                A Till, Paybill, or Pochi can only receive money. Nobody can take money out of their wallet without the owner&apos;s secret SIM card and PIN.
               </p>
             </div>
 
             <div className="p-3 rounded-xl bg-stone-50 border border-stone-200">
-              <strong className="block text-stone-900 mb-1">2. Painted on Every Real Shop</strong>
+              <strong className="block text-stone-900 mb-1">2. Displayed on Every Real Shop</strong>
               <p className="text-stone-600 leading-relaxed">
-                Supermarkets, petrol stations, and local shops paint their Tills on walls and signs so buyers can pay easily. It is public by design.
+                Hardware stores, supermarkets, and timber yards paint their Tills and Paybills on signs so customers pay easily. It is public by design.
               </p>
             </div>
 
             <div className="p-3 rounded-xl bg-stone-50 border border-stone-200">
-              <strong className="block text-stone-900 mb-1">3. Scammers Fear Public Tills</strong>
+              <strong className="block text-stone-900 mb-1">3. Scammers Fear Public Accounts</strong>
               <p className="text-stone-600 leading-relaxed">
-                Scammers only use personal numbers so they can hide. A real shop displays their Till openly because they have nothing to hide.
+                Scammers only use unregistered personal lines so they can run away. A real business displays their Till or Paybill openly because their name is registered.
               </p>
             </div>
           </div>

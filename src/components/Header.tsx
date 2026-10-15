@@ -77,7 +77,7 @@ export default function Header() {
   return (
     <>
       {/* 1. TOP-TOP UTILITY BAR (Map Coverage, WhatsApp Deals, Channel) */}
-      <div className="w-full bg-stone-900 text-stone-200 text-[11px] sm:text-xs py-2 px-4 border-b border-stone-800 z-50 relative">
+      <div className="w-full bg-stone-900 text-stone-200 text-[11px] sm:text-xs py-2 px-6 sm:px-10 lg:px-12 xl:px-16 border-b border-stone-800 z-50 relative">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 sm:gap-4">
           
           {/* Left: Kenya Location & City Context with Quick Modal Trigger */}
@@ -100,16 +100,16 @@ export default function Header() {
             </span>
           </div>
 
-          {/* Right: Download Web App + Channel Link */}
-          <div className="flex items-center gap-3 sm:gap-4">
-            {/* Check Till / Pochi Verifier link */}
+          {/* Right: Buyer tools first, then Sell / List Free as the final item on the far right */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Check Till & Paybill Verifier link */}
             <Link
               href="/verify-till"
               className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-800 hover:bg-stone-700 text-stone-200 hover:text-white transition cursor-pointer text-[11px] sm:text-xs font-semibold border border-stone-700/80 shadow-2xs group"
-              title="Check if a Till or Pochi is real before sending money"
+              title="Check if a Till, Paybill, or Pochi is real before sending money"
             >
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 group-hover:scale-110 transition-transform" />
-              <span>Check Till</span>
+              <span>Check Till / Paybill</span>
             </Link>
 
             {/* Nairobi Fair Price Index */}
@@ -130,16 +130,6 @@ export default function Header() {
             >
               <Truck className="w-3.5 h-3.5 text-emerald-400 group-hover:scale-110 transition-transform" />
               <span>Gate Check</span>
-            </Link>
-
-            {/* Sell / List Free Button in Top Bar (Prominent & Creates Primary Menu Space) */}
-            <Link
-              href="/sell"
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white hover:bg-stone-100 text-stone-950 font-black transition shadow-xs text-[11px] sm:text-xs cursor-pointer group active:scale-95"
-              title="List your shop, timber yard, or fundi service free"
-            >
-              <PlusCircle className="w-3.5 h-3.5 text-stone-900 group-hover:rotate-90 transition-transform" />
-              <span>Sell / List Free</span>
             </Link>
 
             {/* Deal Alerts trigger button */}
@@ -165,17 +155,28 @@ export default function Header() {
               </span>
             </button>
 
-            {/* Direct Channel Link */}
+            {/* Direct WhatsApp Channel Link */}
             <Link
               href="https://whatsapp.com/channel/example-channel"
               target="_blank"
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-900 hover:bg-black text-white font-bold border border-stone-700/80 transition shadow-xs active:scale-95"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-800 hover:bg-stone-700 text-stone-200 hover:text-white font-semibold border border-stone-700/80 transition shadow-2xs active:scale-95"
             >
               <MessageSquare className="w-3 h-3 text-emerald-400" />
-              <span>Join WhatsApp Channel</span>
-              <span className="hidden sm:inline bg-white/20 px-1.5 py-0.2 rounded-full text-[10px] text-stone-200 font-semibold">
+              <span className="hidden sm:inline">WhatsApp Channel</span>
+              <span className="sm:hidden">Channel</span>
+              <span className="hidden md:inline bg-white/20 px-1.5 py-0.2 rounded-full text-[10px] text-stone-200 font-semibold">
                 5.4k
               </span>
+            </Link>
+
+            {/* Sell / List Free Button - VERY LAST ITEM ON FAR RIGHT (Targets Merchant/Seller) */}
+            <Link
+              href="/sell"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white hover:bg-stone-100 text-stone-950 font-black transition shadow-xs text-[11px] sm:text-xs cursor-pointer group active:scale-95 ml-1 border border-stone-300"
+              title="List your shop, timber yard, or fundi service free"
+            >
+              <PlusCircle className="w-3.5 h-3.5 text-stone-900 group-hover:rotate-90 transition-transform" />
+              <span>Sell / List Free</span>
             </Link>
           </div>
         </div>
@@ -183,7 +184,7 @@ export default function Header() {
 
       {/* 2. MAIN HEADER NAVIGATION BAR */}
       <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur border-b border-stone-200/80 shadow-2xs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 xl:px-16 h-20 flex items-center justify-between gap-4">
           
           {/* Logo with New Geometric Mark & Brand Hue */}
           <div className="flex items-center gap-3">
@@ -859,16 +860,8 @@ export default function Header() {
               )}
             </div>
 
-            {/* Other Mobile Links */}
+            {/* Other Mobile Links for Buyers */}
             <div className="space-y-1">
-              <Link
-                href="/sell"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 p-3 rounded-xl font-bold text-sm bg-stone-900 text-white shadow-sm"
-              >
-                <PlusCircle className="w-4 h-4 text-white" />
-                <span>Sell / List Your Shop or Service Free</span>
-              </Link>
               <Link
                 href="/deals"
                 onClick={() => setMobileMenuOpen(false)}

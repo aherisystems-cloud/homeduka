@@ -87,7 +87,7 @@ export default function RoomsDirectoryPage() {
 
       {/* Breadcrumb Navigation */}
       <div className="border-b border-stone-200 bg-white/70 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center gap-2 text-xs font-semibold text-stone-500">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 xl:px-16 py-3 flex items-center gap-2 text-xs font-semibold text-stone-500">
           <Link href="/" className="hover:text-stone-900 transition">Home</Link>
           <ChevronRight className="w-3.5 h-3.5 text-stone-400" />
           <span className="text-stone-900 font-bold">Shop by Room</span>
@@ -95,7 +95,7 @@ export default function RoomsDirectoryPage() {
       </div>
 
       {/* Hero Header */}
-      <div className="bg-white border-b border-stone-200/80 py-12 px-4 sm:px-6">
+      <div className="bg-white border-b border-stone-200/80 py-12 sm:py-16 px-6 sm:px-10 lg:px-12 xl:px-16">
         <div className="max-w-4xl mx-auto text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-stone-100 text-stone-800 border border-stone-200 text-xs font-bold">
             <Sparkles className="w-3.5 h-3.5 text-[#B45309]" />
@@ -127,7 +127,7 @@ export default function RoomsDirectoryPage() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-10 space-y-12">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 xl:px-16 pt-10 space-y-16">
         {/* Rooms Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {HOME_ROOMS.map((room) => {
@@ -204,45 +204,54 @@ export default function RoomsDirectoryPage() {
           })}
         </div>
 
-        {/* AIEO Answer Box: Quick Buying Guide for Kenya */}
-        <div className="bg-stone-50 rounded-3xl p-6 sm:p-8 border border-stone-200 space-y-6">
-          <div className="flex items-center gap-2">
-            <span className="text-2xl">💡</span>
+        {/* AIEO Answer Box: Quick Buying Guide for Kenya (Spacious 2-Column Editorial Grid) */}
+        <div className="bg-stone-50 rounded-3xl p-6 sm:p-10 border border-stone-200 space-y-6">
+          <div className="flex items-center gap-3">
+            <span className="text-3xl">💡</span>
             <div>
-              <h3 className="text-lg sm:text-xl font-extrabold text-stone-900">
+              <h3 className="text-xl sm:text-2xl font-black text-stone-900">
                 How Kenyan Homeowners Furnish Each Room Smartly
               </h3>
-              <p className="text-xs sm:text-sm text-stone-500">
-                Direct insights from verified local carpenters, welders, and interior fundis.
+              <p className="text-xs sm:text-sm text-stone-600 mt-0.5">
+                Practical tips from verified local carpenters, welders, and interior fundis.
               </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs sm:text-sm text-stone-700 leading-relaxed">
-            <div className="bg-white p-5 rounded-2xl border border-stone-200/80 space-y-2">
-              <strong className="text-stone-900 font-extrabold block text-sm">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 text-xs sm:text-sm text-stone-700 leading-relaxed">
+            <div className="bg-white p-6 rounded-2xl border border-stone-200/90 space-y-2 shadow-2xs">
+              <strong className="text-stone-900 font-bold block text-sm sm:text-base">
                 1. Buy Direct from Timber & Metal Yards
               </strong>
               <p>
-                Shops along Ngong Road, Kamakis (Eastern Bypass), and Gikomba manufacture custom sofas, dining tables, and beds. You save 30% to 45% compared to mall showrooms because you buy direct from the makers.
+                Makers along Ngong Road, Kamakis (Eastern Bypass), and Gikomba manufacture custom sofas, dining tables, and beds. You save 30% to 45% compared to mall showrooms because you buy direct from the makers without middleman markup.
               </p>
             </div>
 
-            <div className="bg-white p-5 rounded-2xl border border-stone-200/80 space-y-2">
-              <strong className="text-stone-900 font-extrabold block text-sm">
+            <div className="bg-white p-6 rounded-2xl border border-stone-200/90 space-y-2 shadow-2xs">
+              <strong className="text-stone-900 font-bold block text-sm sm:text-base">
                 2. Test Kiln-Dried Hardwoods
               </strong>
               <p>
-                In Kenya, look for seasoned Mahogany, Mvule, or Bluegum. Avoid wet Cypress or cheap untreated pine that warps or attracts wood borers during Nairobi rainy seasons.
+                In Kenya, ask for seasoned Mahogany, Mvule, or Bluegum. Avoid wet Cypress or cheap untreated pine that warps or attracts wood borers during Nairobi rainy seasons. High-density foam (HD 32 or HD 36) keeps cushions firm for 5+ years.
               </p>
             </div>
 
-            <div className="bg-white p-5 rounded-2xl border border-stone-200/80 space-y-2">
-              <strong className="text-stone-900 font-extrabold block text-sm">
-                3. Check Delivery Means Upfront
+            <div className="bg-white p-6 rounded-2xl border border-stone-200/90 space-y-2 shadow-2xs">
+              <strong className="text-stone-900 font-bold block text-sm sm:text-base">
+                3. Choose the Right Delivery Means
               </strong>
               <p>
-                Small decor and stools travel safely via Boda Boda or Pickup Mtaani. Large 6x6 beds and 7-seater sofas require a Canter flatbed with corner cardboard protectors.
+                Small decor, stools, and fittings travel safely via Boda Boda riders or Pickup Mtaani collection agents. Large 6x6 beds and 7-seater sofas require a Canter flatbed with corner cardboard protectors or matatu courier drops.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-2xl border border-stone-200/90 space-y-2 shadow-2xs">
+              <strong className="text-stone-900 font-bold block text-sm sm:text-base">
+                4. Gate Inspection Before Final Payment
+              </strong>
+              <p>
+                For ready goods, pay only after you inspect the item at your gate. For custom carpentry, pay a 30% deposit for materials, request WhatsApp progress photos of the bare wood frame, and pay the rest after delivery.
               </p>
             </div>
           </div>

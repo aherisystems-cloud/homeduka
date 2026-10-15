@@ -259,7 +259,7 @@ export default async function RoomPage({ params }: Props) {
 
       {/* Breadcrumb Navigation */}
       <div className="border-b border-stone-200 bg-white/70 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center gap-2 text-xs font-semibold text-stone-500">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 xl:px-16 py-3 flex items-center gap-2 text-xs font-semibold text-stone-500">
           <Link href="/" className="hover:text-stone-900 transition">Home</Link>
           <ChevronRight className="w-3.5 h-3.5 text-stone-400" />
           <Link href="/rooms" className="hover:text-stone-900 transition">Shop by Room</Link>
@@ -279,7 +279,7 @@ export default async function RoomPage({ params }: Props) {
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-stone-950 via-stone-950/80 to-transparent" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 space-y-4">
+        <div className="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 xl:px-16 py-12 sm:py-16 space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-white border border-white/20 text-xs font-bold backdrop-blur">
             <span className="text-lg">{room.icon}</span>
             <span>Dedicated Room Hub</span>
@@ -310,7 +310,7 @@ export default async function RoomPage({ params }: Props) {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-10 space-y-12">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 xl:px-16 pt-10 space-y-16">
         {/* AIEO Answer Box: Key Buying Facts for this Room */}
         <div className="bg-white rounded-3xl p-6 sm:p-8 border border-stone-200/90 shadow-2xs space-y-4">
           <div className="flex items-center gap-2 text-stone-900 font-extrabold text-base sm:text-lg">
@@ -346,7 +346,7 @@ export default async function RoomPage({ params }: Props) {
           </div>
         </div>
 
-        {/* Section 1: Products in this Room */}
+        {/* Section 1: Products in this Room (Expansive 4-Column Catalog Shelf) */}
         <section className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
@@ -363,7 +363,7 @@ export default async function RoomPage({ params }: Props) {
           </div>
 
           {products.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {products.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
@@ -438,12 +438,12 @@ export default async function RoomPage({ params }: Props) {
               href="/verify-till"
               className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white hover:bg-stone-50 text-stone-800 border border-stone-300 font-bold text-xs transition"
             >
-              <span>Verify Seller M-Pesa Till</span>
+              <span>Verify Seller M-Pesa Till / Paybill</span>
             </Link>
           </div>
         </div>
 
-        {/* Section 4: Room Specific FAQs for SEO & AIEO */}
+        {/* Section 4: Room Specific FAQs for SEO & AIEO (Spacious 2-Column Grid) */}
         {faqs.length > 0 && (
           <section className="space-y-6 pt-6 border-t border-stone-200">
             <div className="space-y-1">
@@ -455,19 +455,19 @@ export default async function RoomPage({ params }: Props) {
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {faqs.map((faq, idx) => (
                 <div 
                   key={idx}
-                  className="bg-white rounded-3xl p-6 border border-stone-200/90 shadow-2xs space-y-3"
+                  className="bg-white rounded-3xl p-6 sm:p-7 border border-stone-200/90 shadow-2xs space-y-3"
                 >
-                  <div className="flex items-start gap-2">
+                  <div className="flex items-start gap-2.5">
                     <HelpCircle className="w-4 h-4 text-[#B45309] shrink-0 mt-0.5" />
-                    <h3 className="font-bold text-stone-900 text-sm leading-snug">
+                    <h3 className="font-bold text-stone-900 text-sm sm:text-base leading-snug">
                       {faq.question}
                     </h3>
                   </div>
-                  <p className="text-xs text-stone-600 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-stone-600 leading-relaxed pl-6">
                     {faq.answer}
                   </p>
                 </div>

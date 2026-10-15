@@ -133,7 +133,7 @@ export default function RefillsPage() {
 
       {/* Breadcrumb Navigation */}
       <div className="border-b border-stone-200 bg-white/70 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center gap-2 text-xs font-semibold text-stone-500">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 xl:px-16 py-3 flex items-center gap-2 text-xs font-semibold text-stone-500">
           <Link href="/" className="hover:text-stone-900 transition">Home</Link>
           <ChevronRight className="w-3.5 h-3.5 text-stone-400" />
           <span className="text-stone-900 font-bold">Monthly Restock & Home Upkeep</span>
@@ -141,7 +141,7 @@ export default function RefillsPage() {
       </div>
 
       {/* Hero Section */}
-      <div className="bg-white border-b border-stone-200/80 py-12 px-4 sm:px-6">
+      <div className="bg-white border-b border-stone-200/80 py-12 sm:py-16 px-6 sm:px-10 lg:px-12 xl:px-16">
         <div className="max-w-4xl mx-auto text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-900 border border-emerald-200 text-xs font-bold">
             <RefreshCw className="w-3.5 h-3.5 text-emerald-700 animate-spin-slow" />
@@ -173,7 +173,7 @@ export default function RefillsPage() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-10 space-y-12">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 xl:px-16 pt-10 space-y-16">
         {/* Strategic Positioning: The 3 Guarantees */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-white rounded-3xl p-6 border border-stone-200/90 shadow-2xs space-y-3">
