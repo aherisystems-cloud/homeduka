@@ -40,12 +40,12 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 3: Routine Refills & Safety Tools */}
+          {/* Col 3: Monthly Restock & Safety Tools */}
           <div>
             <div className="flex items-center justify-between mb-3">
-              <h4 className="text-white text-xs font-bold uppercase tracking-wider">Routine Refills & Tools</h4>
+              <h4 className="text-white text-xs font-bold uppercase tracking-wider">Monthly Restock & Care</h4>
               <Link href="/refills" className="text-[11px] font-bold text-emerald-400 hover:underline">
-                Refills Hub →
+                Restock Hub →
               </Link>
             </div>
             <ul className="space-y-1.5 text-xs">

@@ -74,11 +74,18 @@ export default function ProductCard({ product, business }: ProductCardProps) {
 
           {/* Top Badges */}
           <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
-            {roomDisplay && (
-              <span className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-white/95 backdrop-blur text-stone-800 shadow-xs">
-                {roomDisplay}
-              </span>
-            )}
+            <div className="flex items-center gap-1.5 flex-wrap">
+              {roomDisplay && (
+                <span className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-white/95 backdrop-blur text-stone-800 shadow-xs">
+                  {roomDisplay}
+                </span>
+              )}
+              {product.is_monthly_restock && (
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-emerald-700 text-white shadow-xs">
+                  📦 Monthly Restock
+                </span>
+              )}
+            </div>
 
             <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold shadow-xs ${
               product.specifications.in_stock

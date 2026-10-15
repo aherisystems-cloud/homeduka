@@ -9,6 +9,15 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 
+const RESTOCK_CATEGORIES = [
+  'cooking_gas',
+  'drinking_water',
+  'cleaning_supplies',
+  'water_tank_cleaning',
+  'pest_control',
+  'solar_servicing',
+];
+
 interface ProductItem {
   id: string;
   title: string;
@@ -16,6 +25,8 @@ interface ProductItem {
   image: string;
   inStock: boolean;
   slug: string;
+  category?: string;
+  isMonthlyRestock?: boolean;
   dealPrice?: string;
   dealDuration?: 'today' | 'month';
 }
@@ -32,6 +43,8 @@ export default function VendorPortalPage() {
       image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=400&q=80',
       inStock: true,
       slug: 'chesterfield-7-seater-kamakis',
+      category: 'furniture',
+      isMonthlyRestock: false,
       dealPrice: 'KSh 48,000',
       dealDuration: 'today'
     },
@@ -41,6 +54,8 @@ export default function VendorPortalPage() {
       price: 'KSh 38,000',
       image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=400&q=80',
       inStock: true,
+      category: 'furniture',
+      isMonthlyRestock: false,
       slug: 'mahogany-storage-bed-6x6'
     },
     {
@@ -49,6 +64,8 @@ export default function VendorPortalPage() {
       price: 'KSh 45,000',
       image: 'https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=400&q=80',
       inStock: false,
+      category: 'furniture',
+      isMonthlyRestock: false,
       slug: '6-seater-dining-table-ruiru'
     }
   ]);
@@ -56,6 +73,8 @@ export default function VendorPortalPage() {
   const [isAdding, setIsAdding] = useState(false);
   const [newTitle, setNewTitle] = useState('');
   const [newPrice, setNewPrice] = useState('');
+  const [newCategory, setNewCategory] = useState('furniture');
+  const [newIsRestock, setNewIsRestock] = useState(false);
   const [newNote, setNewNote] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [notification, setNotification] = useState<string | null>(null);
@@ -152,6 +171,9 @@ export default function VendorPortalPage() {
 
     setIsSubmitting(true);
 
+    const isEligible = RESTOCK_CATEGORIES.includes(newCategory);
+    const qualifiedRestock = isEligible && newIsRestock;
+
     setTimeout(() => {
       const newProd: ProductItem = {
         id: `prod-${Date.now()}`,
@@ -159,6 +181,8 @@ export default function VendorPortalPage() {
         price: `KSh ${Number(newPrice).toLocaleString()}`,
         image: 'https://images.unsplash.com/photo-1540518614846-7ede433c4ef0?auto=format&fit=crop&w=400&q=80',
         inStock: true,
+        category: newCategory,
+        isMonthlyRestock: qualifiedRestock,
         slug: newTitle.toLowerCase().replace(/\s+/g, '-')
       };
 
@@ -166,10 +190,15 @@ export default function VendorPortalPage() {
       setNewTitle('');
       setNewPrice('');
       setNewNote('');
+      setNewIsRestock(false);
       setIsAdding(false);
       setIsSubmitting(false);
-      showNotice('🚀 Product published live on Home Kenya!');
-    }, 1000);
+      showNotice(
+        qualifiedRestock 
+          ? '🎉 Restock item published to Monthly Restock Hub!' 
+          : '🚀 Product published live on Home Kenya!'
+      );
+    }, 800);
   };
 
   const showNotice = (msg: string) => {
@@ -345,9 +374,55 @@ export default function VendorPortalPage() {
                 placeholder="e.g., 45000"
                 value={newPrice}
                 onChange={(e) => setNewPrice(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl border border-stone-300 text-sm focus:ring-2 focus:ring-brand-700 focus:outline-hidden"
+                className="w-full px-4 py-3 rounded-xl border border-stone-300 text-sm focus:ring-2 focus:ring-stone-900 focus:outline-hidden"
               />
             </div>
+
+            <div>
+              <label className="block text-xs font-bold text-stone-700 mb-1.5">
+                4. Item Category:
+              </label>
+              <select
+                value={newCategory}
+                onChange={(e) => {
+                  setNewCategory(e.target.value);
+                  if (!RESTOCK_CATEGORIES.includes(e.target.value)) {
+                    setNewIsRestock(false);
+                  }
+                }}
+                className="w-full px-4 py-3 rounded-xl border border-stone-300 text-sm focus:ring-2 focus:ring-stone-900 focus:outline-hidden font-semibold"
+              >
+                <option value="furniture">Furniture (Sofas, Beds, Dining Tables)</option>
+                <option value="cooking_gas">Cooking Gas Refills & Cylinders (Monthly Restock)</option>
+                <option value="drinking_water">Purified 20L Drinking Water (Monthly Restock)</option>
+                <option value="cleaning_supplies">Cleaning Detergents & Soap (Monthly Restock)</option>
+                <option value="water_tank_cleaning">Water Tank Cleaning Service (Monthly Restock)</option>
+                <option value="pest_control">Pest Control & Fumigation (Monthly Restock)</option>
+                <option value="decor">Home Decor, Lighting & Carpets</option>
+              </select>
+            </div>
+
+            {/* Monthly Restock Eligibility Check */}
+            {RESTOCK_CATEGORIES.includes(newCategory) ? (
+              <div className="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200">
+                <label className="flex items-start gap-2.5 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={newIsRestock}
+                    onChange={(e) => setNewIsRestock(e.target.checked)}
+                    className="w-4 h-4 accent-emerald-700 rounded mt-0.5 cursor-pointer"
+                  />
+                  <span className="text-xs text-emerald-950 font-medium">
+                    <strong className="block text-emerald-900 font-bold">List under "Monthly Restock"</strong>
+                    Allow families in your estate to reorder this item on a regular schedule.
+                  </span>
+                </label>
+              </div>
+            ) : (
+              <div className="p-3 rounded-xl bg-stone-50 border border-stone-200 text-[11px] text-stone-500">
+                ℹ️ Long-term furniture and decor items cannot be marked as Monthly Restock.
+              </div>
+            )}
 
             <button
               type="submit"
@@ -396,15 +471,22 @@ export default function VendorPortalPage() {
                       </span>
                     )}
                   </div>
-                  <div className="flex items-center gap-2 mt-1">
-                    <span
-                      className={`inline-block w-2 h-2 rounded-full ${
-                        item.inStock ? 'bg-emerald-500' : 'bg-rose-500'
-                      }`}
-                    />
-                    <span className="text-[11px] font-semibold text-stone-500">
-                      {item.inStock ? 'In Stock (Live)' : 'Sold Out / Hidden'}
-                    </span>
+                  <div className="flex flex-wrap items-center gap-2 mt-1">
+                    <div className="flex items-center gap-1.5">
+                      <span
+                        className={`inline-block w-2 h-2 rounded-full ${
+                          item.inStock ? 'bg-emerald-500' : 'bg-rose-500'
+                        }`}
+                      />
+                      <span className="text-[11px] font-semibold text-stone-500">
+                        {item.inStock ? 'In Stock (Live)' : 'Sold Out / Hidden'}
+                      </span>
+                    </div>
+                    {item.isMonthlyRestock && (
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300">
+                        📦 Monthly Restock
+                      </span>
+                    )}
                   </div>
                 </div>
               </div>

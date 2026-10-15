@@ -26,14 +26,14 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: "Monthly Home Refills & Routine Care Kenya | Water, Cooking Gas & Maintenance",
-  description: "Never run out of cooking gas or clean drinking water. Scheduled monthly refills, water tank cleaning, pest control, and solar servicing across Nairobi & Kenyan towns. Locked monthly rates & verified M-Pesa Tills.",
+  title: "Monthly Home Restock & Routine Care Kenya | Water, Cooking Gas & Maintenance",
+  description: "Never run out of cooking gas, drinking water, or cleaning essentials. Scheduled monthly restock, water tank cleaning, pest control, and solar servicing across Nairobi & Kenyan towns. Locked monthly rates & verified M-Pesa Tills.",
   alternates: {
     canonical: 'https://homeduka.co.ke/refills',
   },
   openGraph: {
-    title: "Monthly Home Refills & Routine Care Kenya | HomeDuka",
-    description: "Scheduled drinking water, cooking gas refills, water tank cleaning, and pest control at locked monthly rates across Kenya.",
+    title: "Monthly Home Restock & Routine Care Kenya | HomeDuka",
+    description: "Scheduled drinking water, cooking gas restock, water tank cleaning, and pest control at locked monthly rates across Kenya.",
     url: 'https://homeduka.co.ke/refills',
     siteName: 'HomeDuka Kenya',
     locale: 'en_KE',
@@ -136,7 +136,7 @@ export default function RefillsPage() {
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center gap-2 text-xs font-semibold text-stone-500">
           <Link href="/" className="hover:text-stone-900 transition">Home</Link>
           <ChevronRight className="w-3.5 h-3.5 text-stone-400" />
-          <span className="text-stone-900 font-bold">Monthly Refills & Routine Care</span>
+          <span className="text-stone-900 font-bold">Monthly Restock & Home Upkeep</span>
         </div>
       </div>
 
@@ -149,11 +149,11 @@ export default function RefillsPage() {
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-black text-stone-900 tracking-tight">
-            Monthly Refills & Routine Home Care
+            Monthly Restock & Routine Home Upkeep
           </h1>
 
           <p className="text-sm sm:text-base text-stone-600 max-w-2xl mx-auto leading-relaxed">
-            Lock in reliable drinking water, cooking gas, tank scrubbing, and pest control. Delivered directly to your doorstep in your estate with verified M-Pesa Tills.
+            Lock in reliable drinking water, cooking gas, bulk cleaning supplies, tank scrubbing, and pest control. Delivered directly to your doorstep in your estate with verified M-Pesa Tills.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-2 pt-2 text-xs font-bold text-stone-600">

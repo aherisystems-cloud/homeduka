@@ -132,6 +132,16 @@ export default function Header() {
               <span>Gate Check</span>
             </Link>
 
+            {/* Sell / List Free Button in Top Bar (Prominent & Creates Primary Menu Space) */}
+            <Link
+              href="/sell"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white hover:bg-stone-100 text-stone-950 font-black transition shadow-xs text-[11px] sm:text-xs cursor-pointer group active:scale-95"
+              title="List your shop, timber yard, or fundi service free"
+            >
+              <PlusCircle className="w-3.5 h-3.5 text-stone-900 group-hover:rotate-90 transition-transform" />
+              <span>Sell / List Free</span>
+            </Link>
+
             {/* Deal Alerts trigger button */}
             <button
               onClick={() => setShowAlertsModal(true)}
@@ -662,22 +672,13 @@ export default function Header() {
               <span>Rooms</span>
             </Link>
 
-            {/* Nav Link: REFILLS & UPKEEP */}
+            {/* Nav Link: MONTHLY RESTOCK */}
             <Link
               href="/refills"
               className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-stone-800 hover:text-emerald-700 hover:bg-stone-50 transition"
             >
               <RefreshCw className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Refills & Upkeep</span>
-            </Link>
-
-            {/* Nav Link: FAIR PRICES */}
-            <Link
-              href="/fair-prices"
-              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-stone-800 hover:text-[#B45309] hover:bg-stone-50 transition"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-[#B45309]" />
-              <span>Fair Prices</span>
+              <span>Monthly Restock</span>
             </Link>
 
             {/* Nav Link 4: BUYER GUIDES */}
@@ -689,16 +690,8 @@ export default function Header() {
             </Link>
           </nav>
 
-          {/* Right Actions: Sell / Add Product CTA + Mobile Hamburger */}
+          {/* Right Actions: Mobile Hamburger Only (Sell button moved to top bar) */}
           <div className="flex items-center gap-2">
-            <Link
-              href="/sell"
-              className="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-2 rounded-xl bg-stone-900 text-white hover:bg-black shadow-sm transition active:scale-95"
-            >
-              <PlusCircle className="w-3.5 h-3.5 text-white" />
-              <span>Sell / List Free</span>
-            </Link>
-
             {/* Mobile Hamburger Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -869,6 +862,14 @@ export default function Header() {
             {/* Other Mobile Links */}
             <div className="space-y-1">
               <Link
+                href="/sell"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-center gap-2 p-3 rounded-xl font-bold text-sm bg-stone-900 text-white shadow-sm"
+              >
+                <PlusCircle className="w-4 h-4 text-white" />
+                <span>Sell / List Your Shop or Service Free</span>
+              </Link>
+              <Link
                 href="/deals"
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center gap-2 p-3 rounded-xl font-bold text-sm bg-stone-100 text-stone-900 border border-stone-200"
@@ -893,7 +894,7 @@ export default function Header() {
                 className="flex items-center gap-2 p-3 rounded-xl font-bold text-sm bg-emerald-50 text-emerald-950 border border-emerald-200"
               >
                 <RefreshCw className="w-4 h-4 text-emerald-700" />
-                <span>Monthly Refills & Routine Care</span>
+                <span>Monthly Restock</span>
               </Link>
               <Link
                 href="/verify-till"

@@ -241,6 +241,9 @@ export interface HomeProduct {
     pickup_available: boolean;
   };
 
+  is_monthly_restock?: boolean; // Eligible consumable or recurring household item (gas, water, bulk soap)
+  restock_frequency?: 'weekly' | 'biweekly' | 'monthly' | 'quarterly';
+
   images: string[];
   is_featured: boolean;
   created_at: string;

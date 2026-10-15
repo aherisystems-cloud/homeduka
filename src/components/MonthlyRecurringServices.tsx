@@ -23,13 +23,13 @@ export default function MonthlyRecurringServices() {
         <div>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-900 border border-emerald-200/80 text-xs font-bold mb-2">
             <RefreshCw className="w-3.5 h-3.5 text-emerald-700 animate-spin-slow" />
-            <span>Routine Home Care & Refills</span>
+            <span>Monthly Home Restock</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight">
-            Monthly Home Care & Monthly Refills
+            Monthly Restock & Routine Home Upkeep
           </h2>
           <p className="text-xs sm:text-sm text-stone-500 mt-1 max-w-2xl">
-            Scheduled water, cooking gas, and tank care at locked monthly rates.
+            Never run out of cooking gas, drinking water, cleaning supplies, and clean tanks. Locked monthly rates.
           </p>
         </div>
 
@@ -39,7 +39,7 @@ export default function MonthlyRecurringServices() {
             href="/refills"
             className="text-xs font-bold text-emerald-900 hover:text-black bg-emerald-100 hover:bg-emerald-200 px-3.5 py-1.5 rounded-full transition cursor-pointer inline-flex items-center gap-1 border border-emerald-300/80"
           >
-            <span>Full Refills Hub ({MONTHLY_RECURRING_HOME_SERVICES.length} Plans)</span>
+            <span>Monthly Restock Hub ({MONTHLY_RECURRING_HOME_SERVICES.length} Plans)</span>
             <ArrowRight className="w-3 h-3 text-emerald-700" />
           </Link>
 

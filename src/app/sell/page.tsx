@@ -4,13 +4,24 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { 
   Store, Wrench, ShieldCheck, MessageSquare, ArrowRight, 
-  MapPin, CheckCircle2, Sparkles, Camera, Phone, Plus, HelpCircle 
+  MapPin, CheckCircle2, Sparkles, Camera, Phone, Plus, HelpCircle,
+  RefreshCw, AlertCircle
 } from 'lucide-react';
 
 const PRIMARY_KENYAN_COUNTIES = [
   'Nairobi', 'Kiambu', 'Machakos', 'Kajiado', 'Nakuru',
   'Mombasa', 'Kisumu', 'Uasin Gishu (Eldoret)', 'Kilifi', 'Nyeri',
   'Meru', "Murang'a", 'Kakamega', 'Kericho'
+];
+
+// Strictly defined categories that qualify for recurring Monthly Restock
+const RESTOCK_ELIGIBLE_CATEGORIES = [
+  'cooking_gas',
+  'drinking_water',
+  'cleaning_supplies',
+  'water_tank_cleaning',
+  'pest_control',
+  'solar_servicing',
 ];
 
 export default function SellerOnboardingPage() {
@@ -24,10 +35,24 @@ export default function SellerOnboardingPage() {
     mpesaTill: '',
     firstItemTitle: '',
     firstItemPrice: '',
+    isMonthlyRestock: false,
+    restockFrequency: 'Monthly',
     freeAssessmentOffered: true,
   });
 
   const [submitted, setSubmitted] = useState(false);
+
+  const isEligibleForRestock = RESTOCK_ELIGIBLE_CATEGORIES.includes(formData.category);
+
+  // When category changes, auto-handle restock flag
+  const handleCategoryChange = (newCat: string) => {
+    const eligible = RESTOCK_ELIGIBLE_CATEGORIES.includes(newCat);
+    setFormData((prev) => ({
+      ...prev,
+      category: newCat,
+      isMonthlyRestock: eligible ? prev.isMonthlyRestock : false,
+    }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,6 +73,7 @@ export default function SellerOnboardingPage() {
     `WhatsApp No: *${formData.whatsappNumber}*\n` +
     `Lipa na M-Pesa Till: *${formData.mpesaTill || 'Pay on Delivery'}*\n` +
     (formData.firstItemTitle ? `Bidhaa ya Kwanza: *${formData.firstItemTitle}* (KSh ${formData.firstItemPrice})\n` : '') +
+    `Monthly Restock: *${formData.isMonthlyRestock ? `Ndio (${formData.restockFrequency})` : 'Hapana (Standard Shop Item)'}*\n` +
     `Free Assessment: *${formData.freeAssessmentOffered ? 'Ndio (Yes)' : 'Hapana'}*\n\n` +
     `Tafadhali nithibitishie (verify profile) niweze kuanza kupokea wateja. Asante!`
   );
@@ -65,7 +91,7 @@ export default function SellerOnboardingPage() {
           <span className="text-stone-900 font-bold">Sell on HomeDuka</span>
         </div>
 
-        {/* Hero Section - Act > Read */}
+        {/* Hero Section */}
         <div className="bg-stone-900 text-white rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden">
           <div className="relative z-10 max-w-xl space-y-3">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-stone-200 text-xs font-bold border border-white/15">
@@ -73,10 +99,10 @@ export default function SellerOnboardingPage() {
               <span>2-Minute Vendor Self-Serve</span>
             </span>
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">
-              List Your Workshop or Fundi Service Free
+              List Your Shop, Timber Yard or Fundi Service Free
             </h1>
             <p className="text-xs sm:text-sm text-stone-300 leading-relaxed">
-              Get direct WhatsApp orders from homeowners in your estate. Zero commissions, direct Lipa na M-Pesa payments, and verified workshop badges.
+              Get direct WhatsApp orders from homeowners in your estate. Zero commissions, direct Lipa na M-Pesa payments, and verified local shop badges.
             </p>
           </div>
 
@@ -110,7 +136,7 @@ export default function SellerOnboardingPage() {
                 Listing Details Received!
               </h2>
               <p className="text-xs sm:text-sm text-stone-600 max-w-md mx-auto">
-                Tap below to verify your workshop via WhatsApp and get your business profile published immediately.
+                Tap below to verify your shop or trade profile via WhatsApp and get published immediately.
               </p>
 
               <div className="pt-2">
@@ -132,7 +158,7 @@ export default function SellerOnboardingPage() {
               {/* Section 1: Business Info */}
               <div className="space-y-4">
                 <h2 className="text-sm font-black uppercase tracking-wider text-stone-400 border-b border-stone-100 pb-2">
-                  1. Workshop or Fundi Profile
+                  1. Shop, Yard or Fundi Profile
                 </h2>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -152,7 +178,7 @@ export default function SellerOnboardingPage() {
 
                   <div>
                     <label className="block text-xs font-bold text-stone-800 mb-1">
-                      WhatsApp Number (for orders) *
+                      WhatsApp Number (for customer orders) *
                     </label>
                     <input
                       type="tel"
@@ -171,16 +197,27 @@ export default function SellerOnboardingPage() {
                   </label>
                   <select
                     value={formData.category}
-                    onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                    onChange={(e) => handleCategoryChange(e.target.value)}
                     className="w-full text-xs p-3 rounded-xl border border-stone-200 bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-stone-900 font-semibold"
                   >
-                    <option value="furniture">Furniture Workshop (Sofas, Beds, Dining)</option>
-                    <option value="carpentry_cabinetry">Cabinetry & Fitted Wardrobes</option>
-                    <option value="plumbing">Plumbing & Emergency Leaks</option>
-                    <option value="electrical_solar">Electrician & Solar Water Heaters</option>
-                    <option value="painting_gypsum">Gypsum Ceilings & House Painting</option>
-                    <option value="appliances">Appliance Repair (Fridges, Washing Machines)</option>
-                    <option value="cleaning">Water Tank Cleaning & Pest Control</option>
+                    <optgroup label="Furniture & Hardwood Yards">
+                      <option value="furniture">Furniture Shop & Yard (Sofas, Beds, Dining Tables)</option>
+                      <option value="carpentry_cabinetry">Cabinetry & Fitted Wardrobes</option>
+                    </optgroup>
+                    <optgroup label="Monthly Restock & Home Refills">
+                      <option value="cooking_gas">Cooking Gas Refill & Cylinders (Monthly Restock)</option>
+                      <option value="drinking_water">Purified Drinking Water 20L (Monthly Restock)</option>
+                      <option value="cleaning_supplies">Household Cleaning & Bulk Detergents (Monthly Restock)</option>
+                      <option value="water_tank_cleaning">Water Tank Cleaning & Sanitization (Quarterly Care)</option>
+                      <option value="pest_control">Routine Pest Control & Fumigation (Monthly Restock)</option>
+                      <option value="solar_servicing">Solar Water Heater Descaling (6-Month Upkeep)</option>
+                    </optgroup>
+                    <optgroup label="Skilled Trades & Repairs">
+                      <option value="plumbing">Plumbing & Emergency Water Leaks</option>
+                      <option value="electrical_solar">Electrician & House Wiring</option>
+                      <option value="painting_gypsum">Gypsum Ceilings & House Painting</option>
+                      <option value="appliances">Appliance Repair (Fridges, Washing Machines)</option>
+                    </optgroup>
                   </select>
                 </div>
               </div>
@@ -220,7 +257,7 @@ export default function SellerOnboardingPage() {
 
                 <div>
                   <label className="block text-xs font-bold text-stone-800 mb-1">
-                    Specific Workshop Landmark / Stage *
+                    Specific Shop / Yard Landmark or Stage *
                   </label>
                   <input
                     type="text"
@@ -251,7 +288,7 @@ export default function SellerOnboardingPage() {
               {/* Section 3: Lipa na M-Pesa & First Listing */}
               <div className="space-y-4 pt-2">
                 <h2 className="text-sm font-black uppercase tracking-wider text-stone-400 border-b border-stone-100 pb-2">
-                  3. Lipa na M-Pesa & Featured Item
+                  3. Lipa na M-Pesa & Sample Item
                 </h2>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -274,7 +311,7 @@ export default function SellerOnboardingPage() {
                     </label>
                     <input
                       type="text"
-                      placeholder="e.g. 7-Seater Modern Chesterfield Sofa"
+                      placeholder={isEligibleForRestock ? "e.g. 13kg Cooking Gas Refill or 20L Water" : "e.g. 7-Seater Modern Chesterfield Sofa"}
                       value={formData.firstItemTitle}
                       onChange={(e) => setFormData({ ...formData, firstItemTitle: e.target.value })}
                       className="w-full text-xs p-3 rounded-xl border border-stone-200 bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-stone-900"
@@ -288,12 +325,56 @@ export default function SellerOnboardingPage() {
                   </label>
                   <input
                     type="number"
-                    placeholder="e.g. 68000"
+                    placeholder={isEligibleForRestock ? "e.g. 2900" : "e.g. 55000"}
                     value={formData.firstItemPrice}
                     onChange={(e) => setFormData({ ...formData, firstItemPrice: e.target.value })}
                     className="w-full text-xs p-3 rounded-xl border border-stone-200 bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-stone-900"
                   />
                 </div>
+
+                {/* Monthly Restock Qualification Block */}
+                {isEligibleForRestock ? (
+                  <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 space-y-2">
+                    <div className="flex items-start gap-2.5">
+                      <input
+                        type="checkbox"
+                        id="restockCheck"
+                        checked={formData.isMonthlyRestock}
+                        onChange={(e) => setFormData({ ...formData, isMonthlyRestock: e.target.checked })}
+                        className="w-4 h-4 accent-emerald-700 rounded mt-0.5 cursor-pointer"
+                      />
+                      <label htmlFor="restockCheck" className="text-xs text-emerald-950 cursor-pointer">
+                        <strong className="block text-emerald-900 font-extrabold">
+                          ✓ Include in "Monthly Restock" Section
+                        </strong>
+                        This is a consumable refill or routine upkeep service that Kenyan households reorder on a predictable schedule (e.g. gas, water, bulk cleaning detergents).
+                      </label>
+                    </div>
+
+                    {formData.isMonthlyRestock && (
+                      <div className="pt-2 pl-6 flex items-center gap-2 text-xs">
+                        <span className="font-bold text-emerald-900">Recommended Reorder Frequency:</span>
+                        <select
+                          value={formData.restockFrequency}
+                          onChange={(e) => setFormData({ ...formData, restockFrequency: e.target.value })}
+                          className="px-2 py-1 rounded-lg border border-emerald-300 bg-white text-xs font-bold text-stone-800"
+                        >
+                          <option value="Weekly">Weekly</option>
+                          <option value="Every 2 Weeks">Every 2 Weeks</option>
+                          <option value="Monthly">Monthly</option>
+                          <option value="Every 3 Months">Every 3 Months</option>
+                        </select>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="p-3.5 rounded-2xl bg-stone-50 border border-stone-200 flex items-start gap-2.5 text-xs text-stone-600">
+                    <AlertCircle className="w-4 h-4 text-stone-400 shrink-0 mt-0.5" />
+                    <span>
+                      <strong className="text-stone-800">Monthly Restock Policy:</strong> Sofas, beds, dining sets, and appliances are long-term durable purchases and cannot be listed under Monthly Restock. Only consumable items (gas, water, cleaning soap) and recurring maintenance plans qualify.
+                    </span>
+                  </div>
+                )}
               </div>
 
               {/* Submit Button */}
