@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useRef } from 'react';
+import Link from 'next/link';
 import { MONTHLY_RECURRING_HOME_SERVICES, SAMPLE_KENYAN_HOME_LISTINGS } from '../data/mock_listings';
-import { RefreshCw, MessageSquare, ChevronLeft, ChevronRight, Sparkles, CheckCircle2 } from 'lucide-react';
+import { RefreshCw, MessageSquare, ChevronLeft, ChevronRight, Sparkles, CheckCircle2, ArrowRight } from 'lucide-react';
 import { generateWhatsAppLeadLink } from '../utils/whatsapp_link';
 
 export default function MonthlyRecurringServices() {
@@ -33,10 +34,14 @@ export default function MonthlyRecurringServices() {
         </div>
 
         {/* Action Controls: View All + Prev/Next Buttons */}
-        <div className="flex items-center gap-3 self-start sm:self-auto">
-          <span className="text-xs font-bold text-stone-700 bg-stone-100 px-3.5 py-1.5 rounded-full">
-            {MONTHLY_RECURRING_HOME_SERVICES.length} Essential Refills & Plans
-          </span>
+        <div className="flex items-center gap-3 self-start sm:self-auto flex-wrap">
+          <Link
+            href="/refills"
+            className="text-xs font-bold text-emerald-900 hover:text-black bg-emerald-100 hover:bg-emerald-200 px-3.5 py-1.5 rounded-full transition cursor-pointer inline-flex items-center gap-1 border border-emerald-300/80"
+          >
+            <span>Full Refills Hub ({MONTHLY_RECURRING_HOME_SERVICES.length} Plans)</span>
+            <ArrowRight className="w-3 h-3 text-emerald-700" />
+          </Link>
 
           <div className="flex items-center gap-1.5">
             <button

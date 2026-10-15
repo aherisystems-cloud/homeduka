@@ -655,11 +655,20 @@ export default function Header() {
 
             {/* Nav Link 3: SHOP BY ROOM */}
             <Link
-              href="/#rooms"
+              href="/rooms"
               className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-stone-800 hover:text-[#B45309] hover:bg-stone-50 transition"
             >
               <Layers className="w-3.5 h-3.5 text-stone-500" />
-              <span>Shop by Room</span>
+              <span>Rooms</span>
+            </Link>
+
+            {/* Nav Link: REFILLS & UPKEEP */}
+            <Link
+              href="/refills"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-stone-800 hover:text-emerald-700 hover:bg-stone-50 transition"
+            >
+              <RefreshCw className="w-3.5 h-3.5 text-emerald-600" />
+              <span>Refills & Upkeep</span>
             </Link>
 
             {/* Nav Link: FAIR PRICES */}
@@ -871,12 +880,20 @@ export default function Header() {
                 </span>
               </Link>
               <Link
-                href="/#rooms"
+                href="/rooms"
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center gap-2 p-3 rounded-xl font-bold text-sm text-stone-800 hover:bg-stone-50"
               >
                 <Layers className="w-4 h-4 text-stone-500" />
-                <span>Shop by Room</span>
+                <span>Shop by Room (All Hubs)</span>
+              </Link>
+              <Link
+                href="/refills"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-2 p-3 rounded-xl font-bold text-sm bg-emerald-50 text-emerald-950 border border-emerald-200"
+              >
+                <RefreshCw className="w-4 h-4 text-emerald-700" />
+                <span>Monthly Refills & Routine Care</span>
               </Link>
               <Link
                 href="/verify-till"
