@@ -647,6 +647,7 @@ export default function Header() {
             </div>
 
             {/* Nav Link: DEALS */}
+            {/* Nav Link: DEALS */}
             <Link
               href="/deals"
               className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-black bg-stone-100 text-stone-900 hover:bg-stone-200 border border-stone-200 transition shadow-2xs"
@@ -658,15 +659,6 @@ export default function Header() {
               </span>
             </Link>
 
-            {/* Nav Link 3: SHOP BY ROOM */}
-            <Link
-              href="/rooms"
-              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-extrabold text-stone-800 hover:text-[#B45309] hover:bg-stone-50 transition"
-            >
-              <Layers className="w-3.5 h-3.5 text-stone-500" />
-              <span>Rooms</span>
-            </Link>
-
             {/* Nav Link: MONTHLY RESTOCK */}
             <Link
               href="/refills"
@@ -676,7 +668,7 @@ export default function Header() {
               <span>Monthly Restock</span>
             </Link>
 
-            {/* Nav Link 4: BUYER GUIDES */}
+            {/* Nav Link: BUYER GUIDES */}
             <Link
               href="/blog"
               className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-extrabold text-stone-800 hover:text-[#B45309] hover:bg-stone-50 transition"
@@ -685,26 +677,8 @@ export default function Header() {
             </Link>
           </nav>
 
-          {/* Right Area: Interactive Search Bar on Desktop & Mobile Hamburger */}
+          {/* Right Area: Mobile Hamburger */}
           <div className="flex items-center gap-3">
-            <div className="hidden md:flex items-center relative w-60 lg:w-72">
-              <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-              <input
-                type="text"
-                placeholder="Search furniture, fundis..."
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter') {
-                    const val = (e.target as HTMLInputElement).value.trim();
-                    if (val) {
-                      window.location.href = `/?search=${encodeURIComponent(val)}`;
-                    }
-                  }
-                }}
-                className="w-full text-xs font-semibold pl-9 pr-4 py-2.5 rounded-full border border-stone-200 bg-stone-50 hover:bg-white focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#B45309]/30 transition shadow-2xs"
-              />
-            </div>
-
-            {/* Mobile Hamburger Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="lg:hidden p-2 rounded-xl text-stone-700 hover:bg-stone-100 transition"
@@ -718,24 +692,6 @@ export default function Header() {
         {/* 3. MOBILE NAVIGATION DRAWER */}
         {mobileMenuOpen && (
           <div className="lg:hidden bg-white border-b border-stone-200 px-4 py-4 space-y-4 animate-fade-in max-h-[80vh] overflow-y-auto">
-            {/* Interactive Mobile Search Bar */}
-            <div className="relative">
-              <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-              <input
-                type="text"
-                placeholder="Search furniture, fundis, appliances..."
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter') {
-                    const val = (e.target as HTMLInputElement).value.trim();
-                    if (val) {
-                      setMobileMenuOpen(false);
-                      window.location.href = `/?search=${encodeURIComponent(val)}`;
-                    }
-                  }
-                }}
-                className="w-full text-xs font-semibold pl-9 pr-4 py-2.5 rounded-2xl border border-stone-300 bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#B45309]/30 transition"
-              />
-            </div>
 
             {/* Top Bar on Mobile */}
             <div className="p-3 bg-stone-100 rounded-2xl space-y-2 text-xs">
@@ -902,14 +858,6 @@ export default function Header() {
                 <span className="text-[10px] bg-rose-600 text-white px-1.5 py-0.2 rounded-full font-black ml-auto">
                   Hot
                 </span>
-              </Link>
-              <Link
-                href="/rooms"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-2 p-3 rounded-xl font-bold text-sm text-stone-800 hover:bg-stone-50"
-              >
-                <Layers className="w-4 h-4 text-stone-500" />
-                <span>Shop by Room (All Hubs)</span>
               </Link>
               <Link
                 href="/refills"

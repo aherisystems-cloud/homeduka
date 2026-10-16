@@ -228,6 +228,12 @@ export default function HomePage() {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  const el = document.getElementById('products');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
               placeholder="Search furniture, appliances, fundis, or estates..."
               className="w-full py-3 bg-transparent text-sm sm:text-base text-stone-900 placeholder:text-stone-400 focus:outline-hidden"
             />
@@ -240,7 +246,10 @@ export default function HomePage() {
               </button>
             )}
             <button 
-              onClick={() => {}}
+              onClick={() => {
+                const el = document.getElementById('products');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
               className="px-6 py-3.5 rounded-full bg-stone-900 hover:bg-stone-800 text-white font-bold text-xs sm:text-sm transition shrink-0 shadow-sm cursor-pointer"
             >
               Search
@@ -253,7 +262,11 @@ export default function HomePage() {
             {popularKeywords.map((item, idx) => (
               <button
                 key={idx}
-                onClick={() => setSearchQuery(item.query)}
+                onClick={() => {
+                  setSearchQuery(item.query);
+                  const el = document.getElementById('products');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
                 className="px-3.5 py-1.5 rounded-full bg-white hover:bg-stone-100 hover:text-[#B45309] border border-stone-200/80 transition text-xs font-medium cursor-pointer shadow-2xs"
               >
                 {item.label}

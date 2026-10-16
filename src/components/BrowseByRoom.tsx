@@ -31,10 +31,10 @@ export default function BrowseByRoom({ selectedRoom, onSelectRoom }: BrowseByRoo
             <span>Curated Spaces</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight">
-            Shop by Room & Space
+            Browse by Room
           </h2>
           <p className="text-xs sm:text-sm text-stone-500 mt-1">
-            Filter furniture, fittings, and fundis by space or browse dedicated room guides.
+            Browse furniture, fittings, and fundis by living space or explore dedicated room spaces.
           </p>
         </div>
 
