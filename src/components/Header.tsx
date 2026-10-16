@@ -13,11 +13,11 @@ import Logo from './Logo';
 import AlertPreferencesModal from './AlertPreferencesModal';
 
 export default function Header() {
-  const [activeMegaMenu, setActiveMegaMenu] = useState<'products' | 'services' | null>(null);
+  const [activeMegaMenu, setActiveMegaMenu] = useState<'products' | 'services' | 'rooms' | null>(null);
   const [showDownloadAppModal, setShowDownloadAppModal] = useState(false);
   const [showAlertsModal, setShowAlertsModal] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mobileCategoryOpen, setMobileCategoryOpen] = useState<'products' | 'services' | null>(null);
+  const [mobileCategoryOpen, setMobileCategoryOpen] = useState<'products' | 'services' | 'rooms' | null>(null);
   const [headerLocation, setHeaderLocation] = useState<string>('Nairobi');
 
   // PWA install state
@@ -63,7 +63,7 @@ export default function Header() {
     };
   }, []);
 
-  const handleMouseEnter = (menu: 'products' | 'services') => {
+  const handleMouseEnter = (menu: 'products' | 'services' | 'rooms') => {
     if (menuTimeoutRef.current) clearTimeout(menuTimeoutRef.current);
     setActiveMegaMenu(menu);
   };
@@ -646,7 +646,164 @@ export default function Header() {
               )}
             </div>
 
-            {/* Nav Link: DEALS */}
+            {/* Nav Pillar: BROWSE BY ROOM */}
+            <div 
+              className="relative"
+              onMouseEnter={() => handleMouseEnter('rooms')}
+              onMouseLeave={handleMouseLeave}
+            >
+              <button
+                onClick={() => setActiveMegaMenu(activeMegaMenu === 'rooms' ? null : 'rooms')}
+                className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition cursor-pointer ${
+                  activeMegaMenu === 'rooms' 
+                    ? 'bg-stone-100 text-[#B45309]' 
+                    : 'text-stone-800 hover:text-[#B45309] hover:bg-stone-50'
+                }`}
+              >
+                <Layers className="w-3.5 h-3.5 text-stone-500" />
+                <span>Browse by Room</span>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                  activeMegaMenu === 'rooms' ? 'rotate-180 text-[#B45309]' : 'text-stone-400'
+                }`} />
+              </button>
+
+              {/* Mega Dropdown: Browse by Room */}
+              {activeMegaMenu === 'rooms' && (
+                <div 
+                  className="absolute left-[-100px] top-full mt-1 w-[640px] bg-white rounded-3xl p-6 border border-stone-200 shadow-xl z-50 animate-fade-in"
+                  onMouseEnter={() => handleMouseEnter('rooms')}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <div className="flex items-center justify-between pb-3 border-b border-stone-100 mb-4">
+                    <div className="flex items-center gap-2">
+                      <Layers className="w-4 h-4 text-[#B45309]" />
+                      <span className="font-black text-xs text-stone-900 uppercase tracking-wider">
+                        Shop Curated Living Spaces in Kenya
+                      </span>
+                    </div>
+                    <Link
+                      href="/rooms"
+                      onClick={() => setActiveMegaMenu(null)}
+                      className="text-xs font-bold text-[#B45309] hover:underline flex items-center gap-1"
+                    >
+                      <span>Explore All Rooms Hub</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </Link>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <Link
+                      href="/room/living_room"
+                      onClick={() => setActiveMegaMenu(null)}
+                      className="flex items-start gap-3 p-3 rounded-2xl hover:bg-stone-50 border border-stone-100 hover:border-stone-200 transition group"
+                    >
+                      <span className="text-2xl p-2 rounded-xl bg-amber-50 group-hover:scale-105 transition shrink-0">🛋️</span>
+                      <div>
+                        <strong className="text-xs font-bold text-stone-900 group-hover:text-[#B45309] block">
+                          Living Room
+                        </strong>
+                        <span className="text-[11px] text-stone-500 leading-snug block mt-0.5">
+                          Sofas, TV units, coffee tables & curtains
+                        </span>
+                      </div>
+                    </Link>
+
+                    <Link
+                      href="/room/bedroom"
+                      onClick={() => setActiveMegaMenu(null)}
+                      className="flex items-start gap-3 p-3 rounded-2xl hover:bg-stone-50 border border-stone-100 hover:border-stone-200 transition group"
+                    >
+                      <span className="text-2xl p-2 rounded-xl bg-blue-50 group-hover:scale-105 transition shrink-0">🛏️</span>
+                      <div>
+                        <strong className="text-xs font-bold text-stone-900 group-hover:text-[#B45309] block">
+                          Bedroom
+                        </strong>
+                        <span className="text-[11px] text-stone-500 leading-snug block mt-0.5">
+                          Hardwood beds, wardrobes & mattresses
+                        </span>
+                      </div>
+                    </Link>
+
+                    <Link
+                      href="/room/kitchen_dining"
+                      onClick={() => setActiveMegaMenu(null)}
+                      className="flex items-start gap-3 p-3 rounded-2xl hover:bg-stone-50 border border-stone-100 hover:border-stone-200 transition group"
+                    >
+                      <span className="text-2xl p-2 rounded-xl bg-emerald-50 group-hover:scale-105 transition shrink-0">🍳</span>
+                      <div>
+                        <strong className="text-xs font-bold text-stone-900 group-hover:text-[#B45309] block">
+                          Kitchen & Dining
+                        </strong>
+                        <span className="text-[11px] text-stone-500 leading-snug block mt-0.5">
+                          Dining tables, modular cabinetry & cookware
+                        </span>
+                      </div>
+                    </Link>
+
+                    <Link
+                      href="/room/bathroom"
+                      onClick={() => setActiveMegaMenu(null)}
+                      className="flex items-start gap-3 p-3 rounded-2xl hover:bg-stone-50 border border-stone-100 hover:border-stone-200 transition group"
+                    >
+                      <span className="text-2xl p-2 rounded-xl bg-cyan-50 group-hover:scale-105 transition shrink-0">🚿</span>
+                      <div>
+                        <strong className="text-xs font-bold text-stone-900 group-hover:text-[#B45309] block">
+                          Bathroom & Water
+                        </strong>
+                        <span className="text-[11px] text-stone-500 leading-snug block mt-0.5">
+                          Solar heaters, pressure pumps & taps
+                        </span>
+                      </div>
+                    </Link>
+
+                    <Link
+                      href="/room/outdoor_compound"
+                      onClick={() => setActiveMegaMenu(null)}
+                      className="flex items-start gap-3 p-3 rounded-2xl hover:bg-stone-50 border border-stone-100 hover:border-stone-200 transition group"
+                    >
+                      <span className="text-2xl p-2 rounded-xl bg-green-50 group-hover:scale-110 transition shrink-0">🌿</span>
+                      <div>
+                        <strong className="text-xs font-bold text-stone-900 group-hover:text-[#B45309] block">
+                          Compound & Outdoor
+                        </strong>
+                        <span className="text-[11px] text-stone-500 leading-snug block mt-0.5">
+                          Perimeter gates, cabro paving & patio sets
+                        </span>
+                      </div>
+                    </Link>
+
+                    <Link
+                      href="/room/home_office"
+                      onClick={() => setActiveMegaMenu(null)}
+                      className="flex items-start gap-3 p-3 rounded-2xl hover:bg-stone-50 border border-stone-100 hover:border-stone-200 transition group"
+                    >
+                      <span className="text-2xl p-2 rounded-xl bg-purple-50 group-hover:scale-105 transition shrink-0">💼</span>
+                      <div>
+                        <strong className="text-xs font-bold text-stone-900 group-hover:text-[#B45309] block">
+                          Home Office & Study
+                        </strong>
+                        <span className="text-[11px] text-stone-500 leading-snug block mt-0.5">
+                          Study desks, bookshelves & executive chairs
+                        </span>
+                      </div>
+                    </Link>
+                  </div>
+
+                  <div className="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between text-xs">
+                    <span className="text-stone-500">Furnishing a full house or apartment?</span>
+                    <Link
+                      href="/rooms"
+                      onClick={() => setActiveMegaMenu(null)}
+                      className="font-bold text-stone-900 hover:text-[#B45309] flex items-center gap-1"
+                    >
+                      <span>Explore all 6 room guides</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
+
             {/* Nav Link: DEALS */}
             <Link
               href="/deals"
@@ -774,6 +931,73 @@ export default function Header() {
                     className="block p-2 rounded-lg hover:bg-stone-50 font-semibold text-stone-800"
                   >
                     🎨 Paints, Tiles & Gypsum Boards
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            {/* Accordion: Browse by Room */}
+            <div className="border border-stone-200 rounded-2xl overflow-hidden">
+              <button
+                onClick={() => setMobileCategoryOpen(mobileCategoryOpen === 'rooms' ? null : 'rooms')}
+                className="w-full p-3.5 text-left font-bold text-sm text-stone-900 flex items-center justify-between bg-stone-50"
+              >
+                <div className="flex items-center gap-2">
+                  <Layers className="w-4 h-4 text-[#B45309]" />
+                  <span>Browse by Room</span>
+                </div>
+                <ChevronDown className={`w-4 h-4 transition-transform ${mobileCategoryOpen === 'rooms' ? 'rotate-180' : ''}`} />
+              </button>
+              {mobileCategoryOpen === 'rooms' && (
+                <div className="p-3 bg-white space-y-2 text-xs border-t border-stone-100">
+                  <Link 
+                    href="/room/living_room" 
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block p-2 rounded-lg hover:bg-stone-50 font-semibold text-stone-800"
+                  >
+                    🛋️ Living Room (Sofas, TV Units, Tables)
+                  </Link>
+                  <Link 
+                    href="/room/bedroom" 
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block p-2 rounded-lg hover:bg-stone-50 font-semibold text-stone-800"
+                  >
+                    🛏️ Bedroom (Beds, Wardrobes, Mattresses)
+                  </Link>
+                  <Link 
+                    href="/room/kitchen_dining" 
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block p-2 rounded-lg hover:bg-stone-50 font-semibold text-stone-800"
+                  >
+                    🍳 Kitchen & Dining (Dining Sets, Cabinets)
+                  </Link>
+                  <Link 
+                    href="/room/bathroom" 
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block p-2 rounded-lg hover:bg-stone-50 font-semibold text-stone-800"
+                  >
+                    🚿 Bathroom & Water (Solar Heaters, Pumps)
+                  </Link>
+                  <Link 
+                    href="/room/outdoor_compound" 
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block p-2 rounded-lg hover:bg-stone-50 font-semibold text-stone-800"
+                  >
+                    🌿 Compound & Outdoor (Gates, Cabro, Patio)
+                  </Link>
+                  <Link 
+                    href="/room/home_office" 
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block p-2 rounded-lg hover:bg-stone-50 font-semibold text-stone-800"
+                  >
+                    💼 Home Office & Study (Desks, Chairs)
+                  </Link>
+                  <Link 
+                    href="/rooms" 
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block p-2 rounded-lg bg-stone-50 hover:bg-stone-100 font-bold text-[#B45309]"
+                  >
+                    📖 All 6 Room Hubs & Guides →
                   </Link>
                 </div>
               )}
