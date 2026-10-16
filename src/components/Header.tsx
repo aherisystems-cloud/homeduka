@@ -7,7 +7,7 @@ import {
   Sparkles, ChevronDown, Wrench, ShoppingBag, RefreshCw, 
   Menu, X, CheckCircle2, HelpCircle, Layers, ArrowRight,
   Tv, Bed, Sofa, Utensils, Bath, Trees, Paintbrush, Hammer,
-  Flame, Shirt, Box, Truck, Shield, Smartphone, Download, Share2, Bell
+  Flame, Shirt, Box, Truck, Shield, Smartphone, Download, Share2, Bell, Search
 } from 'lucide-react';
 import Logo from './Logo';
 import AlertPreferencesModal from './AlertPreferencesModal';
@@ -76,122 +76,116 @@ export default function Header() {
 
   return (
     <>
-      {/* 1. TOP-TOP UTILITY BAR (Map Coverage, WhatsApp Deals, Channel) */}
-      <div className="w-full bg-stone-900 text-stone-200 text-[11px] sm:text-xs py-2 px-6 sm:px-10 lg:px-12 xl:px-16 border-b border-stone-800 z-50 relative">
+      {/* 1. TOP HELPER UTILITY BAR (Subtle, Understated Helper - Muted Tone) */}
+      <div className="w-full bg-[#F5F4F0] text-stone-600 text-[11px] py-1.5 px-6 sm:px-10 lg:px-12 xl:px-16 border-b border-stone-200/90 z-50 relative">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 sm:gap-4">
           
           {/* Left: Kenya Location & City Context with Quick Modal Trigger */}
-          <div className="flex items-center gap-2 text-stone-300">
+          <div className="flex items-center gap-2 text-stone-600">
             <button
               onClick={() => {
                 if (typeof window !== 'undefined') {
                   window.dispatchEvent(new CustomEvent('open-location-modal'));
                 }
               }}
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-800 hover:bg-stone-700 text-stone-200 hover:text-white border border-stone-700/80 transition cursor-pointer text-[11px] sm:text-xs font-semibold shadow-2xs"
+              className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white hover:bg-stone-50 text-stone-700 hover:text-stone-900 border border-stone-200/90 transition cursor-pointer text-[11px] font-medium shadow-2xs"
               title="Click to set your county or estate"
             >
-              <MapPin className="w-3.5 h-3.5 text-[#B45309] shrink-0" />
-              <span>Shopping from: <strong className="text-white font-bold">{headerLocation}</strong> ▾</span>
-              <span className="text-[10px] text-[#B45309] font-bold underline decoration-dotted ml-1">Change Area</span>
+              <MapPin className="w-3 h-3 text-[#B45309] shrink-0" />
+              <span>Shopping from: <strong className="text-stone-900 font-bold">{headerLocation}</strong> ▾</span>
+              <span className="text-[10px] text-[#B45309] font-bold underline decoration-dotted ml-0.5">Change</span>
             </button>
-            <span className="hidden md:inline text-stone-400 text-[11px]">
+            <span className="hidden md:inline text-stone-500 text-[11px]">
               • Verified local shops & fundis across Kenya
             </span>
           </div>
 
-          {/* Right: Buyer tools first, then Sell / List Free as the final item on the far right */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          {/* Right: Discreet Buyer Helper Tools + Sell Link */}
+          <div className="flex items-center gap-1 sm:gap-2 text-[11px]">
             {/* Check Till & Paybill Verifier link */}
             <Link
               href="/verify-till"
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-800 hover:bg-stone-700 text-stone-200 hover:text-white transition cursor-pointer text-[11px] sm:text-xs font-semibold border border-stone-700/80 shadow-2xs group"
+              className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md hover:bg-stone-200/70 text-stone-600 hover:text-stone-900 transition cursor-pointer"
               title="Check if a Till, Paybill, or Pochi is real before sending money"
             >
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 group-hover:scale-110 transition-transform" />
+              <ShieldCheck className="w-3 h-3 text-emerald-600" />
               <span>Check Till / Paybill</span>
             </Link>
 
             {/* Nairobi Fair Price Index */}
             <Link
               href="/fair-prices"
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-800 hover:bg-stone-700 text-stone-200 hover:text-white transition cursor-pointer text-[11px] sm:text-xs font-semibold border border-stone-700/80 shadow-2xs group"
+              className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md hover:bg-stone-200/70 text-stone-600 hover:text-stone-900 transition cursor-pointer"
               title="See real shop and yard prices in Kenya"
             >
-              <Sparkles className="w-3.5 h-3.5 text-[#B45309] group-hover:scale-110 transition-transform" />
+              <Sparkles className="w-3 h-3 text-[#B45309]" />
               <span>Fair Prices</span>
             </Link>
 
             {/* Gate Delivery Check */}
             <Link
               href="/delivery-check"
-              className="hidden md:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-800 hover:bg-stone-700 text-stone-200 hover:text-white transition cursor-pointer text-[11px] sm:text-xs font-semibold border border-stone-700/80 shadow-2xs group"
+              className="hidden md:inline-flex items-center gap-1 px-2 py-0.5 rounded-md hover:bg-stone-200/70 text-stone-600 hover:text-stone-900 transition cursor-pointer"
               title="Check item before paying the delivery driver"
             >
-              <Truck className="w-3.5 h-3.5 text-emerald-400 group-hover:scale-110 transition-transform" />
+              <Truck className="w-3 h-3 text-stone-500" />
               <span>Gate Check</span>
             </Link>
 
             {/* Deal Alerts trigger button */}
             <button
               onClick={() => setShowAlertsModal(true)}
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-800 hover:bg-stone-700 text-stone-200 hover:text-white transition cursor-pointer text-[11px] sm:text-xs font-semibold border border-stone-700/80 shadow-2xs group"
+              className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md hover:bg-stone-200/70 text-stone-600 hover:text-stone-900 transition cursor-pointer"
               title="Set custom deal and upkeep notification alerts"
             >
-              <Bell className="w-3.5 h-3.5 text-[#B45309] group-hover:scale-110 transition-transform" />
+              <Bell className="w-3 h-3 text-[#B45309]" />
               <span>Deal Alerts</span>
             </button>
 
             {/* Download Web App trigger button */}
             <button
               onClick={() => setShowDownloadAppModal(true)}
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-800 hover:bg-stone-700 text-stone-200 hover:text-white transition cursor-pointer text-[11px] sm:text-xs font-semibold border border-stone-700/80 shadow-2xs group"
+              className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md hover:bg-stone-200/70 text-stone-600 hover:text-stone-900 transition cursor-pointer"
               title="Download or install HomeDuka web app on your phone"
             >
-              <Smartphone className="w-3.5 h-3.5 text-[#B45309] group-hover:scale-110 transition-transform" />
-              <span>Download Web App</span>
-              <span className="hidden sm:inline-block px-1.5 py-0.2 rounded bg-[#B45309] text-white text-[10px] font-black uppercase">
-                Free
-              </span>
+              <Smartphone className="w-3 h-3 text-[#B45309]" />
+              <span>Web App</span>
             </button>
 
             {/* Direct WhatsApp Channel Link */}
             <Link
               href="https://whatsapp.com/channel/example-channel"
               target="_blank"
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-800 hover:bg-stone-700 text-stone-200 hover:text-white font-semibold border border-stone-700/80 transition shadow-2xs active:scale-95"
+              className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md hover:bg-stone-200/70 text-stone-600 hover:text-stone-900 transition"
             >
-              <MessageSquare className="w-3 h-3 text-emerald-400" />
+              <MessageSquare className="w-3 h-3 text-emerald-600" />
               <span className="hidden sm:inline">WhatsApp Channel</span>
-              <span className="sm:hidden">Channel</span>
-              <span className="hidden md:inline bg-white/20 px-1.5 py-0.2 rounded-full text-[10px] text-stone-200 font-semibold">
-                5.4k
-              </span>
             </Link>
 
-            {/* Sell / List Free Button - VERY LAST ITEM ON FAR RIGHT (Targets Merchant/Seller) */}
+            {/* Sell / List Free Button - Discreet Text Helper Link on Far Right */}
+            <span className="text-stone-300">|</span>
             <Link
               href="/sell"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white hover:bg-stone-100 text-stone-950 font-black transition shadow-xs text-[11px] sm:text-xs cursor-pointer group active:scale-95 ml-1 border border-stone-300"
+              className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md hover:bg-stone-200/80 text-stone-800 hover:text-[#B45309] font-bold transition text-[11px]"
               title="List your shop, timber yard, or fundi service free"
             >
-              <PlusCircle className="w-3.5 h-3.5 text-stone-900 group-hover:rotate-90 transition-transform" />
+              <PlusCircle className="w-3 h-3 text-stone-700" />
               <span>Sell / List Free</span>
             </Link>
           </div>
         </div>
       </div>
 
-      {/* 2. MAIN HEADER NAVIGATION BAR */}
-      <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur border-b border-stone-200/80 shadow-2xs">
+      {/* 2. PRIMARY NAVIGATION BAR (High Contrast, Bold, Dominant) */}
+      <header className="sticky top-0 z-40 w-full bg-white border-b border-stone-200/90 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 xl:px-16 h-20 flex items-center justify-between gap-4">
           
           {/* Logo with New Geometric Mark & Brand Hue */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 shrink-0">
             <Logo variant="header" />
           </div>
 
-          {/* Desktop Navigation Links */}
+          {/* Desktop Navigation Links - Bolder, More Conspicuous */}
           <nav className="hidden lg:flex items-center gap-1 sm:gap-2">
             
             {/* Nav Pillar 1: HOME PRODUCTS (Comprehensive Layman Mega Menu) */}
@@ -655,9 +649,9 @@ export default function Header() {
             {/* Nav Link: DEALS */}
             <Link
               href="/deals"
-              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold bg-stone-100 text-stone-900 hover:bg-stone-200 border border-stone-200 transition shadow-2xs"
+              className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-black bg-stone-100 text-stone-900 hover:bg-stone-200 border border-stone-200 transition shadow-2xs"
             >
-              <Flame className="w-3.5 h-3.5 text-rose-600" />
+              <Flame className="w-3.5 h-3.5 text-rose-600 animate-pulse" />
               <span>Deals</span>
               <span className="text-[10px] bg-rose-600 text-white px-1.5 py-0.2 rounded-full font-black">
                 Hot
@@ -667,7 +661,7 @@ export default function Header() {
             {/* Nav Link 3: SHOP BY ROOM */}
             <Link
               href="/rooms"
-              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-stone-800 hover:text-[#B45309] hover:bg-stone-50 transition"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-extrabold text-stone-800 hover:text-[#B45309] hover:bg-stone-50 transition"
             >
               <Layers className="w-3.5 h-3.5 text-stone-500" />
               <span>Rooms</span>
@@ -676,7 +670,7 @@ export default function Header() {
             {/* Nav Link: MONTHLY RESTOCK */}
             <Link
               href="/refills"
-              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-stone-800 hover:text-emerald-700 hover:bg-stone-50 transition"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-extrabold text-stone-800 hover:text-emerald-700 hover:bg-stone-50 transition"
             >
               <RefreshCw className="w-3.5 h-3.5 text-emerald-600" />
               <span>Monthly Restock</span>
@@ -685,14 +679,31 @@ export default function Header() {
             {/* Nav Link 4: BUYER GUIDES */}
             <Link
               href="/blog"
-              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold text-stone-800 hover:text-[#B45309] hover:bg-stone-50 transition"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-extrabold text-stone-800 hover:text-[#B45309] hover:bg-stone-50 transition"
             >
               <span>Buyer Guides</span>
             </Link>
           </nav>
 
-          {/* Right Actions: Mobile Hamburger Only (Sell button moved to top bar) */}
-          <div className="flex items-center gap-2">
+          {/* Right Area: Interactive Search Bar on Desktop & Mobile Hamburger */}
+          <div className="flex items-center gap-3">
+            <div className="hidden md:flex items-center relative w-60 lg:w-72">
+              <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <input
+                type="text"
+                placeholder="Search furniture, fundis..."
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    const val = (e.target as HTMLInputElement).value.trim();
+                    if (val) {
+                      window.location.href = `/?search=${encodeURIComponent(val)}`;
+                    }
+                  }
+                }}
+                className="w-full text-xs font-semibold pl-9 pr-4 py-2.5 rounded-full border border-stone-200 bg-stone-50 hover:bg-white focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#B45309]/30 transition shadow-2xs"
+              />
+            </div>
+
             {/* Mobile Hamburger Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -707,6 +718,25 @@ export default function Header() {
         {/* 3. MOBILE NAVIGATION DRAWER */}
         {mobileMenuOpen && (
           <div className="lg:hidden bg-white border-b border-stone-200 px-4 py-4 space-y-4 animate-fade-in max-h-[80vh] overflow-y-auto">
+            {/* Interactive Mobile Search Bar */}
+            <div className="relative">
+              <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <input
+                type="text"
+                placeholder="Search furniture, fundis, appliances..."
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    const val = (e.target as HTMLInputElement).value.trim();
+                    if (val) {
+                      setMobileMenuOpen(false);
+                      window.location.href = `/?search=${encodeURIComponent(val)}`;
+                    }
+                  }
+                }}
+                className="w-full text-xs font-semibold pl-9 pr-4 py-2.5 rounded-2xl border border-stone-300 bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#B45309]/30 transition"
+              />
+            </div>
+
             {/* Top Bar on Mobile */}
             <div className="p-3 bg-stone-100 rounded-2xl space-y-2 text-xs">
               <div className="flex items-center gap-1.5 text-stone-700">

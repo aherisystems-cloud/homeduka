@@ -5,7 +5,8 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { 
   Flame, Calendar, Sparkles, MessageSquare, ShieldCheck, 
-  MapPin, Clock, ArrowRight, Tag, Percent, PlusCircle, CheckCircle2 
+  MapPin, Clock, ArrowRight, Tag, Percent, PlusCircle, CheckCircle2,
+  Search, X 
 } from 'lucide-react';
 import { SAMPLE_KENYAN_DEALS, SAMPLE_KENYAN_HOME_LISTINGS } from '../../data/mock_listings';
 import { HomeDeal, DealDuration } from '../../types/schema';
@@ -17,6 +18,7 @@ function DealsContent() {
 
   const [activeTab, setActiveTab] = useState<DealDuration>(initialTab);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   const categories = [
     { id: 'all', label: 'All Deals' },
@@ -27,10 +29,16 @@ function DealsContent() {
     { id: 'services', label: '🔧 Fundis & Cleaning' }
   ];
 
-  // Filter deals based on active tab (today vs month) and category
+  // Filter deals based on active tab (today vs month), category, and search query
   const filteredDeals = SAMPLE_KENYAN_DEALS.filter((deal) => {
     if (deal.duration_type !== activeTab) return false;
     if (selectedCategory !== 'all' && deal.category !== selectedCategory) return false;
+    if (searchQuery.trim() !== '') {
+      const q = searchQuery.toLowerCase().trim();
+      const seller = SAMPLE_KENYAN_HOME_LISTINGS.find((b) => b.id === deal.business_id);
+      const searchable = `${deal.title} ${deal.category} ${deal.badge_text} ${seller?.business_name || ''} ${seller?.location.neighborhood || ''} ${seller?.location.county || ''}`.toLowerCase();
+      if (!searchable.includes(q)) return false;
+    }
     return true;
   });
 
@@ -93,21 +101,43 @@ function DealsContent() {
         <div className="absolute right-0 top-0 bottom-0 w-1/3 opacity-15 bg-radial from-[#B45309]/30 to-transparent pointer-events-none hidden md:block" />
       </div>
 
-      {/* 2. CATEGORY FILTER TABS */}
-      <div className="flex flex-wrap items-center gap-2 border-b border-stone-200 pb-3">
-        {categories.map((cat) => (
-          <button
-            key={cat.id}
-            onClick={() => setSelectedCategory(cat.id)}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold transition cursor-pointer ${
-              selectedCategory === cat.id
-                ? 'bg-stone-900 text-white shadow-xs'
-                : 'bg-stone-100 hover:bg-stone-200 text-stone-700'
-            }`}
-          >
-            {cat.label}
-          </button>
-        ))}
+      {/* 2. SEARCH & CATEGORY FILTER TABS */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-stone-200 pb-4">
+        <div className="flex flex-wrap items-center gap-2">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setSelectedCategory(cat.id)}
+              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition cursor-pointer ${
+                selectedCategory === cat.id
+                  ? 'bg-stone-900 text-white shadow-xs'
+                  : 'bg-stone-100 hover:bg-stone-200 text-stone-700'
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Interactive Search Bar */}
+        <div className="relative w-full md:w-72 shrink-0">
+          <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search deals (e.g. sofa, bed, tv)..."
+            className="w-full text-xs font-medium pl-9 pr-8 py-2.5 rounded-xl border border-stone-200 bg-stone-50 focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-[#B45309]/30 transition"
+          />
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery('')}
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600 p-0.5 cursor-pointer"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          )}
+        </div>
       </div>
 
       {/* 3. TIME REMAINING BANNER FOR TODAY'S DEALS */}
@@ -250,8 +280,16 @@ function DealsContent() {
           })}
         </div>
       ) : (
-        <div className="bg-white rounded-3xl p-10 text-center border border-stone-200 text-stone-500 text-xs">
-          No deals found in this category right now. Check back soon or select another category!
+        <div className="bg-white rounded-3xl p-10 text-center border border-stone-200 text-stone-500 text-xs space-y-2">
+          <p>No deals found {searchQuery ? `matching "${searchQuery}"` : 'in this category right now'}.</p>
+          {searchQuery && (
+            <button
+              onClick={() => { setSearchQuery(''); setSelectedCategory('all'); }}
+              className="text-xs font-bold text-[#B45309] underline cursor-pointer"
+            >
+              Clear search & view all deals
+            </button>
+          )}
         </div>
       )}
 
@@ -265,7 +303,7 @@ function DealsContent() {
             Want to post a deal or slash your prices?
           </h3>
           <p className="text-xs text-stone-600 mt-0.5 max-w-xl">
-            You don&apos;t have to ask anyone. Go to your Seller Portal, click &quot;Create Price Drop Deal&quot;, set your deal price for 24 hours or for the month, and it will immediately appear on this deals page and get shared on our WhatsApp channel.
+            You don&apos;t have to ask anyone. Go to your Seller Page, click &quot;Slash Price&quot;, set your deal price for 24 hours or for the month, and it will immediately appear on this deals page and get shared on our WhatsApp channel.
           </p>
         </div>
 
@@ -274,7 +312,7 @@ function DealsContent() {
           className="inline-flex items-center justify-center gap-1.5 px-5 py-3 rounded-xl bg-stone-900 hover:bg-stone-800 text-white font-bold text-xs transition shrink-0 shadow-sm"
         >
           <PlusCircle className="w-4 h-4 text-white" />
-          <span>Open Seller Portal</span>
+          <span>Open My Seller Page</span>
         </Link>
       </div>
     </div>

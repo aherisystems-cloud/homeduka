@@ -5,6 +5,7 @@ import {
   MONTHLY_RECURRING_HOME_SERVICES, 
   SAMPLE_KENYAN_HOME_LISTINGS 
 } from '../../data/mock_listings';
+import RefillsListingClient from '../../components/RefillsListingClient';
 import { generateWhatsAppLeadLink } from '../../utils/whatsapp_link';
 import { 
   RefreshCw, 
@@ -213,7 +214,7 @@ export default function RefillsPage() {
           </div>
         </div>
 
-        {/* Section: Refills & Routine Services Grid */}
+        {/* Section: Interactive Refills & Routine Services Hub */}
         <section className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
@@ -224,74 +225,12 @@ export default function RefillsPage() {
                 Essential Home Services & Monthly Plans
               </h2>
             </div>
-            <span className="text-xs font-bold text-stone-700 bg-stone-100 px-3.5 py-1.5 rounded-full self-start sm:self-auto">
-              {MONTHLY_RECURRING_HOME_SERVICES.length} Active Plans
-            </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {MONTHLY_RECURRING_HOME_SERVICES.map((item) => {
-              const provider = SAMPLE_KENYAN_HOME_LISTINGS.find((b) => b.id === item.providerId);
-              const waUrl = provider 
-                ? generateWhatsAppLeadLink(provider, { itemOrServiceName: item.title, intent: 'service_inquiry' })
-                : '#';
-
-              return (
-                <div
-                  key={item.id}
-                  className="bg-white rounded-3xl p-6 border border-stone-200/90 hover:border-emerald-500/60 shadow-2xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
-                >
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <div className="w-12 h-12 rounded-2xl bg-stone-50 border border-stone-100 flex items-center justify-center text-3xl shadow-2xs">
-                        {item.icon}
-                      </div>
-                      <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-emerald-50 text-emerald-900 border border-emerald-200/70">
-                        {item.frequency}
-                      </span>
-                    </div>
-
-                    <div>
-                      <h3 className="font-extrabold text-base text-stone-900 mb-1 group-hover:text-emerald-900 transition">
-                        {item.title}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-stone-500 leading-relaxed">
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="pt-4 border-t border-stone-100 mt-6 space-y-3">
-                    <div className="flex items-baseline justify-between">
-                      <div>
-                        <span className="text-[10px] font-semibold text-stone-400 block uppercase tracking-wider">
-                          Fair Rate
-                        </span>
-                        <span className="text-sm font-black text-stone-900">
-                          {item.priceEstimate}
-                        </span>
-                      </div>
-                      {provider && (
-                        <span className="text-[11px] text-stone-500 font-semibold truncate max-w-[140px]">
-                          By {provider.business_name}
-                        </span>
-                      )}
-                    </div>
-
-                    <a
-                      href={waUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-2xl bg-stone-900 hover:bg-black text-white font-bold text-xs sm:text-sm transition active:scale-95 shadow-2xs"
-                    >
-                      <MessageSquare className="w-4 h-4 text-emerald-400" />
-                      <span>Order on WhatsApp</span>
-                    </a>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          <RefillsListingClient 
+            items={MONTHLY_RECURRING_HOME_SERVICES} 
+            providers={SAMPLE_KENYAN_HOME_LISTINGS} 
+          />
         </section>
 
         {/* The New Home Move-In & Restock Kit */}

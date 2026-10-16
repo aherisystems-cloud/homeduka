@@ -48,6 +48,14 @@ export default function HomePage() {
       }
     };
 
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlSearch = urlParams.get('search');
+      if (urlSearch) {
+        setSearchQuery(urlSearch);
+      }
+    }
+
     window.addEventListener('homeduka-location-changed', handleLocationChange);
     return () => window.removeEventListener('homeduka-location-changed', handleLocationChange);
   }, []);
