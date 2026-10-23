@@ -541,3 +541,431 @@ export const KENYAN_SEARCH_INTENT_MAP: Record<string, string> = {
   "kuhama": "residential_movers",
   "moving": "residential_movers"
 };
+
+// ==========================================
+// 4. MASTER PRODUCT TAXONOMY (THE KENYAN SOKO)
+// Universal, Exhaustive, Unambiguous Product Categories
+// ==========================================
+export interface SubCategoryDef {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  popularSearches: string[];
+}
+
+export interface MasterCategoryDef {
+  id: string;
+  name: string;
+  shortName: string;
+  icon: string;
+  tagline: string;
+  subcategories: SubCategoryDef[];
+}
+
+export const MASTER_PRODUCT_CATEGORIES: MasterCategoryDef[] = [
+  {
+    id: "electronics_phones",
+    name: "Phones, Computers & Electronics",
+    shortName: "Electronics",
+    icon: "📱",
+    tagline: "iPhones, Android Phones, Laptops, Smart TVs, Woofers & CCTV Cameras",
+    subcategories: [
+      {
+        id: "smartphones_tablets",
+        name: "Smartphones & Tablets",
+        description: "iPhones, Samsung, Tecno, Infinix, Redmi, iPads & Kabambe phones",
+        icon: "📱",
+        popularSearches: ["iPhone 15 Nairobi", "Samsung A-Series price", "Redmi Note 13", "iPad Air Kenya", "Kabambe dual SIM"]
+      },
+      {
+        id: "laptops_computers",
+        name: "Laptops & Computers",
+        description: "HP, Dell, Lenovo, MacBooks, Desktops, Monitors & Printers",
+        icon: "💻",
+        popularSearches: ["HP Core i5 refurbished", "MacBook Air M2 Nairobi", "Dell Latitude Eldoret", "Epson EcoTank printer", "Curved gaming monitor"]
+      },
+      {
+        id: "tvs_audio_entertainment",
+        name: "Smart TVs & Soundbars",
+        description: "Smart Android TVs, 4K UHD, Soundbars, Home Theatres & Woofers",
+        icon: "📺",
+        popularSearches: ["55 inch smart TV price", "Vitron 43 inch TV", "Sony soundbar with subwoofer", "Ampex woofer system", "Startimes decoder"]
+      },
+      {
+        id: "power_chargers_accessories",
+        name: "Power Banks & Audio",
+        description: "Fast charging power banks, AirPods, Bluetooth speakers & Smartwatches",
+        icon: "🔋",
+        popularSearches: ["Oraimo 20000mAh power bank", "Type-C 65W fast charger", "Wireless earbuds ANC", "Smartwatch with calls", "JBL Bluetooth speaker"]
+      },
+      {
+        id: "cctv_security_cameras",
+        name: "CCTV, Security & Cameras",
+        description: "Hikvision CCTV kits, 4G solar security cameras & ring lights",
+        icon: "📷",
+        popularSearches: ["Hikvision 4-camera CCTV kit", "Solar wireless CCTV camera", "Ring light with tripod Nairobi", "Canon DSLR camera", "Door spy camera"]
+      }
+    ]
+  },
+  {
+    id: "home_kitchen_furniture",
+    name: "Home, Kitchen & Furniture",
+    shortName: "Home & Living",
+    icon: "🛋️",
+    tagline: "Hardwood Sofas, Beds, Dining Sets, Cookers, Fridges & Non-Stick Cookware",
+    subcategories: [
+      {
+        id: "living_room_furniture",
+        name: "Living Room Furniture",
+        description: "7-Seater sofas, Chesterfield sectionals, TV wall consoles & coffee tables",
+        icon: "🛋️",
+        popularSearches: ["Chesterfield 7-seater sofa", "L-shape couch Kamakis", "Floating TV wall unit", "Wooden coffee table set", "Shoe rack cabinet"]
+      },
+      {
+        id: "bedroom_furniture_mattresses",
+        name: "Beds, Wardrobes & Mattresses",
+        description: "Solid mahogany beds, hydraulic storage beds, orthopedic mattresses & wardrobes",
+        icon: "🛏️",
+        popularSearches: ["6x6 storage bed Nairobi", "Mobra high density mattress", "Fitted 4-door wardrobe", "Dressing table with mirror", "Bunk bed kids"]
+      },
+      {
+        id: "dining_kitchen_furniture",
+        name: "Dining Sets & Cabinets",
+        description: "4, 6, 8-seater dining tables, kitchen pantry cabinets & bar stools",
+        icon: "🪑",
+        popularSearches: ["6-seater mahogany dining table", "Modern bar stools Nairobi", "Kitchen pantry organizer", "Buffet sideboard cabinet"]
+      },
+      {
+        id: "cookers_fridges_appliances",
+        name: "Cookers, Fridges & Appliances",
+        description: "Standing gas/electric cookers, double-door fridges, microwaves & washing machines",
+        icon: "❄️",
+        popularSearches: ["Ramtons 4-burner standing cooker", "Double door fridge Kenya", "Air fryer 6L Nairobi", "Front load washing machine", "Microwave oven"]
+      },
+      {
+        id: "sufurias_cookware_utensils",
+        name: "Cookware & Sufuria Sets",
+        description: "Non-stick granite pots, pressure cookers, blenders & water dispensers",
+        icon: "🥘",
+        popularSearches: ["Dessini non-stick cookware set", "Aluminum heavy duty sufurias", "Electric pressure cooker", "Commercial blender 2L", "Water dispenser table top"]
+      },
+      {
+        id: "curtains_carpets_decor",
+        name: "Curtains, Carpets & Decor",
+        description: "Heavy blackout curtains, Turkish living room carpets, mirrors & chandeliers",
+        icon: "🪟",
+        popularSearches: ["Heavy blackout curtain fabric", "Turkish shaggy carpet 5x8", "Full length gold wall mirror", "Modern LED chandelier", "Sheer curtains wholesale"]
+      }
+    ]
+  },
+  {
+    id: "hardware_building_electricals",
+    name: "Hardware, Building & Electricals",
+    shortName: "Hardware & Building",
+    icon: "🧱",
+    tagline: "Cement, TMT Steel, Iron Sheets, Timber, Water Tanks, Solar & Tiles",
+    subcategories: [
+      {
+        id: "cement_steel_masonry",
+        name: "Cement, Steel & Masonry",
+        description: "Simba/Bamburi Cement 50kg, Deformed Steel Bars Y10-Y16 & BRC Mesh",
+        icon: "🏗️",
+        popularSearches: ["Simba cement 50kg price", "TMT steel bars Y12 Y16", "BRC mesh A142 price", "Machine cut stones Juja", "Binding wire roll"]
+      },
+      {
+        id: "roofing_timber_boards",
+        name: "Iron Sheets, Timber & Plywood",
+        description: "Box profile & versatile iron sheets, cypress roofing timber & marine plywood",
+        icon: "🪵",
+        popularSearches: ["Box profile gauge 30 price Kenya", "Versatile roofing sheets", "Cypress roofing timber 2x2 2x3", "Marine plywood 18mm", "MDF boards Gikomba"]
+      },
+      {
+        id: "plumbing_pipes_tanks",
+        name: "PPR/PVC Pipes & Water Tanks",
+        description: "1000L-10,000L plastic water tanks, PPR hot water pipes, booster pumps & taps",
+        icon: "🚰",
+        popularSearches: ["Roto water tank 5000L price", "Water booster pump apartment", "PPR pipe fittings PN20", "Submersible pump borehole", "Stainless steel kitchen sink"]
+      },
+      {
+        id: "paints_coatings_gypsum",
+        name: "Paints, Gypsum & Ceilings",
+        description: "Crown / DuraCoat interior paints, gypsum boards, channel studs & cornices",
+        icon: "🎨",
+        popularSearches: ["Crown Ruff N Tuff paint 20L", "Gypsum board 9mm 12mm price", "Undercoat white paint 20L", "Gypsum cornices design", "Wall filler putty"]
+      },
+      {
+        id: "electrical_wiring_solar",
+        name: "Wiring, Solar & Inverters",
+        description: "Single-core copper wiring, consumer units, solar panels, inverters & batteries",
+        icon: "⚡",
+        popularSearches: ["East African Cables 1.5mm 2.5mm", "Solar hybrid inverter 5kVA", "Lithium battery 48V Kenya", "Circuit breakers distribution board", "Solar flood light 300W"]
+      },
+      {
+        id: "tiles_flooring_cabro",
+        name: "Floor Tiles, Wall Tiles & Cabro",
+        description: "Polished porcelain floor tiles, bathroom ceramic tiles, tile adhesive & cabro paving",
+        icon: "🧱",
+        popularSearches: ["Porcelain floor tiles 60x60 price", "Bathroom wall tiles", "Tile adhesive cement 25kg", "Heavy duty cabro blocks", "Granite floor slabs"]
+      }
+    ]
+  },
+  {
+    id: "fashion_clothes_shoes",
+    name: "Fashion, Clothes & Footwear",
+    shortName: "Fashion & Wear",
+    icon: "👟",
+    tagline: "Men's Official Suits, Sneakers, Women's Dresses, Kids Wear & Leather Bags",
+    subcategories: [
+      {
+        id: "mens_clothing",
+        name: "Men's Clothing",
+        description: "Official suits, blazers, cotton shirts, khaki trousers, jeans & casual jackets",
+        icon: "👔",
+        popularSearches: ["Men official suit Nairobi CBD", "Cotton polo t-shirts", "Slim fit khaki trousers", "Denim jeans men", "Bomber jackets Nairobi"]
+      },
+      {
+        id: "mens_shoes",
+        name: "Men's Shoes & Boots",
+        description: "Genuine leather official shoes, casual sneakers, loafers, safari boots & sandals",
+        icon: "👞",
+        popularSearches: ["Clarks official leather shoes", "Nike Air Jordan sneakers", "Casual loafers men", "Safari boots genuine leather", "Leather sandals"]
+      },
+      {
+        id: "womens_clothing",
+        name: "Women's Clothing",
+        description: "Official trouser suits, elegant dresses, tops, blouses, jeans & evening wear",
+        icon: "👗",
+        popularSearches: ["Official trouser suit ladies", "Maxi dresses Nairobi", "High waist denim jeans", "Chiffon tops blouses", "Warm cardigans trench coats"]
+      },
+      {
+        id: "womens_shoes",
+        name: "Women's Shoes & Heels",
+        description: "Comfortable block heels, flat pumps, white sneakers, ankle boots & slides",
+        icon: "👠",
+        popularSearches: ["Block heels office wear", "Comfortable flat shoes ladies", "White sneakers women", "Ankle boots leather", "Platform slides sandals"]
+      },
+      {
+        id: "kids_baby_clothing",
+        name: "Kids & Baby Clothing",
+        description: "Baby shawls, rompers, boys & girls outfits, school shoes & uniforms",
+        icon: "👶",
+        popularSearches: ["Newborn baby gift set Kenya", "Girls birthday party dress", "Boys denim jackets", "Toughees school shoes", "Kids warm pyjamas"]
+      },
+      {
+        id: "bags_luggage_accessories",
+        name: "Bags, Luggage & Accessories",
+        description: "Ladies handbags, travel suitcases, laptop backpacks, leather belts & watches",
+        icon: "👜",
+        popularSearches: ["Tote handbag ladies", "Luggage suitcase 3-piece set", "Waterproof laptop backpack", "Men leather wallet and belt", "Casio wristwatch"]
+      }
+    ]
+  },
+  {
+    id: "vehicles_auto_spares",
+    name: "Vehicles, Auto Spares & Motorbikes",
+    shortName: "Auto Spares",
+    icon: "🚗",
+    tagline: "Car Engine Oils, Tyres, Batteries, Android Screens & Boda Boda Spares",
+    subcategories: [
+      {
+        id: "engine_service_parts",
+        name: "Engine Oils & Service Parts",
+        description: "Engine oil (Total, Shell, Castrol), oil/air/fuel filters, spark plugs & brake pads",
+        icon: "🛢️",
+        popularSearches: ["Total Quartz 5W30 engine oil", "Brembo brake pads Toyota Fielder", "Genuine oil filters Toyota", "NGK spark plugs", "KYB shock absorbers Nairobi"]
+      },
+      {
+        id: "car_tyres_rims_batteries",
+        name: "Tyres, Rims & Batteries",
+        description: "Car tyres (Maxxis, Dunlop, Yokohama), alloy wheel rims & maintenance-free batteries",
+        icon: "🛞",
+        popularSearches: ["Tyre 195/65R15 price Nairobi", "Alloy rims 16 inch 5-hole", "Chloride Exide maintenance free battery", "Car tyre puncture repair kit", "Tubeless valve stems"]
+      },
+      {
+        id: "car_electronics_interior",
+        name: "Car Android Screens & Audio",
+        description: "Android touch screens, reverse cameras, subwoofers, seat covers & 7D floor mats",
+        icon: "📻",
+        popularSearches: ["Car Android screen 9 inch with GPS", "Reverse camera full HD", "Leather car seat covers custom", "7D floor mats Toyota Harrier", "Car dash camera dual lens"]
+      },
+      {
+        id: "boda_boda_motorcycle_spares",
+        name: "Boda Boda & Bike Spares",
+        description: "Boxer BM150, TVS King & Dayun motorcycle spares, tyres, helmets & chains",
+        icon: "🏍️",
+        popularSearches: ["Boxer BM150 cylinder piston kit", "Motorcycle tyre 3.00-17", "DOT certified motorbike helmet", "Heavy duty drive chain sprocket", "Boda boda side mirrors"]
+      },
+      {
+        id: "trucks_canters_heavy_commercial",
+        name: "Canters & Commercial Trucks",
+        description: "Isuzu NPR, Mitsubishi Canter spare parts, heavy duty leaf springs & commercial tyres",
+        icon: "🚚",
+        popularSearches: ["Isuzu NPR 4HF1 clutch plate", "Canter leaf springs heavy duty", "Commercial truck battery 120Ah", "Canter brake shoes Nairobi"]
+      }
+    ]
+  },
+  {
+    id: "farm_agriculture_agrovet",
+    name: "Farm, Agriculture & Agrovet",
+    shortName: "Farm & Agri",
+    icon: "🌾",
+    tagline: "Certified Seeds, Fertilizers, Dairy Feeds, Drip Irrigation & Chaff Cutters",
+    subcategories: [
+      {
+        id: "certified_seeds_fertilizers",
+        name: "Seeds, Fertilizers & Agrochemicals",
+        description: "Certified maize/bean seeds, DAP, CAN, NPK fertilizers, herbicides & pesticides",
+        icon: "🌱",
+        popularSearches: ["Certified hybrid maize seed Kenya", "DAP fertilizer 50kg price", "CAN fertilizer top dressing", "Roundup weed herbicide", "Fungicide for tomatoes"]
+      },
+      {
+        id: "animal_feeds_supplements",
+        name: "Animal Feeds & Salt Licks",
+        description: "High-yield dairy meal, poultry layers/broilers mash, pig feeds & mineral salts",
+        icon: "🐄",
+        popularSearches: ["Dairy meal 50kg high yield Nakuru", "Kienyeji poultry feed mash", "Mineral salt block cows", "Layers mash 50kg price", "Dog food 20kg wholesale"]
+      },
+      {
+        id: "irrigation_pumps_pipes",
+        name: "Irrigation Kits & Pumps",
+        description: "Drip irrigation kits, drip lines, petrol water pumps & borehole solar pumps",
+        icon: "💧",
+        popularSearches: ["Drip irrigation 1-acre kit price Kenya", "Drip lines 16mm button drippers", "Petrol water pump 3 inch", "Solar borehole water pump", "Knapsack sprayer 16L"]
+      },
+      {
+        id: "farm_machinery_tools",
+        name: "Chaff Cutters & Farm Tools",
+        description: "Silage chaff cutters, posho mill machines, egg incubators, wheelbarrows & pangas",
+        icon: "🚜",
+        popularSearches: ["Electric motor chaff cutter 3HP", "Automatic egg incubator 500 eggs", "Heavy duty construction wheelbarrow", "Crocodile panga Kenya", "Milking machine portable"]
+      },
+      {
+        id: "greenhouse_veterinary_supplies",
+        name: "Greenhouse & Vet Supplies",
+        description: "Dam liners for water ponds, shade nets, greenhouse polythene, dewormers & vet drugs",
+        icon: "🛖",
+        popularSearches: ["Dam liner 0.5mm 1mm price per sqm", "Shade net 75% agricultural", "Greenhouse polythene UV treated", "Livestock dewormer albendazole", "Tick spray acaricide"]
+      }
+    ]
+  },
+  {
+    id: "health_beauty_personal_care",
+    name: "Health, Beauty & Personal Care",
+    shortName: "Beauty & Health",
+    icon: "💄",
+    tagline: "Skincare, Serums, Human Hair Wigs, Perfumes & Blood Pressure Monitors",
+    subcategories: [
+      {
+        id: "skincare_sunscreen",
+        name: "Skincare & Sunscreen",
+        description: "Gentle facial cleansers, Vitamin C serums, daily moisturizers & SPF 50 sunscreens",
+        icon: "🧴",
+        popularSearches: ["SPF 50 mineral sunscreen Kenya", "Vitamin C brightening serum", "CeraVe hydrating cleanser", "Raw shea butter wholesale", "Acne treatment salicylic acid"]
+      },
+      {
+        id: "hair_care_styling_wigs",
+        name: "Hair Care, Wigs & Braids",
+        description: "100% human hair wigs, French curls braids, hair growth oils & professional clippers",
+        icon: "💇",
+        popularSearches: ["Human hair bone straight wig", "French curl braids colors", "Chebe hair growth butter oil", "Kemei cordless hair clipper", "Blow dryer professional 2200W"]
+      },
+      {
+        id: "perfumes_colognes_deodorants",
+        name: "Perfumes, Colognes & Mists",
+        description: "Original designer perfumes, long-lasting perfume oils & fresh body mists",
+        icon: "✨",
+        popularSearches: ["Lattafa Yara perfume Nairobi", "Original designer colognes men", "Pure undiluted perfume oils", "Victoria Secret body mist", "Antiperspirant roll on"]
+      },
+      {
+        id: "oral_personal_hygiene",
+        name: "Oral & Personal Hygiene",
+        description: "Electric toothbrushes, teeth whitening charcoal, sanitary pads & shaving kits",
+        icon: "🪥",
+        popularSearches: ["Sonic electric toothbrush", "Teeth whitening powder kit", "Heavy flow sanitary pads", "Safety double edge razor", "Beard oil and wash set"]
+      },
+      {
+        id: "health_monitors_supplements",
+        name: "Health Monitors & Supplements",
+        description: "Digital blood pressure monitors, glucometers, multivitamins & gym whey protein",
+        icon: "🩺",
+        popularSearches: ["Omron digital blood pressure monitor", "Accu-Chek blood sugar test strips", "Whey protein powder 5lbs", "Cod liver oil capsules", "First aid emergency kit box"]
+      }
+    ]
+  },
+  {
+    id: "supermarket_food_gas",
+    name: "Supermarket, Foodstuffs & Cooking Gas",
+    shortName: "Supermarket & Food",
+    icon: "🛒",
+    tagline: "Cooking Gas Refills, Grains, Cereals, Vegetable Oils & Laundry Detergents",
+    subcategories: [
+      {
+        id: "cereals_grains_flours",
+        name: "Cereals, Grains & Flours",
+        description: "Grade 1 Maize flour (Unga ya Ugali), Pishori rice, wheat flour, ndengu & beans",
+        icon: "🌾",
+        popularSearches: ["Hostess / Pembe unga ya ugali 2kg", "Pure Mwea Pishori rice 25kg", "Baking wheat flour 2kg", "Polished yellow beans 50kg", "Green grams ndengu wholesale"]
+      },
+      {
+        id: "cooking_gas_cylinders_refill",
+        name: "Cooking Gas (LPG) & Refills",
+        description: "6kg & 13kg gas cylinders, doorstep refills (K-Gas, Total, Rubis, Afrigas) & regulators",
+        icon: "🔥",
+        popularSearches: ["13kg gas refill doorstep delivery", "6kg gas cylinder with burner grill", "Low pressure gas regulator pipe", "Total gas refill Nairobi", "EPRA verified gas station"]
+      },
+      {
+        id: "cooking_oils_spices_tea",
+        name: "Cooking Oils, Spices & Tea",
+        description: "Refined vegetable cooking oils, pure Kenyan tea leaves, coffee, sugar & spices",
+        icon: "🧂",
+        popularSearches: ["Salit / Fresh Fri cooking oil 10L", "Kericho Gold tea leaves 500g", "Pure cane sugar 50kg bag", "Royco mchuzi mix wholesale", "Sea salt iodine 1kg"]
+      },
+      {
+        id: "drinking_water_beverages",
+        name: "Drinking Water & Drinks",
+        description: "20-litre water dispenser refills, bottled mineral water packs, juices & fresh milk",
+        icon: "🚰",
+        popularSearches: ["20L water dispenser refill exchange", "Bottled water 500ml pack of 24", "Del Monte juice 1L", "Long life UHT milk cartoon", "Soda 300ml crate"]
+      },
+      {
+        id: "cleaning_detergents_soaps",
+        name: "Detergents & Cleaning Soaps",
+        description: "Washing powder, multipurpose liquid detergent, bar soaps, bleach & toilet paper",
+        icon: "🧼",
+        popularSearches: ["Ariel / Omo washing powder 3.5kg", "Multipurpose liquid soap 5L", "Jik regular bleach 750ml", "Toilet tissue paper 10-pack", "Steelwool dish washing soap"]
+      }
+    ]
+  },
+  {
+    id: "office_stationery_books",
+    name: "Office, Stationery & School Books",
+    shortName: "Office & School",
+    icon: "📚",
+    tagline: "Printing Paper Reams, School Books, Calculators, Thermal POS Rolls & Safes",
+    subcategories: [
+      {
+        id: "printing_paper_thermal_rolls",
+        name: "Printing Paper & POS Rolls",
+        description: "A4 printing paper reams (Chamex, Double A), thermal receipt rolls & invoice books",
+        icon: "📄",
+        popularSearches: ["Chamex A4 paper 80gsm box 5 reams", "Thermal receipt paper 80x80mm", "Self carbonated invoice book 2-ply", "Brown Manila folders pack", "Sticky notes colored"]
+      },
+      {
+        id: "school_books_stationery",
+        name: "School Books & Stationery",
+        description: "Exercise books, mathematical sets, ballpoint pens, highlighters & calculators",
+        icon: "✏️",
+        popularSearches: ["Oxford mathematical set original", "Casio fx-82MS scientific calculator", "Bic ballpoint pens box of 50", "Kasuku exercise books A4 200 pages", "Geometry compass set"]
+      },
+      {
+        id: "office_equipment_safes",
+        name: "Office Equipment & Safes",
+        description: "Money counting machines, electronic cash safes, laminators, shredders & whiteboards",
+        icon: "🗄️",
+        popularSearches: ["Banknote currency counter with fake detector", "Digital electronic safe box office", "A3 laminating machine heavy duty", "Paper shredder cross cut", "Magnetic whiteboard 4x3ft"]
+      }
+    ]
+  }
+];
+

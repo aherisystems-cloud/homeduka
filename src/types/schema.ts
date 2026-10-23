@@ -78,6 +78,8 @@ export interface BusinessProfile {
     | 'furniture'
     | 'interior_decor'
     | 'kitchen_appliances'
+    | 'appliances_electronics'
+    | 'hardware_building'
     | 'plumbing'
     | 'electrical_solar'
     | 'painting_gypsum'
@@ -87,6 +89,7 @@ export interface BusinessProfile {
     | 'security_cctv'
     | 'tiles_flooring'
     | 'gardening_landscaping'
+    | string
   >;
   
   // Location

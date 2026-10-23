@@ -473,6 +473,290 @@ export const SAMPLE_KENYAN_HOME_LISTINGS: BusinessProfile[] = [
     },
     created_at: "2026-09-10T08:00:00Z",
     updated_at: "2026-10-04T15:00:00Z"
+  },
+
+  // 6. Nairobi Tech Point Electronics (Phones, Laptops, TVs, CCTV, Audio)
+  {
+    id: "biz-nairobi-tech-hub-006",
+    slug: "nairobi-tech-point-electronics",
+    business_name: "Nairobi Tech Point & Gadgets",
+    tagline: "Brand New & Ex-UK Laptops, iPhones, Samsung, Smart TVs & CCTV Systems",
+    description: "Located along Kimathi Street & Luthuli Avenue, Nairobi Tech Point is a verified tech and electronics dealer stocking brand new and certified refurbished laptops, smartphones, 4K TVs, and security camera installations. Countrywide parcel dispatch via Modern Coast and Easy Coach.",
+    primary_vertical: "home",
+    categories: ["appliances_electronics", "security_cctv"],
+    location: {
+      country: "Kenya",
+      county: "Nairobi",
+      sub_county: "Starehe",
+      neighborhood: "Nairobi CBD",
+      landmark: "Opposite Nation Centre, Kimathi House 2nd Floor Shop 14",
+      stage_name: "Ambassadeur Stage",
+      road_or_bypass: "Kimathi Street / Luthuli Ave",
+      coordinates: { latitude: -1.2841, longitude: 36.8228 },
+      service_coverage_areas: ["Nairobi CBD", "All 47 Counties (Matatu Courier)"]
+    },
+    contact: {
+      primary_phone: "254722889900",
+      whatsapp_number: "254722889900",
+      instagram_handle: "@nairobibitechelectronics",
+      google_maps_url: "https://maps.google.com/?q=-1.2841,36.8228"
+    },
+    commercial: {
+      has_physical_shop: true,
+      accepts_cash_on_delivery: true,
+      payment_methods: ["lipa_na_mpesa_till", "mpesa_paybill", "cash_on_delivery"],
+      mpesa_till_number: "712894",
+      price_rating: "$$"
+    },
+    verification: {
+      tier: "verified_pro",
+      is_claimed: true,
+      verified_at: "2026-09-20T10:00:00Z",
+      id_or_registration_verified: true,
+      physical_visit_verified: true,
+      guarantee_or_warranty_offered: true
+    },
+    operating_hours: {
+      monday_friday: "08:00 - 19:00",
+      saturday: "08:30 - 18:00",
+      sunday: "10:00 - 16:00",
+      emergency_service_24_7: false
+    },
+    media: {
+      cover_image_url: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=1200&q=80",
+      portfolio_work_photos: []
+    },
+    reputation: {
+      rating: 4.9,
+      total_reviews: 82,
+      completed_jobs_count: 540,
+      response_time_minutes: 4
+    },
+    attributes: {
+      written_warranty_provided: true,
+      warranty_duration_months: 12
+    },
+    seo: {
+      meta_title: "Nairobi Tech Point | Laptops, Phones & TVs Nairobi CBD",
+      meta_description: "Best direct shop prices on HP laptops, iPhones, Android TVs & Hikvision CCTV in Nairobi.",
+      keywords: ["laptops nairobi cbd", "iphone prices kenya", "smart tvs kimathi street"],
+      canonical_url: "https://homekenya.co.ke/shop/nairobi-tech-point-electronics"
+    },
+    created_at: "2026-09-01T08:00:00Z",
+    updated_at: "2026-10-18T10:00:00Z"
+  },
+
+  // 7. Apex Steel & Building Hardware Yard (Cement, Steel, Iron Sheets, Tanks, Tiles)
+  {
+    id: "biz-kenya-hardware-steelyard-007",
+    slug: "apex-steel-hardware-yard",
+    business_name: "Apex Steel & Building Supplies Yard",
+    tagline: "Factory Direct Simba Cement, TMT Steel Bars, Box Profile Iron Sheets & Roto Tanks",
+    description: "Located along Enterprise Road, Industrial Area with a distribution yard along Eastern Bypass Kamakis. Wholesale and retail prices direct from manufacturers. Free loading, direct site delivery by crane truck across Nairobi Metro and Kiambu.",
+    primary_vertical: "home",
+    categories: ["hardware_building", "tiles_flooring"],
+    location: {
+      country: "Kenya",
+      county: "Nairobi",
+      sub_county: "Industrial Area",
+      neighborhood: "Enterprise Road",
+      landmark: "Near Kobil Petrol Station, Enterprise Road Gate 4",
+      stage_name: "Enterprise Stage",
+      road_or_bypass: "Enterprise Road / Eastern Bypass",
+      coordinates: { latitude: -1.3102, longitude: 36.8521 },
+      service_coverage_areas: ["Nairobi Metro", "Kiambu", "Machakos", "Kajiado"]
+    },
+    contact: {
+      primary_phone: "254733445566",
+      whatsapp_number: "254733445566",
+      instagram_handle: "@apexsteelkenya"
+    },
+    commercial: {
+      has_physical_shop: true,
+      accepts_cash_on_delivery: true,
+      payment_methods: ["lipa_na_mpesa_till", "mpesa_paybill", "bank_transfer"],
+      mpesa_till_number: "554120",
+      mpesa_paybill_number: "888200",
+      mpesa_paybill_account: "APEXSTEEL",
+      price_rating: "$$"
+    },
+    verification: {
+      tier: "featured_partner",
+      is_claimed: true,
+      verified_at: "2026-09-15T09:00:00Z",
+      id_or_registration_verified: true,
+      physical_visit_verified: true,
+      guarantee_or_warranty_offered: true
+    },
+    operating_hours: {
+      monday_friday: "07:00 - 18:00",
+      saturday: "07:00 - 15:00",
+      sunday: "Closed",
+      emergency_service_24_7: false
+    },
+    media: {
+      cover_image_url: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80",
+      portfolio_work_photos: []
+    },
+    reputation: {
+      rating: 4.8,
+      total_reviews: 95,
+      completed_jobs_count: 820,
+      response_time_minutes: 6
+    },
+    attributes: {
+      provides_materials: true,
+      written_warranty_provided: true,
+      warranty_duration_months: 60
+    },
+    seo: {
+      meta_title: "Apex Steel & Building Supplies Yard | Wholesale Prices Kenya",
+      meta_description: "Direct mill prices on TMT steel bars Y12, Simba cement 50kg, and Roto water tanks in Kenya.",
+      keywords: ["cement price kenya", "tmt steel bars enterprise road", "box profile iron sheets"],
+      canonical_url: "https://homekenya.co.ke/shop/apex-steel-hardware-yard"
+    },
+    created_at: "2026-08-20T08:00:00Z",
+    updated_at: "2026-10-15T12:00:00Z"
+  },
+
+  // 8. Rift Valley Agrovet & Farm Machinery Hub
+  {
+    id: "biz-rift-agrovet-machinery-008",
+    slug: "rift-agrovet-machinery-hub",
+    business_name: "Rift Agrovet & Farm Machinery Centre",
+    tagline: "Certified Hybrid Seeds, DAP/CAN Fertilizers, Dairy Feeds, Drip Kits & Chaff Cutters",
+    description: "Located in Nakuru City with branch in Eldoret. The premier agrovet and farm implements hub in the Rift Valley. Stocking KEPHIS certified seeds, high-yield animal feeds, motor chaff cutters, and solar irrigation pumps. Delivers to farm gates countrywide.",
+    primary_vertical: "home",
+    categories: ["gardening_landscaping"],
+    location: {
+      country: "Kenya",
+      county: "Nakuru",
+      sub_county: "Nakuru East",
+      neighborhood: "Nakuru City CBD",
+      landmark: "Opposite Nakuru Wholesale Market, George Morara Avenue",
+      stage_name: "Main Stage Nakuru",
+      road_or_bypass: "George Morara Avenue",
+      coordinates: { latitude: -0.2833, longitude: 36.0667 },
+      service_coverage_areas: ["Nakuru", "Uasin Gishu", "Nyandarua", "Kericho", "Countrywide"]
+    },
+    contact: {
+      primary_phone: "254701234567",
+      whatsapp_number: "254701234567",
+      instagram_handle: "@riftagrovet"
+    },
+    commercial: {
+      has_physical_shop: true,
+      accepts_cash_on_delivery: true,
+      payment_methods: ["lipa_na_mpesa_till", "mpesa_paybill"],
+      mpesa_till_number: "389104",
+      price_rating: "$"
+    },
+    verification: {
+      tier: "verified_pro",
+      is_claimed: true,
+      verified_at: "2026-09-10T11:00:00Z",
+      id_or_registration_verified: true,
+      physical_visit_verified: true,
+      guarantee_or_warranty_offered: true
+    },
+    operating_hours: {
+      monday_friday: "07:30 - 18:00",
+      saturday: "08:00 - 17:00",
+      sunday: "Closed",
+      emergency_service_24_7: false
+    },
+    media: {
+      cover_image_url: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1200&q=80",
+      portfolio_work_photos: []
+    },
+    reputation: {
+      rating: 4.9,
+      total_reviews: 64,
+      completed_jobs_count: 430,
+      response_time_minutes: 8
+    },
+    attributes: {
+      written_warranty_provided: true,
+      warranty_duration_months: 24
+    },
+    seo: {
+      meta_title: "Rift Agrovet & Farm Machinery | Nakuru & Eldoret",
+      meta_description: "Certified hybrid maize seeds, fertilizers, dairy meal, and electric chaff cutters in Nakuru and Eldoret.",
+      keywords: ["seeds nakuru agrovet", "chaff cutter machine kenya", "drip irrigation kits"],
+      canonical_url: "https://homekenya.co.ke/shop/rift-agrovet-machinery-hub"
+    },
+    created_at: "2026-09-05T08:00:00Z",
+    updated_at: "2026-10-12T14:00:00Z"
+  },
+
+  // 9. Nairobi Wholesale & Spares Merchants (Fashion, Auto Spares, Supermarket Goods)
+  {
+    id: "biz-gikomba-fashion-auto-009",
+    slug: "nairobi-wholesale-spares-merchants",
+    business_name: "Nairobi Wholesale & Auto Spares Merchants",
+    tagline: "Genuine Auto Replacement Parts, Tyres, Cooking Gas, Men's & Women's Fashion",
+    description: "Direct importers and wholesale traders based at Kirinyaga Road and River Road, Nairobi. Genuine Toyota, Isuzu, and Nissan engine parts, tubeless tyres, and high quality clothing apparel. Same-day parcel dispatch across East Africa.",
+    primary_vertical: "home",
+    categories: ["furniture"],
+    location: {
+      country: "Kenya",
+      county: "Nairobi",
+      sub_county: "Starehe",
+      neighborhood: "Kirinyaga Road / River Road",
+      landmark: "Near Kirinyaga Road junction, Plaza House Ground Floor",
+      stage_name: "River Road Stage",
+      road_or_bypass: "Kirinyaga Road",
+      coordinates: { latitude: -1.2825, longitude: 36.8291 },
+      service_coverage_areas: ["Nairobi", "All Towns in Kenya"]
+    },
+    contact: {
+      primary_phone: "254714556677",
+      whatsapp_number: "254714556677",
+      instagram_handle: "@nairobiautospareske"
+    },
+    commercial: {
+      has_physical_shop: true,
+      accepts_cash_on_delivery: true,
+      payment_methods: ["lipa_na_mpesa_till", "mpesa_paybill"],
+      mpesa_till_number: "662190",
+      price_rating: "$"
+    },
+    verification: {
+      tier: "verified_pro",
+      is_claimed: true,
+      verified_at: "2026-09-18T10:00:00Z",
+      id_or_registration_verified: true,
+      physical_visit_verified: true,
+      guarantee_or_warranty_offered: true
+    },
+    operating_hours: {
+      monday_friday: "08:00 - 18:30",
+      saturday: "08:00 - 17:00",
+      sunday: "Closed",
+      emergency_service_24_7: false
+    },
+    media: {
+      cover_image_url: "https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1200&q=80",
+      portfolio_work_photos: []
+    },
+    reputation: {
+      rating: 4.8,
+      total_reviews: 73,
+      completed_jobs_count: 610,
+      response_time_minutes: 5
+    },
+    attributes: {
+      written_warranty_provided: true,
+      warranty_duration_months: 12
+    },
+    seo: {
+      meta_title: "Nairobi Auto Spares & Wholesale Hub | Kirinyaga Road",
+      meta_description: "Genuine car spare parts, tyres, and quality fashion wear wholesale and retail in Nairobi.",
+      keywords: ["car spares kirinyaga road", "tyres nairobi", "mens official suits nairobi"],
+      canonical_url: "https://homekenya.co.ke/shop/nairobi-wholesale-spares-merchants"
+    },
+    created_at: "2026-09-12T08:00:00Z",
+    updated_at: "2026-10-16T11:00:00Z"
   }
 ];
 
@@ -885,6 +1169,601 @@ export const SAMPLE_KENYAN_HOME_PRODUCTS: HomeProduct[] = [
     ],
     is_featured: false,
     created_at: "2026-09-22T08:00:00Z"
+  },
+
+  // ====================================================
+  // PHONES, COMPUTERS & ELECTRONICS (electronics_phones)
+  // ====================================================
+  {
+    id: "prod-elec-phone-013",
+    business_id: "biz-nairobi-tech-hub-006",
+    title: "Apple iPhone 15 Pro Max 256GB Natural Titanium (Physical Nano-SIM + eSIM)",
+    slug: "apple-iphone-15-pro-max-256gb-nairobi",
+    category: "electronics_phones",
+    subcategory: "smartphones_tablets",
+    description: "Brand new factory unlocked iPhone 15 Pro Max in Natural Titanium. Grade A sealed box with Apple 1-Year International Warranty. A17 Pro Bionic chip, 48MP periscope zoom lens, and Type-C charging. Same-day delivery across Nairobi.",
+    pricing: {
+      price_type: "fixed",
+      regular_price_kes: 168000,
+      discount_price_kes: 162000,
+      negotiable: true
+    },
+    specifications: {
+      material: "Titanium Frame & Ceramic Shield Glass",
+      dimensions: "6.7 Inch Super Retina XDR OLED",
+      in_stock: true,
+      is_made_to_order: false,
+      warranty_months: 12
+    },
+    delivery: {
+      nairobi_delivery_fee_kes: 0,
+      delivers_countrywide: true,
+      pickup_available: true
+    },
+    images: [
+      "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=800&q=80"
+    ],
+    is_featured: true,
+    created_at: "2026-09-25T08:00:00Z"
+  },
+  {
+    id: "prod-elec-laptop-014",
+    business_id: "biz-nairobi-tech-hub-006",
+    title: "HP EliteBook 840 G6 Intel Core i5 8th Gen (16GB RAM, 512GB NVMe SSD, Backlit)",
+    slug: "hp-elitebook-840-g6-core-i5-16gb-ssd",
+    category: "electronics_phones",
+    subcategory: "laptops_computers",
+    description: "Ex-UK Grade A+ business laptop. Slim aluminum body, 14-inch Full HD anti-glare display, Intel Core i5-8365U quad-core processor, Bang & Olufsen audio, fast fingerprint scanner, and 6+ hours genuine battery life. Pre-installed Windows 11 Pro and MS Office.",
+    pricing: {
+      price_type: "fixed",
+      regular_price_kes: 34500,
+      discount_price_kes: 32000,
+      negotiable: false
+    },
+    specifications: {
+      material: "Full CNC Aluminum Chassis",
+      dimensions: "14-Inch FHD (1920x1080)",
+      in_stock: true,
+      is_made_to_order: false,
+      warranty_months: 6
+    },
+    delivery: {
+      nairobi_delivery_fee_kes: 300,
+      delivers_countrywide: true,
+      pickup_available: true
+    },
+    images: [
+      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=800&q=80"
+    ],
+    is_featured: true,
+    created_at: "2026-09-26T08:00:00Z"
+  },
+  {
+    id: "prod-elec-cctv-015",
+    business_id: "biz-nairobi-tech-hub-006",
+    title: "Hikvision 4-Camera 1080P Full HD Security CCTV System with 1TB Surveillance HDD",
+    slug: "hikvision-4-camera-cctv-kit-1tb",
+    category: "electronics_phones",
+    subcategory: "cctv_security_cameras",
+    description: "Complete security surveillance kit for shops, apartments, and homesteads. Includes 2 outdoor weatherproof bullet cameras, 2 indoor dome cameras, 4-Channel DVR, 1TB Seagate SkyHawk hard drive, 100m RG59 coaxial cable, and mobile phone remote viewing app.",
+    pricing: {
+      price_type: "fixed",
+      regular_price_kes: 24500,
+      negotiable: false
+    },
+    specifications: {
+      material: "Weatherproof Metal Alloy & ABS",
+      dimensions: "4 Camera Complete Kit",
+      in_stock: true,
+      is_made_to_order: false,
+      warranty_months: 24
+    },
+    delivery: {
+      nairobi_delivery_fee_kes: 0,
+      delivers_countrywide: true,
+      pickup_available: true
+    },
+    images: [
+      "https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=800&q=80"
+    ],
+    is_featured: false,
+    created_at: "2026-09-27T08:00:00Z"
+  },
+
+  // ====================================================
+  // HARDWARE, BUILDING & ELECTRICALS (hardware_building_electricals)
+  // ====================================================
+  {
+    id: "prod-hard-cement-016",
+    business_id: "biz-kenya-hardware-steelyard-007",
+    title: "Simba Cement Power Plus 42.5N Structural Cement (50kg Bag) - Mill Direct",
+    slug: "simba-cement-power-plus-42-5n-50kg",
+    category: "hardware_building_electricals",
+    subcategory: "cement_steel_masonry",
+    description: "High-strength structural cement designed for multi-storey concrete columns, slabs, and heavy masonry foundations. Mill direct pricing with prompt crane truck dispatch to site across Nairobi, Kiambu, and Machakos. Minimum order 50 bags for free site delivery.",
+    pricing: {
+      price_type: "fixed",
+      regular_price_kes: 740,
+      negotiable: true
+    },
+    specifications: {
+      material: "Portland Pozzolana Cement Grade 42.5N",
+      dimensions: "50kg Heavy Ply Paper Bag",
+      in_stock: true,
+      is_made_to_order: false
+    },
+    delivery: {
+      nairobi_delivery_fee_kes: 0,
+      delivers_countrywide: false,
+      pickup_available: true
+    },
+    images: [
+      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80"
+    ],
+    is_featured: true,
+    created_at: "2026-09-28T08:00:00Z"
+  },
+  {
+    id: "prod-hard-steel-017",
+    business_id: "biz-kenya-hardware-steelyard-007",
+    title: "Deformed High Yield TMT Steel Reinforcement Bars Y12 (BS 4449 Certified)",
+    slug: "tmt-deformed-steel-bars-y12",
+    category: "hardware_building_electricals",
+    subcategory: "cement_steel_masonry",
+    description: "Standard 12-metre length high tensile deformed bars for slab reinforcement and ring beams. Meets KEBS and BS 4449 international standards. Direct from ISO-certified rolling mills.",
+    pricing: {
+      price_type: "fixed",
+      regular_price_kes: 1280,
+      negotiable: true
+    },
+    specifications: {
+      material: "High Yield Thermo-Mechanically Treated Steel (500N/mm²)",
+      dimensions: "12mm Diameter x 12m Standard Length",
+      in_stock: true,
+      is_made_to_order: false
+    },
+    delivery: {
+      nairobi_delivery_fee_kes: 0,
+      delivers_countrywide: false,
+      pickup_available: true
+    },
+    images: [
+      "https://images.unsplash.com/photo-1535813547-99c456a41d4a?auto=format&fit=crop&w=800&q=80"
+    ],
+    is_featured: false,
+    created_at: "2026-09-29T08:00:00Z"
+  },
+  {
+    id: "prod-hard-tank-018",
+    business_id: "biz-kenya-hardware-steelyard-007",
+    title: "Roto Tanks 5,000 Litres Cylindrical Plastic Water Storage Tank (FDA Food Grade)",
+    slug: "roto-tank-5000-litres-water-tank",
+    category: "hardware_building_electricals",
+    subcategory: "plumbing_pipes_tanks",
+    description: "UV-stabilized double-layer antibacterial water tank with threaded lid and brass brass outlets. Certified food grade for drinking water storage. Withstands extreme Kenyan sunlight without cracking. 30-year manufacturer warranty.",
+    pricing: {
+      price_type: "fixed",
+      regular_price_kes: 42000,
+      discount_price_kes: 39500,
+      negotiable: true
+    },
+    specifications: {
+      material: "100% Virgin Food-Grade Polyethylene (LLDPE)",
+      dimensions: "5,000 Litre Capacity (Dia: 1.8m, H: 2.1m)",
+      in_stock: true,
+      is_made_to_order: false,
+      warranty_months: 360
+    },
+    delivery: {
+      nairobi_delivery_fee_kes: 0,
+      delivers_countrywide: true,
+      pickup_available: true
+    },
+    images: [
+      "https://images.unsplash.com/photo-1542013936693-884638332954?auto=format&fit=crop&w=800&q=80"
+    ],
+    is_featured: true,
+    created_at: "2026-09-30T08:00:00Z"
+  },
+
+  // ====================================================
+  // FARM, AGRICULTURE & AGROVET (farm_agriculture_agrovet)
+  // ====================================================
+  {
+    id: "prod-farm-seed-019",
+    business_id: "biz-rift-agrovet-machinery-008",
+    title: "Kenya Seed Company H614D Certified Hybrid Highland Maize Seed (2kg Packet)",
+    slug: "kenya-seed-h614d-hybrid-maize-2kg",
+    category: "farm_agriculture_agrovet",
+    subcategory: "certified_seeds_fertilizers",
+    description: "Genuine KEPHIS tamper-proof scratch card verified highland hybrid maize seed. High tolerance to maize streak virus and leaf blight. Produces heavy double cobs with well-filled dent grains. Suitable for Rift Valley, Western, and Central highlands.",
+    pricing: {
+      price_type: "fixed",
+      regular_price_kes: 580,
+      negotiable: false
+    },
+    specifications: {
+      material: "Treated Certified Seed Packet with KEPHIS SMS Verification",
+      dimensions: "2kg Sealed Bag",
+      in_stock: true,
+      is_made_to_order: false
+    },
+    delivery: {
+      nairobi_delivery_fee_kes: 200,
+      delivers_countrywide: true,
+      pickup_available: true
+    },
+    images: [
+      "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=800&q=80"
+    ],
+    is_featured: true,
+    created_at: "2026-10-01T08:00:00Z"
+  },
+  {
+    id: "prod-farm-chaff-020",
+    business_id: "biz-rift-agrovet-machinery-008",
+    title: "Electric 3HP Motorized Silage & Napier Grass Chaff Cutter Machine (2-in-1)",
+    slug: "electric-3hp-chaff-cutter-silage-machine",
+    category: "farm_agriculture_agrovet",
+    subcategory: "farm_machinery_tools",
+    description: "Heavy duty steel frame chaff cutter powered by a 3.0HP copper-wire electric motor. Cuts dry and wet fodder (Napier grass, maize stalks, hay) into 15mm-25mm fine cuts for high milk yield dairy feeding. Processes 800-1200kg per hour.",
+    pricing: {
+      price_type: "fixed",
+      regular_price_kes: 36000,
+      discount_price_kes: 34000,
+      negotiable: true
+    },
+    specifications: {
+      material: "Cast Iron Body & 4 High-Carbon Hardened Steel Blades",
+      dimensions: "3HP Single Phase 240V Motor",
+      in_stock: true,
+      is_made_to_order: false,
+      warranty_months: 18
+    },
+    delivery: {
+      nairobi_delivery_fee_kes: 0,
+      delivers_countrywide: true,
+      pickup_available: true
+    },
+    images: [
+      "https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=800&q=80"
+    ],
+    is_featured: true,
+    created_at: "2026-10-02T08:00:00Z"
+  },
+  {
+    id: "prod-farm-drip-021",
+    business_id: "biz-rift-agrovet-machinery-008",
+    title: "Complete 1-Acre Drip Irrigation Kit with 16mm Drip Lines & Screen Filter",
+    slug: "1-acre-drip-irrigation-kit-kenya",
+    category: "farm_agriculture_agrovet",
+    subcategory: "irrigation_pumps_pipes",
+    description: "Full gravity-flow drip kit for tomatoes, capsicum, onions, and cabbages. Includes 8 rolls of 16mm pre-punched drip tape (0.3mm wall, 20cm spacing), 32mm HDPE main line, disk filter, control valves, end caps, and joiners.",
+    pricing: {
+      price_type: "fixed",
+      regular_price_kes: 38000,
+      negotiable: true
+    },
+    specifications: {
+      material: "UV-Treated Polyethylene Drip Lines & Compression Fittings",
+      dimensions: "1 Acre Full Coverage (8,000 Metres Drip Tape)",
+      in_stock: true,
+      is_made_to_order: false,
+      warranty_months: 24
+    },
+    delivery: {
+      nairobi_delivery_fee_kes: 0,
+      delivers_countrywide: true,
+      pickup_available: true
+    },
+    images: [
+      "https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?auto=format&fit=crop&w=800&q=80"
+    ],
+    is_featured: false,
+    created_at: "2026-10-03T08:00:00Z"
+  },
+
+  // ====================================================
+  // VEHICLES & AUTO SPARE PARTS (vehicles_auto_spares)
+  // ====================================================
+  {
+    id: "prod-auto-tyre-022",
+    business_id: "biz-gikomba-fashion-auto-009",
+    title: "Sailun Atrezzo 205/55R16 High Performance Tubeless Passenger Car Tyre",
+    slug: "sailun-atrezzo-205-55r16-tyre-nairobi",
+    category: "vehicles_auto_spares",
+    subcategory: "tyres_rims_batteries",
+    description: "Brand new tubeless passenger radial tyre. Fits Toyota Fielder, Premio, Allion, Axio, Subaru Impreza, and VW Golf. Excellent wet grip, low road noise, and reinforced shoulder design for Kenyan potholes. Free fitting and computerized wheel balancing at our Kirinyaga Road yard.",
+    pricing: {
+      price_type: "fixed",
+      regular_price_kes: 7200,
+      discount_price_kes: 6800,
+      negotiable: false
+    },
+    specifications: {
+      material: "Silica-Enhanced All-Season Tread Compound",
+      dimensions: "205/55 R16 (Speed Rating: V - 240 km/h)",
+      in_stock: true,
+      is_made_to_order: false,
+      warranty_months: 36
+    },
+    delivery: {
+      nairobi_delivery_fee_kes: 0,
+      delivers_countrywide: true,
+      pickup_available: true
+    },
+    images: [
+      "https://images.unsplash.com/photo-1578844251758-2f71da64c96f?auto=format&fit=crop&w=800&q=80"
+    ],
+    is_featured: true,
+    created_at: "2026-10-04T08:00:00Z"
+  },
+  {
+    id: "prod-auto-screen-023",
+    business_id: "biz-gikomba-fashion-auto-009",
+    title: "Universal 9-Inch Android Car Touchscreen Multimedia System (Wireless CarPlay & GPS)",
+    slug: "universal-9-inch-android-car-screen-carplay",
+    category: "vehicles_auto_spares",
+    subcategory: "audio_android_screens",
+    description: "IPS 2.5D capacitive curved touchscreen with wireless Apple CarPlay and Android Auto. Built-in GPS navigation with offline Kenyan maps, Bluetooth 5.0 hands-free calling, reverse camera input, and 2GB RAM + 32GB ROM storage.",
+    pricing: {
+      price_type: "fixed",
+      regular_price_kes: 13500,
+      discount_price_kes: 11999,
+      negotiable: false
+    },
+    specifications: {
+      material: "IPS HD Display & Aluminum Back Heatsink",
+      dimensions: "9-Inch Universal Double-DIN Fitment",
+      in_stock: true,
+      is_made_to_order: false,
+      warranty_months: 12
+    },
+    delivery: {
+      nairobi_delivery_fee_kes: 200,
+      delivers_countrywide: true,
+      pickup_available: true
+    },
+    images: [
+      "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80"
+    ],
+    is_featured: false,
+    created_at: "2026-10-05T08:00:00Z"
+  },
+
+  // ====================================================
+  // SUPERMARKET, FOODSTUFFS & COOKING GAS (supermarket_food_gas)
+  // ====================================================
+  {
+    id: "prod-gas-13kg-024",
+    business_id: "biz-gikomba-fashion-auto-009",
+    title: "13kg TotalEnergies Cooking Gas (LPG) Doorstep Refill Exchange with Free Safety Seal",
+    slug: "totalenergies-13kg-gas-refill-doorstep",
+    category: "supermarket_food_gas",
+    subcategory: "cooking_gas_cylinders_refill",
+    description: "Official EPRA verified TotalEnergies 13kg gas cylinder refill. Inspected for tare weight and leak-free valve before dispatch. Delivered to your kitchen in under 30 minutes with free weight scale check at your doorstep. Verified Lipa na M-Pesa on arrival.",
+    pricing: {
+      price_type: "fixed",
+      regular_price_kes: 2950,
+      negotiable: false
+    },
+    specifications: {
+      material: "EPRA Compliant Pressurized LPG Gas (13.0kg Net)",
+      dimensions: "Standard 13kg Gas Cylinder Size",
+      in_stock: true,
+      is_made_to_order: false
+    },
+    delivery: {
+      nairobi_delivery_fee_kes: 0,
+      delivers_countrywide: false,
+      pickup_available: true
+    },
+    images: [
+      "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=800&q=80"
+    ],
+    is_featured: true,
+    is_monthly_restock: true,
+    restock_frequency: "monthly",
+    created_at: "2026-10-06T08:00:00Z"
+  },
+  {
+    id: "prod-food-rice-025",
+    business_id: "biz-gikomba-fashion-auto-009",
+    title: "Pure Mwea Pishori Grade 1 Aromatic Rice 25kg Bag (Kilombero Pure Grain)",
+    slug: "pure-mwea-pishori-rice-25kg-bag",
+    category: "supermarket_food_gas",
+    subcategory: "cereals_grains_flours",
+    description: "Freshly milled long-grain aromatic Pishori rice directly from Mwea irrigation scheme, Kirinyaga. 100% pure aroma with zero broken grain mixing or bleaching. Fluffy non-sticky texture when cooked. Wholesale duka price.",
+    pricing: {
+      price_type: "fixed",
+      regular_price_kes: 4600,
+      discount_price_kes: 4350,
+      negotiable: false
+    },
+    specifications: {
+      material: "Grade 1 Polished Natural Rice Grains",
+      dimensions: "25kg Heavy Gunny Bag",
+      in_stock: true,
+      is_made_to_order: false
+    },
+    delivery: {
+      nairobi_delivery_fee_kes: 200,
+      delivers_countrywide: true,
+      pickup_available: true
+    },
+    images: [
+      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80"
+    ],
+    is_featured: false,
+    is_monthly_restock: true,
+    restock_frequency: "monthly",
+    created_at: "2026-10-07T08:00:00Z"
+  },
+
+  // ====================================================
+  // FASHION, CLOTHES & FOOTWEAR (fashion_clothes_shoes)
+  // ====================================================
+  {
+    id: "prod-fash-suit-026",
+    business_id: "biz-gikomba-fashion-auto-009",
+    title: "Men's 3-Piece Slim Fit Official & Wedding Suit - Royal Blue (Jacket, Vest & Trouser)",
+    slug: "mens-3-piece-slim-fit-suit-royal-blue",
+    category: "fashion_clothes_shoes",
+    subcategory: "mens_casual_official",
+    description: "Tailored British-cut slim fit suit crafted from breathable wool-blend fabric with satin inner lining. Includes single-breasted two-button blazer jacket, tailored five-button waistcoat vest, and flat-front trousers with adjustable waistbands. Available in sizes 46 to 58.",
+    pricing: {
+      price_type: "fixed",
+      regular_price_kes: 12500,
+      discount_price_kes: 10500,
+      negotiable: true
+    },
+    specifications: {
+      material: "Wool Blend & Polyester Microfiber",
+      dimensions: "Chest Sizes: 38R, 40R, 42R, 44R, 46R",
+      in_stock: true,
+      is_made_to_order: false
+    },
+    delivery: {
+      nairobi_delivery_fee_kes: 200,
+      delivers_countrywide: true,
+      pickup_available: true
+    },
+    images: [
+      "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=800&q=80"
+    ],
+    is_featured: true,
+    created_at: "2026-10-08T08:00:00Z"
+  },
+  {
+    id: "prod-fash-boots-027",
+    business_id: "biz-gikomba-fashion-auto-009",
+    title: "Men's Handcrafted Full-Grain Genuine Leather Chelsea Boots - Dark Tan",
+    slug: "mens-leather-chelsea-boots-dark-tan",
+    category: "fashion_clothes_shoes",
+    subcategory: "mens_shoes_sneakers",
+    description: "Handcrafted 100% full-grain Kenyan cowhide leather ankle boots with elastic side gussets, cushioned memory foam insoles, and durable non-slip rubber lug outsoles. Pairs well with official trousers and denim jeans.",
+    pricing: {
+      price_type: "fixed",
+      regular_price_kes: 4800,
+      negotiable: false
+    },
+    specifications: {
+      material: "Full Grain Kenyan Cow Leather & Vibram Rubber Sole",
+      dimensions: "EU Shoe Sizes: 40, 41, 42, 43, 44, 45",
+      in_stock: true,
+      is_made_to_order: false,
+      warranty_months: 12
+    },
+    delivery: {
+      nairobi_delivery_fee_kes: 200,
+      delivers_countrywide: true,
+      pickup_available: true
+    },
+    images: [
+      "https://images.unsplash.com/photo-1638247025967-b4e38f787b76?auto=format&fit=crop&w=800&q=80"
+    ],
+    is_featured: false,
+    created_at: "2026-10-09T08:00:00Z"
+  },
+
+  // ====================================================
+  // HEALTH, BEAUTY & PERSONAL CARE (health_beauty_personal_care)
+  // ====================================================
+  {
+    id: "prod-beauty-cerave-028",
+    business_id: "biz-gikomba-fashion-auto-009",
+    title: "CeraVe Hydrating Facial Cleanser for Normal to Dry Skin with Hyaluronic Acid (473ml)",
+    slug: "cerave-hydrating-cleanser-473ml",
+    category: "health_beauty_personal_care",
+    subcategory: "skincare_sunscreen",
+    description: "Original US-imported dermatologist recommended daily face and body wash. Formulated with 3 essential ceramides and hyaluronic acid to restore skin barrier without stripping natural moisture. Non-comedogenic, fragrance-free.",
+    pricing: {
+      price_type: "fixed",
+      regular_price_kes: 2850,
+      negotiable: false
+    },
+    specifications: {
+      material: "Liquid Lotion Cleanser with Pump Dispenser",
+      dimensions: "473ml (16 FL OZ)",
+      in_stock: true,
+      is_made_to_order: false
+    },
+    delivery: {
+      nairobi_delivery_fee_kes: 200,
+      delivers_countrywide: true,
+      pickup_available: true
+    },
+    images: [
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=80"
+    ],
+    is_featured: false,
+    created_at: "2026-10-10T08:00:00Z"
+  },
+  {
+    id: "prod-beauty-omron-029",
+    business_id: "biz-gikomba-fashion-auto-009",
+    title: "Omron M2 Basic Digital Blood Pressure Monitor with Upper Arm Cuff (Clinically Validated)",
+    slug: "omron-m2-digital-blood-pressure-monitor",
+    category: "health_beauty_personal_care",
+    subcategory: "health_monitors_supplements",
+    description: "Automatic digital blood pressure and pulse monitor with Intellisense technology for comfortable and accurate readings. Large easy-to-read LCD screen with irregular heartbeat indicator. Includes standard 22-32cm arm cuff and 4 AA batteries.",
+    pricing: {
+      price_type: "fixed",
+      regular_price_kes: 6500,
+      discount_price_kes: 5800,
+      negotiable: false
+    },
+    specifications: {
+      material: "ABS Plastic Medical Grade Body & Nylon Cuff",
+      dimensions: "Upper Arm Standard Size",
+      in_stock: true,
+      is_made_to_order: false,
+      warranty_months: 36
+    },
+    delivery: {
+      nairobi_delivery_fee_kes: 0,
+      delivers_countrywide: true,
+      pickup_available: true
+    },
+    images: [
+      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80"
+    ],
+    is_featured: true,
+    created_at: "2026-10-11T08:00:00Z"
+  },
+
+  // ====================================================
+  // OFFICE, STATIONERY & SCHOOL BOOKS (office_stationery_books)
+  // ====================================================
+  {
+    id: "prod-office-paper-030",
+    business_id: "biz-nairobi-tech-hub-006",
+    title: "Chamex A4 80GSM Ultra-White Multi-Purpose Copy Printing Paper (Box of 5 Reams / 2500 Sheets)",
+    slug: "chamex-a4-paper-80gsm-box-5-reams",
+    category: "office_stationery_books",
+    subcategory: "printing_paper_thermal_rolls",
+    description: "Premium high-opacity 80GSM A4 copy paper manufactured from 100% eucalyptus pulp. Jam-free performance for high-speed laser printing, inkjet printers, and photocopying. Factory sealed box containing 5 reams (500 sheets per ream).",
+    pricing: {
+      price_type: "fixed",
+      regular_price_kes: 3400,
+      negotiable: true
+    },
+    specifications: {
+      material: "100% Virgin Eucalyptus Pulp 80GSM (98% Brightness)",
+      dimensions: "A4 Size (210mm x 297mm) - Box of 5 Reams",
+      in_stock: true,
+      is_made_to_order: false
+    },
+    delivery: {
+      nairobi_delivery_fee_kes: 200,
+      delivers_countrywide: true,
+      pickup_available: true
+    },
+    images: [
+      "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=800&q=80"
+    ],
+    is_featured: true,
+    created_at: "2026-10-12T08:00:00Z"
   }
 ];
 
@@ -1582,4 +2461,32 @@ export const SAMPLE_VERIFIED_REVIEWS: VerifiedReview[] = [
     helpful_count: 27
   }
 ];
+
+// ==========================================
+// UNIVERSAL PRODUCT & BUSINESS ACCESSORS
+// ==========================================
+export function getBusinessById(businessId: string): BusinessProfile | undefined {
+  return SAMPLE_KENYAN_HOME_LISTINGS.find(b => b.id === businessId);
+}
+
+export function getProductsForMasterCategory(masterId: string): HomeProduct[] {
+  // Map legacy home categories if querying home_kitchen_furniture
+  if (masterId === 'home_kitchen_furniture') {
+    return SAMPLE_KENYAN_HOME_PRODUCTS.filter(p => 
+      p.category === 'home_kitchen_furniture' ||
+      p.category === 'furniture' || 
+      p.category === 'kitchenware_utensils' || 
+      p.category === 'bedding_decor' ||
+      p.category === 'appliances_electronics'
+    );
+  }
+
+  return SAMPLE_KENYAN_HOME_PRODUCTS.filter(p => p.category === masterId);
+}
+
+export function getProductsForSubcategory(masterId: string, subcategoryId: string): HomeProduct[] {
+  const masterProducts = getProductsForMasterCategory(masterId);
+  return masterProducts.filter(p => p.subcategory === subcategoryId);
+}
+
 

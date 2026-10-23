@@ -10,6 +10,7 @@ import {
   ChevronDown
 } from 'lucide-react';
 import Link from 'next/link';
+import { MASTER_PRODUCT_CATEGORIES } from '../../../data/kenyan_taxonomy';
 
 const RESTOCK_CATEGORIES = [
   'cooking_gas',
@@ -479,13 +480,15 @@ export default function SellerPage() {
                         onChange={(e) => setNewCategory(e.target.value)}
                         className="w-full text-xs font-semibold p-3.5 rounded-xl border border-stone-300 bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-stone-900"
                       >
-                        <option value="furniture">Living Room & Bedroom Furniture</option>
-                        <option value="dining_kitchen">Kitchenware & Dining Tables</option>
-                        <option value="cooking_gas">Cooking Gas Refill (Monthly Restock)</option>
-                        <option value="drinking_water">Drinking Water 20L (Monthly Restock)</option>
-                        <option value="water_tank_cleaning">Water Tank Cleaning (Monthly Restock)</option>
-                        <option value="pest_control">Pest Control & Fumigation (Monthly Restock)</option>
-                        <option value="decor">Home Decor, Lighting & Carpets</option>
+                        {MASTER_PRODUCT_CATEGORIES.map(master => (
+                          <optgroup key={master.id} label={`${master.icon} ${master.name}`}>
+                            {master.subcategories.map(sub => (
+                              <option key={sub.id} value={sub.id}>
+                                {sub.icon} {sub.name}
+                              </option>
+                            ))}
+                          </optgroup>
+                        ))}
                       </select>
                     </div>
                   </div>

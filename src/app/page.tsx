@@ -19,6 +19,7 @@ import VerifiedReviewsSection from '../components/VerifiedReviewsSection';
 import ClaimProfileBanner from '../components/ClaimProfileBanner';
 import WorkshopClusterExplorer from '../components/WorkshopClusterExplorer';
 import WelcomeLocationModal, { UserPreferences } from '../components/WelcomeLocationModal';
+import SokoCategoryGrid from '../components/SokoCategoryGrid';
 import { 
   SAMPLE_KENYAN_HOME_LISTINGS, 
   SAMPLE_KENYAN_HOME_PRODUCTS, 
@@ -72,17 +73,17 @@ export default function HomePage() {
     }
   };
 
-  // Authentic Kenyan home search keywords
+  // Authentic Kenyan universal search keywords
   const popularKeywords = [
-    { label: "Chesterfield Sofa", query: "sofa" },
+    { label: "Simba Cement 50kg", query: "cement" },
+    { label: "13kg Gas Refill", query: "gas" },
+    { label: "HP Core i5 Laptop", query: "laptop" },
+    { label: "iPhone 15 Pro", query: "iphone" },
     { label: "6x6 Storage Bed", query: "bed" },
-    { label: "Gas Cooker & Oven", query: "cooker" },
-    { label: "55 Inch Smart TV", query: "tv" },
-    { label: "Non-Stick Sufurias", query: "sufuria" },
-    { label: "Blackout Curtains", query: "curtains" },
-    { label: "Drinking Water 20L", query: "water" },
-    { label: "Gas Refill", query: "gas" },
-    { label: "Emergency Plumber", query: "plumber" }
+    { label: "3HP Chaff Cutter", query: "chaff cutter" },
+    { label: "Car Tyres 205/55R16", query: "tyre" },
+    { label: "Drip Irrigation Kit", query: "irrigation" },
+    { label: "Men's 3-Piece Suit", query: "suit" }
   ];
 
   // Filter Products
@@ -186,21 +187,21 @@ export default function HomePage() {
         {/* 1. HERO SECTION: WORLD-CLASS, SPACIOUS, EDITORIAL AIRINESS (NO DISTRACTIONS, NO SIDEBAR) */}
         <section className="relative pt-6 pb-4 sm:pt-12 sm:pb-8 text-center max-w-5xl mx-auto space-y-8">
           
-          {/* Top Minimalist Tag with HomeDuka Brand */}
+          {/* Top Minimalist Tag with Brand */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-stone-100 text-stone-800 border border-stone-200 text-xs font-semibold tracking-wide">
             <ShieldCheck className="w-4 h-4 text-[#B45309]" />
-            <span>HOMEDUKA • KENYA&apos;S DIRECT HOME MARKETPLACE</span>
+            <span>THE KENYAN DIRECT SOKO • 9 DISTINCT PRODUCT HUBS</span>
           </div>
 
           {/* Master Headline - Geometric Authority, Everyday Relatable Language */}
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-stone-900 tracking-tight leading-[1.08] max-w-4xl mx-auto">
-            Everything for your home. <br />
-            <span className="text-[#B45309]">From trusted local shops & fundis.</span>
+            Everything you need in Kenya. <br />
+            <span className="text-[#B45309]">Direct from verified shops & suppliers.</span>
           </h1>
 
           {/* Subtitle - Punchy, Action-Oriented, Zero Fluff */}
           <p className="text-base sm:text-xl text-stone-600 max-w-2xl mx-auto font-normal leading-relaxed">
-            Direct shop prices & verified fundis across Kenya. Delivers countrywide to all major towns. No brokers.
+            Direct shop prices across all 47 counties. Zero broker markups. 100% verified M-Pesa Tills & direct WhatsApp connection.
           </p>
 
           {/* Location Context Banner Pill (Triggers Fullscreen Modal) */}
@@ -296,7 +297,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. TODAY'S TOP DEALS CAROUSEL (BEFORE SHOP BY ROOMS) */}
+      {/* 2. UNIVERSAL PRODUCT SOKO: 9 MASTER CATEGORIES & 48 DISTINCT VERTICALS */}
+      <SokoCategoryGrid />
+
+      {/* 3. TODAY'S TOP DEALS CAROUSEL */}
       <div id="today-deals">
         <TodayDealsCarousel />
       </div>

@@ -8,6 +8,8 @@ import {
   RefreshCw, AlertCircle
 } from 'lucide-react';
 
+import { MASTER_PRODUCT_CATEGORIES } from '../../data/kenyan_taxonomy';
+
 const PRIMARY_KENYAN_COUNTIES = [
   'Nairobi', 'Kiambu', 'Machakos', 'Kajiado', 'Nakuru',
   'Mombasa', 'Kisumu', 'Uasin Gishu (Eldoret)', 'Kilifi', 'Nyeri',
@@ -28,13 +30,16 @@ export default function SellerOnboardingPage() {
   const [formData, setFormData] = useState({
     businessName: '',
     whatsappNumber: '',
-    category: 'furniture',
+    masterCategory: MASTER_PRODUCT_CATEGORIES[0].id,
+    subcategory: MASTER_PRODUCT_CATEGORIES[0].subcategories[0].id,
+    category: MASTER_PRODUCT_CATEGORIES[0].id,
     county: 'Nairobi',
     subCounty: 'Westlands',
     estateOrLandmark: '',
     mpesaTill: '',
     firstItemTitle: '',
     firstItemPrice: '',
+    listingPlan: 'free' as 'free' | 'sponsored',
     isMonthlyRestock: false,
     restockFrequency: 'Monthly',
     freeAssessmentOffered: true,
@@ -191,34 +196,99 @@ export default function SellerOnboardingPage() {
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-xs font-bold text-stone-800 mb-1">
-                    Primary Category *
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold text-stone-800 mb-1">
+                      Master Industry Vertical *
+                    </label>
+                    <select
+                      value={formData.masterCategory}
+                      onChange={(e) => {
+                        const newMaster = e.target.value;
+                        const subObj = MASTER_PRODUCT_CATEGORIES.find(m => m.id === newMaster);
+                        const firstSub = subObj?.subcategories[0]?.id || '';
+                        setFormData(prev => ({
+                          ...prev,
+                          masterCategory: newMaster,
+                          subcategory: firstSub,
+                          category: newMaster
+                        }));
+                      }}
+                      className="w-full text-xs p-3 rounded-xl border border-stone-200 bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-stone-900 font-semibold"
+                    >
+                      {MASTER_PRODUCT_CATEGORIES.map((m) => (
+                        <option key={m.id} value={m.id}>
+                          {m.icon} {m.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-stone-800 mb-1">
+                      Precise Subcategory *
+                    </label>
+                    <select
+                      value={formData.subcategory}
+                      onChange={(e) => setFormData(prev => ({ ...prev, subcategory: e.target.value }))}
+                      className="w-full text-xs p-3 rounded-xl border border-stone-200 bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-stone-900 font-semibold"
+                    >
+                      {(MASTER_PRODUCT_CATEGORIES.find(m => m.id === formData.masterCategory) || MASTER_PRODUCT_CATEGORIES[0]).subcategories.map((sub) => (
+                        <option key={sub.id} value={sub.id}>
+                          {sub.icon} {sub.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                {/* Plan Selection (Monetization: 100% pure sponsored boost) */}
+                <div className="pt-2">
+                  <label className="block text-xs font-bold text-stone-800 mb-2">
+                    Select Listing Tier
                   </label>
-                  <select
-                    value={formData.category}
-                    onChange={(e) => handleCategoryChange(e.target.value)}
-                    className="w-full text-xs p-3 rounded-xl border border-stone-200 bg-stone-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-stone-900 font-semibold"
-                  >
-                    <optgroup label="Furniture & Hardwood Yards">
-                      <option value="furniture">Furniture Shop & Yard (Sofas, Beds, Dining Tables)</option>
-                      <option value="carpentry_cabinetry">Cabinetry & Fitted Wardrobes</option>
-                    </optgroup>
-                    <optgroup label="Monthly Restock & Home Refills">
-                      <option value="cooking_gas">Cooking Gas Refill & Cylinders (Monthly Restock)</option>
-                      <option value="drinking_water">Purified Drinking Water 20L (Monthly Restock)</option>
-                      <option value="cleaning_supplies">Household Cleaning & Bulk Detergents (Monthly Restock)</option>
-                      <option value="water_tank_cleaning">Water Tank Cleaning & Sanitization (Quarterly Care)</option>
-                      <option value="pest_control">Routine Pest Control & Fumigation (Monthly Restock)</option>
-                      <option value="solar_servicing">Solar Water Heater Descaling (6-Month Upkeep)</option>
-                    </optgroup>
-                    <optgroup label="Skilled Trades & Repairs">
-                      <option value="plumbing">Plumbing & Emergency Water Leaks</option>
-                      <option value="electrical_solar">Electrician & House Wiring</option>
-                      <option value="painting_gypsum">Gypsum Ceilings & House Painting</option>
-                      <option value="appliances">Appliance Repair (Fridges, Washing Machines)</option>
-                    </optgroup>
-                  </select>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setFormData(prev => ({ ...prev, listingPlan: 'free' }))}
+                      className={`p-3.5 rounded-2xl border text-left transition cursor-pointer ${
+                        formData.listingPlan === 'free'
+                          ? 'border-stone-900 bg-stone-900 text-white shadow-xs'
+                          : 'border-stone-200 bg-stone-50 hover:bg-stone-100 text-stone-800'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="font-extrabold text-xs">Standard Free Listing</span>
+                        <span className="text-[10px] px-2 py-0.5 rounded font-black bg-stone-700 text-white">KES 0</span>
+                      </div>
+                      <p className={`text-[11px] mt-1 ${formData.listingPlan === 'free' ? 'text-stone-300' : 'text-stone-500'}`}>
+                        Permanent organic placement. Direct WhatsApp calls & zero commission fees.
+                      </p>
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setFormData(prev => ({ ...prev, listingPlan: 'sponsored' }))}
+                      className={`p-3.5 rounded-2xl border text-left transition cursor-pointer ${
+                        formData.listingPlan === 'sponsored'
+                          ? 'border-amber-600 bg-amber-500 text-white shadow-md'
+                          : 'border-amber-200 bg-amber-50/60 hover:bg-amber-100/60 text-stone-900'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span className="font-extrabold text-xs flex items-center gap-1">
+                          <Sparkles className="w-3.5 h-3.5" />
+                          <span>Sponsored Category Boost</span>
+                        </span>
+                        <span className={`text-[10px] px-2 py-0.5 rounded font-black ${
+                          formData.listingPlan === 'sponsored' ? 'bg-amber-700 text-white' : 'bg-amber-200 text-amber-900'
+                        }`}>KES 250 / day</span>
+                      </div>
+                      <p className={`text-[11px] mt-1 ${formData.listingPlan === 'sponsored' ? 'text-amber-100' : 'text-amber-900/80'}`}>
+                        Pin to #1 top spot in this category across Kenya. 10x more WhatsApp inquiries.
+                      </p>
+                    </button>
+                  </div>
                 </div>
               </div>
 
