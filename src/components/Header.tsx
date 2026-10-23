@@ -12,13 +12,9 @@ import {
 } from 'lucide-react';
 import Logo from './Logo';
 import AlertPreferencesModal from './AlertPreferencesModal';
-import SokoMegaMenu from './SokoMegaMenu';
 import { MASTER_PRODUCT_CATEGORIES } from '../data/kenyan_taxonomy';
 
 export default function Header() {
-  const [sokoMegaMenuOpen, setSokoMegaMenuOpen] = useState(false);
-  const [selectedMegaCategoryId, setSelectedMegaCategoryId] = useState<string>('electronics_phones');
-  const [showMoreMenu, setShowMoreMenu] = useState(false);
   const [showDownloadAppModal, setShowDownloadAppModal] = useState(false);
   const [showAlertsModal, setShowAlertsModal] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -29,8 +25,6 @@ export default function Header() {
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [isIos, setIsIos] = useState<boolean>(false);
   const [isStandalone, setIsStandalone] = useState<boolean>(false);
-
-  const menuTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     // Detect standalone mode
@@ -67,19 +61,6 @@ export default function Header() {
       window.removeEventListener('homeduka-location-changed', handleLocationChange);
     };
   }, []);
-
-  const openMegaCategory = (categoryId: string) => {
-    if (menuTimeoutRef.current) clearTimeout(menuTimeoutRef.current);
-    setSelectedMegaCategoryId(categoryId);
-    setSokoMegaMenuOpen(true);
-  };
-
-  const handleMouseLeave = () => {
-    menuTimeoutRef.current = setTimeout(() => {
-      setSokoMegaMenuOpen(false);
-      setShowMoreMenu(false);
-    }, 250);
-  };
 
   return (
     <>
@@ -174,10 +155,7 @@ export default function Header() {
       </div>
 
       {/* 2. PRIMARY NAVIGATION BAR (Spacious, Clean, Uncluttered) */}
-      <header 
-        className="sticky top-0 z-40 w-full bg-white border-b border-stone-200/90 shadow-xs"
-        onMouseLeave={handleMouseLeave}
-      >
+      <header className="sticky top-0 z-40 w-full bg-white border-b border-stone-200/90 shadow-xs">
         <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 h-20 flex items-center justify-between gap-4">
           
           {/* Logo */}
@@ -185,46 +163,44 @@ export default function Header() {
             <Logo variant="header" />
           </div>
 
-          {/* Desktop Navigation Links - Uncluttered: 3 Clean Items */}
-          <nav className="hidden md:flex items-center gap-3">
+          {/* Desktop Navigation Links - Clean, Stable, Ordered with Deals Last */}
+          <nav className="hidden md:flex items-center gap-2 lg:gap-3">
             
-            {/* Item 1: Start Shopping (Triggers Mega Menu & links to /soko) */}
-            <div className="relative">
-              <button
-                onClick={() => setSokoMegaMenuOpen(!sokoMegaMenuOpen)}
-                onMouseEnter={() => {
-                  if (menuTimeoutRef.current) clearTimeout(menuTimeoutRef.current);
-                  setSokoMegaMenuOpen(true);
-                }}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-extrabold transition cursor-pointer ${
-                  sokoMegaMenuOpen 
-                    ? 'bg-stone-900 text-white shadow-xs' 
-                    : 'text-stone-900 hover:bg-stone-100'
-                }`}
-              >
-                <span>Start Shopping</span>
-                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
-                  sokoMegaMenuOpen ? 'rotate-180 text-white' : 'text-stone-500'
-                }`} />
-              </button>
-            </div>
-
-            {/* Item 2: Deals */}
+            {/* Item 1: Start Shopping (Direct link to main /soko page) */}
             <Link
-              href="/deals"
-              className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-bold text-stone-800 hover:text-stone-950 hover:bg-stone-100 transition"
+              href="/soko"
+              className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-sm font-black text-stone-900 hover:bg-stone-100 transition"
             >
-              <Flame className="w-4 h-4 text-rose-600" />
-              <span>Deals</span>
+              <ShoppingBag className="w-4 h-4 text-stone-800" />
+              <span>Start Shopping</span>
+            </Link>
+
+            {/* Item 2: Buyer Protection & Safety (High-Value Buyer CTA) */}
+            <Link
+              href="/buyer-protection"
+              className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-sm font-extrabold text-emerald-800 hover:text-emerald-950 hover:bg-emerald-50 transition"
+              title="How HomeDuka protects buyers from online scams"
+            >
+              <ShieldCheck className="w-4 h-4 text-emerald-600" />
+              <span>Buyer Protection</span>
             </Link>
 
             {/* Item 3: Home Services */}
             <Link
               href="/services"
-              className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-bold text-stone-800 hover:text-stone-950 hover:bg-stone-100 transition"
+              className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-sm font-bold text-stone-700 hover:text-stone-950 hover:bg-stone-100 transition"
             >
               <Wrench className="w-4 h-4 text-stone-600" />
-              <span>Home Services</span>
+              <span>Services</span>
+            </Link>
+
+            {/* Item 4: Hot Deals (MUST BE LAST ITEM ON MAIN MENU) */}
+            <Link
+              href="/deals"
+              className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-sm font-extrabold text-rose-700 hover:text-rose-950 hover:bg-rose-50 transition"
+            >
+              <Flame className="w-4 h-4 text-rose-600" />
+              <span>Deals</span>
             </Link>
           </nav>
 
@@ -233,10 +209,10 @@ export default function Header() {
             {/* Primary Action Button: Post Ad / Sell Free */}
             <Link
               href="/sell"
-              className="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-stone-900 hover:bg-black text-white text-xs font-extrabold shadow-xs hover:shadow-md transition active:scale-95"
+              className="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-stone-900 hover:bg-black text-white text-xs font-black shadow-xs hover:shadow-md transition active:scale-95"
             >
               <PlusCircle className="w-4 h-4 text-[#F59E0B]" />
-              <span>Post Free Ad</span>
+              <span>Sell / Post Free Ad</span>
             </Link>
 
             {/* Mobile Hamburger */}
@@ -249,13 +225,6 @@ export default function Header() {
             </button>
           </div>
         </div>
-
-        {/* ELEGANT SOKO MEGA MENU COMPONENT */}
-        <SokoMegaMenu
-          isOpen={sokoMegaMenuOpen}
-          onClose={() => setSokoMegaMenuOpen(false)}
-          initialCategoryId={selectedMegaCategoryId}
-        />
 
         {/* 3. MOBILE NAVIGATION DRAWER */}
         {mobileMenuOpen && (
@@ -283,7 +252,27 @@ export default function Header() {
                 className="w-full flex items-center justify-center gap-2 p-3 rounded-xl bg-stone-900 text-white font-bold text-xs shadow-sm"
               >
                 <PlusCircle className="w-4 h-4 text-[#F59E0B]" />
-                <span>Post Free Ad / Sell (0% Fees)</span>
+                <span>Sell / Post Free Ad</span>
+              </Link>
+            </div>
+
+            {/* Primary Mobile Navigation Actions */}
+            <div className="grid grid-cols-2 gap-2">
+              <Link
+                href="/soko"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-center gap-1.5 p-3 rounded-xl font-black text-xs bg-stone-900 text-white"
+              >
+                <ShoppingBag className="w-4 h-4 text-[#F59E0B]" />
+                <span>Start Shopping</span>
+              </Link>
+              <Link
+                href="/buyer-protection"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center justify-center gap-1.5 p-3 rounded-xl font-black text-xs bg-emerald-50 text-emerald-900 border border-emerald-200"
+              >
+                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                <span>Buyer Protection</span>
               </Link>
             </div>
 
@@ -338,15 +327,15 @@ export default function Header() {
               })}
             </div>
 
-            {/* Quick Helper Tools */}
+            {/* Quick Helper Tools - Deals as Last Item */}
             <div className="pt-2 border-t border-stone-200 space-y-2">
               <Link
-                href="/deals"
+                href="/services"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-2 p-2.5 rounded-xl font-bold text-xs bg-rose-50 text-rose-700 border border-rose-200"
+                className="flex items-center gap-2 p-2.5 rounded-xl font-bold text-xs bg-stone-50 text-stone-900 border border-stone-200"
               >
-                <Flame className="w-4 h-4 text-rose-600" />
-                <span>Today&apos;s Hot Deals</span>
+                <Wrench className="w-4 h-4 text-stone-600" />
+                <span>Services & Fundis</span>
               </Link>
               <Link
                 href="/verify-till"
@@ -365,12 +354,12 @@ export default function Header() {
                 <span>Fair Price Guide</span>
               </Link>
               <Link
-                href="/services"
+                href="/deals"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-2 p-2.5 rounded-xl font-bold text-xs bg-stone-50 text-stone-900 border border-stone-200"
+                className="flex items-center gap-2 p-2.5 rounded-xl font-bold text-xs bg-rose-50 text-rose-700 border border-rose-200"
               >
-                <Wrench className="w-4 h-4 text-stone-600" />
-                <span>Find Verified Fundis</span>
+                <Flame className="w-4 h-4 text-rose-600" />
+                <span>Today&apos;s Hot Deals</span>
               </Link>
             </div>
           </div>

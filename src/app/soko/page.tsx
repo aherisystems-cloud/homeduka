@@ -64,13 +64,13 @@ export default function AllCategoriesHubPage() {
           <div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-100 text-stone-800 text-xs font-bold mb-2">
               <Layers className="w-3.5 h-3.5 text-stone-700" />
-              <span>THE KENYAN DIRECT SOKO • COMPLETE CATEGORY DIRECTORY</span>
+              <span>KENYA&apos;S DIRECT PRODUCT DISCOVERY SOKO</span>
             </div>
             <h1 className="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight">
               Start Shopping • All Product Categories
             </h1>
             <p className="text-xs sm:text-sm text-stone-500 mt-1 max-w-2xl">
-              Zero ambiguity. Browse 9 master verticals and 48 specific product categories directly from verified Kenyan shops.
+              Browse genuine products across distinct categories directly from verified Kenyan shops, workshops, and yards.
             </p>
           </div>
 

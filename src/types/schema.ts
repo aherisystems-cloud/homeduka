@@ -106,6 +106,20 @@ export interface BusinessProfile {
     tiktok_handle?: string;
     google_maps_url?: string;
   };
+
+  // Named Shop Manager / Contact Person (Anti-Scam Trust Shield)
+  contact_person?: {
+    name: string;              // e.g. "John M. Mwangi"
+    role: string;              // e.g. "Shop Manager & Founder"
+    phone: string;
+    id_verified: boolean;
+  };
+
+  // Buyer Recommendation Metrics (Direct Social Proof)
+  recommendations?: {
+    percent: number;           // e.g. 98 (% of buyers who recommend)
+    count: number;             // e.g. 142 (total recommendations)
+  };
   
   // Commercial & Trust Architecture
   commercial: {

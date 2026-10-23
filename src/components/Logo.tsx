@@ -22,7 +22,7 @@ export default function Logo({
     <Link 
       href="/" 
       className={`inline-flex items-center gap-2.5 group select-none transition-transform active:scale-98 ${className}`}
-      aria-label="HomeDuka Kenya - Everything for your home"
+      aria-label="HomeDuka - Kenya's Product Discovery Soko"
     >
       {/* Geometric Architectural Logomark */}
       <div className={`relative shrink-0 flex items-center justify-center rounded-2xl shadow-sm transition-all duration-300 group-hover:shadow-md ${
@@ -83,7 +83,7 @@ export default function Logo({
             <span className={`text-[11px] font-semibold tracking-normal mt-0.5 ${
               isFooter ? 'text-stone-400' : 'text-stone-500'
             }`}>
-              Everything for your home
+              Kenya&apos;s Product Discovery Soko
             </span>
           )}
         </div>

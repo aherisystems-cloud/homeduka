@@ -111,19 +111,24 @@ export default function ProductCard({ product, business }: ProductCardProps) {
           </div>
 
           {/* Shop Context */}
-          <div className="bg-[#FAF8F5] rounded-xl p-2.5 border border-stone-200/60 text-xs">
-            <Link 
-              href={`/shop/${biz.slug}`}
-              className="font-bold text-stone-900 hover:text-[#B45309] flex items-center gap-1 truncate"
-            >
-              <span>{biz.business_name}</span>
-              <ShieldCheck className="w-3.5 h-3.5 text-[#B45309] shrink-0" />
-            </Link>
-            <div className="flex items-center gap-1 text-[11px] text-stone-500 mt-0.5">
+          <div className="bg-[#FAF8F5] rounded-xl p-2.5 border border-stone-200/60 text-xs space-y-1">
+            <div className="flex items-center justify-between gap-1">
+              <Link 
+                href={`/shop/${biz.slug}`}
+                className="font-bold text-stone-900 hover:text-[#B45309] flex items-center gap-1 truncate hover:underline"
+              >
+                <span className="truncate">{biz.business_name}</span>
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+              </Link>
+              <span className="text-[10px] text-emerald-800 font-bold bg-emerald-50 px-1.5 py-0.2 rounded border border-emerald-200 shrink-0">
+                👍 {biz.recommendations?.percent || 98}%
+              </span>
+            </div>
+            <div className="flex items-center gap-1 text-[11px] text-stone-500">
               <MapPin className="w-3 h-3 text-stone-400 shrink-0" />
               <span className="truncate">{biz.location.landmark}</span>
             </div>
-            <div className="text-[10px] text-stone-600 font-medium mt-1 pt-1 border-t border-stone-200/50 flex items-center gap-1">
+            <div className="text-[10px] text-stone-600 font-medium pt-1 border-t border-stone-200/50 flex items-center gap-1">
               <span>🚚 Delivery: Boda • Pickup Mtaani • Errands • Matatu • Lorry</span>
             </div>
           </div>

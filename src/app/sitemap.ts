@@ -21,6 +21,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.98,
     },
     {
+      url: `${baseUrl}/buyer-protection`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.95,
+    },
+    {
+      url: `${baseUrl}/shop`,
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.92,
+    },
+    {
       url: `${baseUrl}/deals`,
       lastModified,
       changeFrequency: 'daily',

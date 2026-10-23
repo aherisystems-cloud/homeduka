@@ -35,7 +35,7 @@ export default function DropOfTheDay() {
 
         <div className="flex flex-col sm:flex-row md:flex-col gap-3 w-full md:w-auto">
           <Link
-            href="/biz/classic-hardwood-furniture-kamakis"
+            href="/shop/woodcraft-living-kamakis"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-black hover:bg-stone-800 text-white font-bold text-sm shadow-md transition border border-stone-700/80 active:scale-95"
           >
             <MessageSquare className="w-4 h-4 text-emerald-400" />

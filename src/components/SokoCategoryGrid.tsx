@@ -16,10 +16,10 @@ export default function SokoCategoryGrid() {
             Complete Product Directory
           </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight">
-            Browse by Master Category
+            Explore Categories
           </h2>
           <p className="text-xs sm:text-sm text-stone-500 mt-1 max-w-xl">
-            Select a vertical to view all distinct subcategories and direct verified shop listings.
+            Browse genuine products directly from verified Kenyan shops, yards, and merchants.
           </p>
         </div>
 
@@ -27,7 +27,7 @@ export default function SokoCategoryGrid() {
           href="/soko"
           className="text-xs font-bold text-stone-900 hover:underline inline-flex items-center gap-1"
         >
-          <span>View All 48 Subcategories</span>
+          <span>View All Categories</span>
           <ArrowRight className="w-3.5 h-3.5" />
         </Link>
       </div>

@@ -93,6 +93,16 @@ export const SAMPLE_KENYAN_HOME_LISTINGS: BusinessProfile[] = [
       instagram_handle: "@woodcraft_living_ke",
       google_maps_url: "https://maps.google.com/?q=-1.1824,36.9841"
     },
+    contact_person: {
+      name: "John M. Mwangi",
+      role: "Workshop & Showroom Manager",
+      phone: "0712 345 678",
+      id_verified: true
+    },
+    recommendations: {
+      percent: 98,
+      count: 148
+    },
     commercial: {
       has_physical_shop: true,
       accepts_cash_on_delivery: true,
@@ -181,6 +191,16 @@ export const SAMPLE_KENYAN_HOME_LISTINGS: BusinessProfile[] = [
       whatsapp_number: "254722883344",
       instagram_handle: "@fineline_kitchens_ke"
     },
+    contact_person: {
+      name: "Grace W. Njuguna",
+      role: "Lead Cabinetry Designer",
+      phone: "0722 883 344",
+      id_verified: true
+    },
+    recommendations: {
+      percent: 97,
+      count: 112
+    },
     commercial: {
       has_physical_shop: true,
       accepts_cash_on_delivery: true,
@@ -260,6 +280,16 @@ export const SAMPLE_KENYAN_HOME_LISTINGS: BusinessProfile[] = [
     contact: {
       primary_phone: "254799112233",
       whatsapp_number: "254799112233"
+    },
+    contact_person: {
+      name: "Eng. Brian Oduor",
+      role: "Lead Systems Engineer",
+      phone: "0799 112 233",
+      id_verified: true
+    },
+    recommendations: {
+      percent: 99,
+      count: 89
     },
     commercial: {
       has_physical_shop: true,
@@ -345,6 +375,16 @@ export const SAMPLE_KENYAN_HOME_LISTINGS: BusinessProfile[] = [
       primary_phone: "254722554433",
       whatsapp_number: "254722554433"
     },
+    contact_person: {
+      name: "David Kariuki",
+      role: "Technical Site Supervisor",
+      phone: "0722 554 433",
+      id_verified: true
+    },
+    recommendations: {
+      percent: 96,
+      count: 134
+    },
     commercial: {
       has_physical_shop: true,
       accepts_cash_on_delivery: true,
@@ -424,6 +464,16 @@ export const SAMPLE_KENYAN_HOME_LISTINGS: BusinessProfile[] = [
       whatsapp_number: "254711998877",
       instagram_handle: "@cleannest_pro_ke"
     },
+    contact_person: {
+      name: "Mercy Akinyi",
+      role: "Operations Coordinator",
+      phone: "0711 998 877",
+      id_verified: true
+    },
+    recommendations: {
+      percent: 98,
+      count: 220
+    },
     commercial: {
       has_physical_shop: true,
       accepts_cash_on_delivery: true,
@@ -501,6 +551,16 @@ export const SAMPLE_KENYAN_HOME_LISTINGS: BusinessProfile[] = [
       instagram_handle: "@nairobibitechelectronics",
       google_maps_url: "https://maps.google.com/?q=-1.2841,36.8228"
     },
+    contact_person: {
+      name: "Peter Kimani",
+      role: "Store Manager",
+      phone: "0722 889 900",
+      id_verified: true
+    },
+    recommendations: {
+      percent: 97,
+      count: 310
+    },
     commercial: {
       has_physical_shop: true,
       accepts_cash_on_delivery: true,
@@ -570,6 +630,16 @@ export const SAMPLE_KENYAN_HOME_LISTINGS: BusinessProfile[] = [
       primary_phone: "254733445566",
       whatsapp_number: "254733445566",
       instagram_handle: "@apexsteelkenya"
+    },
+    contact_person: {
+      name: "Samuel Mutua",
+      role: "Yard Logistics Supervisor",
+      phone: "0733 445 566",
+      id_verified: true
+    },
+    recommendations: {
+      percent: 99,
+      count: 180
     },
     commercial: {
       has_physical_shop: true,
@@ -644,6 +714,16 @@ export const SAMPLE_KENYAN_HOME_LISTINGS: BusinessProfile[] = [
       whatsapp_number: "254701234567",
       instagram_handle: "@riftagrovet"
     },
+    contact_person: {
+      name: "Joshua Kiprop",
+      role: "Agro Equipment Specialist",
+      phone: "0701 234 567",
+      id_verified: true
+    },
+    recommendations: {
+      percent: 98,
+      count: 95
+    },
     commercial: {
       has_physical_shop: true,
       accepts_cash_on_delivery: true,
@@ -713,6 +793,16 @@ export const SAMPLE_KENYAN_HOME_LISTINGS: BusinessProfile[] = [
       primary_phone: "254714556677",
       whatsapp_number: "254714556677",
       instagram_handle: "@nairobiautospareske"
+    },
+    contact_person: {
+      name: "Hassan Omar",
+      role: "Wholesale & Spares Manager",
+      phone: "0714 556 677",
+      id_verified: true
+    },
+    recommendations: {
+      percent: 96,
+      count: 140
     },
     commercial: {
       has_physical_shop: true,
@@ -2467,6 +2557,30 @@ export const SAMPLE_VERIFIED_REVIEWS: VerifiedReview[] = [
 // ==========================================
 export function getBusinessById(businessId: string): BusinessProfile | undefined {
   return SAMPLE_KENYAN_HOME_LISTINGS.find(b => b.id === businessId);
+}
+
+export function getBusinessBySlug(slug: string): BusinessProfile | undefined {
+  if (!slug) return undefined;
+  const normalized = slug.trim().toLowerCase();
+
+  // 1. Exact slug match
+  let found = SAMPLE_KENYAN_HOME_LISTINGS.find(b => b.slug.toLowerCase() === normalized);
+  if (found) return found;
+
+  // 2. Exact ID match
+  found = SAMPLE_KENYAN_HOME_LISTINGS.find(b => b.id.toLowerCase() === normalized);
+  if (found) return found;
+
+  // 3. Known aliases
+  if (normalized === 'classic-hardwood-furniture-kamakis' || normalized === 'woodcraft') {
+    return SAMPLE_KENYAN_HOME_LISTINGS.find(b => b.slug === 'woodcraft-living-kamakis');
+  }
+
+  // 4. Fuzzy fallback
+  found = SAMPLE_KENYAN_HOME_LISTINGS.find(b => 
+    b.slug.includes(normalized) || normalized.includes(b.slug)
+  );
+  return found;
 }
 
 export function getProductsForMasterCategory(masterId: string): HomeProduct[] {

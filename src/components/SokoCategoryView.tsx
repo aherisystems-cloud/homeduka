@@ -16,7 +16,7 @@ import { getMasterCategoryIcon } from './SokoMegaMenu';
 import { 
   Search, MapPin, ShieldCheck, Sparkles, PhoneCall, 
   MessageSquare, Grid, List, ArrowLeft, ArrowRight,
-  ChevronRight, X, SlidersHorizontal, Check, Tag
+  ChevronRight, X, SlidersHorizontal, Check, Tag, ThumbsUp
 } from 'lucide-react';
 
 interface SokoCategoryViewProps {
@@ -512,9 +512,13 @@ export default function SokoCategoryView({ categoryParam, subcategoryParam }: So
                             </h3>
 
                             <div className="mt-2 pt-2 border-t border-stone-100 flex items-center justify-between text-[11px] text-stone-500">
-                              <span className="font-semibold text-stone-700 truncate max-w-[130px]">
-                                {biz?.business_name || 'Verified Merchant'}
-                              </span>
+                              <Link
+                                href={`/shop/${biz?.slug || 'woodcraft-living-kamakis'}`}
+                                className="font-bold text-stone-800 hover:text-[#B45309] truncate max-w-[130px] flex items-center gap-1 hover:underline"
+                              >
+                                <span>{biz?.business_name || 'Verified Merchant'}</span>
+                                <ShieldCheck className="w-3 h-3 text-emerald-600 shrink-0" />
+                              </Link>
                               <span className="flex items-center gap-1 shrink-0">
                                 <MapPin className="w-3 h-3 text-stone-400" />
                                 <span>{biz?.location.neighborhood || biz?.location.county || 'Nairobi'}</span>
@@ -577,9 +581,13 @@ export default function SokoCategoryView({ categoryParam, subcategoryParam }: So
                                   Sponsored
                                 </span>
                               )}
-                              <span className="text-[11px] font-semibold text-stone-500">
-                                {biz?.business_name || 'Verified Merchant'}
-                              </span>
+                              <Link
+                                href={`/shop/${biz?.slug || 'woodcraft-living-kamakis'}`}
+                                className="text-[11px] font-bold text-stone-900 hover:text-[#B45309] flex items-center gap-1 hover:underline"
+                              >
+                                <span>{biz?.business_name || 'Verified Merchant'}</span>
+                                <ShieldCheck className="w-3 h-3 text-emerald-600 shrink-0" />
+                              </Link>
                             </div>
 
                             <h3 className="text-xs font-bold text-stone-900 group-hover:text-stone-700 transition leading-snug">
