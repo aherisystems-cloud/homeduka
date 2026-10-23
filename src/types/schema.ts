@@ -251,6 +251,12 @@ export interface HomeProduct {
     is_made_to_order: boolean;
     lead_time_days?: number;   // e.g. 5-7 days for bespoke carpentry
     warranty_months?: number;
+    condition?: 'Brand New Sealed' | 'Refurbished Ex-UK' | 'Gently Used' | 'Handcrafted';
+    authenticity_disclosure?: string; // e.g. "Original Sealed Box", "Certified Ex-UK Grade A", "Original Decant"
+    kebs_certified?: boolean;
+    gauge_or_grade?: string; // e.g. "Grade A+", "Gauge 28", "Pure Sine Wave"
+    timber_treatment?: string; // e.g. "Kiln-Dried Hardwood (Moisture < 12%)"
+    concentration?: string; // e.g. "Eau De Parfum (EDP)"
   };
 
   delivery: {

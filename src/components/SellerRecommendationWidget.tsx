@@ -21,21 +21,30 @@ export default function SellerRecommendationWidget({ business }: SellerRecommend
   const [reportPhone, setReportPhone] = useState<string>('');
   const [reportSubmitted, setReportSubmitted] = useState<boolean>(false);
 
+  const [showAntiSabotageInfo, setShowAntiSabotageInfo] = useState<boolean>(false);
+
   const handleVote = (vote: boolean) => {
     if (recommended !== null) return;
-    setRecommended(vote);
     if (vote) {
+      setRecommended(true);
       setRecCount((prev) => prev + 1);
+      try {
+        localStorage.setItem(`homeduka_rec_${business.id}`, 'true');
+      } catch (e) {}
+    } else {
+      // Negative vote triggers verified dispute/complaint flow to prevent competitor sabotage
+      setShowReportModal(true);
     }
   };
 
   const handleReportSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setReportSubmitted(true);
+    setRecommended(false);
     setTimeout(() => {
       // Create WhatsApp pre-filled link to safety desk
       const adminMsg = encodeURIComponent(
-        `🚨 COMPLAINT REPORT against seller "${business.business_name}" (Slug: ${business.slug}, Till: ${business.commercial.mpesa_till_number || 'N/A'}).\nReason: ${reportReason}\nDetails: ${reportDetails}\nReporter Phone: ${reportPhone}`
+        `🚨 VERIFIED COMPLAINT against seller "${business.business_name}" (Slug: ${business.slug}, Till: ${business.commercial.mpesa_till_number || 'N/A'}).\nReason: ${reportReason}\nDetails: ${reportDetails}\nReporter Phone: ${reportPhone}`
       );
       window.open(`https://wa.me/254712345678?text=${adminMsg}`, '_blank');
     }, 1200);
@@ -63,14 +72,14 @@ export default function SellerRecommendationWidget({ business }: SellerRecommend
           <button
             onClick={() => setShowReportModal(true)}
             className="text-[11px] font-bold text-stone-400 hover:text-rose-600 transition flex items-center gap-1 cursor-pointer"
-            title="Report this seller if you suspect a scam"
+            title="Report this seller if you experienced an issue"
           >
             <Flag className="w-3 h-3" />
             <span>Report Seller</span>
           </button>
         </div>
 
-        {/* Interactive Voting Block */}
+        {/* Interactive Recommendation Block */}
         <div className="pt-1">
           {recommended === null ? (
             <div className="space-y-2">
@@ -88,9 +97,10 @@ export default function SellerRecommendationWidget({ business }: SellerRecommend
                 <button
                   onClick={() => handleVote(false)}
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-stone-50 hover:bg-stone-100 text-stone-700 border border-stone-200 text-xs font-bold transition active:scale-95 cursor-pointer"
+                  title="Click to submit a verified complaint"
                 >
                   <ThumbsDown className="w-3.5 h-3.5" />
-                  <span>No</span>
+                  <span>No (Report Issue)</span>
                 </button>
               </div>
             </div>
@@ -100,10 +110,18 @@ export default function SellerRecommendationWidget({ business }: SellerRecommend
               <span>
                 {recommended 
                   ? 'Thank you! Your recommendation helps other buyers find trustworthy shops.' 
-                  : 'Thank you for your feedback. If you experienced any issue, please use the Report button above.'}
+                  : 'Your complaint has been submitted to the compliance desk for audit.'}
               </span>
             </div>
           )}
+        </div>
+
+        {/* Anti-Sabotage Protection Policy Notice */}
+        <div className="pt-2 border-t border-stone-100 flex items-start gap-1.5 text-[10px] text-stone-500">
+          <ShieldAlert className="w-3.5 h-3.5 text-stone-400 shrink-0 mt-0.5" />
+          <p className="leading-snug">
+            <strong>Anti-Sabotage Protected:</strong> To prevent competitors from maliciously downvoting honest businesses, negative feedback requires verified contact and is audited by our safety desk before impacting ratings.
+          </p>
         </div>
       </div>
 

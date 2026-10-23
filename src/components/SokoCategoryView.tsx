@@ -16,8 +16,10 @@ import { getMasterCategoryIcon } from './SokoMegaMenu';
 import { 
   Search, MapPin, ShieldCheck, Sparkles, PhoneCall, 
   MessageSquare, Grid, List, ArrowLeft, ArrowRight,
-  ChevronRight, X, SlidersHorizontal, Check, Tag, ThumbsUp
+  ChevronRight, X, SlidersHorizontal, Check, Tag, ThumbsUp, Heart, Bell
 } from 'lucide-react';
+import { useShoppingList } from '../context/ShoppingListContext';
+import AlertPreferencesModal from './AlertPreferencesModal';
 
 interface SokoCategoryViewProps {
   categoryParam: string;
@@ -25,6 +27,9 @@ interface SokoCategoryViewProps {
 }
 
 export default function SokoCategoryView({ categoryParam, subcategoryParam }: SokoCategoryViewProps) {
+  const { toggleSaveItem, isItemSaved } = useShoppingList();
+  const [showAlertsModal, setShowAlertsModal] = useState<boolean>(false);
+
   // Find active master category
   const masterCategory: MasterCategoryDef = useMemo(() => {
     return MASTER_PRODUCT_CATEGORIES.find(c => c.id === categoryParam) || MASTER_PRODUCT_CATEGORIES[0];
@@ -398,14 +403,24 @@ export default function SokoCategoryView({ categoryParam, subcategoryParam }: So
                   Showing <strong className="text-stone-900">{filteredProducts.length}</strong> products
                 </span>
 
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  {/* Category Deal Alerts Trigger */}
+                  <button
+                    onClick={() => setShowAlertsModal(true)}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-[#B45309] border border-amber-200/80 text-xs font-bold transition cursor-pointer"
+                    title="Get notifications when products drop price in this category"
+                  >
+                    <Bell className="w-3.5 h-3.5" />
+                    <span className="hidden sm:inline">Deal Alerts</span>
+                  </button>
+
                   {/* Sort */}
                   <div className="flex items-center gap-2">
-                    <span className="text-xs text-stone-500 font-medium">Sort:</span>
+                    <span className="text-xs text-stone-500 font-medium hidden sm:inline">Sort:</span>
                     <select
                       value={sortBy}
                       onChange={(e) => setSortBy(e.target.value as any)}
-                      className="bg-stone-50 border border-stone-200 rounded-xl px-3 py-1.5 text-xs font-semibold text-stone-800 focus:outline-hidden cursor-pointer"
+                      className="bg-stone-50 border border-stone-200 rounded-xl px-2.5 sm:px-3 py-1.5 text-xs font-semibold text-stone-800 focus:outline-hidden cursor-pointer"
                     >
                       <option value="sponsored">Sponsored First</option>
                       <option value="price_asc">Price: Low to High</option>
@@ -465,6 +480,7 @@ export default function SokoCategoryView({ categoryParam, subcategoryParam }: So
                       `Hi, I saw your product "${prod.title}" on HomeDuka / Soko priced at KSh ${prod.pricing.regular_price_kes.toLocaleString()}. Is it currently available?`
                     );
                     const phoneNum = biz?.contact.whatsapp_number || biz?.contact.primary_phone || '254712345678';
+                    const isSaved = isItemSaved(prod.id);
 
                     return (
                       <div 
@@ -480,23 +496,54 @@ export default function SokoCategoryView({ categoryParam, subcategoryParam }: So
                             loading="lazy"
                           />
 
-                          {/* Badges */}
-                          <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between gap-1 pointer-events-none">
-                            {prod.is_featured ? (
-                              <span className="px-2 py-0.5 rounded-md bg-stone-900 text-white text-[10px] font-bold uppercase tracking-wider shadow-xs">
-                                Sponsored
-                              </span>
-                            ) : (
-                              <span className="px-2 py-0.5 rounded-md bg-stone-900/80 backdrop-blur-xs text-white text-[10px] font-medium">
-                                Verified
-                              </span>
-                            )}
+                          {/* Badges & Save Heart */}
+                          <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between gap-1">
+                            <div className="flex items-center gap-1.5 flex-wrap">
+                              {prod.is_featured ? (
+                                <span className="px-2 py-0.5 rounded-md bg-stone-900 text-white text-[10px] font-bold uppercase tracking-wider shadow-xs">
+                                  Sponsored
+                                </span>
+                              ) : (
+                                <span className="px-2 py-0.5 rounded-md bg-stone-900/80 backdrop-blur-xs text-white text-[10px] font-medium">
+                                  Verified
+                                </span>
+                              )}
 
-                            {biz?.commercial.mpesa_till_number && (
-                              <span className="px-2 py-0.5 rounded-md bg-emerald-700 text-white text-[10px] font-bold shadow-xs">
-                                Till: {biz.commercial.mpesa_till_number}
-                              </span>
-                            )}
+                              {biz?.commercial.mpesa_till_number && (
+                                <span className="px-2 py-0.5 rounded-md bg-emerald-700 text-white text-[10px] font-bold shadow-xs">
+                                  Till: {biz.commercial.mpesa_till_number}
+                                </span>
+                              )}
+                            </div>
+
+                            {/* Heart Button: Save to Personal Shopping List */}
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                toggleSaveItem({
+                                  id: prod.id,
+                                  title: prod.title,
+                                  price: prod.pricing.discount_price_kes || prod.pricing.regular_price_kes,
+                                  image: prod.images?.[0] || 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80',
+                                  businessName: biz?.business_name || 'Verified Merchant',
+                                  businessPhone: phoneNum,
+                                  businessTill: biz?.commercial.mpesa_till_number || biz?.commercial.mpesa_pochi_number,
+                                  slug: prod.slug,
+                                  category: prod.category,
+                                });
+                              }}
+                              className={`p-1.5 rounded-full backdrop-blur-md shadow-xs transition active:scale-90 cursor-pointer ${
+                                isSaved
+                                  ? 'bg-rose-50 text-rose-600 border border-rose-200'
+                                  : 'bg-white/90 text-stone-700 hover:text-rose-500 hover:bg-white'
+                              }`}
+                              title={isSaved ? "Remove from Shopping List" : "Save to My Shopping List"}
+                              aria-label="Save to shopping list"
+                            >
+                              <Heart className={`w-3.5 h-3.5 ${isSaved ? 'fill-rose-500 text-rose-500' : ''}`} />
+                            </button>
                           </div>
                         </div>
 
@@ -510,6 +557,25 @@ export default function SokoCategoryView({ categoryParam, subcategoryParam }: So
                             <h3 className="text-xs font-bold text-stone-900 line-clamp-2 leading-snug group-hover:text-stone-700 transition">
                               {prod.title}
                             </h3>
+
+                            {/* Category Disclosed Specs Chips */}
+                            <div className="flex flex-wrap items-center gap-1.5 mt-2">
+                              {prod.specifications.condition && (
+                                <span className="text-[10px] font-bold text-stone-700 bg-stone-100 px-2 py-0.5 rounded-md">
+                                  {prod.specifications.condition}
+                                </span>
+                              )}
+                              {prod.specifications.warranty_months && prod.specifications.warranty_months > 0 && (
+                                <span className="text-[10px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-md">
+                                  ✓ {prod.specifications.warranty_months}m Warranty
+                                </span>
+                              )}
+                              {prod.specifications.material && (
+                                <span className="text-[10px] font-medium text-stone-600 bg-stone-50 border border-stone-200/70 px-2 py-0.5 rounded-md truncate max-w-[150px]">
+                                  {prod.specifications.material}
+                                </span>
+                              )}
+                            </div>
 
                             <div className="mt-2 pt-2 border-t border-stone-100 flex items-center justify-between text-[11px] text-stone-500">
                               <Link
@@ -560,6 +626,7 @@ export default function SokoCategoryView({ categoryParam, subcategoryParam }: So
                       `Hi, I saw your product "${prod.title}" on HomeDuka / Soko priced at KSh ${prod.pricing.regular_price_kes.toLocaleString()}. Is it currently available?`
                     );
                     const phoneNum = biz?.contact.whatsapp_number || biz?.contact.primary_phone || '254712345678';
+                    const isSaved = isItemSaved(prod.id);
 
                     return (
                       <div 
@@ -594,6 +661,20 @@ export default function SokoCategoryView({ categoryParam, subcategoryParam }: So
                               {prod.title}
                             </h3>
 
+                            {/* Category Disclosed Specs Chips */}
+                            <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
+                              {prod.specifications.condition && (
+                                <span className="text-[9px] font-bold text-stone-700 bg-stone-100 px-1.5 py-0.2 rounded">
+                                  {prod.specifications.condition}
+                                </span>
+                              )}
+                              {prod.specifications.warranty_months && prod.specifications.warranty_months > 0 && (
+                                <span className="text-[9px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-1.5 py-0.2 rounded">
+                                  ✓ {prod.specifications.warranty_months}m Warranty
+                                </span>
+                              )}
+                            </div>
+
                             <div className="text-[11px] text-stone-500 flex items-center gap-2">
                               <span>{biz?.location.neighborhood}, {biz?.location.county}</span>
                               {biz?.commercial.mpesa_till_number && (
@@ -610,6 +691,34 @@ export default function SokoCategoryView({ categoryParam, subcategoryParam }: So
                         </div>
 
                         <div className="flex items-center gap-2 w-full sm:w-auto shrink-0">
+                          {/* Heart Button: Save to Personal Shopping List */}
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              toggleSaveItem({
+                                id: prod.id,
+                                title: prod.title,
+                                price: prod.pricing.discount_price_kes || prod.pricing.regular_price_kes,
+                                image: prod.images?.[0] || 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80',
+                                businessName: biz?.business_name || 'Verified Merchant',
+                                businessPhone: phoneNum,
+                                businessTill: biz?.commercial.mpesa_till_number || biz?.commercial.mpesa_pochi_number,
+                                slug: prod.slug,
+                                category: prod.category,
+                              });
+                            }}
+                            className={`p-2 rounded-xl border text-xs font-bold transition active:scale-95 cursor-pointer ${
+                              isSaved
+                                ? 'bg-rose-50 border-rose-200 text-rose-600'
+                                : 'border-stone-200 text-stone-600 hover:text-rose-600 hover:bg-stone-50'
+                            }`}
+                            title={isSaved ? "Remove from Shopping List" : "Save to Shopping List"}
+                          >
+                            <Heart className={`w-4 h-4 ${isSaved ? 'fill-rose-500 text-rose-500' : ''}`} />
+                          </button>
+
                           <a
                             href={`https://wa.me/${phoneNum}?text=${whatsappMsg}`}
                             target="_blank"
@@ -640,6 +749,12 @@ export default function SokoCategoryView({ categoryParam, subcategoryParam }: So
         </div>
 
       </div>
+
+      {/* Deal Alerts Preferences Modal */}
+      <AlertPreferencesModal
+        isOpen={showAlertsModal}
+        onClose={() => setShowAlertsModal(false)}
+      />
     </>
   );
 }

@@ -4,8 +4,10 @@ import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { ComparisonProvider } from "../context/ComparisonContext";
+import { ShoppingListProvider } from "../context/ShoppingListContext";
 import ComparisonDrawer from "../components/ComparisonDrawer";
 import ComparisonModal from "../components/ComparisonModal";
+import ShoppingListDrawer from "../components/ShoppingListDrawer";
 import MobileQuickDock from "../components/MobileQuickDock";
 
 const fontSans = Plus_Jakarta_Sans({
@@ -156,14 +158,17 @@ export default function RootLayout({
         />
       </head>
       <body className={`${fontSans.className} ${fontSans.variable} min-h-screen flex flex-col bg-[#FDFBF7] text-slate-900 antialiased selection:bg-stone-200 selection:text-stone-900 pb-16 sm:pb-0`}>
-        <ComparisonProvider>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <ComparisonDrawer />
-          <ComparisonModal />
-          <MobileQuickDock />
-        </ComparisonProvider>
+        <ShoppingListProvider>
+          <ComparisonProvider>
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <ComparisonDrawer />
+            <ComparisonModal />
+            <ShoppingListDrawer />
+            <MobileQuickDock />
+          </ComparisonProvider>
+        </ShoppingListProvider>
       </body>
     </html>
   );

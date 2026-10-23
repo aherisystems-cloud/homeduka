@@ -8,13 +8,15 @@ import {
   Menu, X, CheckCircle2, HelpCircle, Layers, ArrowRight,
   Tv, Bed, Sofa, Utensils, Bath, Trees, Paintbrush, Hammer,
   Flame, Shirt, Box, Truck, Shield, Smartphone, Download, Share2, Bell, Search,
-  Grid, Laptop, Cpu, Car, Wheat, HeartPulse, ShoppingCart, BookOpen
+  Grid, Laptop, Cpu, Car, Wheat, HeartPulse, ShoppingCart, BookOpen, Heart
 } from 'lucide-react';
 import Logo from './Logo';
 import AlertPreferencesModal from './AlertPreferencesModal';
 import { MASTER_PRODUCT_CATEGORIES } from '../data/kenyan_taxonomy';
+import { useShoppingList } from '../context/ShoppingListContext';
 
 export default function Header() {
+  const { savedItems, setIsDrawerOpen } = useShoppingList();
   const [showDownloadAppModal, setShowDownloadAppModal] = useState(false);
   const [showAlertsModal, setShowAlertsModal] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -163,10 +165,10 @@ export default function Header() {
             <Logo variant="header" />
           </div>
 
-          {/* Desktop Navigation Links - Clean, Stable, Ordered with Deals Last */}
+          {/* Desktop Navigation Links - Clean, Stable, Ordered with Buyer Protection at the Very End */}
           <nav className="hidden md:flex items-center gap-2 lg:gap-3">
             
-            {/* Item 1: Start Shopping (Direct link to main /soko page) */}
+            {/* Item 1: Start Shopping */}
             <Link
               href="/soko"
               className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-sm font-black text-stone-900 hover:bg-stone-100 transition"
@@ -175,14 +177,13 @@ export default function Header() {
               <span>Start Shopping</span>
             </Link>
 
-            {/* Item 2: Buyer Protection & Safety (High-Value Buyer CTA) */}
+            {/* Item 2: Deals */}
             <Link
-              href="/buyer-protection"
-              className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-sm font-extrabold text-emerald-800 hover:text-emerald-950 hover:bg-emerald-50 transition"
-              title="How HomeDuka protects buyers from online scams"
+              href="/deals"
+              className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-sm font-extrabold text-rose-700 hover:text-rose-950 hover:bg-rose-50 transition"
             >
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
-              <span>Buyer Protection</span>
+              <Flame className="w-4 h-4 text-rose-600" />
+              <span>Deals</span>
             </Link>
 
             {/* Item 3: Home Services */}
@@ -194,18 +195,34 @@ export default function Header() {
               <span>Services</span>
             </Link>
 
-            {/* Item 4: Hot Deals (MUST BE LAST ITEM ON MAIN MENU) */}
+            {/* Item 4: Buyer Protection (THE VERY LAST ITEM AT THE END OF THE MENU) */}
             <Link
-              href="/deals"
-              className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-sm font-extrabold text-rose-700 hover:text-rose-950 hover:bg-rose-50 transition"
+              href="/buyer-protection"
+              className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-sm font-extrabold text-emerald-800 hover:text-emerald-950 hover:bg-emerald-50 transition"
+              title="How HomeDuka protects buyers from online scams"
             >
-              <Flame className="w-4 h-4 text-rose-600" />
-              <span>Deals</span>
+              <ShieldCheck className="w-4 h-4 text-emerald-600" />
+              <span>Buyer Protection</span>
             </Link>
           </nav>
 
-          {/* Right Area: Post Free Ad CTA + Mobile Menu Toggle */}
-          <div className="flex items-center gap-3">
+          {/* Right Area: Shopping List + Post Free Ad CTA + Mobile Menu Toggle */}
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            {/* Shopping List Trigger Button */}
+            <button
+              onClick={() => setIsDrawerOpen(true)}
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-stone-100 hover:bg-rose-50 text-stone-800 hover:text-rose-700 font-bold text-xs transition cursor-pointer"
+              title="View my shopping list"
+            >
+              <Heart className={`w-4 h-4 ${savedItems.length > 0 ? 'fill-rose-600 text-rose-600' : 'text-stone-600'}`} />
+              <span className="hidden sm:inline">Shopping List</span>
+              {savedItems.length > 0 && (
+                <span className="px-1.5 py-0.2 rounded-full bg-rose-600 text-white text-[10px] font-black">
+                  {savedItems.length}
+                </span>
+              )}
+            </button>
+
             {/* Primary Action Button: Post Ad / Sell Free */}
             <Link
               href="/sell"
@@ -266,14 +283,16 @@ export default function Header() {
                 <ShoppingBag className="w-4 h-4 text-[#F59E0B]" />
                 <span>Start Shopping</span>
               </Link>
-              <Link
-                href="/buyer-protection"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-1.5 p-3 rounded-xl font-black text-xs bg-emerald-50 text-emerald-900 border border-emerald-200"
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setIsDrawerOpen(true);
+                }}
+                className="flex items-center justify-center gap-1.5 p-3 rounded-xl font-black text-xs bg-rose-50 text-rose-800 border border-rose-200"
               >
-                <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                <span>Buyer Protection</span>
-              </Link>
+                <Heart className={`w-4 h-4 ${savedItems.length > 0 ? 'fill-rose-600 text-rose-600' : 'text-rose-600'}`} />
+                <span>Shopping List ({savedItems.length})</span>
+              </button>
             </div>
 
             {/* Mobile Categories Accordion */}
@@ -360,6 +379,14 @@ export default function Header() {
               >
                 <Flame className="w-4 h-4 text-rose-600" />
                 <span>Today&apos;s Hot Deals</span>
+              </Link>
+              <Link
+                href="/buyer-protection"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-2 p-2.5 rounded-xl font-bold text-xs bg-emerald-50 text-emerald-900 border border-emerald-200"
+              >
+                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                <span>Buyer Protection & Safe Shopping</span>
               </Link>
             </div>
           </div>

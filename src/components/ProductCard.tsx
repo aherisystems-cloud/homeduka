@@ -5,8 +5,9 @@ import Link from 'next/link';
 import { HomeProduct, BusinessProfile, ComparisonItem } from '../types/schema';
 import { SAMPLE_KENYAN_HOME_LISTINGS } from '../data/mock_listings';
 import { generateWhatsAppLeadLink } from '../utils/whatsapp_link';
-import { MessageSquare, ShieldCheck, MapPin, Tag, Scale, Check, FileText } from 'lucide-react';
+import { MessageSquare, ShieldCheck, MapPin, Tag, Scale, Check, FileText, Heart, Sparkles } from 'lucide-react';
 import { useComparison } from '../context/ComparisonContext';
+import { useShoppingList } from '../context/ShoppingListContext';
 import QuotationGeneratorModal from './QuotationGeneratorModal';
 
 interface ProductCardProps {
@@ -17,11 +18,13 @@ interface ProductCardProps {
 export default function ProductCard({ product, business }: ProductCardProps) {
   const biz = business || SAMPLE_KENYAN_HOME_LISTINGS.find((b) => b.id === product.business_id);
   const { addToCompare, isInCompare } = useComparison();
+  const { toggleSaveItem, isItemSaved } = useShoppingList();
   const [showQuoteModal, setShowQuoteModal] = React.useState(false);
 
   if (!biz) return null;
 
   const inCompare = isInCompare(product.id);
+  const isSaved = isItemSaved(product.id);
 
   const whatsappUrl = generateWhatsAppLeadLink(biz, {
     itemOrServiceName: product.title,
@@ -87,13 +90,44 @@ export default function ProductCard({ product, business }: ProductCardProps) {
               )}
             </div>
 
-            <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold shadow-xs ${
-              product.specifications.in_stock
-                ? 'bg-emerald-100 text-emerald-800'
-                : 'bg-stone-100 text-stone-800'
-            }`}>
-              {product.specifications.in_stock ? 'Ready in Shop' : 'Made for You'}
-            </span>
+            <div className="flex items-center gap-1.5">
+              <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold shadow-xs ${
+                product.specifications.in_stock
+                  ? 'bg-emerald-100 text-emerald-800'
+                  : 'bg-stone-100 text-stone-800'
+              }`}>
+                {product.specifications.in_stock ? 'Ready in Shop' : 'Made for You'}
+              </span>
+
+              {/* Heart Button: Save to Personal Shopping List */}
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  toggleSaveItem({
+                    id: product.id,
+                    title: product.title,
+                    price: product.pricing.discount_price_kes || product.pricing.regular_price_kes,
+                    image: product.images[0] || biz.media.cover_image_url,
+                    businessName: biz.business_name,
+                    businessPhone: biz.contact.whatsapp_number || biz.contact.primary_phone,
+                    businessTill: biz.commercial.mpesa_till_number || biz.commercial.mpesa_pochi_number,
+                    slug: product.slug,
+                    category: product.category,
+                  });
+                }}
+                className={`p-1.5 rounded-full backdrop-blur-md shadow-xs transition active:scale-90 cursor-pointer ${
+                  isSaved
+                    ? 'bg-rose-50 text-rose-600 border border-rose-200'
+                    : 'bg-white/90 text-stone-700 hover:text-rose-500 hover:bg-white'
+                }`}
+                title={isSaved ? "Remove from Shopping List" : "Save to My Shopping List"}
+                aria-label="Save to shopping list"
+              >
+                <Heart className={`w-3.5 h-3.5 ${isSaved ? 'fill-rose-500 text-rose-500' : ''}`} />
+              </button>
+            </div>
           </div>
         </div>
 
@@ -108,6 +142,25 @@ export default function ProductCard({ product, business }: ProductCardProps) {
                 {product.specifications.material}
               </p>
             )}
+
+            {/* Category-Specific Disclosed Specs Chips */}
+            <div className="flex flex-wrap items-center gap-1.5 mt-2">
+              {product.specifications.condition && (
+                <span className="text-[10px] font-bold text-stone-700 bg-stone-100 px-2 py-0.5 rounded-md">
+                  {product.specifications.condition}
+                </span>
+              )}
+              {product.specifications.warranty_months && product.specifications.warranty_months > 0 && (
+                <span className="text-[10px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-md">
+                  ✓ {product.specifications.warranty_months} Mo Warranty
+                </span>
+              )}
+              {product.specifications.authenticity_disclosure && (
+                <span className="text-[10px] font-bold text-blue-800 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-md">
+                  {product.specifications.authenticity_disclosure}
+                </span>
+              )}
+            </div>
           </div>
 
           {/* Shop Context */}

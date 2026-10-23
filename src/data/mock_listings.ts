@@ -1283,7 +1283,9 @@ export const SAMPLE_KENYAN_HOME_PRODUCTS: HomeProduct[] = [
       dimensions: "6.7 Inch Super Retina XDR OLED",
       in_stock: true,
       is_made_to_order: false,
-      warranty_months: 12
+      warranty_months: 12,
+      condition: "Brand New Sealed",
+      authenticity_disclosure: "Apple Original Sealed Box"
     },
     delivery: {
       nairobi_delivery_fee_kes: 0,
@@ -1315,7 +1317,9 @@ export const SAMPLE_KENYAN_HOME_PRODUCTS: HomeProduct[] = [
       dimensions: "14-Inch FHD (1920x1080)",
       in_stock: true,
       is_made_to_order: false,
-      warranty_months: 6
+      warranty_months: 6,
+      condition: "Refurbished Ex-UK",
+      authenticity_disclosure: "Grade A+ Clean Tested"
     },
     delivery: {
       nairobi_delivery_fee_kes: 300,
@@ -1346,7 +1350,9 @@ export const SAMPLE_KENYAN_HOME_PRODUCTS: HomeProduct[] = [
       dimensions: "4 Camera Complete Kit",
       in_stock: true,
       is_made_to_order: false,
-      warranty_months: 24
+      warranty_months: 24,
+      condition: "Brand New Sealed",
+      authenticity_disclosure: "Original Hikvision Distribution"
     },
     delivery: {
       nairobi_delivery_fee_kes: 0,
