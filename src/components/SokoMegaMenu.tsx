@@ -8,9 +8,35 @@ import {
   SubCategoryDef 
 } from '../data/kenyan_taxonomy';
 import { 
-  Search, ArrowRight, Sparkles, ChevronRight, CheckCircle2, 
-  TrendingUp, ShieldCheck, Tag, X
+  Search, ArrowRight, ChevronRight, X,
+  Smartphone, Sofa, Hammer, Shirt, Car, Wheat, Heart, 
+  ShoppingCart, BookOpen, Layers
 } from 'lucide-react';
+
+export function getMasterCategoryIcon(id: string, className = "w-4 h-4 text-stone-900") {
+  switch (id) {
+    case 'electronics_phones':
+      return <Smartphone className={className} />;
+    case 'home_kitchen_furniture':
+      return <Sofa className={className} />;
+    case 'hardware_building_electricals':
+      return <Hammer className={className} />;
+    case 'fashion_clothes_shoes':
+      return <Shirt className={className} />;
+    case 'vehicles_auto_spares':
+      return <Car className={className} />;
+    case 'farm_agriculture_agrovet':
+      return <Wheat className={className} />;
+    case 'health_beauty_personal_care':
+      return <Heart className={className} />;
+    case 'supermarket_food_gas':
+      return <ShoppingCart className={className} />;
+    case 'office_stationery_books':
+      return <BookOpen className={className} />;
+    default:
+      return <Layers className={className} />;
+  }
+}
 
 interface SokoMegaMenuProps {
   isOpen: boolean;
@@ -29,7 +55,7 @@ export default function SokoMegaMenu({ isOpen, onClose, initialCategoryId }: Sok
     return MASTER_PRODUCT_CATEGORIES.find(c => c.id === activeCategoryId) || MASTER_PRODUCT_CATEGORIES[0];
   }, [activeCategoryId]);
 
-  // If user types in search query, search across all 48 subcategories
+  // Search across all 48 subcategories
   const searchResults = useMemo(() => {
     if (!filterQuery.trim()) return null;
     const q = filterQuery.toLowerCase().trim();
@@ -52,32 +78,37 @@ export default function SokoMegaMenu({ isOpen, onClose, initialCategoryId }: Sok
 
   return (
     <div 
-      className="absolute left-0 right-0 top-full mt-1 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 z-50 animate-fade-in"
+      className="absolute left-0 right-0 top-full mt-2 mx-auto max-w-[1400px] px-4 sm:px-8 lg:px-12 z-50 animate-fade-in"
       onMouseLeave={onClose}
     >
-      <div className="bg-white rounded-3xl border border-stone-200/90 shadow-2xl overflow-hidden backdrop-blur-md">
+      <div className="bg-white rounded-2xl border border-stone-200 shadow-xl overflow-hidden">
         
-        {/* Top Header: Fast Search & Clear Guarantee */}
-        <div className="bg-stone-50/90 px-6 py-3.5 border-b border-stone-200 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-xs font-black uppercase tracking-wider text-stone-900">
-              The Kenyan Soko • 9 Master Verticals & 48 Distinct Categories
+        {/* Simple, Non-Crowded Top Header */}
+        <div className="bg-stone-50 px-6 py-3 border-b border-stone-200 flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <span className="text-xs font-bold text-stone-900 tracking-wide uppercase">
+              Shop by Category
             </span>
-            <span className="hidden sm:inline-block text-[11px] text-stone-500">
-              (Direct Seller Prices • 0% Commission • Verified Till / Paybill)
-            </span>
+            <span className="text-stone-300">|</span>
+            <Link
+              href="/soko"
+              onClick={onClose}
+              className="text-xs font-semibold text-stone-600 hover:text-stone-900 underline flex items-center gap-1"
+            >
+              <span>View All 9 Master Categories</span>
+              <ArrowRight className="w-3 h-3" />
+            </Link>
           </div>
 
-          {/* Quick Subcategory Filter */}
-          <div className="relative flex items-center min-w-[280px]">
+          {/* Quick Filter Box */}
+          <div className="relative flex items-center min-w-[260px]">
             <Search className="w-3.5 h-3.5 text-stone-400 absolute left-3 pointer-events-none" />
             <input
               type="text"
               value={filterQuery}
               onChange={(e) => setFilterQuery(e.target.value)}
-              placeholder="Filter categories (e.g. cement, gas, seeds)..."
-              className="w-full pl-8 pr-7 py-1.5 rounded-full bg-white text-xs border border-stone-200 focus:outline-hidden focus:border-stone-400 text-stone-800 placeholder:text-stone-400"
+              placeholder="Find category (e.g. cement, tyres, seeds)..."
+              className="w-full pl-8 pr-7 py-1.5 rounded-lg bg-white text-xs border border-stone-200 focus:outline-hidden focus:border-stone-400 text-stone-900 placeholder:text-stone-400"
             />
             {filterQuery && (
               <button 
@@ -92,51 +123,35 @@ export default function SokoMegaMenu({ isOpen, onClose, initialCategoryId }: Sok
 
         {/* Search Results Mode */}
         {searchResults !== null ? (
-          <div className="p-6 max-h-[520px] overflow-y-auto">
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-xs font-bold text-stone-600">
-                Found {searchResults.length} matching categories for &quot;<strong className="text-stone-900">{filterQuery}</strong>&quot;
-              </span>
-              <button
-                onClick={() => setFilterQuery('')}
-                className="text-xs font-bold text-[#B45309] hover:underline cursor-pointer"
-              >
-                Clear Search
+          <div className="p-6 max-h-[480px] overflow-y-auto">
+            <div className="flex items-center justify-between mb-3 text-xs text-stone-600 font-semibold">
+              <span>{searchResults.length} matching categories for &quot;{filterQuery}&quot;</span>
+              <button onClick={() => setFilterQuery('')} className="text-stone-900 hover:underline">
+                Clear
               </button>
             </div>
 
             {searchResults.length === 0 ? (
-              <div className="text-center py-12 text-stone-500 text-xs">
-                <p className="font-semibold text-stone-700">No categories found matching &quot;{filterQuery}&quot;</p>
-                <p className="mt-1">Try keywords like &quot;gas&quot;, &quot;cement&quot;, &quot;seeds&quot;, &quot;tyres&quot;, &quot;phones&quot;, &quot;sofa&quot;.</p>
+              <div className="py-10 text-center text-xs text-stone-500">
+                No categories match &quot;{filterQuery}&quot;. Try terms like gas, cement, seeds, phones, tyres, beds.
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {searchResults.map(({ master, sub }) => (
                   <Link
                     key={`${master.id}-${sub.id}`}
-                    href={`/soko/${master.id}?sub=${sub.id}`}
+                    href={`/soko/${master.id}/${sub.id}`}
                     onClick={onClose}
-                    className="p-3.5 rounded-2xl border border-stone-100 hover:border-stone-300 hover:bg-stone-50 transition group flex flex-col justify-between"
+                    className="p-3 rounded-xl border border-stone-200 hover:border-stone-400 hover:bg-stone-50 transition block"
                   >
-                    <div>
-                      <div className="flex items-center justify-between gap-2 mb-1.5">
-                        <span className="text-xl">{sub.icon}</span>
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 bg-stone-100 px-2 py-0.5 rounded-md">
-                          {master.shortName}
-                        </span>
-                      </div>
-                      <h4 className="text-xs font-bold text-stone-900 group-hover:text-[#B45309] transition">
-                        {sub.name}
-                      </h4>
-                      <p className="text-[11px] text-stone-500 mt-1 line-clamp-2 leading-relaxed">
-                        {sub.description}
-                      </p>
+                    <div className="text-[10px] font-bold text-stone-400 uppercase tracking-wider mb-1">
+                      {master.name}
                     </div>
-
-                    <div className="mt-3 pt-2 border-t border-stone-100 flex items-center justify-between text-[11px] font-bold text-[#B45309]">
-                      <span>Browse Products</span>
-                      <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                    <div className="text-xs font-bold text-stone-900">
+                      {sub.name}
+                    </div>
+                    <div className="text-[11px] text-stone-500 line-clamp-1 mt-0.5">
+                      {sub.description}
                     </div>
                   </Link>
                 ))}
@@ -144,14 +159,11 @@ export default function SokoMegaMenu({ isOpen, onClose, initialCategoryId }: Sok
             )}
           </div>
         ) : (
-          /* Normal 2-Column Mega Menu */
-          <div className="grid grid-cols-12 min-h-[480px]">
+          /* Clean 2-Pane Layout: Master Categories on Left, Subcategories on Right */
+          <div className="grid grid-cols-12 min-h-[420px]">
             
-            {/* Left Sidebar: 9 Master Verticals */}
-            <div className="col-span-4 lg:col-span-3 bg-stone-50/70 border-r border-stone-200/80 p-3 space-y-1 overflow-y-auto max-h-[540px]">
-              <div className="px-3 py-1.5 text-[10px] font-black uppercase tracking-wider text-stone-400">
-                Master Product Verticals
-              </div>
+            {/* Left Pane: Master Categories (Monochromatic, Clean) */}
+            <div className="col-span-4 lg:col-span-3 bg-stone-50 border-r border-stone-200 p-2 space-y-0.5 overflow-y-auto max-h-[480px]">
               {MASTER_PRODUCT_CATEGORIES.map((cat) => {
                 const isActive = cat.id === activeCategoryId;
                 return (
@@ -159,131 +171,88 @@ export default function SokoMegaMenu({ isOpen, onClose, initialCategoryId }: Sok
                     key={cat.id}
                     onMouseEnter={() => setActiveCategoryId(cat.id)}
                     onClick={() => setActiveCategoryId(cat.id)}
-                    className={`w-full text-left px-3.5 py-2.5 rounded-2xl flex items-center justify-between gap-2 transition cursor-pointer text-xs font-bold ${
+                    className={`w-full text-left px-3 py-2.5 rounded-xl flex items-center justify-between gap-2 text-xs font-semibold transition cursor-pointer ${
                       isActive 
-                        ? 'bg-white text-stone-900 shadow-xs border border-stone-200' 
+                        ? 'bg-white text-stone-900 border border-stone-200 shadow-2xs font-bold' 
                         : 'text-stone-700 hover:bg-stone-100 hover:text-stone-900'
                     }`}
                   >
                     <div className="flex items-center gap-2.5 truncate">
-                      <span className="text-base shrink-0">{cat.icon}</span>
+                      <span className="shrink-0">{getMasterCategoryIcon(cat.id, "w-4 h-4 text-stone-800")}</span>
                       <span className="truncate">{cat.name}</span>
                     </div>
-                    <ChevronRight className={`w-3.5 h-3.5 shrink-0 transition-transform ${
-                      isActive ? 'text-[#B45309] translate-x-0.5' : 'text-stone-400'
-                    }`} />
+                    <ChevronRight className={`w-3.5 h-3.5 shrink-0 ${isActive ? 'text-stone-900' : 'text-stone-300'}`} />
                   </button>
                 );
               })}
-
-              {/* Bottom Monetization Callout */}
-              <div className="pt-3 mt-2 border-t border-stone-200 px-2">
-                <Link
-                  href="/sell"
-                  onClick={onClose}
-                  className="block p-3 rounded-2xl bg-amber-50 hover:bg-amber-100/80 border border-amber-200/80 transition text-left group"
-                >
-                  <div className="flex items-center gap-1.5 text-[11px] font-black text-amber-900">
-                    <Sparkles className="w-3.5 h-3.5 text-[#B45309]" />
-                    <span>Sell on Kenyan Soko</span>
-                  </div>
-                  <p className="text-[10px] text-amber-800/90 mt-1 leading-snug">
-                    Post free ads. Option to Sponsor & Boost to #1 spot. 0% cuts.
-                  </p>
-                </Link>
-              </div>
             </div>
 
-            {/* Right Pane: Active Master Category's Granular Subcategories */}
-            <div className="col-span-8 lg:col-span-9 p-6 overflow-y-auto max-h-[540px] flex flex-col justify-between">
+            {/* Right Pane: Subcategories of the Active Master Vertical */}
+            <div className="col-span-8 lg:col-span-9 p-6 overflow-y-auto max-h-[480px] flex flex-col justify-between">
               <div>
-                {/* Master Header */}
-                <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-stone-100 mb-5">
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-2xl">{activeMasterCategory.icon}</span>
-                      <h3 className="text-base font-extrabold text-stone-900 tracking-tight">
+                {/* Active Category Header */}
+                <div className="flex items-center justify-between pb-3 border-b border-stone-100 mb-4">
+                  <div className="flex items-center gap-2.5">
+                    {getMasterCategoryIcon(activeMasterCategory.id, "w-5 h-5 text-stone-900")}
+                    <div>
+                      <h3 className="text-sm font-extrabold text-stone-900">
                         {activeMasterCategory.name}
                       </h3>
+                      <p className="text-[11px] text-stone-500">
+                        {activeMasterCategory.tagline}
+                      </p>
                     </div>
-                    <p className="text-xs text-stone-500 mt-1 font-medium">
-                      {activeMasterCategory.tagline}
-                    </p>
                   </div>
 
                   <Link
                     href={`/soko/${activeMasterCategory.id}`}
                     onClick={onClose}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-stone-900 hover:bg-black text-white text-xs font-bold transition shadow-xs"
+                    className="text-xs font-bold text-stone-900 hover:underline flex items-center gap-1"
                   >
                     <span>Browse All in {activeMasterCategory.shortName}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
 
-                {/* Subcategories Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+                {/* Subcategories Grid: Clean, Monochromatic, Simple */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                   {activeMasterCategory.subcategories.map((sub) => (
-                    <div
+                    <Link
                       key={sub.id}
-                      className="p-3.5 rounded-2xl bg-stone-50/60 hover:bg-white border border-stone-200/70 hover:border-stone-300 transition-all shadow-2xs hover:shadow-xs group flex flex-col justify-between"
+                      href={`/soko/${activeMasterCategory.id}/${sub.id}`}
+                      onClick={onClose}
+                      className="p-3 rounded-xl border border-stone-200/90 hover:border-stone-400 hover:bg-stone-50 transition group block"
                     >
-                      <div>
-                        <div className="flex items-center gap-2 mb-1.5">
-                          <span className="text-lg p-1 rounded-lg bg-white border border-stone-200/80 group-hover:scale-110 transition shrink-0">
-                            {sub.icon}
-                          </span>
-                          <Link
-                            href={`/soko/${activeMasterCategory.id}?sub=${sub.id}`}
-                            onClick={onClose}
-                            className="text-xs font-bold text-stone-900 group-hover:text-[#B45309] transition leading-snug"
-                          >
-                            {sub.name}
-                          </Link>
-                        </div>
-                        
-                        <p className="text-[11px] text-stone-500 line-clamp-2 leading-relaxed mt-1">
-                          {sub.description}
-                        </p>
+                      <div className="text-xs font-bold text-stone-900 group-hover:text-stone-900">
+                        {sub.name}
                       </div>
-
-                      {/* Popular Search Badges */}
-                      <div className="mt-3 pt-2 border-t border-stone-200/60">
-                        <div className="text-[10px] text-stone-400 font-semibold mb-1">Popular searches:</div>
-                        <div className="flex flex-wrap gap-1">
-                          {sub.popularSearches.slice(0, 2).map((query, qIdx) => (
-                            <Link
-                              key={qIdx}
-                              href={`/soko/${activeMasterCategory.id}?search=${encodeURIComponent(query)}`}
-                              onClick={onClose}
-                              className="text-[10px] px-2 py-0.5 rounded-md bg-white hover:bg-stone-100 text-stone-600 hover:text-stone-900 border border-stone-200/80 transition"
-                            >
-                              {query}
-                            </Link>
-                          ))}
-                        </div>
+                      <p className="text-[11px] text-stone-500 line-clamp-2 mt-1 leading-snug">
+                        {sub.description}
+                      </p>
+                      <div className="mt-2 text-[10px] font-semibold text-stone-600 group-hover:text-stone-900 flex items-center gap-1">
+                        <span>Explore products</span>
+                        <ArrowRight className="w-2.5 h-2.5 group-hover:translate-x-0.5 transition-transform" />
                       </div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>
 
-              {/* Bottom Quick Bar for Category Hub */}
-              <div className="mt-6 pt-3 border-t border-stone-100 flex flex-wrap items-center justify-between text-xs text-stone-500">
-                <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>All vendors in {activeMasterCategory.shortName} have physical locations & verified M-Pesa Tills</span>
-                </div>
+              {/* Bottom Quick Bar */}
+              <div className="mt-6 pt-3 border-t border-stone-100 flex items-center justify-between text-[11px] text-stone-500">
+                <span>All items from verified physical shops & suppliers across Kenya</span>
                 <Link
                   href={`/soko/${activeMasterCategory.id}`}
                   onClick={onClose}
-                  className="font-bold text-[#B45309] hover:underline inline-flex items-center gap-1"
+                  className="font-bold text-stone-900 hover:underline inline-flex items-center gap-1"
                 >
-                  <span>View all {activeMasterCategory.subcategories.length} subcategories</span>
+                  <span>Open {activeMasterCategory.shortName} Hub</span>
                   <ArrowRight className="w-3 h-3" />
                 </Link>
               </div>
+
             </div>
+
           </div>
         )}
 

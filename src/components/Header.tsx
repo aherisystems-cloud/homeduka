@@ -84,8 +84,8 @@ export default function Header() {
   return (
     <>
       {/* 1. TOP HELPER UTILITY BAR (Subtle, Understated Helper - Muted Tone) */}
-      <div className="w-full bg-[#F5F4F0] text-stone-600 text-[11px] py-1.5 px-6 sm:px-10 lg:px-12 xl:px-16 border-b border-stone-200/90 z-50 relative">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 sm:gap-4">
+      <div className="w-full bg-[#F5F4F0] text-stone-600 text-[11px] py-1.5 px-6 sm:px-8 lg:px-12 xl:px-16 border-b border-stone-200/90 z-50 relative">
+        <div className="max-w-[1440px] mx-auto flex flex-wrap items-center justify-between gap-2 sm:gap-4">
           
           {/* Left: Kenya Location & City Context with Quick Modal Trigger */}
           <div className="flex items-center gap-2 text-stone-600">
@@ -98,7 +98,7 @@ export default function Header() {
               className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white hover:bg-stone-50 text-stone-700 hover:text-stone-900 border border-stone-200/90 transition cursor-pointer text-[11px] font-medium shadow-2xs"
               title="Click to set your county or estate"
             >
-              <MapPin className="w-3 h-3 text-[#B45309] shrink-0" />
+              <MapPin className="w-3 h-3 text-[#B45309]" />
               <span>Shopping from: <strong className="text-stone-900 font-bold">{headerLocation}</strong> ▾</span>
               <span className="text-[10px] text-[#B45309] font-bold underline decoration-dotted ml-0.5">Change</span>
             </button>
@@ -159,16 +159,6 @@ export default function Header() {
               <span>Web App</span>
             </button>
 
-            {/* Direct WhatsApp Channel Link */}
-            <Link
-              href="https://whatsapp.com/channel/example-channel"
-              target="_blank"
-              className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md hover:bg-stone-200/70 text-stone-600 hover:text-stone-900 transition"
-            >
-              <MessageSquare className="w-3 h-3 text-emerald-600" />
-              <span className="hidden sm:inline">WhatsApp Channel</span>
-            </Link>
-
             {/* Sell / List Free Button - Discreet Text Helper Link on Far Right */}
             <span className="text-stone-300">|</span>
             <Link
@@ -183,22 +173,22 @@ export default function Header() {
         </div>
       </div>
 
-      {/* 2. PRIMARY NAVIGATION BAR (High Contrast, Bold, Dominant) */}
+      {/* 2. PRIMARY NAVIGATION BAR (Spacious, Clean, Uncluttered) */}
       <header 
-        className="sticky top-0 z-40 w-full bg-white border-b border-stone-200/90 shadow-sm"
+        className="sticky top-0 z-40 w-full bg-white border-b border-stone-200/90 shadow-xs"
         onMouseLeave={handleMouseLeave}
       >
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 xl:px-16 h-20 flex items-center justify-between gap-4">
+        <div className="max-w-[1440px] mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 h-20 flex items-center justify-between gap-4">
           
           {/* Logo */}
           <div className="flex items-center gap-3 shrink-0">
             <Logo variant="header" />
           </div>
 
-          {/* Desktop Navigation Links - Distinct, High-Precision Mega Menu */}
-          <nav className="hidden xl:flex items-center gap-1">
+          {/* Desktop Navigation Links - Uncluttered: 3 Clean Items */}
+          <nav className="hidden md:flex items-center gap-3">
             
-            {/* Master Trigger: ALL CATEGORIES MEGA MENU */}
+            {/* Item 1: Start Shopping (Triggers Mega Menu & links to /soko) */}
             <div className="relative">
               <button
                 onClick={() => setSokoMegaMenuOpen(!sokoMegaMenuOpen)}
@@ -206,182 +196,35 @@ export default function Header() {
                   if (menuTimeoutRef.current) clearTimeout(menuTimeoutRef.current);
                   setSokoMegaMenuOpen(true);
                 }}
-                className={`flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-black transition cursor-pointer ${
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-extrabold transition cursor-pointer ${
                   sokoMegaMenuOpen 
-                    ? 'bg-stone-900 text-white shadow-sm' 
-                    : 'bg-stone-100 hover:bg-stone-200/90 text-stone-900'
+                    ? 'bg-stone-900 text-white shadow-xs' 
+                    : 'text-stone-900 hover:bg-stone-100'
                 }`}
               >
-                <Grid className="w-4 h-4 text-[#B45309]" />
-                <span>All Categories</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                <span>Start Shopping</span>
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
                   sokoMegaMenuOpen ? 'rotate-180 text-white' : 'text-stone-500'
                 }`} />
               </button>
             </div>
 
-            {/* Direct Master Category Nav Shortcuts (Instant Hover Discovery) */}
-            <button
-              onClick={() => openMegaCategory('electronics_phones')}
-              onMouseEnter={() => openMegaCategory('electronics_phones')}
-              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition cursor-pointer ${
-                sokoMegaMenuOpen && selectedMegaCategoryId === 'electronics_phones'
-                  ? 'bg-stone-100 text-[#B45309]'
-                  : 'text-stone-800 hover:text-[#B45309] hover:bg-stone-50'
-              }`}
-            >
-              <span>📱</span>
-              <span>Electronics</span>
-            </button>
-
-            <button
-              onClick={() => openMegaCategory('home_kitchen_furniture')}
-              onMouseEnter={() => openMegaCategory('home_kitchen_furniture')}
-              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition cursor-pointer ${
-                sokoMegaMenuOpen && selectedMegaCategoryId === 'home_kitchen_furniture'
-                  ? 'bg-stone-100 text-[#B45309]'
-                  : 'text-stone-800 hover:text-[#B45309] hover:bg-stone-50'
-              }`}
-            >
-              <span>🛋️</span>
-              <span>Home & Living</span>
-            </button>
-
-            <button
-              onClick={() => openMegaCategory('hardware_building_electricals')}
-              onMouseEnter={() => openMegaCategory('hardware_building_electricals')}
-              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition cursor-pointer ${
-                sokoMegaMenuOpen && selectedMegaCategoryId === 'hardware_building_electricals'
-                  ? 'bg-stone-100 text-[#B45309]'
-                  : 'text-stone-800 hover:text-[#B45309] hover:bg-stone-50'
-              }`}
-            >
-              <span>🧱</span>
-              <span>Hardware & Steel</span>
-            </button>
-
-            <button
-              onClick={() => openMegaCategory('fashion_clothes_shoes')}
-              onMouseEnter={() => openMegaCategory('fashion_clothes_shoes')}
-              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition cursor-pointer ${
-                sokoMegaMenuOpen && selectedMegaCategoryId === 'fashion_clothes_shoes'
-                  ? 'bg-stone-100 text-[#B45309]'
-                  : 'text-stone-800 hover:text-[#B45309] hover:bg-stone-50'
-              }`}
-            >
-              <span>👟</span>
-              <span>Fashion</span>
-            </button>
-
-            <button
-              onClick={() => openMegaCategory('farm_agriculture_agrovet')}
-              onMouseEnter={() => openMegaCategory('farm_agriculture_agrovet')}
-              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition cursor-pointer ${
-                sokoMegaMenuOpen && selectedMegaCategoryId === 'farm_agriculture_agrovet'
-                  ? 'bg-stone-100 text-[#B45309]'
-                  : 'text-stone-800 hover:text-[#B45309] hover:bg-stone-50'
-              }`}
-            >
-              <span>🌾</span>
-              <span>Farm & Agro</span>
-            </button>
-
-            <button
-              onClick={() => openMegaCategory('vehicles_auto_spares')}
-              onMouseEnter={() => openMegaCategory('vehicles_auto_spares')}
-              className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition cursor-pointer ${
-                sokoMegaMenuOpen && selectedMegaCategoryId === 'vehicles_auto_spares'
-                  ? 'bg-stone-100 text-[#B45309]'
-                  : 'text-stone-800 hover:text-[#B45309] hover:bg-stone-50'
-              }`}
-            >
-              <span>🚗</span>
-              <span>Auto Spares</span>
-            </button>
-
-            {/* More Master Verticals Dropdown */}
-            <div className="relative">
-              <button
-                onClick={() => setShowMoreMenu(!showMoreMenu)}
-                onMouseEnter={() => setShowMoreMenu(true)}
-                className="flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-bold text-stone-700 hover:text-stone-900 hover:bg-stone-50 transition cursor-pointer"
-              >
-                <span>More</span>
-                <ChevronDown className="w-3.5 h-3.5 text-stone-400" />
-              </button>
-
-              {showMoreMenu && (
-                <div 
-                  className="absolute right-0 top-full mt-1 w-64 bg-white rounded-2xl p-2.5 border border-stone-200 shadow-xl z-50 animate-fade-in"
-                  onMouseEnter={() => setShowMoreMenu(true)}
-                  onMouseLeave={() => setShowMoreMenu(false)}
-                >
-                  <button
-                    onClick={() => {
-                      openMegaCategory('supermarket_food_gas');
-                      setShowMoreMenu(false);
-                    }}
-                    className="w-full text-left p-2.5 rounded-xl hover:bg-stone-50 flex items-center gap-2.5 text-xs font-bold text-stone-800"
-                  >
-                    <span className="text-base">🛒</span>
-                    <div>
-                      <span>Supermarket & Cooking Gas</span>
-                      <span className="block text-[10px] text-stone-400 font-normal">Cereals, LPG gas refills, oils</span>
-                    </div>
-                  </button>
-
-                  <button
-                    onClick={() => {
-                      openMegaCategory('health_beauty_personal_care');
-                      setShowMoreMenu(false);
-                    }}
-                    className="w-full text-left p-2.5 rounded-xl hover:bg-stone-50 flex items-center gap-2.5 text-xs font-bold text-stone-800"
-                  >
-                    <span className="text-base">💄</span>
-                    <div>
-                      <span>Beauty & Health</span>
-                      <span className="block text-[10px] text-stone-400 font-normal">Skincare, human hair, perfumes</span>
-                    </div>
-                  </button>
-
-                  <button
-                    onClick={() => {
-                      openMegaCategory('office_stationery_books');
-                      setShowMoreMenu(false);
-                    }}
-                    className="w-full text-left p-2.5 rounded-xl hover:bg-stone-50 flex items-center gap-2.5 text-xs font-bold text-stone-800"
-                  >
-                    <span className="text-base">📚</span>
-                    <div>
-                      <span>Office & School Books</span>
-                      <span className="block text-[10px] text-stone-400 font-normal">Printing paper, books, safes</span>
-                    </div>
-                  </button>
-
-                  <div className="pt-2 mt-1 border-t border-stone-100">
-                    <Link
-                      href="/services"
-                      onClick={() => setShowMoreMenu(false)}
-                      className="w-full text-left p-2.5 rounded-xl hover:bg-stone-50 flex items-center gap-2.5 text-xs font-bold text-stone-800"
-                    >
-                      <span className="text-base">🔧</span>
-                      <div>
-                        <span>Fundis & Home Services</span>
-                        <span className="block text-[10px] text-stone-400 font-normal">Plumbers, electricians, painters</span>
-                      </div>
-                    </Link>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Hot Deals Badge */}
+            {/* Item 2: Deals */}
             <Link
               href="/deals"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-black bg-rose-50 text-rose-700 hover:bg-rose-100/80 border border-rose-200/80 transition ml-1"
+              className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-bold text-stone-800 hover:text-stone-950 hover:bg-stone-100 transition"
             >
-              <Flame className="w-3.5 h-3.5 text-rose-600 animate-pulse" />
+              <Flame className="w-4 h-4 text-rose-600" />
               <span>Deals</span>
+            </Link>
+
+            {/* Item 3: Home Services */}
+            <Link
+              href="/services"
+              className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-bold text-stone-800 hover:text-stone-950 hover:bg-stone-100 transition"
+            >
+              <Wrench className="w-4 h-4 text-stone-600" />
+              <span>Home Services</span>
             </Link>
           </nav>
 
@@ -390,7 +233,7 @@ export default function Header() {
             {/* Primary Action Button: Post Ad / Sell Free */}
             <Link
               href="/sell"
-              className="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-stone-900 hover:bg-black text-white text-xs font-extrabold shadow-sm hover:shadow-md transition active:scale-95"
+              className="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-stone-900 hover:bg-black text-white text-xs font-extrabold shadow-xs hover:shadow-md transition active:scale-95"
             >
               <PlusCircle className="w-4 h-4 text-[#F59E0B]" />
               <span>Post Free Ad</span>
@@ -399,7 +242,7 @@ export default function Header() {
             {/* Mobile Hamburger */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="xl:hidden p-2 rounded-xl text-stone-700 hover:bg-stone-100 transition"
+              className="md:hidden p-2 rounded-xl text-stone-700 hover:bg-stone-100 transition"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
